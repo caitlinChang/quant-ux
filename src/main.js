@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import VueI18n from 'vue-i18n'
+import { VuePlugin } from 'vuera'
+import 'antd/dist/antd.css'
 
 import Services from 'services/Services'
 
@@ -13,7 +15,7 @@ async function start() {
     const keycloakService = Services.getUserService()
     await keycloakService.init(conf)
   }
-
+  Vue.use(VuePlugin)
   Vue.use(VueI18n)
   Vue.config.productionTip = false
   

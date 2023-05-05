@@ -1,4 +1,3 @@
-\
 <template>
   <div
     class="MatcToolbarItem MatcCreateBtn MatcMultiIcon MatcToolbarDropDownButton"
@@ -17,9 +16,8 @@
           <div class="row" v-show="tab === 'widgets'">
             <div
               class="col-md-10 MatcCreateBtnElementList MatcCreateBtnRight"
-              data-dojo-attach-point="rightCntr"
             >
-              <div class="MatcHint">Loading Widgets...</div>
+              <ReactComponent />
             </div>
             <div class="col-md-2 MatcCreateBtnLeft">
               <div class="form-group has-feedback">
@@ -35,13 +33,10 @@
                   data-dojo-attach-point="searchRemoveBtn"
                 ></span>
               </div>
-              <!-- <div
+              <div
                 class="MatcCreateCatCntr"
                 data-dojo-attach-point="leftCntr"
-              ></div> -->
-              <div>
-                <ReactComponents />
-              </div>
+              ></div>
             </div>
           </div>
           <div class="row" v-show="tab === 'import'">
@@ -87,6 +82,9 @@ import ReactComponent from "../../../reactTransformer/reactComponent.vue";
 export default {
   name: "CreateButton2",
   mixins: [Util, DojoWidget, _DropDown],
+  components:{
+    'ReactComponent': ReactComponent,
+  },
   data: function () {
     return {
       screenWidth: 300,
@@ -113,7 +111,6 @@ export default {
       importableApps: [],
     };
   },
-  components: {},
   methods: {
     setIcons(icons) {
       this.icons = icons;

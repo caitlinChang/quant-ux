@@ -1,15 +1,25 @@
 <template>
   <div>
-    <VueWrapper :component="Typography.Title" :children="xxxxx" />
+    <!-- <typography-title :children="title" /> -->
+    <antd-input v-model="title" :placeholder="'请输入'" />
   </div>
 </template>
 
-<script setup>
-import VueWrapper from "./vueWrapper.js";
-import { Typography } from "antd";
+<script>
+// import VueWrapper from "./vueWrapper.js";
+import { Input } from "antd";
 
 export default {
-  name: "CreateButton2",
-  mixins: [],
+  name:"ReactCompon ent",
+  components: {
+    // 'typography-title': Typography.Title,
+    'antd-input':Input
+  },
+  setup() {
+    return {
+      title:'这是啥'
+    }
+   
+  },
 };
 </script>
