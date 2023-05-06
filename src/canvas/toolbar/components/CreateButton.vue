@@ -15,9 +15,18 @@
         <div class="container-fluid">
           <div class="row" v-show="tab === 'widgets'">
             <div
+              v-show="curWideget !== 'antd4'"
               class="col-md-10 MatcCreateBtnElementList MatcCreateBtnRight"
+              data-dojo-attach-point="rightCntr"
             >
-              <ReactComponent />
+              <div class="MatcHint">Loading Widgets...</div>
+            </div>
+            <div
+              v-show="curWideget === 'antd4'"
+              class="col-md-10 MatcCreateBtnElementList MatcCreateBtnRight"
+              data-dojo-attach-point="customWedgets"
+            >
+              <ReactComponent v-on:onclick="onCreateCustomWeget" />
             </div>
             <div class="col-md-2 MatcCreateBtnLeft">
               <div class="form-group has-feedback">
@@ -76,14 +85,13 @@ import _DropDown from "./_DropDown";
 import Services from "services/Services";
 import CheckBox from "common/CheckBox";
 import ModelUtil from "core/ModelUtil";
-
 import ReactComponent from "../../../reactTransformer/reactComponent.vue";
 
 export default {
   name: "CreateButton2",
   mixins: [Util, DojoWidget, _DropDown],
-  components:{
-    'ReactComponent': ReactComponent,
+  components: {
+    ReactComponent,
   },
   data: function () {
     return {
@@ -109,6 +117,7 @@ export default {
       },
       tab: "widgets",
       importableApps: [],
+      curWideget: null,
     };
   },
   methods: {
@@ -240,7 +249,6 @@ export default {
       this.rightCntr.innerHTML = "";
       var categories = {};
       var temp = {};
-      console.log("themes = ", themes);
       /**
        * sort into categories
        */
@@ -275,7 +283,6 @@ export default {
           console.warn("Theme has no id!");
         }
       }
-      console.log("temp = ", temp);
       /**
        * now do the mixin stuff
        */
@@ -323,7 +330,6 @@ export default {
           }
         }
       }
-      console.log("categories = ", categories);
       this.render(categories);
     },
 
@@ -603,7 +609,6 @@ export default {
       // of the old categories in. We should cleap that up...
       this.showWidgets();
       this.rightCntr.innerHTML = "";
-      console.log("this.categories = ", this.categories);
       this.render(this.categories);
     },
 
@@ -799,7 +804,6 @@ export default {
     },
 
     renderElements(elements, category, isTemplate, append) {
-      console.log("renderElements", elements, category, isTemplate, append);
       this._visibleElements = elements;
       elements.sort((a, b) => {
         if (a.subcategory && b.subcategory) {
@@ -890,10 +894,8 @@ export default {
       if (!append) {
         this.iconCntr.innerHTML = "";
       }
-      console.log("this.iconCntr = ", this.iconCntr);
-      if (category === "antd4") {
-        this.iconCntr.appendChild("<span>yingying.chang</span>");
-      } else {
+      this.curWideget = category;
+      if (category !== "antd4") {
         this.iconCntr.appendChild(cntr);
       }
     },
@@ -1029,6 +1031,7 @@ export default {
     },
 
     renderWidget(child, preview, db, size, isTemplate, elementDiv) {
+      // 这里是设置点击 widgets 然后在画布上创建组件的事件
       this.tempOwn(
         on(elementDiv, touch.press, lang.hitch(this, "onCreate", child))
       );
@@ -1100,7 +1103,15 @@ export default {
         this.model.lastCategory = "WireFrame";
       }
       this.hideDropDown();
+      console.log("debugger");
       this.emit("change", value, e);
+    },
+
+    onCreateCustomWeget(e) {
+      console.log("触发了吗");
+      // var value = lang.clone(child);
+      this.hideDropDown();
+      this.emit("change", null, e);
     },
 
     _getPreviewSize(child) {
