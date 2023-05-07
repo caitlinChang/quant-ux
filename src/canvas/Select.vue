@@ -158,7 +158,9 @@ import CanvasSelection from './CanvasSelection'
 			return this._selectWidget
 		},
 	
-	
+		onComponentSelected(id, forceSelection = false, ignoreParentGroups = null){
+			console.log('选中它了')
+		},
 		onWidgetSelected (id, forceSelection = false, ignoreParentGroups = null){
 			this.logger.log(1,"onWidgetSelected", "enter > "+ id + " > ignoreParentGroups : "+ ignoreParentGroups);
 

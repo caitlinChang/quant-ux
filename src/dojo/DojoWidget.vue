@@ -124,8 +124,6 @@ export default {
       if (this._dojoWidgetEventListener[event]) {
         let listeners = this._dojoWidgetEventListener[event];
         listeners.forEach((listener) => {
-          console.log("listener", JSON.stringify(listener));
-          console.log(listener.callback);
           listener.callback(value1, value2, value3, value4, value5);
         });
       }

@@ -3,8 +3,9 @@ import on from 'dojo/on'
 import lang from 'dojo/_base/lang'
 import css from 'dojo/css'
 import win from 'dojo/_base/win'
-import ModelUtil from 'core/ModelUtil'
-
+import ModelUtil from 'core/ModelUtil';
+import Vue from 'vue';
+import ReactComponent from '../reactTransformer/reactComponent.vue'
 
 export default {
     name: 'Add',
@@ -97,6 +98,12 @@ export default {
 			this.logger.log(1,"addThemedWidget", "enter");
 			this._createAddCommand("addThemedWidget", params);
 			this._addWidget(params, params.obj, mode);
+		},
+
+		addThemedComponent(params,mode){
+			this.logger.log(1,"addThemedComponent", "enter");
+			this._createAddCommand("addThemedComponent", params);
+			this._addComponent(params, params.obj, mode);
 		},
 
 
@@ -339,6 +346,7 @@ export default {
 		},
 
 		_addWidget (params, widget, mode){
+			// console.log('addWidget', params, widget, mode);
 			this.logger.log(-1,"_addWidget", "enter", widget);
 
 			if(mode){
@@ -375,10 +383,34 @@ export default {
 			this.setState(3);
 			this.logger.log(2,"_addWidget", "exit");
 		},
-
-		onWidgetAdded (pos, model){
+		_addComponent(params, widget){
+			const container = document.createElement('div');
+		  const node = new Vue({
+				el:container,
+				render: h => h(ReactComponent)
+			}).$mount();
+			css.add(node.$el, "MatcAddBox");
+			css.add(node.$el, "MatcWidget");
+			this._onAddNDropStart(node.$el, widget, params.event, "onComponentAdded", params.mouseup);
+			this.setState(3);
+			this.logger.log(2,"_addWidget", "exit");
+		},
+		onComponentAdded(pos,model){
 			this.logger.log(0,"onWidgetAdded", "enter");
 
+			var newComponent = this.controller.addComponent(model, pos);
+			if(newComponent){
+				requestAnimationFrame( () => {
+					this.onComponentSelected(newComponent.id, true);
+				})
+			}
+
+			this._onAddDone();
+
+			this.setState(0);
+		},
+		onWidgetAdded (pos, model){
+			this.logger.log(0,"onWidgetAdded", "enter");
 			var newWidget = this.controller.addWidget(model, pos);
 			if(newWidget){
 				requestAnimationFrame( () => {
@@ -803,7 +835,6 @@ export default {
 			this._addMDropModel = model;
 
 			this._addCorrectOffset(this._addNDropNodePos);
-
 			this._addNDropEndCallback = onEndCallback;
 
 
@@ -819,13 +850,13 @@ export default {
 			 * register mouse move and release listener, mazbe also esc listener
 			 */
 			this._addNDropMove = on(win.body(),"mousemove", lang.hitch(this,"_onAddNDropMove"));
-
 			this.setDragNDropActive(false);
 			if(mouseup === true){
 				this._addNDropUp = on(win.body(),"mouseup", lang.hitch(this,"_onAddNDropUp"));
 			} else {
 				this._addNDropUp = on(win.body(),"mousedown", lang.hitch(this,"_onAddNDropUp"));
 			}
+			
 		},
 
 

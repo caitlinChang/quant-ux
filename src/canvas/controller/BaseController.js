@@ -293,7 +293,6 @@ export default class BaseController extends Core {
 				this._canvas.updateSourceModel(inheritedModel);
 			}
 		}
-
 		if (this._modelRenderJobs['complete'] === true) {
 			requestAnimationFrame(() => {
 				const isResize = this._modelRenderJobs['complete']
@@ -1654,11 +1653,14 @@ export default class BaseController extends Core {
 	 */
 	getUniqueName  (name, names) {
 		// if the name is unique simply return
+		if(!name){
+			return 'antd4'
+		}
 		if (!names[name]){
 			return name;
 		}
 		// else reduce to base bz assuming "<String> <Int>" pattern
-		var pos = name.lastIndexOf(" ");
+		var pos = name?.lastIndexOf(" ");
 		if (pos > 0) {
 			var end = name.substring(pos+1);
 			var er = /^-?[0-9]+$/;

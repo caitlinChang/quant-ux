@@ -12,6 +12,8 @@ import SimpleGrid from 'canvas/SimpleGrid'
 import RenderFlow from 'canvas/RenderFlow'
 import Wiring from 'canvas/Wiring'
 import ModelUtil from 'core/ModelUtil'
+import Vue from 'vue';
+import ReactComponent from '../reactTransformer/reactComponent.vue'
 
 export default {
     name: 'Render',
@@ -726,24 +728,36 @@ export default {
 			this.logger.log(4,"createWidget", "enter");
 			const div = this.createBox(widget);
 			css.add(div, "MatcWidget");
-			this.renderFactory.createWidgetHTML(div, widget);
-			if(this.hasLine(widget)){
-				css.add(div, "MatcWidgetWithTransition");
+			if(widget.type === 'antd4'){
+				const container = document.createElement('div');
+				const node = new Vue({
+					el:container,
+					render: h => h(ReactComponent)
+				}).$mount();
+				css.add(node.$el, "MatcBox");
+				div.appendChild(node.$el);
+				return div;
+			}else{
+				
+				this.renderFactory.createWidgetHTML(div, widget);
+				if(this.hasLine(widget)){
+					css.add(div, "MatcWidgetWithTransition");
+				}
+				return div;
 			}
-			return div;
 		},
 
 		createBox (box){
 			this.logger.log(6,"createBox", "enter");
-			const div = document.createElement("div");
-			this.domUtil.setBox(div, box)
-			css.add(div, "MatcBox");
-			return div;
+				const div = document.createElement("div");
+				this.domUtil.setBox(div, box)
+				css.add(div, "MatcBox");
+				return div;
 		},
 
 		updateBox (box, div){
-			this.domUtil.setBox(div, box)
-			return div;
+				this.domUtil.setBox(div, box)
+				return div;
 		},
 
 

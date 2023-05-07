@@ -830,6 +830,62 @@ export default class Widget extends Snapp {
 		return widget;
 	}
 
+	addComponent(model,pos, fromTool){
+		this.logger.log(0,"addComponent", "enter > " + fromTool);
+
+		this.startModelChange()
+		pos = this.getUnZoomedBox(pos, this._canvas.getZoomFactor());
+		const targetScreen = this.getHoverScreen(pos);
+
+		/**
+		 * Create the model. Attention! The passed model might say that it was from a
+		 * template. In that case we need to create a templated model! We assume the
+		 * template exists!
+		 */
+		const component = this._createWidgetModel(model);
+		
+		if (targetScreen) {
+			component.name = this.getWidgetName(targetScreen.id, component.name);
+		}
+		component.id = "w"+this.getUUID();
+		component.z = this.getMaxZValue(this.model.widgets) + 1;		
+		component.x =  pos.x;
+		component.y =  pos.y;
+		if( fromTool){
+			component.w =  pos.w;
+			component.h =  pos.h;
+		}
+
+		// make sure there is one root template
+		// if (component.template && this.model.templates) {
+		// 	let template = this.model.templates[component.template]
+		// 	if (template) {
+		// 		this.setRootTemplateIfNeeded(component, template)
+		// 	}
+		// }
+
+		const command = this._createAddComponentCommand(component);
+		this.addCommand(command);
+
+		/**
+		 * Update model
+		 */
+		this.modelAddWidget(component);
+		this.render();
+		const screen = this.getHoverScreen(component);
+		if(screen){
+			this.showSuccess("Great! A new component was added to screen "+ screen.id);
+		} else {
+			if(component.has && !component.has.logic){
+				this.showError("Great! A new component was added, but is does not belong to any screen! It will not be shown in the simulator.");
+			}
+		}
+		this.commitModelChange(true, true)
+		console.log('screen = ', screen)
+		console.log('component = ', component)
+		return component;
+	}
+
 	_createAddWidgetCommand (widget){
 		/**
 		 * create the command
@@ -838,6 +894,18 @@ export default class Widget extends Snapp {
 			timestamp : new Date().getTime(),
 			type : "AddWidget",
 			model : widget
+		};
+		return command;
+	}
+
+	_createAddComponentCommand (component){
+		/**
+		 * create the command
+		 */
+		const command = {
+			timestamp : new Date().getTime(),
+			type : "AddComponent",
+			model : component
 		};
 		return command;
 	}
