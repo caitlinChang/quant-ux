@@ -446,7 +446,7 @@ export default {
 				this.renderedModels[widget.id] = widget
 				this.renderChangeCounter++;
 
-			} else if (widget?.style.fixed) {
+			} else if (widget?.style?.fixed) {
 				/**
 				 * We need to make sure fixed widgets stay on top,
 				 * event after copy paste

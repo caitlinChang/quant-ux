@@ -139,6 +139,9 @@ export default {
       this.tempOwn(on(toolbar, "newThemedScreen", lang.hitch(canvas, "addThemedScreen")));
       this.tempOwn(on(toolbar, "newThemedGroup", lang.hitch(canvas, "addThemedGroup")));
       this.tempOwn(on(toolbar, "newThemedWidget", lang.hitch(canvas, "addThemedWidget")));
+      // for reactComponents 
+      this.tempOwn(on(toolbar, "newThemedComponent", lang.hitch(canvas, "addThemedComponent")));
+
       this.tempOwn(on(toolbar, "newMultiThemedScreen", lang.hitch(canvas, "addMultiThemedScreens")));
       this.tempOwn(on(toolbar, "newThemedScreenAndWidget", lang.hitch(canvas, "addThemedScreenAndWidgets")));
       this.tempOwn(on(toolbar, "newImportApp", lang.hitch(canvas, "addImportedApp")));

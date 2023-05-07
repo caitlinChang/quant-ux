@@ -26,7 +26,7 @@
               class="col-md-10 MatcCreateBtnElementList MatcCreateBtnRight"
               data-dojo-attach-point="customWedgets"
             >
-              <ReactComponent v-on:onclick="onCreateCustomWeget" />
+              <ReactComponent @onclick="onCreateCustomWeget" />
             </div>
             <div class="col-md-2 MatcCreateBtnLeft">
               <div class="form-group has-feedback">
@@ -1103,15 +1103,17 @@ export default {
         this.model.lastCategory = "WireFrame";
       }
       this.hideDropDown();
-      console.log("debugger");
       this.emit("change", value, e);
     },
 
     onCreateCustomWeget(e) {
-      console.log("触发了吗");
-      // var value = lang.clone(child);
       this.hideDropDown();
-      this.emit("change", null, e);
+      this.emit("change", {
+        _type:'antd4',
+        w:200,
+        h:60,
+        type:'antd4'
+      }, e);
     },
 
     _getPreviewSize(child) {

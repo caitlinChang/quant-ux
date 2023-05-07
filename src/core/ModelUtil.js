@@ -343,7 +343,7 @@ class ModelUtil {
             const widget = model.widgets[id]
             const zoomedWidget = this.getZoomedBoxFast(widget,zoom, zoom)
             zoomedWidget.style = {
-                locked: widget?.style.locked
+                locked: widget?.style?.locked
             }
             zoomedWidget.props = widget.props // this is ok, because edits will go through the controller
             zoomedWidget.z = widget.z
@@ -366,7 +366,7 @@ class ModelUtil {
             zoomedScreen.children = scrn.children.slice()
             zoomedScreen.rulers = lang.clone(scrn.rulers)
             zoomedScreen.style = {
-                locked: scrn?.style.locked
+                locked: scrn?.style?.locked
             }
             zoomedScreen.props = {}    
             zoomedModel.screens[id] = zoomedScreen  

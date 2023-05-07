@@ -35,6 +35,8 @@ export default {
   padding: 10px;
   background-color: #f5f5f5;
   cursor: pointer;
+  width:200px;
+  height:60px;
 }
 .antd4-warpper:hover {
   border: 1px solid red;

@@ -930,6 +930,8 @@ export default {
 				this.emit("newThemedWidget",{"obj" : obj, "event" : e} );
 			} else if (type === "ScreenAndWidget") {
 				this.emit("newThemedScreenAndWidget",{"obj" : obj, "event" : e} );
+			}else if(type === 'antd4'){
+				this.emit("newThemedComponent",{"obj" : obj, "event" : e} );
 			}
 		},
 
