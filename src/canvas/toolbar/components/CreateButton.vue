@@ -1106,14 +1106,9 @@ export default {
       this.emit("change", value, e);
     },
 
-    onCreateCustomWeget(e) {
+    onCreateCustomWeget(widget,e) {
       this.hideDropDown();
-      this.emit("change", {
-        _type:'antd4',
-        w:200,
-        h:60,
-        type:'antd4'
-      }, e);
+      this.emit("change", widget, e);
     },
 
     _getPreviewSize(child) {

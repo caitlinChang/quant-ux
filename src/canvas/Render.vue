@@ -12,8 +12,7 @@ import SimpleGrid from 'canvas/SimpleGrid'
 import RenderFlow from 'canvas/RenderFlow'
 import Wiring from 'canvas/Wiring'
 import ModelUtil from 'core/ModelUtil'
-import Vue from 'vue';
-import ReactComponent from '../reactTransformer/reactComponent.vue'
+import { createReactRootDom } from '../reactTransformer/util/index'
 
 export default {
     name: 'Render',
@@ -729,14 +728,10 @@ export default {
 			const div = this.createBox(widget);
 			css.add(div, "MatcWidget");
 			if(widget.type === 'antd4'){
-				const container = document.createElement('div');
-				const node = new Vue({
-					el:container,
-					render: h => h(ReactComponent)
-				}).$mount();
-				css.add(node.$el, "MatcBox");
-				node.$el.setAttribute('id', 'antd4-test');
-				div.appendChild(node.$el);
+				const el = createReactRootDom(widget);
+				css.add(el, "MatcBox");
+				el.setAttribute('id', 'antd4-test');
+				div.appendChild(el);
 				return div;
 			}else{
 				

@@ -159,7 +159,6 @@ import CanvasSelection from './CanvasSelection'
 		},
 	
 		onComponentSelected(id, forceSelection = false, ignoreParentGroups = null){
-			console.log('选中它了')
 			this.logger.log(1,"onComponentSelected", "enter > "+ id + " > ignoreParentGroups : "+ ignoreParentGroups);
 
 			const now = new Date().getTime()
@@ -188,7 +187,6 @@ import CanvasSelection from './CanvasSelection'
 		},
 		onWidgetSelected (id, forceSelection = false, ignoreParentGroups = null){
 			this.logger.log(1,"onWidgetSelected", "enter > "+ id + " > ignoreParentGroups : "+ ignoreParentGroups);
-			console.log('触发它了没')
 			const now = new Date().getTime()
 		
 			/**

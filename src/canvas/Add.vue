@@ -4,8 +4,8 @@ import lang from 'dojo/_base/lang'
 import css from 'dojo/css'
 import win from 'dojo/_base/win'
 import ModelUtil from 'core/ModelUtil';
-import Vue from 'vue';
-import ReactComponent from '../reactTransformer/reactComponent.vue'
+import { createReactRootDom }  from '../reactTransformer/util/index'
+
 
 export default {
     name: 'Add',
@@ -384,14 +384,10 @@ export default {
 			this.logger.log(2,"_addWidget", "exit");
 		},
 		_addComponent(params, widget){
-			const container = document.createElement('div');
-		  const node = new Vue({
-				el:container,
-				render: h => h(ReactComponent)
-			}).$mount();
-			css.add(node.$el, "MatcAddBox");
-			css.add(node.$el, "MatcWidget");
-			this._onAddNDropStart(node.$el, widget, params.event, "onComponentAdded", params.mouseup);
+			const div = createReactRootDom(widget);
+			css.add(div, "MatcAddBox");
+			css.add(div, "MatcWidget");
+			this._onAddNDropStart(div, widget, params.event, "onComponentAdded", params.mouseup);
 			this.setState(3);
 			this.logger.log(2,"_addWidget", "exit");
 		},

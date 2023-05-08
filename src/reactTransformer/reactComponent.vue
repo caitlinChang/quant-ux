@@ -1,18 +1,22 @@
 <template>
-  <div class="antd4-warpper" @click="(e) => $emit('onclick', e)">
-    <typography-text :type="'success'">Ant Design (sucess)</typography-text>
-    <!-- <antd-input v-model="title" :placeholder="'请输入'" /> -->
+  <div>
+    <div v-for="item in componentInfo" :key="item.name">
+      <div class="antd4-warpper"  @click="(e) => $emit('onclick', item, e)">
+        <component :is="item.component" :placeholder="'请输入'" />
+      </div>
+    </div>
   </div>
+  
 </template>
 
 <script>
-import { Input, Typography } from "antd";
+import componentInfo from './reactComponent.json';
+import { componentList } from './util/constant'
 
 export default {
   name: "ReactComponent",
   components: {
-    "typography-text": Typography.Text,
-    // "antd-input": Input,
+    ...componentList
   },
   props: {
     onClick: {
@@ -20,5 +24,13 @@ export default {
       default: () => {},
     },
   },
-};
+  data(){
+    return {
+      componentInfo
+    }
+  },
+  mounted(){
+    // console.log(this.componentInfo)
+  }
+}
 </script>

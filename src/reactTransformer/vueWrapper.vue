@@ -1,18 +1,34 @@
 <template>
-  <div class="antd4-warpper" @click="(e) => $emit('onclick', e)">
-    <slot></slot>
+  <div class="custom-widget-warpper">
+    <component :is="componentInfo.component" />
   </div>
 </template>
 
 <script>
-import { Input, Typography } from "antd";
+import { componentList } from './util/constant'
 
 export default {
   name: "VueWrapper",
+  components:{
+   ...componentList
+  },
   props: {
-    onClick: {
-      type: Function,
-      default: () => {},
+    componentInfo: {
+      type: Object,
+      default: () => {
+        return {
+          "_type":"antd4",
+          "type":"antd4",
+          "w":200,
+          "h":60,
+          "name":"Typography.Text.1",
+          "component":"typography-text",
+          "props":{
+            "type":"secondary",
+            "children":"这里是一个test"
+          }
+        }
+      },
     },
   },
 };

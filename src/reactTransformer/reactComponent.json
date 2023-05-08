@@ -1,0 +1,26 @@
+[
+  {
+    "_type":"antd4",
+    "type":"antd4",
+    "w":200,
+    "h":60,
+    "name":"Typography.Text.1",
+    "component":"typography-text",
+    "props":{
+      "type":"secondary",
+      "children":"Ant Design (sucess)"
+    }
+  },
+  {
+    "_type":"antd4",
+    "type":"antd4",
+    "w":200,
+    "h":60,
+    "name":"Typography.Text.2",
+    "component":"typography-text",
+    "props":{
+      "type":"secondary",
+      "children":"Ant Design (sucess)"
+    }
+  }
+]
