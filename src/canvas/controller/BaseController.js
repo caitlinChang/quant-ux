@@ -177,6 +177,17 @@ export default class BaseController extends Core {
 			}
 		}
 	}
+	onComponentSelected(id) {
+		this.logger.log(3,"onComponentSelected", "enter > "+ id);
+		const widget = this.model.widgets[id];
+		if (!widget) {
+			this.logger.error("onComponentSelected", "exit > No widget with id: "+ id);
+			return
+		}
+		if(this.toolbar){
+			this.toolbar.onComponentSelected(widget);
+		}
+	}
 
 	onWidgetSelected (id){
 		this.logger.log(3,"onWidgetSelected", "enter > "+ id);

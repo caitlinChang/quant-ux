@@ -511,6 +511,10 @@ export default {
 			}
 		},
 
+		onComponentSelected(component) {
+			console.log('toolbar onComponentSelected')	
+		},
+
 		onWidgetSelected (widget){
 			this.logger.log(1, "onWidgetSelected", "entry : active:" + this.active);
 	

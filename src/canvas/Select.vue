@@ -160,10 +160,35 @@ import CanvasSelection from './CanvasSelection'
 	
 		onComponentSelected(id, forceSelection = false, ignoreParentGroups = null){
 			console.log('选中它了')
+			this.logger.log(1,"onComponentSelected", "enter > "+ id + " > ignoreParentGroups : "+ ignoreParentGroups);
+
+			const now = new Date().getTime()
+			this.unSelect()
+				this.onSelectionChanged(id, "antd4", false);
+				if (this.model.widgets[id]){
+					this._selectWidget = this.model.widgets[id];
+
+					if (ignoreParentGroups === true) {
+						this._dragNDropIgnoreGroup = true
+					}
+
+					const parent = this.widgetDivs[id];
+					if (parent){
+						if (this.showCustomHandlers) {
+							this.showCustomHandlers(this._selectWidget, parent)
+						}
+						this.showResizeHandles(this._selectWidget,id, parent, "antd4", true);
+						this.selectBox(parent);
+						this.selectDnDBox(id);
+					}
+					this.controller.onComponentSelected(id);
+				} else {
+					console.warn("onWidgetSelected() > No widget with id", id);
+				}
 		},
 		onWidgetSelected (id, forceSelection = false, ignoreParentGroups = null){
 			this.logger.log(1,"onWidgetSelected", "enter > "+ id + " > ignoreParentGroups : "+ ignoreParentGroups);
-
+			console.log('触发它了没')
 			const now = new Date().getTime()
 		
 			/**
@@ -216,7 +241,8 @@ import CanvasSelection from './CanvasSelection'
 			this._lastWidgetSelected = now
 		},
 
-		onWidgetDoubleClick (widget) {
+		onWidgetDoubleClick(widget) {
+			console.log('double click widget')
 			this.logger.log(-3,"onWidgetDoubleClick", "enter > "+ widget.id);
 			topic.publish("matc/canvas/click", "", "");
 			if (widget.type === 'Script') {

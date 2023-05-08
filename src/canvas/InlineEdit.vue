@@ -17,6 +17,14 @@ export default {
 			this.logger.log(-1,"inlineEditInit", "enter", resizeToWidth);
 			this.cleanUpInlineEdit();
 			const div = this.renderFactory.getLabelNode(widget);
+			if (!div && widget.type === 'antd4') {
+				const editableDiv = document.querySelector('#antd4-test');
+				console.log('editableDiv', editableDiv, widget,resizeToWidth);
+				this._inlineEditWidget = widget;
+				this._inlineEditDiv = editableDiv;
+				this._inlineEditResizeToWidth = resizeToWidth
+				this._inlineFocus(null, false, resizeToWidth);
+			}
 			if(div){
 				this._inlineEditWidget = widget;
 				this._inlineEditDiv = div;
@@ -144,10 +152,10 @@ export default {
 			if (e){
 				e.stopPropagation();
 			}
-
+			
 			if(!this._inlineEditStarted && this._inlineEditDiv){
 
-				if(!this._inlineEditWidget.props.label &&!doNotEmptyOnNull){
+				if(this._inlineEditWidget?.type !== 'antd4' && (!this._inlineEditWidget.props.label &&!doNotEmptyOnNull)){
 				    this._inlineEditDiv.innerHTML = "";
 				}
 

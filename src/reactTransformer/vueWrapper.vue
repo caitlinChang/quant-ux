@@ -1,7 +1,6 @@
 <template>
   <div class="antd4-warpper" @click="(e) => $emit('onclick', e)">
-    <typography-text :type="'success'">Ant Design (sucess)</typography-text>
-    <!-- <antd-input v-model="title" :placeholder="'请输入'" /> -->
+    <slot></slot>
   </div>
 </template>
 
@@ -9,11 +8,7 @@
 import { Input, Typography } from "antd";
 
 export default {
-  name: "ReactComponent",
-  components: {
-    "typography-text": Typography.Text,
-    // "antd-input": Input,
-  },
+  name: "VueWrapper",
   props: {
     onClick: {
       type: Function,

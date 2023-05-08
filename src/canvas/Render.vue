@@ -735,6 +735,7 @@ export default {
 					render: h => h(ReactComponent)
 				}).$mount();
 				css.add(node.$el, "MatcBox");
+				node.$el.setAttribute('id', 'antd4-test');
 				div.appendChild(node.$el);
 				return div;
 			}else{
