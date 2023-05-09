@@ -10,7 +10,9 @@ export const createReactRootDom = (componentInfo) => {
   const node = new Vue({
     el:container,
     render: h => h(VueWrapper,{
-      componentInfo:componentInfo
+      props:{
+        componentInfo:componentInfo
+      }
     })
   }).$mount();
   return node.$el;

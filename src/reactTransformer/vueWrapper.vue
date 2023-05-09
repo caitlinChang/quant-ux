@@ -1,6 +1,6 @@
 <template>
   <div class="custom-widget-warpper">
-    <component :is="componentInfo.component" />
+    <component :is="componentInfo.component"  v-bind="componentInfo.props" />
   </div>
 </template>
 
@@ -12,24 +12,8 @@ export default {
   components:{
    ...componentList
   },
-  props: {
-    componentInfo: {
-      type: Object,
-      default: () => {
-        return {
-          "_type":"antd4",
-          "type":"antd4",
-          "w":200,
-          "h":60,
-          "name":"Typography.Text.1",
-          "component":"typography-text",
-          "props":{
-            "type":"secondary",
-            "children":"这里是一个test"
-          }
-        }
-      },
-    },
-  },
+  props: ['componentInfo'],
+  mounted(){
+  }
 };
 </script>

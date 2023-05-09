@@ -1,5 +1,5 @@
-import {Input} from 'antd';
+import {Input, Typography} from 'antd';
 export const componentList = {
-  "typography-text": Input,
+  "typography-text": Typography.Text,
   "antd-input": Input,
 }

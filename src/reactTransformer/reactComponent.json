@@ -5,10 +5,9 @@
     "w":200,
     "h":60,
     "name":"Typography.Text.1",
-    "component":"typography-text",
+    "component":"antd-input",
     "props":{
-      "type":"secondary",
-      "children":"Ant Design (sucess)"
+      "placeholder":"请输入"
     }
   },
   {

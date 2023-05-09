@@ -2,7 +2,7 @@
   <div>
     <div v-for="item in componentInfo" :key="item.name">
       <div class="antd4-warpper"  @click="(e) => $emit('onclick', item, e)">
-        <component :is="item.component" :placeholder="'请输入'" />
+        <component :is="item.component" v-bind="item.props" />
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@ export default {
   },
   data(){
     return {
-      componentInfo
+      componentInfo,
     }
   },
   mounted(){
