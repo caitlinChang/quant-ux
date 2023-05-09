@@ -730,7 +730,7 @@ export default {
 			if(widget.type === 'antd4'){
 				const el = createReactRootDom(widget);
 				css.add(el, "MatcBox");
-				el.setAttribute('id', 'antd4-test');
+				el.setAttribute('id', widget.id);
 				div.appendChild(el);
 				return div;
 			}else{

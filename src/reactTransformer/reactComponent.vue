@@ -1,22 +1,21 @@
 <template>
   <div>
     <div v-for="item in componentInfo" :key="item.name">
-      <div class="antd4-warpper"  @click="(e) => $emit('onclick', item, e)">
+      <div class="antd4-warpper" @click="(e) => $emit('onclick', item, e)">
         <component :is="item.component" v-bind="item.props" />
       </div>
     </div>
   </div>
-  
 </template>
 
 <script>
-import componentInfo from './reactComponent.json';
-import { componentList } from './util/constant'
+import componentInfo from "./componentList.js";
+import { componentList } from "./util/constant";
 
 export default {
   name: "ReactComponent",
   components: {
-    ...componentList
+    ...componentList,
   },
   props: {
     onClick: {
@@ -24,13 +23,13 @@ export default {
       default: () => {},
     },
   },
-  data(){
+  data() {
     return {
       componentInfo,
-    }
+    };
   },
-  mounted(){
+  mounted() {
     // console.log(this.componentInfo)
-  }
-}
+  },
+};
 </script>

@@ -1664,6 +1664,8 @@ export default class BaseController extends Core {
 	 */
 	getUniqueName  (name, names) {
 		// if the name is unique simply return
+		console.log('names = ', names)
+		console.log('name = ', name)
 		if(!name){
 			return 'antd4'
 		}

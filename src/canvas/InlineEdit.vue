@@ -18,7 +18,7 @@ export default {
 			this.cleanUpInlineEdit();
 			const div = this.renderFactory.getLabelNode(widget);
 			if (!div && widget.type === 'antd4') {
-				const editableDiv = document.querySelector('#antd4-test');
+				const editableDiv = document.querySelector(`#${widget.id}`);
 				console.log('editableDiv', editableDiv, widget,resizeToWidth);
 				this._inlineEditWidget = widget;
 				this._inlineEditDiv = editableDiv;
