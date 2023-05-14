@@ -1,0 +1,182 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/comment/index.tsx",
+    "description": "",
+    "displayName": "comment",
+    "methods": [],
+    "props": {
+      "actions": {
+        "defaultValue": null,
+        "description": "List of action items rendered below the comment content",
+        "name": "actions",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+          "name": "CommentProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+            "name": "CommentProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode[]"
+        }
+      },
+      "author": {
+        "defaultValue": null,
+        "description": "The element to display as the comment author.",
+        "name": "author",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+          "name": "CommentProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+            "name": "CommentProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "avatar": {
+        "defaultValue": null,
+        "description": "The element to display as the comment avatar - generally an antd Avatar",
+        "name": "avatar",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+          "name": "CommentProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+            "name": "CommentProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "ClassName of comment",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+          "name": "CommentProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+            "name": "CommentProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "content": {
+        "defaultValue": null,
+        "description": "The main content of the comment",
+        "name": "content",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+          "name": "CommentProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+            "name": "CommentProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "Nested comments should be provided as children of the Comment",
+        "name": "children",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+          "name": "CommentProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+            "name": "CommentProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "Comment prefix defaults to '.ant-comment'",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+          "name": "CommentProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+            "name": "CommentProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "Additional style for the comment",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+          "name": "CommentProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+            "name": "CommentProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "datetime": {
+        "defaultValue": null,
+        "description": "A datetime element containing the time to be displayed",
+        "name": "datetime",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+          "name": "CommentProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
+            "name": "CommentProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      }
+    }
+  }
+]

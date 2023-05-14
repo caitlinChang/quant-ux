@@ -1,0 +1,613 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/slider/index.tsx",
+    "description": "",
+    "displayName": "slider",
+    "methods": [],
+    "props": {
+      "range": {
+        "defaultValue": null,
+        "description": "",
+        "name": "range",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderSingleProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderSingleProps"
+          },
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderRangeProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | SliderRange"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderSingleProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderSingleProps"
+          },
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderRangeProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | [number, number]"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultValue",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderSingleProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderSingleProps"
+          },
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderRangeProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | [number, number]"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderSingleProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderSingleProps"
+          },
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderRangeProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((value: number) => void) | ((value: [number, number]) => void)"
+        }
+      },
+      "onAfterChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onAfterChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderSingleProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderSingleProps"
+          },
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderRangeProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "((value: number) => void) | ((value: [number, number]) => void)"
+        }
+      },
+      "handleStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "handleStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderSingleProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderSingleProps"
+          },
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderRangeProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | CSSProperties[]"
+        }
+      },
+      "trackStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "trackStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderSingleProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderSingleProps"
+          },
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderRangeProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties | CSSProperties[]"
+        }
+      },
+      "railStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "railStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderSingleProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderSingleProps"
+          },
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderRangeProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "tooltipPrefixCls": {
+        "defaultValue": null,
+        "description": "@deprecated `tooltipPrefixCls` is deprecated which will be removed in next major version.\nPlease use `tooltip.prefixCls` instead.",
+        "name": "tooltipPrefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "reverse": {
+        "defaultValue": null,
+        "description": "",
+        "name": "reverse",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "min": {
+        "defaultValue": null,
+        "description": "",
+        "name": "min",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "max": {
+        "defaultValue": null,
+        "description": "",
+        "name": "max",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "step": {
+        "defaultValue": null,
+        "description": "",
+        "name": "step",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "marks": {
+        "defaultValue": null,
+        "description": "",
+        "name": "marks",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Record<string | number, ReactNode | MarkObj>"
+        }
+      },
+      "dots": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dots",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "included": {
+        "defaultValue": null,
+        "description": "",
+        "name": "included",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "vertical": {
+        "defaultValue": null,
+        "description": "",
+        "name": "vertical",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "tipFormatter": {
+        "defaultValue": null,
+        "description": "@deprecated `tipFormatter` is deprecated which will be removed in next major version. Please\nuse `tooltip.formatter` instead.",
+        "name": "tipFormatter",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(value?: number) => ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "id": {
+        "defaultValue": null,
+        "description": "",
+        "name": "id",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "tooltipVisible": {
+        "defaultValue": null,
+        "description": "@deprecated `tooltipVisible` is deprecated which will be removed in next major version. Please\nuse `tooltip.open` instead.",
+        "name": "tooltipVisible",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "tooltipPlacement": {
+        "defaultValue": null,
+        "description": "@deprecated `tooltipPlacement` is deprecated which will be removed in next major version.\nPlease use `tooltip.placement` instead.",
+        "name": "tooltipPlacement",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "TooltipPlacement"
+        }
+      },
+      "tooltip": {
+        "defaultValue": null,
+        "description": "",
+        "name": "tooltip",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "SliderTooltipProps"
+        }
+      },
+      "getTooltipPopupContainer": {
+        "defaultValue": null,
+        "description": "@deprecated `getTooltipPopupContainer` is deprecated which will be removed in next major\nversion. Please use `tooltip.getPopupContainer` instead.",
+        "name": "getTooltipPopupContainer",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(triggerNode: HTMLElement) => HTMLElement"
+        }
+      },
+      "autoFocus": {
+        "defaultValue": null,
+        "description": "",
+        "name": "autoFocus",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+          "name": "SliderBaseProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/slider/index.tsx",
+            "name": "SliderBaseProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref).\n@see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom",
+        "name": "ref",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<unknown>"
+        }
+      },
+      "key": {
+        "defaultValue": null,
+        "description": "",
+        "name": "key",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "Attributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "Attributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Key"
+        }
+      }
+    }
+  }
+]

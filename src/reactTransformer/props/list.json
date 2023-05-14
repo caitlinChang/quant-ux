@@ -1,0 +1,390 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/list/index.tsx",
+    "description": "",
+    "displayName": "ListConsumer",
+    "methods": [],
+    "props": {}
+  },
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/list/index.tsx",
+    "description": "",
+    "displayName": "List",
+    "methods": [],
+    "props": {
+      "bordered": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "",
+        "name": "bordered",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "dataSource": {
+        "defaultValue": {
+          "value": "[]"
+        },
+        "description": "",
+        "name": "dataSource",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "T[]"
+        }
+      },
+      "extra": {
+        "defaultValue": null,
+        "description": "",
+        "name": "extra",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "grid": {
+        "defaultValue": null,
+        "description": "",
+        "name": "grid",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ListGridType"
+        }
+      },
+      "id": {
+        "defaultValue": null,
+        "description": "",
+        "name": "id",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "itemLayout": {
+        "defaultValue": null,
+        "description": "",
+        "name": "itemLayout",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ListItemLayout"
+        }
+      },
+      "loading": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "",
+        "name": "loading",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | SpinProps"
+        }
+      },
+      "loadMore": {
+        "defaultValue": null,
+        "description": "",
+        "name": "loadMore",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "pagination": {
+        "defaultValue": {
+          "value": "false as ListProps<any>['pagination']"
+        },
+        "description": "",
+        "name": "pagination",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "false | PaginationConfig"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "rowKey": {
+        "defaultValue": null,
+        "description": "",
+        "name": "rowKey",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | number | symbol | ((item: T) => Key)"
+        }
+      },
+      "renderItem": {
+        "defaultValue": null,
+        "description": "",
+        "name": "renderItem",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(item: T, index: number) => ReactNode"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ListSize"
+        }
+      },
+      "split": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "",
+        "name": "split",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "header": {
+        "defaultValue": null,
+        "description": "",
+        "name": "header",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "footer": {
+        "defaultValue": null,
+        "description": "",
+        "name": "footer",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "locale": {
+        "defaultValue": null,
+        "description": "",
+        "name": "locale",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/list/index.tsx",
+          "name": "ListProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/list/index.tsx",
+            "name": "ListProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ListLocale"
+        }
+      }
+    }
+  }
+]

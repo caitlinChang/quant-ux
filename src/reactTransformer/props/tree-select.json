@@ -1,0 +1,30 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/tree-select/index.tsx",
+    "description": "This is a placeholder, not real render in dom",
+    "displayName": "TreeNode",
+    "methods": [],
+    "props": {
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tree-select/lib/TreeNode.d.ts",
+          "name": "TreeNodeProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tree-select/lib/TreeNode.d.ts",
+            "name": "TreeNodeProps"
+          }
+        ],
+        "required": true,
+        "type": {
+          "name": "Key"
+        }
+      }
+    }
+  }
+]

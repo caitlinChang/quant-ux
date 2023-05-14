@@ -1,0 +1,163 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/divider/index.tsx",
+    "description": "",
+    "displayName": "divider",
+    "methods": [],
+    "props": {
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+          "name": "DividerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+            "name": "DividerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "type": {
+        "defaultValue": null,
+        "description": "",
+        "name": "type",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+          "name": "DividerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+            "name": "DividerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"horizontal\" | \"vertical\""
+        }
+      },
+      "orientation": {
+        "defaultValue": null,
+        "description": "",
+        "name": "orientation",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+          "name": "DividerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+            "name": "DividerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"left\" | \"right\" | \"center\""
+        }
+      },
+      "orientationMargin": {
+        "defaultValue": null,
+        "description": "",
+        "name": "orientationMargin",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+          "name": "DividerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+            "name": "DividerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+          "name": "DividerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+            "name": "DividerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "dashed": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dashed",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+          "name": "DividerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+            "name": "DividerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+          "name": "DividerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+            "name": "DividerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "plain": {
+        "defaultValue": null,
+        "description": "",
+        "name": "plain",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+          "name": "DividerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
+            "name": "DividerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  }
+]

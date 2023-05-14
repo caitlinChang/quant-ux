@@ -1,0 +1,353 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/config-provider/index.tsx",
+    "description": "",
+    "displayName": "configprovider",
+    "methods": [],
+    "props": {
+      "getTargetContainer": {
+        "defaultValue": null,
+        "description": "",
+        "name": "getTargetContainer",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "() => HTMLElement | Window"
+        }
+      },
+      "getPopupContainer": {
+        "defaultValue": null,
+        "description": "",
+        "name": "getPopupContainer",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(triggerNode?: HTMLElement) => HTMLElement"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "iconPrefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "iconPrefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "renderEmpty": {
+        "defaultValue": null,
+        "description": "",
+        "name": "renderEmpty",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(componentName?: string) => ReactNode"
+        }
+      },
+      "csp": {
+        "defaultValue": null,
+        "description": "",
+        "name": "csp",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSPConfig"
+        }
+      },
+      "autoInsertSpaceInButton": {
+        "defaultValue": null,
+        "description": "",
+        "name": "autoInsertSpaceInButton",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "form": {
+        "defaultValue": null,
+        "description": "",
+        "name": "form",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ validateMessages?: ValidateMessages; requiredMark?: RequiredMark; colon?: boolean; }"
+        }
+      },
+      "input": {
+        "defaultValue": null,
+        "description": "",
+        "name": "input",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ autoComplete?: string; }"
+        }
+      },
+      "pagination": {
+        "defaultValue": null,
+        "description": "",
+        "name": "pagination",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ showSizeChanger?: boolean; }"
+        }
+      },
+      "locale": {
+        "defaultValue": null,
+        "description": "",
+        "name": "locale",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Locale"
+        }
+      },
+      "pageHeader": {
+        "defaultValue": null,
+        "description": "",
+        "name": "pageHeader",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ ghost: boolean; }"
+        }
+      },
+      "componentSize": {
+        "defaultValue": null,
+        "description": "",
+        "name": "componentSize",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "SizeType"
+        }
+      },
+      "componentDisabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "componentDisabled",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "direction": {
+        "defaultValue": null,
+        "description": "",
+        "name": "direction",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "DirectionType"
+        }
+      },
+      "space": {
+        "defaultValue": null,
+        "description": "",
+        "name": "space",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "{ size?: number | SizeType; }"
+        }
+      },
+      "virtual": {
+        "defaultValue": null,
+        "description": "",
+        "name": "virtual",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "dropdownMatchSelectWidth": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dropdownMatchSelectWidth",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+          "name": "ConfigProviderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/config-provider/index.tsx",
+            "name": "ConfigProviderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  }
+]

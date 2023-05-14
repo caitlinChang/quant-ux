@@ -1,0 +1,277 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/page-header/index.tsx",
+    "description": "",
+    "displayName": "pageheader",
+    "methods": [],
+    "props": {
+      "backIcon": {
+        "defaultValue": null,
+        "description": "",
+        "name": "backIcon",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "",
+        "name": "title",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "subTitle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "subTitle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "breadcrumb": {
+        "defaultValue": null,
+        "description": "",
+        "name": "breadcrumb",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "BreadcrumbProps | ReactElement<CompoundedComponent, string | JSXElementConstructor<any>>"
+        }
+      },
+      "breadcrumbRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "breadcrumbRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(props: PageHeaderProps, defaultDom: ReactNode) => ReactNode"
+        }
+      },
+      "tags": {
+        "defaultValue": null,
+        "description": "",
+        "name": "tags",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactElement<TagType, string | JSXElementConstructor<any>> | ReactElement<TagType, string | JSXElementConstructor<any>>[]"
+        }
+      },
+      "footer": {
+        "defaultValue": null,
+        "description": "",
+        "name": "footer",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "extra": {
+        "defaultValue": null,
+        "description": "",
+        "name": "extra",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "avatar": {
+        "defaultValue": null,
+        "description": "",
+        "name": "avatar",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "AvatarProps"
+        }
+      },
+      "onBack": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onBack",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(e?: MouseEvent<HTMLDivElement, MouseEvent>) => void"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ghost": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ghost",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+          "name": "PageHeaderProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
+            "name": "PageHeaderProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  }
+]

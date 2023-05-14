@@ -1,0 +1,1142 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/carousel/index.tsx",
+    "description": "",
+    "displayName": "carousel",
+    "methods": [],
+    "props": {
+      "effect": {
+        "defaultValue": null,
+        "description": "",
+        "name": "effect",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+          "name": "CarouselProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+            "name": "CarouselProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CarouselEffect"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+          "name": "CarouselProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+            "name": "CarouselProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+          "name": "CarouselProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+            "name": "CarouselProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "slickGoTo": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slickGoTo",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+          "name": "CarouselProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+            "name": "CarouselProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "dotPosition": {
+        "defaultValue": {
+          "value": "bottom"
+        },
+        "description": "",
+        "name": "dotPosition",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+          "name": "CarouselProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+            "name": "CarouselProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "DotPosition"
+        }
+      },
+      "dots": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "",
+        "name": "dots",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+          "name": "CarouselProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/carousel/index.tsx",
+            "name": "CarouselProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | { className?: string; }"
+        }
+      },
+      "accessibility": {
+        "defaultValue": null,
+        "description": "",
+        "name": "accessibility",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "adaptiveHeight": {
+        "defaultValue": null,
+        "description": "",
+        "name": "adaptiveHeight",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "afterChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "afterChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(currentSlide: number) => void"
+        }
+      },
+      "appendDots": {
+        "defaultValue": null,
+        "description": "",
+        "name": "appendDots",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(dots: ReactNode) => Element"
+        }
+      },
+      "arrows": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "",
+        "name": "arrows",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "asNavFor": {
+        "defaultValue": null,
+        "description": "",
+        "name": "asNavFor",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Slider"
+        }
+      },
+      "autoplaySpeed": {
+        "defaultValue": null,
+        "description": "",
+        "name": "autoplaySpeed",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "autoplay": {
+        "defaultValue": null,
+        "description": "",
+        "name": "autoplay",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "beforeChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "beforeChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(currentSlide: number, nextSlide: number) => void"
+        }
+      },
+      "centerMode": {
+        "defaultValue": null,
+        "description": "",
+        "name": "centerMode",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "centerPadding": {
+        "defaultValue": null,
+        "description": "",
+        "name": "centerPadding",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "cssEase": {
+        "defaultValue": null,
+        "description": "",
+        "name": "cssEase",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "customPaging": {
+        "defaultValue": null,
+        "description": "",
+        "name": "customPaging",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(index: number) => Element"
+        }
+      },
+      "draggable": {
+        "defaultValue": {
+          "value": "false"
+        },
+        "description": "",
+        "name": "draggable",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "easing": {
+        "defaultValue": null,
+        "description": "",
+        "name": "easing",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "edgeFriction": {
+        "defaultValue": null,
+        "description": "",
+        "name": "edgeFriction",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "fade": {
+        "defaultValue": null,
+        "description": "",
+        "name": "fade",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "focusOnSelect": {
+        "defaultValue": null,
+        "description": "",
+        "name": "focusOnSelect",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "infinite": {
+        "defaultValue": null,
+        "description": "",
+        "name": "infinite",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "initialSlide": {
+        "defaultValue": null,
+        "description": "",
+        "name": "initialSlide",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "lazyLoad": {
+        "defaultValue": null,
+        "description": "",
+        "name": "lazyLoad",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "LazyLoadTypes"
+        }
+      },
+      "nextArrow": {
+        "defaultValue": null,
+        "description": "",
+        "name": "nextArrow",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Element"
+        }
+      },
+      "onEdge": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onEdge",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(swipeDirection: string) => void"
+        }
+      },
+      "onInit": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onInit",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onLazyLoad": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onLazyLoad",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(slidesToLoad: number[]) => void"
+        }
+      },
+      "onReInit": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onReInit",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onSwipe": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onSwipe",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(swipeDirection: string) => void"
+        }
+      },
+      "pauseOnDotsHover": {
+        "defaultValue": null,
+        "description": "",
+        "name": "pauseOnDotsHover",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "pauseOnFocus": {
+        "defaultValue": null,
+        "description": "",
+        "name": "pauseOnFocus",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "pauseOnHover": {
+        "defaultValue": null,
+        "description": "",
+        "name": "pauseOnHover",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "prevArrow": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prevArrow",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Element"
+        }
+      },
+      "responsive": {
+        "defaultValue": null,
+        "description": "",
+        "name": "responsive",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ResponsiveObject[]"
+        }
+      },
+      "rows": {
+        "defaultValue": null,
+        "description": "",
+        "name": "rows",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "rtl": {
+        "defaultValue": null,
+        "description": "",
+        "name": "rtl",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "slide": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slide",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "slidesPerRow": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slidesPerRow",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "slidesToScroll": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slidesToScroll",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "slidesToShow": {
+        "defaultValue": null,
+        "description": "",
+        "name": "slidesToShow",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "speed": {
+        "defaultValue": null,
+        "description": "",
+        "name": "speed",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "swipeToSlide": {
+        "defaultValue": null,
+        "description": "",
+        "name": "swipeToSlide",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "swipe": {
+        "defaultValue": null,
+        "description": "",
+        "name": "swipe",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "swipeEvent": {
+        "defaultValue": null,
+        "description": "",
+        "name": "swipeEvent",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(swipeDirection: string) => void"
+        }
+      },
+      "touchMove": {
+        "defaultValue": null,
+        "description": "",
+        "name": "touchMove",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "touchThreshold": {
+        "defaultValue": null,
+        "description": "",
+        "name": "touchThreshold",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "useCSS": {
+        "defaultValue": null,
+        "description": "",
+        "name": "useCSS",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "useTransform": {
+        "defaultValue": null,
+        "description": "",
+        "name": "useTransform",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "variableWidth": {
+        "defaultValue": null,
+        "description": "",
+        "name": "variableWidth",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "vertical": {
+        "defaultValue": {
+          "value": "dotPosition === 'left' || dotPosition === 'right'"
+        },
+        "description": "",
+        "name": "vertical",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "verticalSwiping": {
+        "defaultValue": null,
+        "description": "",
+        "name": "verticalSwiping",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "waitForAnimate": {
+        "defaultValue": null,
+        "description": "",
+        "name": "waitForAnimate",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+          "name": "Settings"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@ant-design/react-slick/types.d.ts",
+            "name": "Settings"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref).\n@see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom",
+        "name": "ref",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<CarouselRef>"
+        }
+      },
+      "key": {
+        "defaultValue": null,
+        "description": "",
+        "name": "key",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "Attributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "Attributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Key"
+        }
+      }
+    }
+  }
+]

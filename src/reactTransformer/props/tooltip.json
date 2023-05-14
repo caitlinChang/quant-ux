@@ -1,0 +1,779 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/tooltip/index.tsx",
+    "description": "",
+    "displayName": "tooltip",
+    "methods": [],
+    "props": {
+      "title": {
+        "defaultValue": null,
+        "description": "",
+        "name": "title",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "TooltipPropsWithTitle"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "TooltipPropsWithTitle"
+          },
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "TooltipPropsWithOverlay"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode | RenderFunction"
+        }
+      },
+      "overlay": {
+        "defaultValue": null,
+        "description": "",
+        "name": "overlay",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "TooltipPropsWithTitle"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "TooltipPropsWithTitle"
+          },
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "TooltipPropsWithOverlay"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode | RenderFunction"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "AbstractTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "AbstractTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "AbstractTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "AbstractTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "color": {
+        "defaultValue": null,
+        "description": "",
+        "name": "color",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "AbstractTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "AbstractTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "placement": {
+        "defaultValue": null,
+        "description": "",
+        "name": "placement",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "AbstractTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "AbstractTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "TooltipPlacement"
+        }
+      },
+      "builtinPlacements": {
+        "defaultValue": null,
+        "description": "",
+        "name": "builtinPlacements",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "AbstractTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "AbstractTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "BuildInPlacements"
+        }
+      },
+      "openClassName": {
+        "defaultValue": null,
+        "description": "",
+        "name": "openClassName",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "AbstractTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "AbstractTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "arrowPointAtCenter": {
+        "defaultValue": null,
+        "description": "",
+        "name": "arrowPointAtCenter",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "AbstractTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "AbstractTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "autoAdjustOverflow": {
+        "defaultValue": null,
+        "description": "",
+        "name": "autoAdjustOverflow",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "AbstractTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "AbstractTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | AdjustOverflow"
+        }
+      },
+      "getPopupContainer": {
+        "defaultValue": null,
+        "description": "",
+        "name": "getPopupContainer",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "AbstractTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "AbstractTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(triggerNode: HTMLElement) => HTMLElement"
+        }
+      },
+      "visible": {
+        "defaultValue": null,
+        "description": "@deprecated `visible` is deprecated which will be removed in next major version. Please use\n`open` instead.",
+        "name": "visible",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "LegacyTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "LegacyTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "open": {
+        "defaultValue": null,
+        "description": "",
+        "name": "open",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "LegacyTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "LegacyTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "defaultVisible": {
+        "defaultValue": null,
+        "description": "@deprecated `defaultVisible` is deprecated which will be removed in next major version. Please\nuse `defaultOpen` instead.",
+        "name": "defaultVisible",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "LegacyTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "LegacyTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "defaultOpen": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultOpen",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "LegacyTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "LegacyTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onVisibleChange": {
+        "defaultValue": null,
+        "description": "@deprecated `onVisibleChange` is deprecated which will be removed in next major version. Please\nuse `onOpenChange` instead.",
+        "name": "onVisibleChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "LegacyTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "LegacyTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(visible: boolean) => void"
+        }
+      },
+      "onOpenChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onOpenChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "LegacyTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "LegacyTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(visible: boolean) => void"
+        }
+      },
+      "afterVisibleChange": {
+        "defaultValue": null,
+        "description": "@deprecated `afterVisibleChange` is deprecated which will be removed in next major version.\nPlease use `afterOpenChange` instead.",
+        "name": "afterVisibleChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "LegacyTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "LegacyTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(visible: boolean) => void"
+        }
+      },
+      "afterOpenChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "afterOpenChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+          "name": "LegacyTooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/tooltip/index.tsx",
+            "name": "LegacyTooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(visible: boolean) => void"
+        }
+      },
+      "onPopupAlign": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onPopupAlign",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-trigger/lib/index.d.ts",
+          "name": "TriggerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-trigger/lib/index.d.ts",
+            "name": "TriggerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(element: HTMLElement, align: AlignType) => void"
+        }
+      },
+      "trigger": {
+        "defaultValue": null,
+        "description": "",
+        "name": "trigger",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | string[]"
+        }
+      },
+      "transitionName": {
+        "defaultValue": null,
+        "description": "@deprecated Use `motion` instead",
+        "name": "transitionName",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "animation": {
+        "defaultValue": null,
+        "description": "@deprecated Use `motion` instead",
+        "name": "animation",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "motion": {
+        "defaultValue": null,
+        "description": "Config popup motion",
+        "name": "motion",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSMotionProps"
+        }
+      },
+      "overlayStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "overlayStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "overlayClassName": {
+        "defaultValue": null,
+        "description": "",
+        "name": "overlayClassName",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "mouseEnterDelay": {
+        "defaultValue": null,
+        "description": "",
+        "name": "mouseEnterDelay",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "mouseLeaveDelay": {
+        "defaultValue": null,
+        "description": "",
+        "name": "mouseLeaveDelay",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "getTooltipContainer": {
+        "defaultValue": null,
+        "description": "",
+        "name": "getTooltipContainer",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(node: HTMLElement) => HTMLElement"
+        }
+      },
+      "destroyTooltipOnHide": {
+        "defaultValue": null,
+        "description": "",
+        "name": "destroyTooltipOnHide",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | { keepParent?: boolean; }"
+        }
+      },
+      "align": {
+        "defaultValue": null,
+        "description": "",
+        "name": "align",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "AlignType"
+        }
+      },
+      "showArrow": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showArrow",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "arrowContent": {
+        "defaultValue": null,
+        "description": "",
+        "name": "arrowContent",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "id": {
+        "defaultValue": null,
+        "description": "",
+        "name": "id",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "popupVisible": {
+        "defaultValue": null,
+        "description": "",
+        "name": "popupVisible",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "overlayInnerStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "overlayInnerStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "zIndex": {
+        "defaultValue": null,
+        "description": "",
+        "name": "zIndex",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+          "name": "TooltipProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-tooltip/lib/Tooltip.d.ts",
+            "name": "TooltipProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref).\n@see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom",
+        "name": "ref",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<unknown>"
+        }
+      },
+      "key": {
+        "defaultValue": null,
+        "description": "",
+        "name": "key",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "Attributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "Attributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Key"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/affix/index.tsx",
+    "description": "",
+    "displayName": "affix",
+    "methods": [],
+    "props": {
+      "offsetTop": {
+        "defaultValue": null,
+        "description": "距离窗口顶部达到指定偏移量后触发",
+        "name": "offsetTop",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+          "name": "AffixProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+            "name": "AffixProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "offsetBottom": {
+        "defaultValue": null,
+        "description": "距离窗口底部达到指定偏移量后触发",
+        "name": "offsetBottom",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+          "name": "AffixProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+            "name": "AffixProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+          "name": "AffixProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+            "name": "AffixProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "固定状态改变时触发的回调函数",
+        "name": "onChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+          "name": "AffixProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+            "name": "AffixProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(affixed?: boolean) => void"
+        }
+      },
+      "target": {
+        "defaultValue": null,
+        "description": "设置 Affix 需要监听其滚动事件的元素，值为一个返回对应 DOM 元素的函数",
+        "name": "target",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+          "name": "AffixProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+            "name": "AffixProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "() => Window | HTMLElement"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+          "name": "AffixProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+            "name": "AffixProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+          "name": "AffixProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/affix/index.tsx",
+            "name": "AffixProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref).\n@see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom",
+        "name": "ref",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<Affix>"
+        }
+      },
+      "key": {
+        "defaultValue": null,
+        "description": "",
+        "name": "key",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "Attributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "Attributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Key"
+        }
+      }
+    }
+  }
+]

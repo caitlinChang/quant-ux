@@ -1,0 +1,163 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/back-top/index.tsx",
+    "description": "",
+    "displayName": "backtop",
+    "methods": [],
+    "props": {
+      "visibilityHeight": {
+        "defaultValue": null,
+        "description": "",
+        "name": "visibilityHeight",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+          "name": "BackTopProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+            "name": "BackTopProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onClick",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+          "name": "BackTopProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+            "name": "BackTopProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<HTMLElement>"
+        }
+      },
+      "target": {
+        "defaultValue": null,
+        "description": "",
+        "name": "target",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+          "name": "BackTopProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+            "name": "BackTopProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "() => HTMLElement | Window | Document"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+          "name": "BackTopProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+            "name": "BackTopProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+          "name": "BackTopProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+            "name": "BackTopProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+          "name": "BackTopProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+            "name": "BackTopProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "duration": {
+        "defaultValue": null,
+        "description": "",
+        "name": "duration",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+          "name": "BackTopProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+            "name": "BackTopProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "visible": {
+        "defaultValue": null,
+        "description": "",
+        "name": "visible",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+          "name": "BackTopProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/back-top/index.tsx",
+            "name": "BackTopProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  }
+]

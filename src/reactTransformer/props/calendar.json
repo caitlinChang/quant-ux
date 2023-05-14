@@ -1,0 +1,353 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/calendar/index.tsx",
+    "description": "",
+    "displayName": "calendar",
+    "methods": [],
+    "props": {
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "locale": {
+        "defaultValue": null,
+        "description": "",
+        "name": "locale",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "PickerLocale"
+        }
+      },
+      "validRange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "validRange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "[Moment, Moment]"
+        }
+      },
+      "disabledDate": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabledDate",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(date: Moment) => boolean"
+        }
+      },
+      "dateFullCellRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dateFullCellRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(date: Moment) => ReactNode"
+        }
+      },
+      "dateCellRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dateCellRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(date: Moment) => ReactNode"
+        }
+      },
+      "monthFullCellRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "monthFullCellRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(date: Moment) => ReactNode"
+        }
+      },
+      "monthCellRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "monthCellRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(date: Moment) => ReactNode"
+        }
+      },
+      "headerRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "headerRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "HeaderRender<Moment>"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Moment"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultValue",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Moment"
+        }
+      },
+      "mode": {
+        "defaultValue": null,
+        "description": "",
+        "name": "mode",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CalendarMode"
+        }
+      },
+      "fullscreen": {
+        "defaultValue": null,
+        "description": "",
+        "name": "fullscreen",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(date: Moment) => void"
+        }
+      },
+      "onPanelChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onPanelChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(date: Moment, mode: CalendarMode) => void"
+        }
+      },
+      "onSelect": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onSelect",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+          "name": "CalendarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/calendar/generateCalendar.tsx",
+            "name": "CalendarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(date: Moment) => void"
+        }
+      }
+    }
+  }
+]

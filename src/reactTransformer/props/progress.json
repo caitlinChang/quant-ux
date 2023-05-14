@@ -1,0 +1,372 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/progress/index.tsx",
+    "description": "",
+    "displayName": "progress",
+    "methods": [],
+    "props": {
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "type": {
+        "defaultValue": null,
+        "description": "",
+        "name": "type",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"line\" | \"circle\" | \"dashboard\""
+        }
+      },
+      "percent": {
+        "defaultValue": null,
+        "description": "",
+        "name": "percent",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "format": {
+        "defaultValue": null,
+        "description": "",
+        "name": "format",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(percent?: number, successPercent?: number) => ReactNode"
+        }
+      },
+      "status": {
+        "defaultValue": null,
+        "description": "",
+        "name": "status",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"success\" | \"normal\" | \"exception\" | \"active\""
+        }
+      },
+      "showInfo": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showInfo",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "strokeWidth": {
+        "defaultValue": null,
+        "description": "",
+        "name": "strokeWidth",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "strokeLinecap": {
+        "defaultValue": null,
+        "description": "",
+        "name": "strokeLinecap",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"butt\" | \"square\" | \"round\""
+        }
+      },
+      "strokeColor": {
+        "defaultValue": null,
+        "description": "",
+        "name": "strokeColor",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | string[] | ProgressGradient"
+        }
+      },
+      "trailColor": {
+        "defaultValue": null,
+        "description": "",
+        "name": "trailColor",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "width": {
+        "defaultValue": null,
+        "description": "",
+        "name": "width",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "success": {
+        "defaultValue": null,
+        "description": "",
+        "name": "success",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "SuccessProps"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "gapDegree": {
+        "defaultValue": null,
+        "description": "",
+        "name": "gapDegree",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "gapPosition": {
+        "defaultValue": null,
+        "description": "",
+        "name": "gapPosition",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"top\" | \"bottom\" | \"left\" | \"right\""
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ProgressSize"
+        }
+      },
+      "steps": {
+        "defaultValue": null,
+        "description": "",
+        "name": "steps",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "successPercent": {
+        "defaultValue": null,
+        "description": "@deprecated Use `success` instead",
+        "name": "successPercent",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+          "name": "ProgressProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
+            "name": "ProgressProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      }
+    }
+  }
+]

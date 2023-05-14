@@ -1,0 +1,182 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/skeleton/index.tsx",
+    "description": "",
+    "displayName": "skeleton",
+    "methods": [],
+    "props": {
+      "active": {
+        "defaultValue": null,
+        "description": "",
+        "name": "active",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+          "name": "SkeletonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+            "name": "SkeletonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "loading": {
+        "defaultValue": null,
+        "description": "",
+        "name": "loading",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+          "name": "SkeletonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+            "name": "SkeletonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+          "name": "SkeletonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+            "name": "SkeletonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+          "name": "SkeletonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+            "name": "SkeletonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+          "name": "SkeletonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+            "name": "SkeletonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "avatar": {
+        "defaultValue": null,
+        "description": "",
+        "name": "avatar",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+          "name": "SkeletonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+            "name": "SkeletonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | SkeletonAvatarProps"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "",
+        "name": "title",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+          "name": "SkeletonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+            "name": "SkeletonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | SkeletonTitleProps"
+        }
+      },
+      "paragraph": {
+        "defaultValue": null,
+        "description": "",
+        "name": "paragraph",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+          "name": "SkeletonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+            "name": "SkeletonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | SkeletonParagraphProps"
+        }
+      },
+      "round": {
+        "defaultValue": null,
+        "description": "",
+        "name": "round",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+          "name": "SkeletonProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/skeleton/Skeleton.tsx",
+            "name": "SkeletonProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,410 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/radio/index.tsx",
+    "description": "",
+    "displayName": "radio",
+    "methods": [],
+    "props": {
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "defaultChecked": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultChecked",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "checked": {
+        "defaultValue": null,
+        "description": "",
+        "name": "checked",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(e: RadioChangeEvent) => void"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onClick",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<HTMLElement>"
+        }
+      },
+      "onMouseEnter": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onMouseEnter",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<HTMLElement>"
+        }
+      },
+      "onMouseLeave": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onMouseLeave",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<HTMLElement>"
+        }
+      },
+      "onKeyPress": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onKeyPress",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "KeyboardEventHandler<HTMLElement>"
+        }
+      },
+      "onKeyDown": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onKeyDown",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "KeyboardEventHandler<HTMLElement>"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "any"
+        }
+      },
+      "tabIndex": {
+        "defaultValue": null,
+        "description": "",
+        "name": "tabIndex",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "name": {
+        "defaultValue": null,
+        "description": "",
+        "name": "name",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "id": {
+        "defaultValue": null,
+        "description": "",
+        "name": "id",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "autoFocus": {
+        "defaultValue": null,
+        "description": "",
+        "name": "autoFocus",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "type": {
+        "defaultValue": null,
+        "description": "",
+        "name": "type",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "skipGroup": {
+        "defaultValue": null,
+        "description": "",
+        "name": "skipGroup",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref).\n@see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom",
+        "name": "ref",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<any>"
+        }
+      },
+      "key": {
+        "defaultValue": null,
+        "description": "",
+        "name": "key",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "Attributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "Attributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Key"
+        }
+      }
+    }
+  }
+]

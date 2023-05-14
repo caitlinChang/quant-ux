@@ -1,0 +1,714 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/drawer/index.tsx",
+    "description": "",
+    "displayName": "Drawer",
+    "methods": [],
+    "props": {
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"default\" | \"large\""
+        }
+      },
+      "closable": {
+        "defaultValue": null,
+        "description": "",
+        "name": "closable",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "closeIcon": {
+        "defaultValue": null,
+        "description": "",
+        "name": "closeIcon",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "drawerStyle": {
+        "defaultValue": null,
+        "description": "Wrapper dom node style of header and body",
+        "name": "drawerStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "headerStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "headerStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "bodyStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "bodyStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "footerStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "footerStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "",
+        "name": "title",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "visible": {
+        "defaultValue": null,
+        "description": "@deprecated `visible` is deprecated which will be removed in next major version. Please use\n`open` instead.",
+        "name": "visible",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "open": {
+        "defaultValue": null,
+        "description": "",
+        "name": "open",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "footer": {
+        "defaultValue": null,
+        "description": "",
+        "name": "footer",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "extra": {
+        "defaultValue": null,
+        "description": "",
+        "name": "extra",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "afterVisibleChange": {
+        "defaultValue": null,
+        "description": "@deprecated `afterVisibleChange` is deprecated which will be removed in next major version.\nPlease use `afterOpenChange` instead.",
+        "name": "afterVisibleChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(visible: boolean) => void"
+        }
+      },
+      "afterOpenChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "afterOpenChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/drawer/index.tsx",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(open: boolean) => void"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/Drawer.d.ts",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/Drawer.d.ts",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "onClose": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onClose",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/Drawer.d.ts",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/Drawer.d.ts",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(e: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>) => void"
+        }
+      },
+      "destroyOnClose": {
+        "defaultValue": null,
+        "description": "",
+        "name": "destroyOnClose",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/Drawer.d.ts",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/Drawer.d.ts",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "getContainer": {
+        "defaultValue": null,
+        "description": "",
+        "name": "getContainer",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/Drawer.d.ts",
+          "name": "DrawerProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/Drawer.d.ts",
+            "name": "DrawerProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "GetContainer"
+        }
+      },
+      "push": {
+        "defaultValue": null,
+        "description": "",
+        "name": "push",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | PushConfig"
+        }
+      },
+      "forceRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "forceRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "autoFocus": {
+        "defaultValue": null,
+        "description": "",
+        "name": "autoFocus",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "keyboard": {
+        "defaultValue": null,
+        "description": "",
+        "name": "keyboard",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "rootClassName": {
+        "defaultValue": null,
+        "description": "",
+        "name": "rootClassName",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "rootStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "rootStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "zIndex": {
+        "defaultValue": null,
+        "description": "",
+        "name": "zIndex",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "placement": {
+        "defaultValue": null,
+        "description": "",
+        "name": "placement",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Placement"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "width": {
+        "defaultValue": null,
+        "description": "",
+        "name": "width",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "height": {
+        "defaultValue": null,
+        "description": "",
+        "name": "height",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string | number"
+        }
+      },
+      "contentWrapperStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "contentWrapperStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "mask": {
+        "defaultValue": null,
+        "description": "",
+        "name": "mask",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "maskClosable": {
+        "defaultValue": null,
+        "description": "",
+        "name": "maskClosable",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "maskClassName": {
+        "defaultValue": null,
+        "description": "",
+        "name": "maskClassName",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "maskStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "maskStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "motion": {
+        "defaultValue": null,
+        "description": "",
+        "name": "motion",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSMotionProps | ((placement: Placement) => CSSMotionProps)"
+        }
+      },
+      "maskMotion": {
+        "defaultValue": null,
+        "description": "",
+        "name": "maskMotion",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+          "name": "DrawerPopupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-drawer/lib/DrawerPopup.d.ts",
+            "name": "DrawerPopupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSMotionProps"
+        }
+      }
+    }
+  }
+]

@@ -1,0 +1,619 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/pagination/index.tsx",
+    "description": "",
+    "displayName": "pagination",
+    "methods": [],
+    "props": {
+      "showQuickJumper": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showQuickJumper",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/pagination/Pagination.tsx",
+            "name": "PaginationProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | { goButton?: ReactNode; }"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/pagination/Pagination.tsx",
+            "name": "PaginationProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"default\" | \"small\""
+        }
+      },
+      "responsive": {
+        "defaultValue": null,
+        "description": "",
+        "name": "responsive",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/pagination/Pagination.tsx",
+            "name": "PaginationProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "role": {
+        "defaultValue": null,
+        "description": "",
+        "name": "role",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/pagination/Pagination.tsx",
+            "name": "PaginationProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "totalBoundaryShowSizeChanger": {
+        "defaultValue": null,
+        "description": "",
+        "name": "totalBoundaryShowSizeChanger",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/pagination/Pagination.tsx",
+          "name": "PaginationProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/pagination/Pagination.tsx",
+            "name": "PaginationProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(page: number, pageSize: number) => void"
+        }
+      },
+      "onShowSizeChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onShowSizeChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(current: number, size: number) => void"
+        }
+      },
+      "itemRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "itemRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(page: number, type: \"page\" | \"prev\" | \"next\" | \"jump-prev\" | \"jump-next\", element: ReactNode) => ReactNode"
+        }
+      },
+      "showTotal": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showTotal",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(total: number, range: [number, number]) => ReactNode"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "selectPrefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "selectPrefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "pageSizeOptions": {
+        "defaultValue": null,
+        "description": "",
+        "name": "pageSizeOptions",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string[] | number[]"
+        }
+      },
+      "current": {
+        "defaultValue": null,
+        "description": "",
+        "name": "current",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "defaultCurrent": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultCurrent",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "total": {
+        "defaultValue": null,
+        "description": "",
+        "name": "total",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "pageSize": {
+        "defaultValue": null,
+        "description": "",
+        "name": "pageSize",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "defaultPageSize": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultPageSize",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "hideOnSinglePage": {
+        "defaultValue": null,
+        "description": "",
+        "name": "hideOnSinglePage",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "showSizeChanger": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showSizeChanger",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "showLessItems": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showLessItems",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "showPrevNextJumpers": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showPrevNextJumpers",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "showTitle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showTitle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "simple": {
+        "defaultValue": null,
+        "description": "",
+        "name": "simple",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "locale": {
+        "defaultValue": null,
+        "description": "",
+        "name": "locale",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "PaginationLocale"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "selectComponentClass": {
+        "defaultValue": null,
+        "description": "",
+        "name": "selectComponentClass",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ComponentType<{}>"
+        }
+      },
+      "prevIcon": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prevIcon",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode | ComponentType<{}>"
+        }
+      },
+      "nextIcon": {
+        "defaultValue": null,
+        "description": "",
+        "name": "nextIcon",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode | ComponentType<{}>"
+        }
+      },
+      "jumpPrevIcon": {
+        "defaultValue": null,
+        "description": "",
+        "name": "jumpPrevIcon",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode | ComponentType<{}>"
+        }
+      },
+      "jumpNextIcon": {
+        "defaultValue": null,
+        "description": "",
+        "name": "jumpNextIcon",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+          "name": "PaginationData"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-pagination/rc-pagination.d.ts",
+            "name": "PaginationData"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode | ComponentType<{}>"
+        }
+      }
+    }
+  }
+]

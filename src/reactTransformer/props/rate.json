@@ -1,0 +1,429 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/rate/index.tsx",
+    "description": "",
+    "displayName": "rate",
+    "methods": [],
+    "props": {
+      "tooltips": {
+        "defaultValue": null,
+        "description": "",
+        "name": "tooltips",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/rate/index.tsx",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/rate/index.tsx",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string[]"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultValue",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "allowClear": {
+        "defaultValue": null,
+        "description": "",
+        "name": "allowClear",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "React.CSSProperties"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(value: number) => void"
+        }
+      },
+      "onHoverChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onHoverChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(value: number) => void"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "tabIndex": {
+        "defaultValue": null,
+        "description": "",
+        "name": "tabIndex",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "onFocus": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onFocus",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onBlur": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onBlur",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "onKeyDown": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onKeyDown",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "React.KeyboardEventHandler<HTMLUListElement>"
+        }
+      },
+      "autoFocus": {
+        "defaultValue": null,
+        "description": "",
+        "name": "autoFocus",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "direction": {
+        "defaultValue": null,
+        "description": "",
+        "name": "direction",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+          "name": "RateProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Rate.d.ts",
+            "name": "RateProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "count": {
+        "defaultValue": null,
+        "description": "",
+        "name": "count",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Star.d.ts",
+          "name": "StarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Star.d.ts",
+            "name": "StarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "character": {
+        "defaultValue": null,
+        "description": "",
+        "name": "character",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Star.d.ts",
+          "name": "StarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Star.d.ts",
+            "name": "StarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "any"
+        }
+      },
+      "characterRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "characterRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Star.d.ts",
+          "name": "StarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Star.d.ts",
+            "name": "StarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(origin: React.ReactElement, props: StarProps) => React.ReactNode"
+        }
+      },
+      "allowHalf": {
+        "defaultValue": null,
+        "description": "",
+        "name": "allowHalf",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Star.d.ts",
+          "name": "StarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Star.d.ts",
+            "name": "StarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Star.d.ts",
+          "name": "StarProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-rate/lib/Star.d.ts",
+            "name": "StarProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null` (or call the ref with `null` if you passed a callback ref).\n@see https://react.dev/learn/referencing-values-with-refs#refs-and-the-dom",
+        "name": "ref",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "RefAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "RefAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<unknown>"
+        }
+      },
+      "key": {
+        "defaultValue": null,
+        "description": "",
+        "name": "key",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "Attributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "Attributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Key"
+        }
+      }
+    }
+  }
+]

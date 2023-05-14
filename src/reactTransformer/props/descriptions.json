@@ -1,0 +1,243 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/descriptions/index.tsx",
+    "description": "",
+    "displayName": "Descriptions",
+    "methods": [],
+    "props": {
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "bordered": {
+        "defaultValue": null,
+        "description": "",
+        "name": "bordered",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"middle\" | \"small\" | \"default\""
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "",
+        "name": "title",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "extra": {
+        "defaultValue": null,
+        "description": "",
+        "name": "extra",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "column": {
+        "defaultValue": {
+          "value": "{\n  xxl: 3,\n  xl: 3,\n  lg: 3,\n  md: 3,\n  sm: 2,\n  xs: 1,\n}"
+        },
+        "description": "",
+        "name": "column",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | Partial<Record<Breakpoint, number>>"
+        }
+      },
+      "layout": {
+        "defaultValue": null,
+        "description": "",
+        "name": "layout",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"horizontal\" | \"vertical\""
+        }
+      },
+      "colon": {
+        "defaultValue": {
+          "value": "true"
+        },
+        "description": "",
+        "name": "colon",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "labelStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "labelStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "contentStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "contentStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+          "name": "DescriptionsProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
+            "name": "DescriptionsProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      }
+    }
+  }
+]

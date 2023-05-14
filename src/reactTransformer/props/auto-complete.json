@@ -1,0 +1,2344 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/auto-complete/index.tsx",
+    "description": "",
+    "displayName": "autocomplete",
+    "methods": [],
+    "props": {
+      "dataSource": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dataSource",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/auto-complete/index.tsx",
+          "name": "AutoCompleteProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/auto-complete/index.tsx",
+            "name": "AutoCompleteProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "DataSourceItemType[]"
+        }
+      },
+      "status": {
+        "defaultValue": null,
+        "description": "",
+        "name": "status",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/auto-complete/index.tsx",
+          "name": "AutoCompleteProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/auto-complete/index.tsx",
+            "name": "AutoCompleteProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"\" | \"warning\" | \"error\""
+        }
+      },
+      "dropdownClassName": {
+        "defaultValue": null,
+        "description": "@deprecated `dropdownClassName` is deprecated which will be removed in next major version.\nPlease use `popupClassName` instead.",
+        "name": "dropdownClassName",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/auto-complete/index.tsx",
+          "name": "AutoCompleteProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/auto-complete/index.tsx",
+            "name": "AutoCompleteProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "popupClassName": {
+        "defaultValue": null,
+        "description": "",
+        "name": "popupClassName",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/auto-complete/index.tsx",
+          "name": "AutoCompleteProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/auto-complete/index.tsx",
+            "name": "AutoCompleteProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "id": {
+        "defaultValue": null,
+        "description": "",
+        "name": "id",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "searchValue": {
+        "defaultValue": null,
+        "description": "",
+        "name": "searchValue",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "autoClearSearchValue": {
+        "defaultValue": null,
+        "description": "",
+        "name": "autoClearSearchValue",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onSearch": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onSearch",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(value: string) => void"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "showSearch": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showSearch",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "tagRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "tagRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(props: CustomTagProps) => ReactElement<any, string | JSXElementConstructor<any>>"
+        }
+      },
+      "direction": {
+        "defaultValue": null,
+        "description": "",
+        "name": "direction",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"ltr\" | \"rtl\""
+        }
+      },
+      "maxLength": {
+        "defaultValue": null,
+        "description": "",
+        "name": "maxLength",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "tabIndex": {
+        "defaultValue": null,
+        "description": "",
+        "name": "tabIndex",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "autoFocus": {
+        "defaultValue": null,
+        "description": "",
+        "name": "autoFocus",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "notFoundContent": {
+        "defaultValue": null,
+        "description": "",
+        "name": "notFoundContent",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "placeholder": {
+        "defaultValue": null,
+        "description": "",
+        "name": "placeholder",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "onClear": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onClear",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "() => void"
+        }
+      },
+      "choiceTransitionName": {
+        "defaultValue": null,
+        "description": "",
+        "name": "choiceTransitionName",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/select/index.tsx",
+          "name": "InternalSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/select/index.tsx",
+            "name": "InternalSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "open": {
+        "defaultValue": null,
+        "description": "",
+        "name": "open",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "defaultOpen": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultOpen",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onDropdownVisibleChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onDropdownVisibleChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(open: boolean) => void"
+        }
+      },
+      "getInputElement": {
+        "defaultValue": null,
+        "description": "@private Internal usage. Do not use in your production.",
+        "name": "getInputElement",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "() => Element"
+        }
+      },
+      "getRawInputElement": {
+        "defaultValue": null,
+        "description": "@private Internal usage. Do not use in your production.",
+        "name": "getRawInputElement",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "() => Element"
+        }
+      },
+      "maxTagTextLength": {
+        "defaultValue": null,
+        "description": "",
+        "name": "maxTagTextLength",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "maxTagCount": {
+        "defaultValue": null,
+        "description": "",
+        "name": "maxTagCount",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | \"responsive\""
+        }
+      },
+      "maxTagPlaceholder": {
+        "defaultValue": null,
+        "description": "",
+        "name": "maxTagPlaceholder",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode | ((omittedValues: DisplayValueType[]) => ReactNode)"
+        }
+      },
+      "tokenSeparators": {
+        "defaultValue": null,
+        "description": "",
+        "name": "tokenSeparators",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string[]"
+        }
+      },
+      "allowClear": {
+        "defaultValue": null,
+        "description": "",
+        "name": "allowClear",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "showArrow": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showArrow",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "clearIcon": {
+        "defaultValue": null,
+        "description": "Clear all icon",
+        "name": "clearIcon",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "RenderNode"
+        }
+      },
+      "removeIcon": {
+        "defaultValue": null,
+        "description": "Selector remove icon",
+        "name": "removeIcon",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "RenderNode"
+        }
+      },
+      "animation": {
+        "defaultValue": null,
+        "description": "",
+        "name": "animation",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "transitionName": {
+        "defaultValue": null,
+        "description": "",
+        "name": "transitionName",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "dropdownStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dropdownStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "dropdownMatchSelectWidth": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dropdownMatchSelectWidth",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number | boolean"
+        }
+      },
+      "dropdownRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dropdownRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(menu: ReactElement<any, string | JSXElementConstructor<any>>) => ReactElement<any, string | JSXElementConstructor<any>>"
+        }
+      },
+      "dropdownAlign": {
+        "defaultValue": null,
+        "description": "",
+        "name": "dropdownAlign",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "AlignType"
+        }
+      },
+      "placement": {
+        "defaultValue": null,
+        "description": "",
+        "name": "placement",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Placement"
+        }
+      },
+      "getPopupContainer": {
+        "defaultValue": null,
+        "description": "",
+        "name": "getPopupContainer",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "RenderDOMFunc"
+        }
+      },
+      "showAction": {
+        "defaultValue": null,
+        "description": "",
+        "name": "showAction",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(\"focus\" | \"click\")[]"
+        }
+      },
+      "onBlur": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onBlur",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "FocusEventHandler<HTMLElement>"
+        }
+      },
+      "onFocus": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onFocus",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "FocusEventHandler<HTMLElement>"
+        }
+      },
+      "onKeyUp": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onKeyUp",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "KeyboardEventHandler<HTMLDivElement>"
+        }
+      },
+      "onKeyDown": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onKeyDown",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "KeyboardEventHandler<HTMLDivElement>"
+        }
+      },
+      "onMouseDown": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onMouseDown",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<HTMLDivElement>"
+        }
+      },
+      "onPopupScroll": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onPopupScroll",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "UIEventHandler<HTMLDivElement>"
+        }
+      },
+      "onInputKeyDown": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onInputKeyDown",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement>"
+        }
+      },
+      "onMouseEnter": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onMouseEnter",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<HTMLDivElement>"
+        }
+      },
+      "onMouseLeave": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onMouseLeave",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<HTMLDivElement>"
+        }
+      },
+      "onClick": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onClick",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+          "name": "BaseSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
+            "name": "BaseSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<HTMLDivElement>"
+        }
+      },
+      "aria-activedescendant": {
+        "defaultValue": null,
+        "description": "Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application.",
+        "name": "aria-activedescendant",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-atomic": {
+        "defaultValue": null,
+        "description": "Indicates whether assistive technologies will present all, or only parts of, the changed region based on the change notifications defined by the aria-relevant attribute.",
+        "name": "aria-atomic",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-autocomplete": {
+        "defaultValue": null,
+        "description": "Indicates whether inputting text could trigger display of one or more predictions of the user's intended value for an input and specifies how predictions would be\npresented if they are made.",
+        "name": "aria-autocomplete",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"none\" | \"inline\" | \"list\" | \"both\""
+        }
+      },
+      "aria-busy": {
+        "defaultValue": null,
+        "description": "Indicates an element is being modified and that assistive technologies MAY want to wait until the modifications are complete before exposing them to the user.",
+        "name": "aria-busy",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-checked": {
+        "defaultValue": null,
+        "description": "Indicates the current \"checked\" state of checkboxes, radio buttons, and other widgets.\n@see aria-pressed\n@see aria-selected.",
+        "name": "aria-checked",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | \"true\" | \"false\" | \"mixed\""
+        }
+      },
+      "aria-colcount": {
+        "defaultValue": null,
+        "description": "Defines the total number of columns in a table, grid, or treegrid.\n@see aria-colindex.",
+        "name": "aria-colcount",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-colindex": {
+        "defaultValue": null,
+        "description": "Defines an element's column index or position with respect to the total number of columns within a table, grid, or treegrid.\n@see aria-colcount\n@see aria-colspan.",
+        "name": "aria-colindex",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-colspan": {
+        "defaultValue": null,
+        "description": "Defines the number of columns spanned by a cell or gridcell within a table, grid, or treegrid.\n@see aria-colindex\n@see aria-rowspan.",
+        "name": "aria-colspan",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-controls": {
+        "defaultValue": null,
+        "description": "Identifies the element (or elements) whose contents or presence are controlled by the current element.\n@see aria-owns.",
+        "name": "aria-controls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-current": {
+        "defaultValue": null,
+        "description": "Indicates the element that represents the current item within a container or set of related elements.",
+        "name": "aria-current",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | \"true\" | \"false\" | \"page\" | \"step\" | \"location\" | \"date\" | \"time\""
+        }
+      },
+      "aria-describedby": {
+        "defaultValue": null,
+        "description": "Identifies the element (or elements) that describes the object.\n@see aria-labelledby",
+        "name": "aria-describedby",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-details": {
+        "defaultValue": null,
+        "description": "Identifies the element that provides a detailed, extended description for the object.\n@see aria-describedby.",
+        "name": "aria-details",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-disabled": {
+        "defaultValue": null,
+        "description": "Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.\n@see aria-hidden\n@see aria-readonly.",
+        "name": "aria-disabled",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-dropeffect": {
+        "defaultValue": null,
+        "description": "Indicates what functions can be performed when a dragged object is released on the drop target.\n@deprecated in ARIA 1.1",
+        "name": "aria-dropeffect",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"none\" | \"copy\" | \"execute\" | \"link\" | \"move\" | \"popup\""
+        }
+      },
+      "aria-errormessage": {
+        "defaultValue": null,
+        "description": "Identifies the element that provides an error message for the object.\n@see aria-invalid\n@see aria-describedby.",
+        "name": "aria-errormessage",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-expanded": {
+        "defaultValue": null,
+        "description": "Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed.",
+        "name": "aria-expanded",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-flowto": {
+        "defaultValue": null,
+        "description": "Identifies the next element (or elements) in an alternate reading order of content which, at the user's discretion,\nallows assistive technology to override the general default of reading in document source order.",
+        "name": "aria-flowto",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-grabbed": {
+        "defaultValue": null,
+        "description": "Indicates an element's \"grabbed\" state in a drag-and-drop operation.\n@deprecated in ARIA 1.1",
+        "name": "aria-grabbed",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-haspopup": {
+        "defaultValue": null,
+        "description": "Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element.",
+        "name": "aria-haspopup",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | \"true\" | \"false\" | \"menu\" | \"listbox\" | \"tree\" | \"grid\" | \"dialog\""
+        }
+      },
+      "aria-hidden": {
+        "defaultValue": null,
+        "description": "Indicates whether the element is exposed to an accessibility API.\n@see aria-disabled.",
+        "name": "aria-hidden",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-invalid": {
+        "defaultValue": null,
+        "description": "Indicates the entered value does not conform to the format expected by the application.\n@see aria-errormessage.",
+        "name": "aria-invalid",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | \"true\" | \"false\" | \"grammar\" | \"spelling\""
+        }
+      },
+      "aria-keyshortcuts": {
+        "defaultValue": null,
+        "description": "Indicates keyboard shortcuts that an author has implemented to activate or give focus to an element.",
+        "name": "aria-keyshortcuts",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-label": {
+        "defaultValue": null,
+        "description": "Defines a string value that labels the current element.\n@see aria-labelledby.",
+        "name": "aria-label",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-labelledby": {
+        "defaultValue": null,
+        "description": "Identifies the element (or elements) that labels the current element.\n@see aria-describedby.",
+        "name": "aria-labelledby",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-level": {
+        "defaultValue": null,
+        "description": "Defines the hierarchical level of an element within a structure.",
+        "name": "aria-level",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-live": {
+        "defaultValue": null,
+        "description": "Indicates that an element will be updated, and describes the types of updates the user agents, assistive technologies, and user can expect from the live region.",
+        "name": "aria-live",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"off\" | \"assertive\" | \"polite\""
+        }
+      },
+      "aria-modal": {
+        "defaultValue": null,
+        "description": "Indicates whether an element is modal when displayed.",
+        "name": "aria-modal",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-multiline": {
+        "defaultValue": null,
+        "description": "Indicates whether a text box accepts multiple lines of input or only a single line.",
+        "name": "aria-multiline",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-multiselectable": {
+        "defaultValue": null,
+        "description": "Indicates that the user may select more than one item from the current selectable descendants.",
+        "name": "aria-multiselectable",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-orientation": {
+        "defaultValue": null,
+        "description": "Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.",
+        "name": "aria-orientation",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"horizontal\" | \"vertical\""
+        }
+      },
+      "aria-owns": {
+        "defaultValue": null,
+        "description": "Identifies an element (or elements) in order to define a visual, functional, or contextual parent/child relationship\nbetween DOM elements where the DOM hierarchy cannot be used to represent the relationship.\n@see aria-controls.",
+        "name": "aria-owns",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-placeholder": {
+        "defaultValue": null,
+        "description": "Defines a short hint (a word or short phrase) intended to aid the user with data entry when the control has no value.\nA hint could be a sample value or a brief description of the expected format.",
+        "name": "aria-placeholder",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-posinset": {
+        "defaultValue": null,
+        "description": "Defines an element's number or position in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.\n@see aria-setsize.",
+        "name": "aria-posinset",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-pressed": {
+        "defaultValue": null,
+        "description": "Indicates the current \"pressed\" state of toggle buttons.\n@see aria-checked\n@see aria-selected.",
+        "name": "aria-pressed",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | \"true\" | \"false\" | \"mixed\""
+        }
+      },
+      "aria-readonly": {
+        "defaultValue": null,
+        "description": "Indicates that the element is not editable, but is otherwise operable.\n@see aria-disabled.",
+        "name": "aria-readonly",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-relevant": {
+        "defaultValue": null,
+        "description": "Indicates what notifications the user agent will trigger when the accessibility tree within a live region is modified.\n@see aria-atomic.",
+        "name": "aria-relevant",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"additions\" | \"additions removals\" | \"additions text\" | \"all\" | \"removals\" | \"removals additions\" | \"removals text\" | \"text\" | \"text additions\" | \"text removals\""
+        }
+      },
+      "aria-required": {
+        "defaultValue": null,
+        "description": "Indicates that user input is required on the element before a form may be submitted.",
+        "name": "aria-required",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-roledescription": {
+        "defaultValue": null,
+        "description": "Defines a human-readable, author-localized description for the role of an element.",
+        "name": "aria-roledescription",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "aria-rowcount": {
+        "defaultValue": null,
+        "description": "Defines the total number of rows in a table, grid, or treegrid.\n@see aria-rowindex.",
+        "name": "aria-rowcount",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-rowindex": {
+        "defaultValue": null,
+        "description": "Defines an element's row index or position with respect to the total number of rows within a table, grid, or treegrid.\n@see aria-rowcount\n@see aria-rowspan.",
+        "name": "aria-rowindex",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-rowspan": {
+        "defaultValue": null,
+        "description": "Defines the number of rows spanned by a cell or gridcell within a table, grid, or treegrid.\n@see aria-rowindex\n@see aria-colspan.",
+        "name": "aria-rowspan",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-selected": {
+        "defaultValue": null,
+        "description": "Indicates the current \"selected\" state of various widgets.\n@see aria-checked\n@see aria-pressed.",
+        "name": "aria-selected",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Booleanish"
+        }
+      },
+      "aria-setsize": {
+        "defaultValue": null,
+        "description": "Defines the number of items in the current set of listitems or treeitems. Not required if all elements in the set are present in the DOM.\n@see aria-posinset.",
+        "name": "aria-setsize",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-sort": {
+        "defaultValue": null,
+        "description": "Indicates if items in a table or grid are sorted in ascending or descending order.",
+        "name": "aria-sort",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "\"none\" | \"ascending\" | \"descending\" | \"other\""
+        }
+      },
+      "aria-valuemax": {
+        "defaultValue": null,
+        "description": "Defines the maximum allowed value for a range widget.",
+        "name": "aria-valuemax",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-valuemin": {
+        "defaultValue": null,
+        "description": "Defines the minimum allowed value for a range widget.",
+        "name": "aria-valuemin",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-valuenow": {
+        "defaultValue": null,
+        "description": "Defines the current value for a range widget.\n@see aria-valuetext.",
+        "name": "aria-valuenow",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "aria-valuetext": {
+        "defaultValue": null,
+        "description": "Defines the human readable text alternative of aria-valuenow for a range widget.",
+        "name": "aria-valuetext",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+          "name": "AriaAttributes"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
+            "name": "AriaAttributes"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "backfill": {
+        "defaultValue": null,
+        "description": "",
+        "name": "backfill",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "fieldNames": {
+        "defaultValue": null,
+        "description": "",
+        "name": "fieldNames",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "FieldNames"
+        }
+      },
+      "inputValue": {
+        "defaultValue": null,
+        "description": "@deprecated Use `searchValue` instead",
+        "name": "inputValue",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "onSelect": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onSelect",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "SelectHandler<ArrayElementType<ValueType>, OptionType>"
+        }
+      },
+      "onDeselect": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onDeselect",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "SelectHandler<ArrayElementType<ValueType>, OptionType>"
+        }
+      },
+      "filterOption": {
+        "defaultValue": null,
+        "description": "In Select, `false` means do nothing.\nIn TreeSelect, `false` will highlight match item.\nIt's by design.",
+        "name": "filterOption",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean | FilterFunc<OptionType>"
+        }
+      },
+      "filterSort": {
+        "defaultValue": null,
+        "description": "",
+        "name": "filterSort",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(optionA: OptionType, optionB: OptionType) => number"
+        }
+      },
+      "optionFilterProp": {
+        "defaultValue": null,
+        "description": "",
+        "name": "optionFilterProp",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "options": {
+        "defaultValue": null,
+        "description": "",
+        "name": "options",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "OptionType[]"
+        }
+      },
+      "defaultActiveFirstOption": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultActiveFirstOption",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "virtual": {
+        "defaultValue": null,
+        "description": "",
+        "name": "virtual",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "listHeight": {
+        "defaultValue": null,
+        "description": "",
+        "name": "listHeight",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "listItemHeight": {
+        "defaultValue": null,
+        "description": "",
+        "name": "listItemHeight",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "menuItemSelectedIcon": {
+        "defaultValue": null,
+        "description": "",
+        "name": "menuItemSelectedIcon",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "RenderNode"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ValueType"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultValue",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ValueType"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+          "name": "SelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
+            "name": "SelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(value: ValueType, option: OptionType | OptionType[]) => void"
+        }
+      },
+      "suffixIcon": {
+        "defaultValue": null,
+        "description": "",
+        "name": "suffixIcon",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/select/index.tsx",
+          "name": "InternalSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/select/index.tsx",
+            "name": "InternalSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "size": {
+        "defaultValue": null,
+        "description": "",
+        "name": "size",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/select/index.tsx",
+          "name": "InternalSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/select/index.tsx",
+            "name": "InternalSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "SizeType"
+        }
+      },
+      "bordered": {
+        "defaultValue": null,
+        "description": "",
+        "name": "bordered",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/select/index.tsx",
+          "name": "InternalSelectProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/select/index.tsx",
+            "name": "InternalSelectProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "ref": {
+        "defaultValue": null,
+        "description": "",
+        "name": "ref",
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/auto-complete/index.tsx",
+            "name": "TypeLiteral"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Ref<BaseSelectRef>"
+        }
+      }
+    }
+  }
+]

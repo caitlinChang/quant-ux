@@ -1,0 +1,315 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/statistic/index.tsx",
+    "description": "",
+    "displayName": "statistic",
+    "methods": [],
+    "props": {
+      "prefixCls": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefixCls",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "valueType"
+        }
+      },
+      "valueStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "valueStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "valueRender": {
+        "defaultValue": null,
+        "description": "",
+        "name": "valueRender",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(node: ReactNode) => ReactNode"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "",
+        "name": "title",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "prefix": {
+        "defaultValue": null,
+        "description": "",
+        "name": "prefix",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "suffix": {
+        "defaultValue": null,
+        "description": "",
+        "name": "suffix",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "loading": {
+        "defaultValue": null,
+        "description": "",
+        "name": "loading",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onMouseEnter": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onMouseEnter",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<HTMLDivElement>"
+        }
+      },
+      "onMouseLeave": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onMouseLeave",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+          "name": "StatisticProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/Statistic.tsx",
+            "name": "StatisticProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "MouseEventHandler<HTMLDivElement>"
+        }
+      },
+      "formatter": {
+        "defaultValue": null,
+        "description": "",
+        "name": "formatter",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/utils.tsx",
+          "name": "FormatConfig"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/utils.tsx",
+            "name": "FormatConfig"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "Formatter"
+        }
+      },
+      "decimalSeparator": {
+        "defaultValue": null,
+        "description": "",
+        "name": "decimalSeparator",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/utils.tsx",
+          "name": "FormatConfig"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/utils.tsx",
+            "name": "FormatConfig"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "groupSeparator": {
+        "defaultValue": null,
+        "description": "",
+        "name": "groupSeparator",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/utils.tsx",
+          "name": "FormatConfig"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/utils.tsx",
+            "name": "FormatConfig"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "precision": {
+        "defaultValue": null,
+        "description": "",
+        "name": "precision",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/statistic/utils.tsx",
+          "name": "FormatConfig"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/statistic/utils.tsx",
+            "name": "FormatConfig"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      }
+    }
+  }
+]
