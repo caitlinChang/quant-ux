@@ -17,3 +17,8 @@ export const createReactRootDom = (componentInfo) => {
   }).$mount();
   return node.$el;
 }
+
+export const CategoryList = [
+  {label:'文本',value:'Text'},
+  {label:'按钮',value:'Button'},
+]

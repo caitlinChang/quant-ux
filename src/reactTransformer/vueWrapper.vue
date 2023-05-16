@@ -1,11 +1,11 @@
 <template>
   <div class="custom-widget-warpper">
-    <component :is="componentInfo.component"  v-bind="componentInfo.props" />
+      <component :is="componentInfo.component"  v-bind="componentInfo.props" />
   </div>
 </template>
 
 <script>
-import { componentList } from './util/constant'
+import componentList from './util/constant'
 
 export default {
   name: "VueWrapper",
@@ -17,3 +17,5 @@ export default {
   }
 };
 </script>
+
+

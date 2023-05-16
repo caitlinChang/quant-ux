@@ -1,105 +1,41 @@
 import { v4 as uuidv4 } from "uuid";
-export default [
-  {
+import componentMap from './util/constant';
+
+export const getInitialProps = (key) => {
+  const _name = key.replace(/^antd-/g,'');
+  const configUrl = `${_name}.json`;
+  let fakeProps = {}
+  try{
+    const config = require(`./props/${configUrl}`);
+    if(config && config[0]){
+      Object.entries(config[0].props).map((item) => {
+        const [propsName,propsInfo] = item
+        if(propsInfo.type?.name.indexOf('ReactNode')){
+          fakeProps[propsName] = '请编辑';
+        }
+      })
+      return config[0].props;
+    }
+  }catch(e){
+    // console.log('e = ', e)
+  }
+  return fakeProps;
+}
+
+const componentConfigList = Object.keys(componentMap).map((key) => {
+  const initialProps = getInitialProps(key);
+  return {
     _type: "antd4",
     type: "antd4",
-    w: 200,
-    h: 60,
+    // w: 200,
+    // h: 60,
     // "name":"Typography.Text.1",
-    component: "antd-input",
+    displayName:key,
+    cagegory:'Text',
+    component: key,
     id: uuidv4(),
-    props: {
-      placeholder: "请输入",
-    },
-  },
-  {
-    _type: "antd4",
-    type: "antd4",
-    w: 200,
-    h: 60,
-    // "name":"Typography.Text.2",
-    component: "typography-text",
-    id: uuidv4(),
-    props: {
-      type: "success",
-      children: "Ant Design (success)",
-    },
-  },
-  {
-    _type: "antd4",
-    type: "antd4",
-    w: 200,
-    h: 60,
-    // "name":"Typography.Text.2",
-    component: "typography-text",
-    id: uuidv4(),
-    props: {
-      type: "warning",
-      children: "Ant Design (warning)",
-    },
-  },
-  {
-    _type: "antd4",
-    type: "antd4",
-    w: 200,
-    h: 60,
-    // "name":"Typography.Text.2",
-    component: "typography-text",
-    id: uuidv4(),
-    props: {
-      mark: true,
-      children: "Ant Design (mark)",
-    },
-  },
-  {
-    _type: "antd4",
-    type: "antd4",
-    w: 200,
-    h: 60,
-    // "name":"Typography.Text.2",
-    component: "typography-text",
-    id: uuidv4(),
-    props: {
-      code: true,
-      children: "Ant Design (code)",
-    },
-  },
-  {
-    _type: "antd4",
-    type: "antd4",
-    w: 200,
-    h: 60,
-    // "name":"Typography.Text.2",
-    component: "antd-switch",
-    id: uuidv4(),
-    props: {
-      // code: true,
-      // children: "Ant Design (code)",
-    },
-  },
-  {
-    _type: "antd4",
-    type: "antd4",
-    w: 200,
-    h: 60,
-    // "name":"Typography.Text.2",
-    component: "radio-group",
-    id: uuidv4(),
-    props: {
-      options: [
-        {
-          value: "icon",
-          label: "icon",
-        },
-        {
-          value: "text",
-          label: "text",
-        },
-        {
-          value: "both",
-          label: "both",
-        },
-      ],
-    },
-  },
-];
+    props: initialProps,
+  }
+})
+
+export default componentConfigList;
