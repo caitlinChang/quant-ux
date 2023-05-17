@@ -16,19 +16,19 @@
           <div class="row" v-show="tab === 'widgets'">
             <div
               v-show="curWideget !== 'antd4'"
-              class="col-md-10 MatcCreateBtnElementList MatcCreateBtnRight"
+              class="MatcCreateBtnElementList MatcCreateBtnRight"
               data-dojo-attach-point="rightCntr"
             >
               <div class="MatcHint">Loading Widgets...</div>
             </div>
             <div
               v-show="curWideget === 'antd4'"
-              class="col-md-10 MatcCreateBtnElementList MatcCreateBtnRight"
+              class="MatcCreateBtnElementList MatcCreateBtnRight"
               data-dojo-attach-point="customWedgets"
             >
               <ReactComponent @onclick="onCreateCustomWeget" />
             </div>
-            <div class="col-md-2 MatcCreateBtnLeft">
+            <!-- <div class="col-md-2 MatcCreateBtnLeft">
               <div class="form-group has-feedback">
                 <input
                   type="search"
@@ -46,7 +46,7 @@
                 class="MatcCreateCatCntr"
                 data-dojo-attach-point="leftCntr"
               ></div>
-            </div>
+            </div> -->
           </div>
           <div class="row" v-show="tab === 'import'">
             <div
@@ -117,7 +117,7 @@ export default {
       },
       tab: "widgets",
       importableApps: [],
-      curWideget: null,
+      curWideget: "antd4",
     };
   },
   methods: {
@@ -1106,7 +1106,7 @@ export default {
       this.emit("change", value, e);
     },
 
-    onCreateCustomWeget(widget,e) {
+    onCreateCustomWeget(widget, e) {
       this.hideDropDown();
       this.emit("change", widget, e);
     },
