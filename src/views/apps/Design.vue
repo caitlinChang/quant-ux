@@ -6,13 +6,13 @@
 </template>
 
 <style lang="css">
-  @import url("../../style/matc.css");
-  @import url("../../style/canvas/all.css");
-  @import url('../../style/toolbar/all.css');
-
+@import url("../../style/matc.css");
+@import url("../../style/canvas/all.css");
+@import url("../../style/toolbar/all.css");
+@import url("../../reactTransformer/component.css");
 </style>
 <style lang="sass">
-  @import "../../style/bulma.sass"
+@import "../../style/bulma.sass"
 </style>
 
 <script>
@@ -28,17 +28,17 @@ import lang from "dojo/_base/lang";
 import on from "dojo/on";
 import Services from "services/Services";
 import Logger from "common/Logger";
-import CollabSession from '../../canvas/controller/CollabSession'
+import CollabSession from "../../canvas/controller/CollabSession";
 
 export default {
   name: "Design",
   mixins: [DojoWidget],
-  data: function() {
+  data: function () {
     return {};
   },
   components: {
     Toolbar: Toolbar,
-    Canvas: Canvas
+    Canvas: Canvas,
   },
   computed: {
     pub() {
@@ -49,14 +49,14 @@ export default {
         return "public";
       }
       return "private";
-    }
+    },
   },
   methods: {
-    onMouseWheel (e) {
+    onMouseWheel(e) {
       /**
        * Cancel all left and right swipes to surpress back navigation
        */
-      if (e && Math.abs(e.deltaX) > 50 ) {
+      if (e && Math.abs(e.deltaX) > 50) {
         this.logger.log(-1, "onMouseWheel", "cancel");
         e.preventDefault();
       }
@@ -67,8 +67,8 @@ export default {
       Promise.all([
         this.modelService.findApp(id),
         this.modelService.getCommands(id),
-        this.modelService.findInvitation(id)
-      ]).then(values => {
+        this.modelService.findInvitation(id),
+      ]).then((values) => {
         let invitations = values[2];
         var temp = {};
         for (var key in invitations) {
@@ -132,26 +132,77 @@ export default {
       this.tempOwn(on(toolbar, "newLine", lang.hitch(canvas, "addLine")));
       this.tempOwn(on(toolbar, "newComment", lang.hitch(canvas, "addComment")));
 
-      this.tempOwn(on(toolbar, "newTemplatedWidget", lang.hitch(canvas, "addTemplatedWidget")));
-      this.tempOwn(on(toolbar, "newTemplatedScreen", lang.hitch(canvas, "addTemplatedScreen")));
-      this.tempOwn(on(toolbar, "newTemplatedGroup", lang.hitch(canvas, "addTemplatedGroup")));
+      this.tempOwn(
+        on(
+          toolbar,
+          "newTemplatedWidget",
+          lang.hitch(canvas, "addTemplatedWidget")
+        )
+      );
+      this.tempOwn(
+        on(
+          toolbar,
+          "newTemplatedScreen",
+          lang.hitch(canvas, "addTemplatedScreen")
+        )
+      );
+      this.tempOwn(
+        on(
+          toolbar,
+          "newTemplatedGroup",
+          lang.hitch(canvas, "addTemplatedGroup")
+        )
+      );
 
-      this.tempOwn(on(toolbar, "newThemedScreen", lang.hitch(canvas, "addThemedScreen")));
-      this.tempOwn(on(toolbar, "newThemedGroup", lang.hitch(canvas, "addThemedGroup")));
-      this.tempOwn(on(toolbar, "newThemedWidget", lang.hitch(canvas, "addThemedWidget")));
-      // for reactComponents 
-      this.tempOwn(on(toolbar, "newThemedComponent", lang.hitch(canvas, "addThemedComponent")));
+      this.tempOwn(
+        on(toolbar, "newThemedScreen", lang.hitch(canvas, "addThemedScreen"))
+      );
+      this.tempOwn(
+        on(toolbar, "newThemedGroup", lang.hitch(canvas, "addThemedGroup"))
+      );
+      this.tempOwn(
+        on(toolbar, "newThemedWidget", lang.hitch(canvas, "addThemedWidget"))
+      );
+      // for reactComponents
+      this.tempOwn(
+        on(
+          toolbar,
+          "newThemedComponent",
+          lang.hitch(canvas, "addThemedComponent")
+        )
+      );
 
-      this.tempOwn(on(toolbar, "newMultiThemedScreen", lang.hitch(canvas, "addMultiThemedScreens")));
-      this.tempOwn(on(toolbar, "newThemedScreenAndWidget", lang.hitch(canvas, "addThemedScreenAndWidgets")));
-      this.tempOwn(on(toolbar, "newImportApp", lang.hitch(canvas, "addImportedApp")));
+      this.tempOwn(
+        on(
+          toolbar,
+          "newMultiThemedScreen",
+          lang.hitch(canvas, "addMultiThemedScreens")
+        )
+      );
+      this.tempOwn(
+        on(
+          toolbar,
+          "newThemedScreenAndWidget",
+          lang.hitch(canvas, "addThemedScreenAndWidgets")
+        )
+      );
+      this.tempOwn(
+        on(toolbar, "newImportApp", lang.hitch(canvas, "addImportedApp"))
+      );
 
-      this.tempOwn(on(toolbar, "onNewLogicObject", lang.hitch(canvas, "addLogicGroup")));
-      this.tempOwn(on(toolbar, "onNewRestObject", lang.hitch(canvas, "addRestObject")));
-      this.tempOwn(on(toolbar, "onNewScriptObject", lang.hitch(canvas, "addScriptObject")));
-      this.tempOwn(on(toolbar, "onNewSVG", lang.hitch(canvas, "addSVG")))
-      this.tempOwn(on(toolbar, "onEditSVG", lang.hitch(canvas, "openSVGEditor")))
-      
+      this.tempOwn(
+        on(toolbar, "onNewLogicObject", lang.hitch(canvas, "addLogicGroup"))
+      );
+      this.tempOwn(
+        on(toolbar, "onNewRestObject", lang.hitch(canvas, "addRestObject"))
+      );
+      this.tempOwn(
+        on(toolbar, "onNewScriptObject", lang.hitch(canvas, "addScriptObject"))
+      );
+      this.tempOwn(on(toolbar, "onNewSVG", lang.hitch(canvas, "addSVG")));
+      this.tempOwn(
+        on(toolbar, "onEditSVG", lang.hitch(canvas, "openSVGEditor"))
+      );
 
       /**
        * last set the model
@@ -168,18 +219,19 @@ export default {
        */
       canvas.initLayer();
 
-      if (!this.pub && this.user.role !== 'guest') {
-        this.collabSession = new CollabSession(this.user)
-        this.collabSession.initWebsocket(model, canvas, controller, toolbar)
-        window.onbeforeunload = () => {this.collabSession.sendBye()}
+      if (!this.pub && this.user.role !== "guest") {
+        this.collabSession = new CollabSession(this.user);
+        this.collabSession.initWebsocket(model, canvas, controller, toolbar);
+        window.onbeforeunload = () => {
+          this.collabSession.sendBye();
+        };
       }
     },
-
   },
-  beforeDestroy () {
+  beforeDestroy() {
     if (this.collabSession) {
-      this.collabSession.sendBye()
-      this.collabSession.close()
+      this.collabSession.sendBye();
+      this.collabSession.close();
     }
   },
   async mounted() {
@@ -189,6 +241,6 @@ export default {
     this.modelService = Services.getModelService(this.$route);
     this.loadData();
     this.logger.log(3, "mounted", "exit");
-  }
+  },
 };
 </script>

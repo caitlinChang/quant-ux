@@ -692,7 +692,8 @@ export default {
 
 
 		createWidgetDnD (widget){
-			this.logger.log(4,"createWidgetDnD", "enter");
+			this.logger.log(4, "createWidgetDnD", "enter");
+			// createBox 创建的就是和 widget 对象位置，大小相同的一个 box 
 			const div = this.createBox(widget);
 			div._widgetID = widget.id
 			css.add(div, "MatcWidgetDND");
@@ -726,15 +727,13 @@ export default {
 		createWidget (widget){
 			this.logger.log(4,"createWidget", "enter");
 			const div = this.createBox(widget);
-			css.add(div, "MatcWidget");
-			if(widget.type === 'antd4'){
+			css.add(div, "ComponentWidget");
+			if (widget.component) {
 				const el = createReactRootDom(widget);
-				css.add(el, "MatcBox");
-				el.setAttribute('id', widget.id);
+				css.add(el, "ComponentBox");
 				div.appendChild(el);
 				return div;
 			}else{
-				
 				this.renderFactory.createWidgetHTML(div, widget);
 				if(this.hasLine(widget)){
 					css.add(div, "MatcWidgetWithTransition");
@@ -745,10 +744,10 @@ export default {
 
 		createBox (box){
 			this.logger.log(6,"createBox", "enter");
-				const div = document.createElement("div");
-				this.domUtil.setBox(div, box)
-				css.add(div, "MatcBox");
-				return div;
+			const div = document.createElement("div");
+			this.domUtil.setBox(div, box)
+			css.add(div, "MatcBox");
+			return div;
 		},
 
 		updateBox (box, div){

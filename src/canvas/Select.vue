@@ -163,27 +163,30 @@ import CanvasSelection from './CanvasSelection'
 
 			const now = new Date().getTime()
 			this.unSelect()
-				this.onSelectionChanged(id, "antd4", false);
-				if (this.model.widgets[id]){
-					this._selectWidget = this.model.widgets[id];
+			// 当前元素被选中的时候，会停止内联编辑
+			this.onSelectionChanged(id, "antd4", false);
+			if (this.model.widgets[id]){
+				this._selectWidget = this.model.widgets[id];
 
-					if (ignoreParentGroups === true) {
-						this._dragNDropIgnoreGroup = true
-					}
-
-					const parent = this.widgetDivs[id];
-					if (parent){
-						if (this.showCustomHandlers) {
-							this.showCustomHandlers(this._selectWidget, parent)
-						}
-						this.showResizeHandles(this._selectWidget,id, parent, "antd4", true);
-						this.selectBox(parent);
-						this.selectDnDBox(id);
-					}
-					this.controller.onComponentSelected(id);
-				} else {
-					console.warn("onWidgetSelected() > No widget with id", id);
+				if (ignoreParentGroups === true) {
+					this._dragNDropIgnoreGroup = true
 				}
+
+				const parent = this.widgetDivs[id];
+				if (parent){
+					if (this.showCustomHandlers) {
+						this.showCustomHandlers(this._selectWidget, parent)
+					}
+					// resize 功能会暂时先禁用掉；
+					this.showResizeHandles(this._selectWidget, id, parent, "antd4", true);
+					// 给 dnd box 添加类名以便设置选中的样式
+					this.selectBox(parent); // MatcBoxSelected
+					this.selectDnDBox(id); // MatcBoxSelected
+				}
+				this.controller.onComponentSelected(id);
+			} else {
+				console.warn("onWidgetSelected() > No widget with id", id);
+			}
 		},
 		onWidgetSelected (id, forceSelection = false, ignoreParentGroups = null){
 			this.logger.log(1,"onWidgetSelected", "enter > "+ id + " > ignoreParentGroups : "+ ignoreParentGroups);
@@ -212,8 +215,9 @@ import CanvasSelection from './CanvasSelection'
 					if (ignoreParentGroups === true) {
 						this._dragNDropIgnoreGroup = true
 					}
-
+					// this.widgetDivs 是存放所有 dnd 的元素的集合
 					const parent = this.widgetDivs[id];
+					// 所以这里的parent 指的是渲染的 widget 元素所对应的 dnd box
 					if (parent){
 						if (this.showCustomHandlers) {
 							this.showCustomHandlers(this._selectWidget, parent)
@@ -432,10 +436,11 @@ import CanvasSelection from './CanvasSelection'
 		onSelectionChanged (id, type){
 			this.logger.log(1,"onSelectionChanged", "enter > " + id + " >" + type);
 			try{
-				if(this._selectWidget && this._selectWidget.id!= id){
+				if (this._selectWidget && this._selectWidget.id != id) {
+					// 停止内部编辑
 					this.inlineEditStop();
 				}
-				if(this._selectChangeListener){
+				if (this._selectChangeListener) {
 					this._selectChangeListener();
 				}
 				if (this.currentTool && this.currentTool.stop) {

@@ -38,6 +38,7 @@ export default {
       }
     },
     $new(cls, params) {
+      // console.log("cls = ", cls, params);
       return DojoUtil.$new(cls, params);
     },
     /**
@@ -150,9 +151,6 @@ export default {
       }
     },
     on(event, callback) {
-      // if (event === "change") {
-      //   console.log("on change listerner", callback);
-      // }
       if (!this._dojoWidgetEventListener[event]) {
         this._dojoWidgetEventListener[event] = [];
       }

@@ -2,7 +2,7 @@
   <div>
     <h1>常用</h1>
     <div class="custome-widget-wrapper">
-      <div v-for="item in componentInfo" :key="item.id">
+      <div v-for="item in componentInfo" :key="item.name">
         <div class="antd4-warpper" @click="(e) => $emit('onclick', item, e)">
           <div>
             <component
@@ -22,13 +22,11 @@
 <script>
 import componentInfo from "./componentList.js";
 import componentMap from "./util/constant";
-import VueWrapper from "./vueWrapper.vue";
 
 export default {
   name: "ReactComponent",
   components: {
     ...componentMap,
-    VueWrapper,
   },
   props: {
     onClick: {

@@ -287,9 +287,12 @@ export default class BaseController extends Core {
 	}
 
 	commitModelChange (render = true) {
-		this.logger.log(1,"commitModelChange", "enter  > render: "+ render + "> changes: " + this._modelHasChanged);
+		this.logger.log(1, "commitModelChange", "enter  > render: " + render + "> changes: " + this._modelHasChanged);
+		console.log('this.model = ', this.model);
+		// 不是很明白获取继承模型的作用
 		const inheritedModel = this.getInheritedModel(this.model)
-
+		console.log('inheritedModel = ', inheritedModel);
+		console.log('this._modelHasChanged = ', this._modelHasChanged);
 		if (this._modelHasChanged) {
 			if (this.toolbar){
 				this.toolbar.updatePropertiesView();
@@ -304,6 +307,7 @@ export default class BaseController extends Core {
 				this._canvas.updateSourceModel(inheritedModel);
 			}
 		}
+		console.log('this._modelRenderJobs = ', this._modelRenderJobs);
 		if (this._modelRenderJobs['complete'] === true) {
 			requestAnimationFrame(() => {
 				const isResize = this._modelRenderJobs['complete']
@@ -1583,9 +1587,11 @@ export default class BaseController extends Core {
 
 	getWidgetName (screenID, name){
 		var screen = this.model.screens[screenID];
-		if (screen){
+		if (screen) {
+			console.log('screen = ', screen)
+			console.log('this.model.widgets = ', this.model.widgets)
 			var children = screen.children;
-			var names = {};
+			var names = {}; // names 对象维护了从 name 到 id 的映射
 			for (let i = 0; i < children.length; i++){
 				let widgetID = children[i];
 				if (this.model.widgets[widgetID]) {
@@ -1595,6 +1601,7 @@ export default class BaseController extends Core {
 					console.debug("No widget", widgetID);
 				}
 			}
+			console.log('names = ', names);
 			// also add names of parent screen widgets
 			if(screen.parents && screen.parents.length > 0 ){
 				for(let i = 0; i< screen.parents.length; i++){
@@ -1664,11 +1671,6 @@ export default class BaseController extends Core {
 	 */
 	getUniqueName  (name, names) {
 		// if the name is unique simply return
-		console.log('names = ', names)
-		console.log('name = ', name)
-		if(!name){
-			return 'antd4'
-		}
 		if (!names[name]){
 			return name;
 		}

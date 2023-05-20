@@ -100,9 +100,11 @@ export default {
 			this._addWidget(params, params.obj, mode);
 		},
 
-		addThemedComponent(params,mode){
-			this.logger.log(1,"addThemedComponent", "enter");
+		addThemedComponent(params, mode) {
+			this.logger.log(1, "addThemedComponent", "enter");
+			// 记录命令
 			this._createAddCommand("addThemedComponent", params);
+			// 在画布上添加组件
 			this._addComponent(params, params.obj, mode);
 		},
 
@@ -385,16 +387,19 @@ export default {
 		},
 		_addComponent(params, widget){
 			const div = createReactRootDom(widget);
-			css.add(div, "MatcAddBox");
-			css.add(div, "MatcWidget");
+			css.add(div, "ComponentAddBox");
+			css.add(div, "ComponentWidget");
+			// 开启拖动的一系列事件，只涉及到缩放、鼠标位置的计算，其他与widgets无关，onComponentAdd 才是在
+			// 拖放完成后真正处理在画布上添加元素的事件
 			this._onAddNDropStart(div, widget, params.event, "onComponentAdded", params.mouseup);
 			this.setState(3);
 			this.logger.log(2,"_addWidget", "exit");
 		},
 		onComponentAdded(pos,model){
 			this.logger.log(0,"onWidgetAdded", "enter");
-
+			// this.controller.addComponent 做了什么事情呢，它会根据 model信息创建一个新组件，然后给它附一个id添加到画布上
 			var newComponent = this.controller.addComponent(model, pos);
+			console.log('new Component = ', newComponent);
 			if(newComponent){
 				requestAnimationFrame( () => {
 					this.onComponentSelected(newComponent.id, true);
@@ -837,8 +842,10 @@ export default {
 			/**
 			 * append node to domNode
 			 */
-			css.add(this._addNDropNode,"");
-			css.add(this._addNDropNode,"MatcCanvasAddNDropNode");
+			//这两行css代码好像没什么作用
+			// css.add(this._addNDropNode,"");
+			// css.add(this._addNDropNode,"MatcCanvasAddNDropNode"); 
+			
 			this._addNDropUpDateUI();
 			this.dndContainer.appendChild(this._addNDropNode);
 
@@ -903,6 +910,7 @@ export default {
 				this._onAddCleanup();
 				return;
 			}
+			// 设置元素位置
 			this.domUtil.setPos(this._addNDropNode, this._addNDropNodePos)
 			//this._addNDropNode.style.left = this._addNDropNodePos.x  +"px";
 			//this._addNDropNode.style.top = this._addNDropNodePos.y + "px";
@@ -931,7 +939,7 @@ export default {
 			this._onAddCleanup();
 
 		},
-
+		// 可以理解为一次add、move操作后要重置各种状态
 		_onAddCleanup (){
 
 			if(this._addNDropNode){

@@ -28,7 +28,7 @@
             >
               <ReactComponent @onclick="onCreateCustomWeget" />
             </div>
-            <!-- <div class="col-md-2 MatcCreateBtnLeft">
+            <div class="col-md-2 MatcCreateBtnLeft">
               <div class="form-group has-feedback">
                 <input
                   type="search"
@@ -46,7 +46,7 @@
                 class="MatcCreateCatCntr"
                 data-dojo-attach-point="leftCntr"
               ></div>
-            </div> -->
+            </div>
           </div>
           <div class="row" v-show="tab === 'import'">
             <div

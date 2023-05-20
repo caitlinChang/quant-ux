@@ -62,7 +62,7 @@ export default {
 		 * Rendering pipeline
 		 **********************************************************************/
 
-		renderFlowViewFast (sourceModel, zoomedModel, isResize = false){
+		renderFlowViewFast(sourceModel, zoomedModel, isResize = false) {
 			this.logger.log(1,"renderFlowViewFast", "enter");
 		
 
@@ -401,7 +401,9 @@ export default {
 				 * create dnd from zoomedWidget
 				 */
 				if (this.renderDND && !this.isElementLocked(widget)) {
+					// 创建一个用于拖拽的box
 					div = this.createWidgetDnD(zoomedWidget);
+					// console.log('renderWidget', div, zoomedWidget)
 					//console.debug("rederDND", div, zoomedWidget)
 					if (widget.inherited){
 						css.add(div, "MatcWidgetDNDInherited");

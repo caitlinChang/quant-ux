@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import componentMap from "./util/constant";
 
 export const getInitialProps = (key) => {
@@ -40,28 +39,24 @@ export const getInitialProps = (key) => {
 const componentConfigList = [
   {
     _type: "antd4",
-    type: "antd4",
-    // w: 200,
-    // h: 60,
-    name: "Typography.Text.1",
+    w: 200,
+    h: 60,
+    name: "text",
     displayName: "文本",
     cagegory: "常用",
     component: "antd-typography-text",
-    id: uuidv4(),
     props: {
       children: "请编辑",
     },
   },
   {
     _type: "antd4",
-    type: "antd4",
-    // w: 200,
-    // h: 60,
-    name: "Typography.Text.1",
+    w: 200,
+    h: 60,
+    name: "title",
     displayName: "标题",
     cagegory: "常用",
     component: "antd-typography-title",
-    id: uuidv4(),
     props: {
       children: "请编辑",
       level: 3,
@@ -69,28 +64,24 @@ const componentConfigList = [
   },
   {
     _type: "antd4",
-    type: "antd4",
-    // w: 200,
-    // h: 60,
-    name: "Typography.Text.1",
+    w: 200,
+    h: 60,
+    name: "button",
     displayName: "按钮",
     cagegory: "常用",
     component: "antd-button",
-    id: uuidv4(),
     props: {
       children: "请编辑",
     },
   },
   {
     _type: "antd4",
-    type: "antd4",
-    // w: 200,
-    // h: 60,
-    name: "Typography.Text.1",
+    w: 200,
+    h: 60,
+    name: "input",
     displayName: "单行输入",
     cagegory: "表单",
     component: "antd-input",
-    id: uuidv4(),
     props: {
       // value: "请编辑",
       placeholder: "请输入",
@@ -98,14 +89,12 @@ const componentConfigList = [
   },
   {
     _type: "antd4",
-    type: "antd4",
-    // w: 200,
-    // h: 60,
-    name: "Typography.Text.1",
+    w: 200,
+    h: 60,
+    name: "select",
     displayName: "下拉选择器",
     cagegory: "表单",
     component: "antd-select",
-    id: uuidv4(),
     props: {
       // value: "请编辑",
       placeholder: "请选择",
@@ -114,14 +103,12 @@ const componentConfigList = [
   },
   {
     _type: "antd4",
-    type: "antd4",
-    // w: 200,
-    // h: 60,
-    name: "Typography.Text.1",
+    w: 200,
+    h: 60,
+    name: "radio",
     displayName: "单选",
     cagegory: "表单",
     component: "antd-radio",
-    id: uuidv4(),
     props: {
       value: "请编辑",
       checked: true,
@@ -131,14 +118,12 @@ const componentConfigList = [
   },
   {
     _type: "antd4",
-    type: "antd4",
-    // w: 200,
-    // h: 60,
-    name: "Typography.Text.1",
+    w: 200,
+    h: 60,
+    name: "checkbox",
     displayName: "复选",
     cagegory: "表单",
     component: "antd-checkbox",
-    id: uuidv4(),
     props: {
       value: "请编辑",
       checked: true,
@@ -146,14 +131,12 @@ const componentConfigList = [
   },
   {
     _type: "antd4",
-    type: "antd4",
-    // w: 200,
-    // h: 60,
-    name: "Typography.Text.1",
+    w: 200,
+    h: 60,
+    name: "radio-group",
     displayName: "单选组",
     cagegory: "表单",
     component: "antd-radio-group",
-    id: uuidv4(),
     props: {
       value: 0,
       options: [
@@ -164,14 +147,12 @@ const componentConfigList = [
   },
   {
     _type: "antd4",
-    type: "antd4",
-    // w: 200,
-    // h: 60,
-    name: "Typography.Text.1",
+    w: 200,
+    h: 60,
+    name: "checkbox-group",
     displayName: "复选组",
     cagegory: "表单",
     component: "antd-checkbox-group",
-    id: uuidv4(),
     props: {
       value: 0,
       options: [
@@ -182,14 +163,12 @@ const componentConfigList = [
   },
   {
     _type: "antd4",
-    type: "antd4",
-    // w: 200,
-    // h: 60,
-    name: "Typography.Text.1",
+    w: 200,
+    h: 60,
+    name: "switch",
     displayName: "开关",
     cagegory: "表单",
     component: "antd-switch",
-    id: uuidv4(),
     props: {
       value: 0,
       children: "可编辑",

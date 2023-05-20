@@ -1,0 +1,13 @@
+/* 添加 拖拽时添加的样式*/
+.ComponentAddBox {
+  z-index: 999999;
+}
+/* 真正添加到画布上时添加的类*/
+.ComponentBox {
+  position: absolute;
+}
+/*组件外套的那层 div*/
+.ComponentWidget {
+  color: #ccc;
+  position: absolute;
+}

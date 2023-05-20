@@ -186,6 +186,7 @@ export default {
 
 			this.screenCreateBtn = this.$new(ScreenImportAdd, {mode: this.mode});
 			this.screenCreateBtn.setModel(this.model);
+			/** 在画布上添加元素时， 触发 onNewThemeObject */
 			this.tempOwn(this.screenCreateBtn.on( "onAdd", lang.hitch(this, "onNewThemeObject")));
 			this.tempOwn(this.screenCreateBtn.on("onUpload", lang.hitch(this, "onThemedMultiScreen")));
 			this.tempOwn(this.screenCreateBtn.on("onImport", lang.hitch(this, "showImportDialog")));

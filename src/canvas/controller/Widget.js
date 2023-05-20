@@ -845,9 +845,13 @@ export default class Widget extends Snapp {
 		const component = this._createWidgetModel(model);
 		
 		if (targetScreen) {
+			// 这里获得的是唯一的name
 			component.name = this.getWidgetName(targetScreen.id, component.name);
 		}
-		component.id = "w"+this.getUUID();
+		// 这里的 component.id也是唯一的id, 并非是 widget id, widget id 是配置信息中唯一的id，component 是指添加到画布上的元素唯一的id
+		// 但是不明白为什么既要有唯一的name又要有唯一的id
+		component.id = "w" + this.getUUID();
+		// z 代表 画布层级
 		component.z = this.getMaxZValue(this.model.widgets) + 1;		
 		component.x =  pos.x;
 		component.y =  pos.y;
@@ -871,7 +875,9 @@ export default class Widget extends Snapp {
 		 * Update model
 		 */
 		this.modelAddWidget(component);
+		// render 的过程中，会在画布中创建一个box元素，用于选择、拖拽等等操作
 		this.render();
+
 		const screen = this.getHoverScreen(component);
 		if(screen){
 			this.showSuccess("Great! A new component was added to screen "+ screen.id);
@@ -880,9 +886,9 @@ export default class Widget extends Snapp {
 				this.showError("Great! A new component was added, but is does not belong to any screen! It will not be shown in the simulator.");
 			}
 		}
+		// 这个函数内部的重点操作是触发画布重新渲染
 		this.commitModelChange(true, true)
-		console.log('screen = ', screen)
-		console.log('component = ', component)
+	
 		return component;
 	}
 
