@@ -399,7 +399,6 @@ export default {
 			this.logger.log(0,"onWidgetAdded", "enter");
 			// this.controller.addComponent 做了什么事情呢，它会根据 model信息创建一个新组件，然后给它附一个id添加到画布上
 			var newComponent = this.controller.addComponent(model, pos);
-			console.log('new Component = ', newComponent);
 			if(newComponent){
 				requestAnimationFrame( () => {
 					this.onComponentSelected(newComponent.id, true);
