@@ -728,6 +728,8 @@ export default {
 			this.logger.log(4,"createWidget", "enter");
 			const div = this.createBox(widget);
 			css.add(div, "ComponentWidget");
+			// 给元素添加唯一的id
+			css.add(div,`ComponentWidget_${widget.id}`);
 			if (widget.component) {
 				const el = createReactRootDom(widget);
 				css.add(el, "ComponentBox");

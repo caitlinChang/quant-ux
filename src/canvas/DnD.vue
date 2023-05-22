@@ -877,7 +877,7 @@ export default {
       if (e && e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
         this._expandSelectionById(id)
       } else {
-        this._setSelectionById(id)
+        this._setSelectionById(id, e)
       }
 
       this.cleanUpWidgetDnD();
@@ -928,21 +928,22 @@ export default {
     },
 
 
-    _setSelectionById (id) {
-        const selectedWidget = this.getSelectedWidget()
-        const selectedGroup = this.getSelectedGroup()
-        const [selectedWidgetID, selectedGroupId] = SelectionUtil.updateSelection(
-          this.model, id, 
-          selectedWidget?.id, 
-          selectedGroup?.id
-        )
-        if (selectedWidgetID) {
-            this.onWidgetSelected(id);
-            this._dragNDropIgnoreGroup = true;
-        }
-        if (selectedGroupId) {
-          this.onGroupSelected(selectedGroupId, true);
-        }
+    _setSelectionById (id, e) {
+      const selectedWidget = this.getSelectedWidget()
+      const selectedGroup = this.getSelectedGroup()
+      const [selectedWidgetID, selectedGroupId] = SelectionUtil.updateSelection(
+        this.model, id, 
+        selectedWidget?.id, 
+        selectedGroup?.id
+      )
+      if (selectedWidgetID) {
+          // this.onWidgetSelected(id);
+          this.onComponentSelected(id, false, null , e)
+          this._dragNDropIgnoreGroup = true;
+      }
+      if (selectedGroupId) {
+        this.onGroupSelected(selectedGroupId, true);
+      }
     },
 
   

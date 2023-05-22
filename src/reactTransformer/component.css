@@ -11,3 +11,7 @@
   color: #ccc;
   position: absolute;
 }
+.ComponentWidgetInlineEdit {
+  pointer-events: none;
+  z-index:-1;
+}

@@ -6,13 +6,14 @@ import VueWrapper from "../vueWrapper";
  * @returns 一个真实的DOM节点
  */
 export const createReactRootDom = (componentInfo) => {
+  const { id, ...restProps } = componentInfo;
   const container = document.createElement("div");
   const node = new Vue({
     el: container,
     render: (h) =>
       h(VueWrapper, {
         props: {
-          componentInfo: componentInfo,
+          componentInfo: restProps,
         },
       }),
   }).$mount();

@@ -158,35 +158,46 @@ import CanvasSelection from './CanvasSelection'
 			return this._selectWidget
 		},
 	
-		onComponentSelected(id, forceSelection = false, ignoreParentGroups = null){
+		onComponentSelected(id, forceSelection = false, ignoreParentGroups = null, e){
 			this.logger.log(1,"onComponentSelected", "enter > "+ id + " > ignoreParentGroups : "+ ignoreParentGroups);
 
 			const now = new Date().getTime()
-			this.unSelect()
-			// 当前元素被选中的时候，会停止内联编辑
-			this.onSelectionChanged(id, "antd4", false);
-			if (this.model.widgets[id]){
-				this._selectWidget = this.model.widgets[id];
-
-				if (ignoreParentGroups === true) {
-					this._dragNDropIgnoreGroup = true
+			if (this._selectWidget && this._selectWidget.id == id && !forceSelection) {
+				if (now - this._lastWidgetSelected < 3000) {
+					this.onWidgetDoubleClick(this._selectWidget, e)
+				} else {
+					this.logger.log(1, "onComponentSelected", "ignore double > ");
 				}
 
-				const parent = this.widgetDivs[id];
-				if (parent){
-					if (this.showCustomHandlers) {
-						this.showCustomHandlers(this._selectWidget, parent)
+			} else { 
+				this.unSelect()
+				// 当前元素被选中的时候，会停止内联编辑
+				this.onSelectionChanged(id, "widget", false);
+				if (this.model.widgets[id]) {
+					this._selectWidget = this.model.widgets[id];
+
+					if (ignoreParentGroups === true) {
+						this._dragNDropIgnoreGroup = true
 					}
-					// resize 功能会暂时先禁用掉；
-					this.showResizeHandles(this._selectWidget, id, parent, "antd4", true);
-					// 给 dnd box 添加类名以便设置选中的样式
-					this.selectBox(parent); // MatcBoxSelected
-					this.selectDnDBox(id); // MatcBoxSelected
+
+					const parent = this.widgetDivs[id];
+					if (parent){
+						if (this.showCustomHandlers) {
+							this.showCustomHandlers(this._selectWidget, parent)
+						}
+						// resize 功能会暂时先禁用掉；
+						this.showResizeHandles(this._selectWidget, id, parent, "widget", true);
+						// 给 dnd box 添加类名以便设置选中的样式
+						this.selectBox(parent); // MatcBoxSelected
+						this.selectDnDBox(id); // MatcBoxSelected
+					}
+					this.controller.onComponentSelected(id);
+				} else {
+					console.warn("onComponentSelected() > No widget with id", id);
 				}
-				this.controller.onComponentSelected(id);
-			} else {
-				console.warn("onWidgetSelected() > No widget with id", id);
 			}
+			this._lastWidgetSelected = now
+			
 		},
 		onWidgetSelected (id, forceSelection = false, ignoreParentGroups = null){
 			this.logger.log(1,"onWidgetSelected", "enter > "+ id + " > ignoreParentGroups : "+ ignoreParentGroups);
@@ -243,8 +254,7 @@ import CanvasSelection from './CanvasSelection'
 			this._lastWidgetSelected = now
 		},
 
-		onWidgetDoubleClick(widget) {
-			console.log('double click widget')
+		onWidgetDoubleClick(widget, e) {
 			this.logger.log(-3,"onWidgetDoubleClick", "enter > "+ widget.id);
 			topic.publish("matc/canvas/click", "", "");
 			if (widget.type === 'Script') {
@@ -263,7 +273,7 @@ import CanvasSelection from './CanvasSelection'
 				this.editSVG(widget)
 				return
 			}
-			this.inlineEditInit(widget)	
+			this.inlineEditInit(widget, false, e)	
 		},
 
 		onInheritedWidgetSelected (id) {
@@ -545,7 +555,7 @@ import CanvasSelection from './CanvasSelection'
 			this.logger.log(5,"renderSelection", "enter > ", this._selectWidget);
 	
 
-			if(this._selectWidget){
+			if (this._selectWidget) {
 				this.onWidgetSelected(this._selectWidget.id, true);
 				return
 			}

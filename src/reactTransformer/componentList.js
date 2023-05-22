@@ -138,11 +138,13 @@ const componentConfigList = [
     cagegory: "表单",
     component: "antd-radio-group",
     props: {
-      value: 0,
+      // value: 0,
       options: [
         { label: "可编辑_1", value: 0 },
         { label: "可编辑_2", value: 1 },
       ],
+      // readonly: true,
+      // disabled: true,
     },
   },
   {

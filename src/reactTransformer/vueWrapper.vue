@@ -1,6 +1,6 @@
 <template>
   <div class="custom-widget-warpper">
-      <component :is="componentInfo.component"  v-bind="componentInfo.props" />
+      <component :is="componentInfo.component"  v-bind="componentInfo.props" @click="handleCaptureClick" />
   </div>
 </template>
 
@@ -13,6 +13,12 @@ export default {
    ...componentList
   },
   props: ['componentInfo'],
+  methods: {
+    handleCaptureClick(e){
+      // this.$emit('onclick', this.componentInfo, e)
+      console.log('handleCaptureClick', e)
+    }
+  },
   mounted(){
   }
 };

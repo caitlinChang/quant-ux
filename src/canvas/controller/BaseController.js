@@ -291,8 +291,8 @@ export default class BaseController extends Core {
 		console.log('this.model = ', this.model);
 		// 不是很明白获取继承模型的作用
 		const inheritedModel = this.getInheritedModel(this.model)
-		console.log('inheritedModel = ', inheritedModel);
-		console.log('this._modelHasChanged = ', this._modelHasChanged);
+		// console.log('inheritedModel = ', inheritedModel);
+		// console.log('this._modelHasChanged = ', this._modelHasChanged);
 		if (this._modelHasChanged) {
 			if (this.toolbar){
 				this.toolbar.updatePropertiesView();
@@ -307,7 +307,7 @@ export default class BaseController extends Core {
 				this._canvas.updateSourceModel(inheritedModel);
 			}
 		}
-		console.log('this._modelRenderJobs = ', this._modelRenderJobs);
+		// console.log('this._modelRenderJobs = ', this._modelRenderJobs);
 		if (this._modelRenderJobs['complete'] === true) {
 			requestAnimationFrame(() => {
 				const isResize = this._modelRenderJobs['complete']
