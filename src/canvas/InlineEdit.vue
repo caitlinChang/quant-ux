@@ -78,14 +78,13 @@ export default {
       if (e) {
         e.stopPropagation();
       }
-
       if (this._inlineEditStarted) {
-        this.clickInEditWidget = true;
+        // this.clickInEditWidget = true;
         const target = e.target;
-		  if (target.classList.contains("MatcInlineEditableStarted")) {
-          return;
-		} else {
-		  css.remove(target, 'MatcInlineEditableStarted');
+        if (target.classList.contains("MatcInlineEditableStarted")) {
+            return;
+        } else {
+          css.remove(target, 'MatcInlineEditableStarted');
           this._inlineEditDiv = target;
           this._inlineTargetFocus();
         }

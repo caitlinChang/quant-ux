@@ -14,7 +14,6 @@ export default {
     },
     components: {},
     methods: {
-
 			initWiring() {
 				this.logger.log(-1,"initWiring", "enter");
 				this.own(on(this.dndContainer, "mousedown", (e) => this.dispatchMouseDown(e)));
@@ -38,19 +37,18 @@ export default {
 			},
 
 		dispatchBackroundClick(e) {
-				this.logger.log(-1, "dispatchBackroundClick", "enter", this._inlineEditStarted);
-				if (this._inlineEditStarted) {
-					let target = e.target
-					if (this.clickInEditWidget) {
-						this.clickInEditWidget = false
-						return
-					}
-					
-					this.dispatchMouseDownCanvas(e, target)
-				}
-			},
+			this.logger.log(-1, "dispatchBackroundClick", "enter", this._inlineEditStarted);
+			if (this._inlineEditStarted) {
+				let target = e.target
+				// if (this.clickInEditWidget) {
+				// 	this.clickInEditWidget = false
+				// 	return
+				// }
+				this.dispatchMouseDownCanvas(e, target)
+			}
+		},
 
-			dispatchOver (e) {
+		dispatchOver (e) {
 	
 				let target = e.target
 				if (target._widgetID) {
@@ -327,7 +325,7 @@ export default {
 
 			dispatchMouseDownCanvas (e) {
 				this.logger.log(1,"dispatchMouseDownCanvas", "enter", e, this.mode);
-
+				console.log('-------dispatchMouseDownCanvas------')
 				if(this.mode == "addLine") {
 					this.onLinePointSelected(e)
 					return
