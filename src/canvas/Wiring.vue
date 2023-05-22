@@ -18,10 +18,12 @@ export default {
 			initWiring() {
 				this.logger.log(-1,"initWiring", "enter");
 				this.own(on(this.dndContainer, "mousedown", (e) => this.dispatchMouseDown(e)));
-				this.own(on(this.dndContainer, "mouseup", (e) => this.dispatchMouseUp(e)));
-				this.own(on(this.dndContainer, touch.over, (e) => this.dispatchOver(e)));
-				this.own(on(this.dndContainer, touch.out, (e) => this.dispatchOut(e)));
-				this.own(on(this.dndContainer, 'dblclick', (e) => this.dispatchDoubleClick(e)));
+				// mouseup 事件应该是用来添加标准线对齐等操作，先注释掉
+				// this.own(on(this.dndContainer, "mouseup", (e) => this.dispatchMouseUp(e)));
+				// this.own(on(this.dndContainer, touch.over, (e) => this.dispatchOver(e)));
+				// this.own(on(this.dndContainer, touch.out, (e) => this.dispatchOut(e)));
+				// this.own(on(this.dndContainer, 'dblclick', (e) => this.dispatchDoubleClick(e)));
+				//dispatchBackroundClick 函数的作用是在用户单击画布背景时触发。该函数检查是否已启动内联编辑，如果是，则检查单击的目标是否为内联编辑区域，如果是，则不执行任何操作。否则，它将调用 dispatchMouseDownCanvas 函数，该函数将处理单击事件并执行相应的操作。
 				this.own(on(this.container, "mousedown", (e) => this.dispatchBackroundClick(e)));
 			},
 
@@ -35,13 +37,15 @@ export default {
 				this.rerender()
 			},
 
-			dispatchBackroundClick (e) {
+		dispatchBackroundClick(e) {
 				this.logger.log(-1, "dispatchBackroundClick", "enter", this._inlineEditStarted);
 				if (this._inlineEditStarted) {
 					let target = e.target
-					if (this._inlineEditDiv === target) {
+					if (this.clickInEditWidget) {
+						this.clickInEditWidget = false
 						return
 					}
+					
 					this.dispatchMouseDownCanvas(e, target)
 				}
 			},
@@ -116,16 +120,16 @@ export default {
 				/**
 				 * First dispatch tools
 				 */
-				if (this.mode == "move"){
+				if (this.mode == "move") {
 					this.onDragStart(this.container, "container", "onCanvasDnDStart", "onCanvasDnDMove", "onCanvasDnDEnd", null, e);
 				}
 
-				if(this.mode == "select") {
+				if (this.mode == "select") {
 					this.onSelectionStarted(e);
 					return
 				}
 
-				if (this.mode == "hotspot"){
+				if (this.mode == "hotspot") {
 					this.onToolHotspotStart(e)
 					return
 				}
@@ -178,7 +182,7 @@ export default {
 					this.dispatchMouseDownComment(e, target._commentID, target)
 					return
 				}
-
+				
 				this.dispatchMouseDownCanvas(e, target)
 
 			},
@@ -189,7 +193,7 @@ export default {
 			},
 
 			dispatchMouseDownWidget (e, id) {
-				this.logger.log(1,"dispatchMouseDownWidget", "enter", id);
+				this.logger.log(1, "dispatchMouseDownWidget", "enter", id);
 
 				const widget = this.model.widgets[id];
 				if (!widget) {
