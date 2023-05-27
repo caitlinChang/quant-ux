@@ -315,7 +315,9 @@
     <div
       class="MatcToobarPropertiesSection MatcToolbarSectionHidden"
       data-dojo-attach-point="propertiesCntr"
-    ></div>
+    >
+      <properties-panel />
+    </div>
   </div>
 </template>
 <script>
@@ -339,6 +341,7 @@ import CollabUser from "canvas/toolbar/components/CollabUser";
 import CreateVectorButton from "canvas/toolbar/components/CreateVectorButton";
 import ModelUtil from "../../core/ModelUtil";
 import HelpButton from "help/HelpButton";
+import PropertiesPanel from "../../reactTransformer/propertiesPanel/index.vue";
 
 export default {
   name: "Toolbar",
@@ -368,6 +371,7 @@ export default {
     EditModeButton: EditModeButton,
     CollabUser: CollabUser,
     CreateVectorButton: CreateVectorButton,
+    PropertiesPanel,
   },
   computed: {
     hasProtoMoto() {
@@ -679,7 +683,11 @@ export default {
 
     onComponentSelected(component) {
       // 这里做的是，
-      this.logger.log(1, "onComponentSelected", "entry : active:" + this.active);
+      this.logger.log(
+        1,
+        "onComponentSelected",
+        "entry : active:" + this.active
+      );
 
       /**
        * Make this faster. Just updating the view costs 30ms
@@ -690,7 +698,11 @@ export default {
            * We might want to blur some stuff
            */
           if (this._selectedWidget && this._selectedWidget.id != component.id) {
-            this.logger.log(3, "onComponentSelected", "exit > no new selection!");
+            this.logger.log(
+              3,
+              "onComponentSelected",
+              "exit > no new selection!"
+            );
             this.blurWidgetProperties();
           }
 

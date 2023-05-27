@@ -27,6 +27,7 @@ export default {
 
 			this.restorePropertiesState();
 
+
 			/**
 			* Since 2.1.6 we have a dedicated data view
 			*/
@@ -34,7 +35,8 @@ export default {
 				return this.showWidgetDataProperties(model)
 			}
 
-			if (this.isDesignView) {			
+			if (this.isDesignView) {		
+				
 				this.showWidgetDesignProperties(model)			
 			}
 
@@ -47,7 +49,7 @@ export default {
 
 		showWidgetPrototypeProperties (model) {
 			this.logger.log(1,"showWidgetPrototypeProperties", "entry > ", model);
-
+			
 			this.showProperties();
 			this.showWidgetTools();
 
@@ -88,7 +90,6 @@ export default {
 		},
 
 		showWidgetDesignProperties (model) {
-
 			this.setWidgetViewModes(model);
 			const widgetViewMode = this.widgetViewModeBtn.getValue();
 			let style = this.getViewModeStyle(model, widgetViewMode);
@@ -108,6 +109,11 @@ export default {
 			this.showProperties();
 			this.showWidgetTools();
 			this.showDesignTokenBtns(model, 'widget')
+			if (model.component) {
+				// 组件
+				console.log('model = ', model);	
+				return;
+			}
 
 			const isLogicWidget = this.hasLogic2.indexOf(model.type) >=0;
 			if(isLogicWidget){

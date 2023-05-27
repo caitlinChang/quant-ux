@@ -176,5 +176,17 @@ const componentConfigList = [
       children: "可编辑",
     },
   },
+  {
+    _type: "antd4",
+    w: 500,
+    h: 300,
+    name: "calendar",
+    displayName: "日历",
+    cagegory: "表单",
+    component: "antd-calendar",
+    props: {
+      mode: "year",
+    },
+  },
 ];
 export default componentConfigList;
