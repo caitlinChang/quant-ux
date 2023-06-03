@@ -692,18 +692,26 @@ export default class Widget extends Snapp {
 	updateWidgetProperties (id, props, type, doNotRender, forceCompleteRender = false){
 		this.logger.log(-1,"updateWidgetProperties", "enter > " + type+ " > doNotRender: "+ doNotRender);
 		this.startModelChange()
-
 		const widget = this.model.widgets[id];
 		const command = this.createWidgetPropertiesCommand(id, props, type);
 		const inlineEdit = this.getInlineEdit();
+		
 		if(command){
-			this.addCommand(command);	
+			this.addCommand(command);
+			// 更新组件的props;
 			this.modelWidgetPropertiesUpdate(id, props, type, doNotRender);
 		}
 	
 		if(!doNotRender){
 			// fast if not templates
-			this.renderWidget(widget, type);
+			if (widget.component) {
+				// 新增组件渲染逻辑
+				this.renderComponent(widget, type);
+			} else {
+				// 原来的逻辑
+				this.renderWidget(widget, type);
+			}
+			
 		}
 
 		if (inlineEdit) {
@@ -875,7 +883,7 @@ export default class Widget extends Snapp {
 		 * Update model
 		 */
 		this.modelAddWidget(component);
-		// render 的过程中，会在画布中创建一个box元素，用于选择、拖拽等等操作
+		// 这里的 render 只是更新一下 render 配置信息，不是真正的渲染，用于标记后续渲染是否需要全量重新渲染
 		this.render();
 
 		const screen = this.getHoverScreen(component);
@@ -886,7 +894,7 @@ export default class Widget extends Snapp {
 				this.showError("Great! A new component was added, but is does not belong to any screen! It will not be shown in the simulator.");
 			}
 		}
-		// 这个函数内部的重点操作是触发画布重新渲染
+		// 提交更新后的模型信息，这个函数内部会根据模型当前的配置来决定怎么渲染，这个是真正的触发渲染
 		this.commitModelChange(true, true)
 	
 		return component;

@@ -1,6 +1,6 @@
 <template>
   <div id="properties-warpper" class="properties-warpper">
-    <a-form :form="form" layout="vertical">
+    <a-form :form="form" layout="vertical" autocomplete="off">
       <a-form-item
         v-for="item in propsList"
         :key="item.name"
@@ -10,13 +10,8 @@
           :is="item.renderConfig.component"
           v-decorator="[item.name]"
           v-bind="item.renderConfig.props"
+          @change="(e) => handleChange(item.name, e)"
         />
-      </a-form-item>
-      <a-form-item label="test">
-        <a-select
-          :getPopupContainer="getPopupContainer"
-          :options="[{ label: 'yingying.xxx', value: 1 }]"
-        ></a-select>
       </a-form-item>
     </a-form>
   </div>
@@ -25,7 +20,7 @@
 <script>
 import * as componentProps from "../props/input.json";
 import { getTSType } from "./util.js";
-
+import { debounce } from "lodash";
 const formItemLayout = {
   labelCol: { span: 4 },
   wrapperCol: { span: 8 },
@@ -56,8 +51,13 @@ export default {
       this.propsList = list
         .map((item) => getTSType(item))
         .filter((item) => item?.renderConfig);
-
-      console.log("this.propsList = ", this.propsList);
+    },
+    handleChange(key, e) {
+      if (e?.target) {
+        this.$emit("propertyChange", key, e.target.value)
+      } else {
+        this.$emit("propertyChange", key, e);
+      }
     },
   },
   mounted() {

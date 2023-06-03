@@ -19,9 +19,10 @@ export default {
     components: {},
     methods: {
 
-      initKeys () {
-        this.own(on(win.body(), "keydown", lang.hitch(this,"onKeyPress")));
-			  this.own(on(win.body(), "keyup", lang.hitch(this,"onKeyUp")));
+      initKeys() {
+        // 因为在属性面板编辑时有可能会触发这些快捷键事件，所以这里先注释掉，不使用快捷键的功能
+        // this.own(on(win.body(), "keydown", lang.hitch(this,"onKeyPress")));
+			  // this.own(on(win.body(), "keyup", lang.hitch(this,"onKeyUp")));
       },
 
       registerKeyBoardListener (listener) {

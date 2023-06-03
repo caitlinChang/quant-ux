@@ -285,14 +285,17 @@ export default class BaseController extends Core {
 		this._modelRenderJobs = {}
 		this._modelHasChanged = false
 	}
-
+	/**
+	 * 当模型发生改变时调用这个方法触发渲染，
+	 * 发生 widget 的操作时，this._modelHasChanged 为true, 就会更新一下模型上的数据，lastUpdate ，widgetCount，screenCount 这种；
+	 * 然后触发 canvas 中的render，然后初始化渲染配置信息；
+	 * 如果是 zoomIn、zoomOut、位移 等操作，就会直接进入canvas 中不同的渲染方式；
+	 * @param {*} render 
+	 */
 	commitModelChange (render = true) {
 		this.logger.log(1, "commitModelChange", "enter  > render: " + render + "> changes: " + this._modelHasChanged);
-		console.log('this.model = ', this.model);
 		// 不是很明白获取继承模型的作用
 		const inheritedModel = this.getInheritedModel(this.model)
-		// console.log('inheritedModel = ', inheritedModel);
-		// console.log('this._modelHasChanged = ', this._modelHasChanged);
 		if (this._modelHasChanged) {
 			if (this.toolbar){
 				this.toolbar.updatePropertiesView();
@@ -307,7 +310,6 @@ export default class BaseController extends Core {
 				this._canvas.updateSourceModel(inheritedModel);
 			}
 		}
-		// console.log('this._modelRenderJobs = ', this._modelRenderJobs);
 		if (this._modelRenderJobs['complete'] === true) {
 			requestAnimationFrame(() => {
 				const isResize = this._modelRenderJobs['complete']
@@ -394,10 +396,20 @@ export default class BaseController extends Core {
 			if (widget.template || widget.designtokens){
 				this._modelRenderJobs['all'] = false
 			} else {
+				// FIXME: 在编辑 propertiesPanel 时会出现失焦的情况，因为系统自带的panel 用来编辑样式，且没有文本编辑。先把这里注释掉
 				this._canvas.setWidgetStyle(widget.id, widget.style, widget);
 				if (type === 'props') {
 					this._canvas.updateWidgetDataView(widget);
 				}
+			}
+		}
+	}
+
+	renderComponent(widget, type) {
+		if (widget && this._canvas) {
+			if (type === 'props') {
+				// 重新渲染这个 component 就可以了
+				console.log('重新渲染 = ', widget, this.model);
 			}
 		}
 	}

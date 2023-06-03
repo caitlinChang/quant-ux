@@ -64,7 +64,7 @@ export default {
 
 		renderFlowViewFast(sourceModel, zoomedModel, isResize = false) {
 			this.logger.log(1,"renderFlowViewFast", "enter");
-		
+			
 
 
 			/**
@@ -120,7 +120,6 @@ export default {
 					 * 1) If stuff was hidden, and is now not hidden, the wiring will fail!
 					 * 2) If stuff was visible and is not hidden, we have to remove the node
 					 */
-
 					/**
 					 * We assume that for the first rendering we do not need to
 					 * set the zIndex. For the updates we need, thus we pass i.
@@ -386,10 +385,9 @@ export default {
 		/********************************************************
 		 *   WIDGETS
 		 ********************************************************/
-
+		// 为 first render 的 widget 创建一个 DND 拖拽box；
 		renderWidget (widget, zoomedWidget){
 			this.logger.log(4,"renderWidget", "enter");
-
 			/**
 			 * check if we have to create div again.. Also used as indicator
 			 * if the widget was rendered!
@@ -403,8 +401,6 @@ export default {
 				if (this.renderDND && !this.isElementLocked(widget)) {
 					// 创建一个用于拖拽的box
 					div = this.createWidgetDnD(zoomedWidget);
-					// console.log('renderWidget', div, zoomedWidget)
-					//console.debug("rederDND", div, zoomedWidget)
 					if (widget.inherited){
 						css.add(div, "MatcWidgetDNDInherited");
 					}
@@ -415,6 +411,7 @@ export default {
 				/**
 				 * Create background
 				 */
+				// 所谓的divBack，就是真正的 widget/comoonet
 				let divBack = this.createWidget(widget);
 				this.screenContainer.appendChild(divBack);
 				this.widgetBackgroundDivs[widget.id] = divBack;
@@ -422,15 +419,20 @@ export default {
 			return div;
 		},
 
+		updateComponent(widget, zoomedWidget, i, isResize) {
+			// 更新某个组件的props 时重新渲染
+			
+		},
+
 		updateWidget (widget, zoomedWidget, i, isResize) {
-			//console.debug('updateWidget', widget.name, isResize, this.elementHasChanged(widget))
+			// console.debug('updateWidget', widget.name, isResize, this.elementHasChanged(widget));
 			if (isResize || this.elementHasChanged(widget)) {
 				const dnd = this.widgetDivs[widget.id]
 				if (dnd) {
 					this.updateBox(zoomedWidget, dnd)
 					dnd.style.zIndex = 10009 + i
 				}
-				const background = this.widgetBackgroundDivs[widget.id]
+				const background = this.widgetBackgroundDivs[widget.id];
 				if (background) {
 					this.updateBox(widget, background)
 					if (isResize) {

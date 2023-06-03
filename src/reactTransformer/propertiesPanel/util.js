@@ -41,10 +41,6 @@ function getComponentConfig(component) {
   });
 }
 
-const handleChange = (value, name) => {
-  console.log("props 发生编辑", value, name);
-};
-
 function renderString(data) {
   const defaultValue = data.defaultValue;
   return {
@@ -52,11 +48,8 @@ function renderString(data) {
     renderConfig: {
       component: "a-input",
       props: {
-        value: defaultValue,
-        // size: "middle",
+        defaultValue: defaultValue,
         placeholder: "请输入",
-        border: true,
-        onChange: (e) => handleChange(e.target.value, data.name),
       },
     },
   };
@@ -70,9 +63,7 @@ function renderBoolean(data) {
     renderConfig: {
       component: "a-switch",
       props: {
-        value: _default,
-        // size: "middle",
-        onChange: (value) => handleChange(value, data.name),
+        defaultValue: _default,
       },
     },
   };
@@ -86,9 +77,7 @@ function renderNumber(data) {
     renderConfig: {
       component: "a-input-number",
       props: {
-        value: _default,
-        // size: "middle",
-        onChange: (value) => handleChange(value, data.name),
+        defaultValue: _default,
       },
     },
   };
@@ -101,17 +90,15 @@ function renderEnum(data, list) {
       value: item,
     };
   });
+  console.log("default", data);
   if (list.length <= 3) {
     return {
       ...data,
       renderConfig: {
         component: "a-radio-group",
         props: {
-          value: data.defaultValue,
+          defaultValue: data.defaultValue,
           options: options,
-          type: "button",
-          // size: "middle",
-          // onChange: (value) => handleChange(value, data.name),
         },
       },
     };
@@ -121,11 +108,9 @@ function renderEnum(data, list) {
       renderConfig: {
         component: "a-select",
         props: {
-          value: data.defaultValue,
+          defaultValue: data.defaultValue,
           getPopupContainer: () =>
             document.getElementById("properties-warpper"),
-          // size: "middle",
-          // onChange: (value) => handleChange(value, data.name),
           options: options,
         },
       },
