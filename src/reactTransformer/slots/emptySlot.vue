@@ -3,8 +3,6 @@
     <div v-for="item in propsList" :key="item.name">
       <div class="properties-item-warpper">
         <span class="properties-item-title">{{ item.description }}:</span>
-        <!-- <vue-wrapper :componentInfo="item.renderConfig" />
-         -->
         <component :is="PropertiesForm" />
       </div>
     </div>
@@ -14,12 +12,10 @@
 <script>
 import * as componentProps from "../props/input.json";
 import { getTSType } from "./util.js";
-import VueWrapper from "../vueWrapper.vue";
 import PropertiesForm from "../propertiesPanel/form";
 export default {
   name: "PropertiesWrapper",
   components: {
-    VueWrapper,
     PropertiesForm,
   },
   props: [],

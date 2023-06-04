@@ -378,17 +378,18 @@ export default {
 				 * Use to render drag and drop nodes
 				 */
 				this.updateScalledModel()
-
+				// 猜测这里应该渲染 widget 上面的遮罩层
 				this.renderFlowViewFast(this.sourceModel, this.model, isResize);
 
+				// render 之后要执行的 callback, 现在还没有加上任何 callback 事件
 				this.afterRender(this.sourceModel, this.model);
-
 				this.renderComments();
 
 				/**
 				 * Also update layer list. The renderFlow might call
 				 * select which extends the group with additonal children!
 				 */
+				// 为方便现有功能开发，先注释掉无关功能
 				this.renderLayerList(sourceModel);
 
 				/**

@@ -21,8 +21,8 @@ export default {
 
       initKeys() {
         // 因为在属性面板编辑时有可能会触发这些快捷键事件，所以这里先注释掉，不使用快捷键的功能
-        // this.own(on(win.body(), "keydown", lang.hitch(this,"onKeyPress")));
-			  // this.own(on(win.body(), "keyup", lang.hitch(this,"onKeyUp")));
+        this.own(on(win.body(), "keydown", lang.hitch(this,"onKeyPress")));
+			  this.own(on(win.body(), "keyup", lang.hitch(this,"onKeyUp")));
       },
 
       registerKeyBoardListener (listener) {
@@ -176,99 +176,100 @@ export default {
          * H dispatch...
          */
         } else if(k == 72){
-          if(!this._inlineEditStarted && !this._selectionToolStart){
-            this.setMode("hotspot");
-            this.unSelect();
-            this.showHint("Mark the area where to create the hotspot...");
-            this.stopEvent(e);
-          }
+          // if(!this._inlineEditStarted && !this._selectionToolStart){
+          //   this.setMode("hotspot");
+          //   this.unSelect();
+          //   this.showHint("Mark the area where to create the hotspot...");
+          //   this.stopEvent(e);
+          // }
           
         /**
          * I dispatch...
          */
         } else if(k == 73){
         
-          this.startEyeDropper(isShift, isCntrl)
+          // this.startEyeDropper(isShift, isCntrl)
         /**
          * R dispatch...
          */
         } else if(k == 82){
-          if(!this._inlineEditStarted  && !this._selectionToolStart){
-            this.setMode("addBox");
-            this.unSelect();
-            this.showHint("Mark the area where to create the box...");
-            this.stopEvent(e);
+          // if(!this._inlineEditStarted  && !this._selectionToolStart){
+          //   this.setMode("addBox");
+          //   this.unSelect();
+          //   this.showHint("Mark the area where to create the box...");
+          //   this.stopEvent(e);
 
-          }
+          // }
         /**
          * C dispatch...
          */
         } else if(k == 67 && !isMeta){
-          if(!this._inlineEditStarted  && !this._selectionToolStart){
-            if (this.getSelectedWidget() || this.getSelectedGroup() || this.getMultiSelection()) { // _selectGroup
-              this.onReplicate();
-              this.stopEvent(e);
-              e.cancelBubble = true
-            } else {
-              this.showHint("Cloning does not work on multi selection");
-            }
-          }
+          // if(!this._inlineEditStarted  && !this._selectionToolStart){
+          //   if (this.getSelectedWidget() || this.getSelectedGroup() || this.getMultiSelection()) { // _selectGroup
+          //     this.onReplicate();
+          //     this.stopEvent(e);
+          //     e.cancelBubble = true
+          //   } else {
+          //     this.showHint("Cloning does not work on multi selection");
+          //   }
+          // }
         /**
          * L dispatch...
          */
         } else if(k == 76){
-          if(!this._inlineEditStarted  && !this._selectionToolStart){
-            this.startPrototypingView()
-            this.addLineAtSelected(e)
-          }
+          // if(!this._inlineEditStarted  && !this._selectionToolStart){
+          //   this.startPrototypingView()
+          //   this.addLineAtSelected(e)
+          // }
         /**
          * D dispatch...
          */
         } else if(k == 68 && !isMeta){
-          if(!this._inlineEditStarted  && !this._selectionToolStart){
-            if (this.getMultiSelection()) {
-              this.onDistribute();
-              this.stopEvent(e);
-              e.cancelBubble = true
-            } else {
-              this.showHint("Select multiple widgets to distribute equally...");
-            }
-          }
+          // if(!this._inlineEditStarted  && !this._selectionToolStart){
+          //   if (this.getMultiSelection()) {
+          //     this.onDistribute();
+          //     this.stopEvent(e);
+          //     e.cancelBubble = true
+          //   } else {
+          //     this.showHint("Select multiple widgets to distribute equally...");
+          //   }
+          // }
         /**
          * T dispatch...
          */
         } else if(k == 84){
-          if(!this._inlineEditStarted  && !this._selectionToolStart){
-            this.setMode("addText");
-            this.showHint("Mark the area where to create the txt...");
-            this.stopEvent(e);
-          }
+          // if(!this._inlineEditStarted  && !this._selectionToolStart){
+          //   this.setMode("addText");
+          //   this.showHint("Mark the area where to create the txt...");
+          //   this.stopEvent(e);
+          // }
 
         /**
          * V dispatch...
          */
         } else if(k == 86 && !(e.altKey || e.ctrlKey || e.metaKey)){
-          if(!this._inlineEditStarted  && !this._selectionToolStart){
-            this.addSVG({type:'bezier'})
-          }
+          // if(!this._inlineEditStarted  && !this._selectionToolStart){
+          //   this.addSVG({type:'bezier'})
+          // }
         /**
          * W dispatch...
          */
         } else if(k == 87){
-          if(!this._inlineEditStarted){
-            if(this.toolbar){
-              this.toolbar.showWidgetSelector();
-            }
-          }
+          // if(!this._inlineEditStarted){
+          //   if(this.toolbar){
+          //     this.toolbar.showWidgetSelector();
+          //   }
+          // }
         /**
          * S dispatch...
          */
-        } else if(k == 83){
-          if(!this._inlineEditStarted){
-            if(this.toolbar){
-              this.toolbar.showScreenSelector();
-            }
-          }
+        } else if (k == 83) {
+          // Import Screen
+          // if(!this._inlineEditStarted){
+          //   if(this.toolbar){
+          //     this.toolbar.showScreenSelector();
+          //   }
+          // }
 
         /**
          * Zoom
