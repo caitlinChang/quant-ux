@@ -90,7 +90,6 @@ function renderEnum(data, list) {
       value: item,
     };
   });
-  console.log("default", data);
   if (list.length <= 3) {
     return {
       ...data,

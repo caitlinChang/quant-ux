@@ -111,7 +111,6 @@ export default {
 			this.showDesignTokenBtns(model, 'widget')
 			if (model.component) {
 				// 组件
-				console.log('model = ', model);	
 				return;
 			}
 

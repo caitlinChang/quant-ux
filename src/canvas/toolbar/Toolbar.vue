@@ -316,7 +316,7 @@
       class="MatcToobarPropertiesSection MatcToolbarSectionHidden"
       data-dojo-attach-point="propertiesCntr"
     >
-      <properties-panel @propertyChange="setComponentProps" />
+      <properties-panel ref="propertiesPanel" />
     </div>
   </div>
 </template>
@@ -428,7 +428,6 @@ export default {
       this.own(
         on(this.rectangleTool, touch.press, lang.hitch(this, "onToolBox"))
       );
-
 
       const btn = this.$new(ToolbarDropDownButton, { arrowPosition: false });
       btn.updateLabel = false;
@@ -712,6 +711,7 @@ export default {
           this._selectedWidget = component;
           this._selectionID = component.id;
           this.showWidgetProperties(component);
+          this.$refs.propertiesPanel.onSetWidgetProperties(component);
           this.showCopyPaste();
           this.showDevTools();
           this.showTools();
@@ -2114,7 +2114,7 @@ export default {
 
     setComponentProps(key, value) {
       this.logger.log(2, "setComponentProps", "entry > " + key + " - " + value);
-      console.log('this._selectedWidget = ', this._selectedWidget);
+      console.log("this._selectedWidget = ", this._selectedWidget);
       if (this._selectedWidget) {
         if (this._selectedWidget.props) {
           var newProps = {};

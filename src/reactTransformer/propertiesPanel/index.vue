@@ -18,9 +18,10 @@
 </template>
 
 <script>
+import eventBus from "../eventBus";
 import * as componentProps from "../props/input.json";
 import { getTSType } from "./util.js";
-import { debounce } from "lodash";
+
 const formItemLayout = {
   labelCol: { span: 4 },
   wrapperCol: { span: 8 },
@@ -33,7 +34,6 @@ const formTailLayout = {
 export default {
   name: "PropertiesWrapper",
   components: {},
-  props: [],
   data() {
     return {
       componentProps,
@@ -53,11 +53,17 @@ export default {
         .filter((item) => item?.renderConfig);
     },
     handleChange(key, e) {
-      if (e?.target) {
-        this.$emit("propertyChange", key, e.target.value)
+      if (this.selectedId) {
+        eventBus.emit(`${this.selectedId}:updateProps`, {
+          [key]: e.target.value,
+        });
       } else {
-        this.$emit("propertyChange", key, e);
+        console.error("现在没有被选中的组件");
       }
+    },
+    onSetWidgetProperties(widget) {
+      this.selectedWidget = widget;
+      this.selectedId = widget.id;
     },
   },
   mounted() {
