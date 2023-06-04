@@ -54,9 +54,13 @@ export default {
     },
     handleChange(key, e) {
       if (this.selectedId) {
+        // 通知 画布上的组件更新
+        const value = e?.target?.value || e; 
         eventBus.emit(`${this.selectedId}:updateProps`, {
-          [key]: e.target.value,
+          [key]: value,
         });
+        // 通知 model 更新
+        this.$emit("setComponentProps", key, value);
       } else {
         console.error("现在没有被选中的组件");
       }

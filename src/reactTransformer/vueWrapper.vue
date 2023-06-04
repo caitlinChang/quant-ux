@@ -36,7 +36,6 @@ export default {
       this.componentProps = props;
       eventBus.on(`${id}:updateProps`, (props) => {
         this.componentProps = { ...this.componentProps, ...props };
-        console.log('this.componentProps', this.componentProps)
       });
     }
   },

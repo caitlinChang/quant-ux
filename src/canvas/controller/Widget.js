@@ -692,6 +692,7 @@ export default class Widget extends Snapp {
 	updateWidgetProperties (id, props, type, doNotRender, forceCompleteRender = false){
 		this.logger.log(-1,"updateWidgetProperties", "enter > " + type+ " > doNotRender: "+ doNotRender);
 		this.startModelChange()
+		
 		const widget = this.model.widgets[id];
 		const command = this.createWidgetPropertiesCommand(id, props, type);
 		const inlineEdit = this.getInlineEdit();
@@ -705,12 +706,11 @@ export default class Widget extends Snapp {
 		if(!doNotRender){
 			// fast if not templates
 			if (widget.component) {
-				// 新增组件渲染逻辑
 				this.renderComponent(widget, type);
 			} else {
-				// 原来的逻辑
 				this.renderWidget(widget, type);
 			}
+			
 			
 		}
 

@@ -324,6 +324,7 @@ export default class BaseController extends Core {
 				const isResize = this._modelRenderJobs['all']
 				this._canvas.render(inheritedModel, isResize);			
 			})
+			
 		}
 				
 		this._modelChanges = []
@@ -405,11 +406,12 @@ export default class BaseController extends Core {
 		}
 	}
 
-	renderComponent(widget, type) {
-		if (widget && this._canvas) {
+	renderComponent(widget, type) { 
+		this.logger.log(1,"renderComponent", "enter > type : ", type);
+		if (widget && this._canvas) { 
+			console.log('type = ',type)
 			if (type === 'props') {
-				// 重新渲染这个 component 就可以了
-				console.log('重新渲染 = ', widget, this.model);
+				// 这个函数啥也没做
 			}
 		}
 	}
