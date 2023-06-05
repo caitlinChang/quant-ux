@@ -8,9 +8,10 @@
       >
         <component
           :is="item.renderConfig.component"
-          v-decorator="[item.name]"
+          v-decorator="[item.name, item.decorator]"
           v-bind="item.renderConfig.props"
           @change="(e) => handleChange(item.name, e)"
+          @blur="(e) => handleBlur(item.name, e)"
         />
       </a-form-item>
     </a-form>
@@ -45,17 +46,32 @@ export default {
     };
   },
   methods: {
-    resolveComponentProps() {
+    // 根据 name 从服务端那组件解析的 props
+    resolveComponentProps(name) {
       const { props } = this.componentProps.default[0];
       const list = Object.values(props);
       this.propsList = list
         .map((item) => getTSType(item))
         .filter((item) => item?.renderConfig);
     },
+    handleBlur(key, e) {
+      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
+        // TODO: 看看能够替换 dojo 中 事件机制
+        eventBus.emit(`${this.selectedId}:updateProps`, {
+          [key]: e.target.value,
+        });
+        // 通知 model 更新
+        this.$emit("setComponentProps", key, e.target.value);
+      }
+    },
     handleChange(key, e) {
       if (this.selectedId) {
         // 通知 画布上的组件更新
-        const value = e?.target?.value || e; 
+        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
+          return;
+        }
+        const value = e?.target?.value || e;
+        // TODO: 看看能够替换 dojo 中 事件机制
         eventBus.emit(`${this.selectedId}:updateProps`, {
           [key]: value,
         });
@@ -68,10 +84,12 @@ export default {
     onSetWidgetProperties(widget) {
       this.selectedWidget = widget;
       this.selectedId = widget.id;
+      this.resolveComponentProps(widget.component);
+      setTimeout(() => {
+        const { props } = widget;
+        this.form.setFieldsValue({ ...props });
+      });
     },
-  },
-  mounted() {
-    this.resolveComponentProps();
   },
 };
 </script>

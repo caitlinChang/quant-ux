@@ -39,6 +39,9 @@ export default {
         this._currentKeyEvent = e;
         const k = e.keyCode ? e.keyCode : e.which;
         const target = e.target;
+        if(target.tagName == "INPUT" || target.tagName == "TEXTAREA"){
+          return;
+        }
         const isMeta = e.altKey || e.ctrlKey || e.metaKey;
         const isCntrl = e.ctrlKey || e.metaKey;
         const isShift = e.shiftKey

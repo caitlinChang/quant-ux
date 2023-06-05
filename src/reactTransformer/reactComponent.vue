@@ -7,7 +7,7 @@
           <div>
             <component
               :is="item.component"
-              v-bind="{ ...item.props, readonly: true }"
+              v-bind="{ ...item.props }"
             />
           </div>
           <span class="display-name">{{ item.displayName }}</span>

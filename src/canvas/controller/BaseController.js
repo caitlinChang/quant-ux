@@ -298,7 +298,7 @@ export default class BaseController extends Core {
 		const inheritedModel = this.getInheritedModel(this.model)
 		if (this._modelHasChanged) {
 			if (this.toolbar){
-				this.toolbar.updatePropertiesView();
+				// this.toolbar.updatePropertiesView();
 			}
 			this.model.lastUpdate = new Date().getTime();
 			this.model.screenCount = Object.keys(this.model.screens).length
@@ -409,7 +409,6 @@ export default class BaseController extends Core {
 	renderComponent(widget, type) { 
 		this.logger.log(1,"renderComponent", "enter > type : ", type);
 		if (widget && this._canvas) { 
-			console.log('type = ',type)
 			if (type === 'props') {
 				// 这个函数啥也没做
 			}

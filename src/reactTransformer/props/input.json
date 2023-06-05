@@ -72,7 +72,7 @@
       "maxLength": {
         "defaultValue": null,
         "description": "最大长度",
-        "name": "disabled",
+        "name": "maxLength",
         "required": false,
         "type": {
           "name": "number"
@@ -85,6 +85,15 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "placeholder": {
+        "defaultValue": "请输入",
+        "description": "占位符",
+        "name": "placeholder",
+        "required": false,
+        "type": {
+          "name": "string"
         }
       },
       "onChange": {

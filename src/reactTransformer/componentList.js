@@ -172,7 +172,7 @@ const componentConfigList = [
     cagegory: "表单",
     component: "antd-switch",
     props: {
-      value: 0,
+      checked: true,
       children: "可编辑",
     },
   },

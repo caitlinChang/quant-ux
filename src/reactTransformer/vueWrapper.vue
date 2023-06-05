@@ -3,7 +3,6 @@
     <component
       :is="componentInfo.component"
       v-bind="componentProps"
-      @click="handleCaptureClick"
     />
   </div>
 </template>
@@ -25,10 +24,7 @@ export default {
     };
   },
   methods: {
-    handleCaptureClick(e) {
-      // this.$emit('onclick', this.componentInfo, e)
-      console.log("handleCaptureClick", e);
-    },
+   
   },
   mounted() {
     const { id, props } = this.componentInfo;
@@ -36,6 +32,7 @@ export default {
       this.componentProps = props;
       eventBus.on(`${id}:updateProps`, (props) => {
         this.componentProps = { ...this.componentProps, ...props };
+        // console.log('更新 = ',this.componentProps)
       });
     }
   },

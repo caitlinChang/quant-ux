@@ -42,13 +42,15 @@ function getComponentConfig(component) {
 }
 
 function renderString(data) {
-  const defaultValue = data.defaultValue;
+  const defaultValue = data.defaultValue || '';
   return {
     ...data,
     renderConfig: {
       component: "a-input",
+      decorator: {
+        initialValue: defaultValue,
+      },
       props: {
-        defaultValue: defaultValue,
         placeholder: "请输入",
       },
     },
@@ -62,22 +64,25 @@ function renderBoolean(data) {
     ...data,
     renderConfig: {
       component: "a-switch",
+      decorator: {
+        // initialValue: _default,
+      },
       props: {
-        defaultValue: _default,
       },
     },
   };
 }
 
 function renderNumber(data) {
-  const defaultValue = data.defaultValue;
-  const _default = defaultValue === true ? defaultValue : false;
+  const defaultValue = data.defaultValue || undefined;
   return {
     ...data,
     renderConfig: {
       component: "a-input-number",
+      decorator: {
+        initialValue: defaultValue,
+      },
       props: {
-        defaultValue: _default,
       },
     },
   };
@@ -95,8 +100,10 @@ function renderEnum(data, list) {
       ...data,
       renderConfig: {
         component: "a-radio-group",
+        decorator: {
+          initialValue: data.defaultValue,
+        },
         props: {
-          defaultValue: data.defaultValue,
           options: options,
         },
       },
@@ -106,8 +113,10 @@ function renderEnum(data, list) {
       ...data,
       renderConfig: {
         component: "a-select",
+        decorator: {
+          initialValue: data.defaultValue,
+        },
         props: {
-          defaultValue: data.defaultValue,
           getPopupContainer: () =>
             document.getElementById("properties-warpper"),
           options: options,
