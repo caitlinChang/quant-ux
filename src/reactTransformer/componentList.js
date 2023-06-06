@@ -188,5 +188,15 @@ const componentConfigList = [
       mode: "year",
     },
   },
+  {
+    _type: "antd4",
+    w: 500,
+    h: 300,
+    name: "table",
+    displayName: "表格",
+    cagegory: "表单",
+    component: "antd-table",
+    props: {},
+  },
 ];
 export default componentConfigList;
