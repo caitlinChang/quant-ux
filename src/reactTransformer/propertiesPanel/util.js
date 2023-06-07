@@ -1,4 +1,5 @@
 import componentConfigList from "../componentList";
+import axios from "axios";
 const isENUM = (name) => {
   if (name === "string") {
     return false;
@@ -42,7 +43,7 @@ function getComponentConfig(component) {
 }
 
 function renderString(data) {
-  const defaultValue = data.defaultValue || '';
+  const defaultValue = data.defaultValue || "";
   return {
     ...data,
     renderConfig: {
@@ -67,8 +68,7 @@ function renderBoolean(data) {
       decorator: {
         // initialValue: _default,
       },
-      props: {
-      },
+      props: {},
     },
   };
 }
@@ -82,8 +82,7 @@ function renderNumber(data) {
       decorator: {
         initialValue: defaultValue,
       },
-      props: {
-      },
+      props: {},
     },
   };
 }
@@ -125,3 +124,13 @@ function renderEnum(data, list) {
     };
   }
 }
+
+export const requestComponentProps = async (componentName) => {
+  const str = componentName.split("-")[1];
+  try {
+    const res = require("../props/" + str + ".json"); //await axios.get("../props/" + str + ".json");
+    return res[0];
+  } catch (err) {
+    console.log("获取组件属性失败", err);
+  }
+};

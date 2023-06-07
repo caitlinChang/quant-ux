@@ -21,7 +21,7 @@
 <script>
 import eventBus from "../eventBus";
 import * as componentProps from "../props/input.json";
-import { getTSType } from "./util.js";
+import { getTSType, requestComponentProps } from "./util.js";
 
 const formItemLayout = {
   labelCol: { span: 4 },
@@ -47,8 +47,9 @@ export default {
   },
   methods: {
     // 根据 name 从服务端那组件解析的 props
-    resolveComponentProps(name) {
-      const { props } = this.componentProps.default[0];
+    async resolveComponentProps(name) {
+      const res = requestComponentProps(name);
+      const { props } = res;
       const list = Object.values(props);
       this.propsList = list
         .map((item) => getTSType(item))

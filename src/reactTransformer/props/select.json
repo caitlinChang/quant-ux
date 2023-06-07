@@ -8,7 +8,7 @@
     "props": {
       "placement": {
         "defaultValue": null,
-        "description": "",
+        "description": "选择框弹出的位置",
         "name": "placement",
         "parent": {
           "fileName": "ant-design-4.24.10/components/select/index.tsx",
@@ -160,7 +160,7 @@
       },
       "autoClearSearchValue": {
         "defaultValue": null,
-        "description": "",
+        "description": "自动清楚搜索字段",
         "name": "autoClearSearchValue",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",
@@ -236,7 +236,7 @@
       },
       "showSearch": {
         "defaultValue": null,
-        "description": "",
+        "description": "是否可以搜索",
         "name": "showSearch",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
@@ -369,7 +369,7 @@
       },
       "placeholder": {
         "defaultValue": null,
-        "description": "",
+        "description": "placeholder",
         "name": "placeholder",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
@@ -426,7 +426,7 @@
       },
       "disabled": {
         "defaultValue": null,
-        "description": "",
+        "description": "禁用",
         "name": "disabled",
         "parent": {
           "fileName": "ant-design-4.24.10/components/select/index.tsx",
@@ -445,7 +445,7 @@
       },
       "loading": {
         "defaultValue": null,
-        "description": "",
+        "description": "加载中",
         "name": "loading",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
@@ -464,7 +464,7 @@
       },
       "open": {
         "defaultValue": null,
-        "description": "",
+        "description": "是否展开下拉菜单",
         "name": "open",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
@@ -483,7 +483,7 @@
       },
       "defaultOpen": {
         "defaultValue": null,
-        "description": "",
+        "description": "是否默认展开下拉菜单",
         "name": "defaultOpen",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
@@ -540,7 +540,7 @@
       },
       "maxTagCount": {
         "defaultValue": null,
-        "description": "",
+        "description": "最大tag数量",
         "name": "maxTagCount",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
@@ -597,7 +597,7 @@
       },
       "allowClear": {
         "defaultValue": null,
-        "description": "",
+        "description": "是否添加清除图标",
         "name": "allowClear",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
@@ -616,7 +616,7 @@
       },
       "showArrow": {
         "defaultValue": null,
-        "description": "",
+        "description": "是否展示箭头",
         "name": "showArrow",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/BaseSelect.d.ts",
@@ -649,7 +649,7 @@
         ],
         "required": false,
         "type": {
-          "name": "RenderNode"
+          "name": "ReactNode"
         }
       },
       "removeIcon": {
@@ -2192,7 +2192,7 @@
         ],
         "required": false,
         "type": {
-          "name": "RenderNode"
+          "name": "ReactNode"
         }
       },
       "labelInValue": {
