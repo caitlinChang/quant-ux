@@ -2079,7 +2079,7 @@
       },
       "options": {
         "defaultValue": null,
-        "description": "",
+        "description": "数据",
         "name": "options",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-select/lib/Select.d.ts",

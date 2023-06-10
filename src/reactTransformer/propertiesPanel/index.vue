@@ -1,20 +1,56 @@
 <template>
   <div id="properties-warpper" class="properties-warpper">
-    <a-form :form="form" layout="vertical" autocomplete="off">
-      <a-form-item
-        v-for="item in propsList"
-        :key="item.name"
-        :label="item.description"
-      >
-        <component
-          :is="item.renderConfig.component"
-          v-decorator="[item.name, item.decorator]"
-          v-bind="item.renderConfig.props"
-          @change="(e) => handleChange(item.name, e)"
-          @blur="(e) => handleBlur(item.name, e)"
-        />
-      </a-form-item>
-    </a-form>
+    <a-form-model
+      v-if="selectedId"
+      layout="inline"
+      :model="formData"
+      autocomplete="off"
+      size="small"
+    >
+      <a-page-header style="padding: 5px 0" title="属性面板" />
+      <div v-for="item in propsList" :key="item.name">
+        <a-form-model-item
+          v-if="!item.renderConfig.type"
+          :key="item.name"
+          :label="item.description"
+          style="margin: 0; padding: 0"
+        >
+          <component
+            :is="item.renderConfig.component"
+            v-bind="item.renderConfig.props"
+            v-model="formData[item.name]"
+            @change="(e) => handleChange(item.name, e)"
+            @blur="(e) => handleBlur(item.name, e)"
+          />
+        </a-form-model-item>
+        <!-- 处理动态自增选项-->
+        <a-card
+          class="properties-warpper-card"
+          v-else
+          size="small"
+          :title="item.description || '选项'"
+        >
+          <a-icon slot="extra" type="plus" @click="() => add(item.name)" />
+          <a-form-model-item
+            v-for="(k, index) in formData[item.name] || []"
+            :key="index"
+            style="margin: 4px 0; padding: 0; width: 100%"
+          >
+            <a-input
+              v-model="k.label"
+              style="width: 90%; margin-right: 8px"
+              @blur="(e) => handleChangeItem(item.name, index, e)"
+            />
+            <a-icon
+              v-if="index >= 1"
+              class="dynamic-delete-button"
+              type="minus"
+              @click="() => remove(item.name, index)"
+            />
+          </a-form-model-item>
+        </a-card>
+      </div>
+    </a-form-model>
   </div>
 </template>
 
@@ -40,7 +76,8 @@ export default {
       componentProps,
       formItemLayout,
       formTailLayout,
-      form: this.$form.createForm(this, { name: "coordinated" }),
+      selectedId: "",
+      formData: {},
       propsList: [],
       getPopupContainer: () => document.getElementById("properties-warpper"),
     };
@@ -48,7 +85,7 @@ export default {
   methods: {
     // 根据 name 从服务端那组件解析的 props
     async resolveComponentProps(name) {
-      const res = requestComponentProps(name);
+      const res = await requestComponentProps(name);
       const { props } = res;
       const list = Object.values(props);
       this.propsList = list
@@ -68,7 +105,10 @@ export default {
     handleChange(key, e) {
       if (this.selectedId) {
         // 通知 画布上的组件更新
-        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
+        if (
+          e?.target?.tagName === "INPUT" ||
+          e?.target?.tagName === "TEXTAREA"
+        ) {
           return;
         }
         const value = e?.target?.value || e;
@@ -82,21 +122,49 @@ export default {
         console.error("现在没有被选中的组件");
       }
     },
+    handleChangeItem(name, index, e) {
+      const value = {
+        label: e.target.value,
+        value: index,
+      };
+      const oldValue = this.formData[name];
+      oldValue.splice(index, 1, value);
+      eventBus.emit(`${this.selectedId}:updateProps`, {
+        [name]: oldValue,
+      });
+      // 通知 model 更新
+      this.$emit("setComponentProps", name, oldValue);
+    },
+    remove(name, index) {
+      this.formData[name].splice(index, 1);
+    },
+    add(name) {
+      this.formData[name].push({});
+    },
     onSetWidgetProperties(widget) {
       this.selectedWidget = widget;
       this.selectedId = widget.id;
       this.resolveComponentProps(widget.component);
       setTimeout(() => {
         const { props } = widget;
-        this.form.setFieldsValue({ ...props });
+        this.formData = JSON.parse(JSON.stringify(props));
       });
+    },
+    clearPropertiesPanel() {
+      this.selectedWidget = null;
+      this.selectedId = "";
+      this.propsList = [];
+      this.formData = {};
     },
   },
 };
 </script>
 
-<style scoped>
+<style>
 .properties-warpper {
   margin: 10px;
+}
+.properties-warpper-card .antv-form-item-control-wrapper {
+  width: 100% !important;
 }
 </style>

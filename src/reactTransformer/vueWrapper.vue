@@ -1,9 +1,6 @@
 <template>
   <div class="custom-widget-warpper">
-    <component
-      :is="componentInfo.component"
-      v-bind="componentProps"
-    />
+    <component :is="componentInfo.component" v-bind="componentProps" />
   </div>
 </template>
 
@@ -23,16 +20,14 @@ export default {
       componentProps: {},
     };
   },
-  methods: {
-   
-  },
+  methods: {},
   mounted() {
     const { id, props } = this.componentInfo;
     if (this.componentInfo.id) {
       this.componentProps = props;
       eventBus.on(`${id}:updateProps`, (props) => {
         this.componentProps = { ...this.componentProps, ...props };
-        // console.log('更新 = ',this.componentProps)
+        console.log("更新 = ", this.componentProps);
       });
     }
   },

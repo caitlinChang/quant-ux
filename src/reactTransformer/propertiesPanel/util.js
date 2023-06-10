@@ -1,20 +1,47 @@
 import componentConfigList from "../componentList";
-import axios from "axios";
-const isENUM = (name) => {
-  if (name === "string") {
-    return false;
+
+// 因为 react-typescript-docgen 把所有类型都解析成一个字符串了，所以需要判断一下
+const getExactType = (name) => {
+  const isEnum = !name.split(" | ").length;
+  if (isEnum) {
+    const arr = name.split(" | ");
+    const hasTypeStr = arr.find((item) => {
+      if (!/^\"*\"$/g.test(item)) {
+        // 存在字符串
+        return true;
+      }
+    });
+    if (hasTypeStr) {
+      // 存在类型字符串，那就是个 union 类型
+      if (arr.includes("ReactNode")) {
+        return ["ReactNode", null];
+      } else {
+        // 不处理
+        return ["any", null];
+      }
+    } else {
+      // 不存在，那就认为是 enum
+      return ["enum", arr];
+    }
   }
-  const arr = name.split(" | ");
-  if (arr.length > 1) {
-    return arr;
+  const isArray = name.includes("[]");
+  if (isArray) {
+    return ["array", []];
   }
-  return false;
+  return [name, null];
 };
 
 // 判断它的 TS 类型是什么，然后决定如何渲染配置
 export const getTSType = (propsConfig) => {
-  const type = propsConfig.type.name;
-  const list = isENUM(type);
+  const [type, list] = getExactType(propsConfig.type.name);
+  // 过滤掉一些 className 的配置，或者AriaAttributes的配置
+  if (/className|ClassName|aria-/.test(propsConfig.name)) {
+    return null;
+  }
+  // 过滤掉没有 description 的
+  if (!propsConfig.description) {
+    return null;
+  }
   switch (type) {
     case "ReactNode":
       return "ReactNode";
@@ -24,22 +51,31 @@ export const getTSType = (propsConfig) => {
       return renderNumber(propsConfig);
     case "boolean":
       return renderBoolean(propsConfig);
+    case "enum":
+      return renderEnum(propsConfig, list);
+    case "array":
+      return renderArray(propsConfig); // 渲染自增数据
     case "any":
       return null;
     case "() => void":
       // return "function";
       return null;
     default:
-      if (list) {
-        return renderEnum(propsConfig, list);
-      }
       return null;
   }
 };
-function getComponentConfig(component) {
-  return componentConfigList.find((item) => {
-    return item.component === component;
-  });
+
+function renderArray(data) {
+  // 也许需要mock数据
+  return {
+    ...data,
+    renderConfig: {
+      type: "array",
+      // component: "a-input",
+      // decorator: {},
+      // props: {},
+    },
+  };
 }
 
 function renderString(data) {

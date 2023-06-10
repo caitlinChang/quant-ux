@@ -27,6 +27,24 @@ function SomeComponent(props: {
 如果属性名为 value，并且 props 中存在 onChange 属性，就认为是受控组件，这个时候 value 也可以在属性面板上编辑，也可以在画布上编辑。
 
 ```json
+// 理想的解析结果
+{
+  "defaultValue": null,
+  "description": "xxx", // description 是通过 JSDoc 解析而来， 如果为空的话就会略过
+  "required": false,
+  "type": {
+    "name": "string", // "number" "enum" "union" "function" "ReactNode" "array" "object"
+    "item": {
+      "title": "reactNode",
+      "dataIndex": "string",
+      "children": "" // 怎么标记循环类型
+    }, // "string" "number" "object" "array", 应该是一个嵌套的类型，比如 table 中的 columns, 那就一直嵌套好了，注意循环类型的处理
+    "properties": {}
+  }
+}
+```
+
+```json
 {
   "props": {
     "a": {
