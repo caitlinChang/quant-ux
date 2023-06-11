@@ -180,12 +180,21 @@ const componentConfigList = [
     _type: "antd4",
     w: 500,
     h: 300,
-    name: "calendar",
-    displayName: "日历",
+    name: "menu",
+    displayName: "菜单",
     cagegory: "表单",
-    component: "antd-calendar",
+    component: "antd-menu",
     props: {
-      mode: "year",
+      items: [
+        {
+          label: "菜单一",
+          key: 0,
+        },
+        {
+          label: "菜单二",
+          key: 1,
+        },
+      ],
     },
   },
   {

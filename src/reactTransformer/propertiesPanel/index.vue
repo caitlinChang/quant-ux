@@ -37,9 +37,17 @@
             style="margin: 4px 0; padding: 0; width: 100%"
           >
             <a-input
-              v-model="k.label"
+              v-model="k[item.renderConfig.fieldNames.label]"
               style="width: 90%; margin-right: 8px"
-              @blur="(e) => handleChangeItem(item.name, index, e)"
+              @blur="
+                (e) =>
+                  handleChangeItem(
+                    item.name,
+                    index,
+                    e,
+                    item.renderConfig.fieldNames
+                  )
+              "
             />
             <a-icon
               v-if="index >= 1"
@@ -91,6 +99,7 @@ export default {
       this.propsList = list
         .map((item) => getTSType(item))
         .filter((item) => item?.renderConfig);
+      console.log("this.propsList = ", this.propsList);
     },
     handleBlur(key, e) {
       if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
@@ -122,10 +131,10 @@ export default {
         console.error("现在没有被选中的组件");
       }
     },
-    handleChangeItem(name, index, e) {
+    handleChangeItem(name, index, e, fieldNames) {
       const value = {
-        label: e.target.value,
-        value: index,
+        [fieldNames.label]: e.target.value,
+        [fieldNames.value]: index,
       };
       const oldValue = this.formData[name];
       oldValue.splice(index, 1, value);

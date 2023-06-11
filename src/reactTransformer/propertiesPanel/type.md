@@ -108,3 +108,12 @@ function SomeComponent(props: {
   }
 }
 ```
+
+### 属性面板提供哪些支持性组件
+
+1. 选项自增组件
+   【检测到属性是 Array 类型就匹配自增组件】
+
+- ArrayItem 是基本类型 【少见，暂不支持】
+- ArrayItem 是 object【常见, 比如 select，radioGroup, buttonGroup 等等, 非嵌套】
+  单层级的 ArrayItem

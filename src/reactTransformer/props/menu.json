@@ -8,7 +8,7 @@
     "props": {
       "theme": {
         "defaultValue": null,
-        "description": "",
+        "description": "主题颜色",
         "name": "theme",
         "parent": {
           "fileName": "ant-design-4.24.10/components/menu/index.tsx",
@@ -22,7 +22,7 @@
         ],
         "required": false,
         "type": {
-          "name": "MenuTheme"
+          "name": "\"light\" | \"dark\""
         }
       },
       "inlineIndent": {
@@ -46,7 +46,7 @@
       },
       "_internalDisableMenuItemTitleTooltip": {
         "defaultValue": null,
-        "description": "@internal Not promise crash if used in production. Connect with chenshuai2144\nfor removing.",
+        "description": "",
         "name": "_internalDisableMenuItemTitleTooltip",
         "parent": {
           "fileName": "ant-design-4.24.10/components/menu/index.tsx",
@@ -65,7 +65,7 @@
       },
       "items": {
         "defaultValue": null,
-        "description": "",
+        "description": "菜单内容",
         "name": "items",
         "parent": {
           "fileName": "ant-design-4.24.10/components/menu/index.tsx",
@@ -79,7 +79,16 @@
         ],
         "required": false,
         "type": {
-          "name": "ItemType[]"
+          "name": "ItemType[]",
+          "item": {
+            "danger": "boolean",
+            "disabled": "boolean",
+            "icon": "ReactNode",
+            "key": "string",
+            "label": "ReactNode",
+            "title": "string",
+            "children": "ItemType[]"
+          }
         }
       },
       "onClick": {
@@ -1015,7 +1024,7 @@
       },
       "is": {
         "defaultValue": null,
-        "description": "Specify that a standard HTML element should behave like a defined custom built-in element\n@see https://html.spec.whatwg.org/multipage/custom-elements.html#attr-is",
+        "description": "",
         "name": "is",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/@types/react/ts5.0/index.d.ts",
@@ -5081,7 +5090,7 @@
       },
       "disabledOverflow": {
         "defaultValue": null,
-        "description": "@private Disable auto overflow. Pls note the prop name may refactor since we do not final decided.",
+        "description": "",
         "name": "disabledOverflow",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-menu/lib/Menu.d.ts",
@@ -5118,8 +5127,8 @@
         }
       },
       "mode": {
-        "defaultValue": null,
-        "description": "",
+        "defaultValue": "vertical",
+        "description": "类型",
         "name": "mode",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-menu/lib/Menu.d.ts",
@@ -5133,7 +5142,7 @@
         ],
         "required": false,
         "type": {
-          "name": "MenuMode"
+          "name": "\"horizontal\" | \"vertical\" | \"inline\""
         }
       },
       "inlineCollapsed": {
@@ -5423,7 +5432,7 @@
       },
       "triggerSubMenuAction": {
         "defaultValue": null,
-        "description": "",
+        "description": "SubMenu 展开/关闭的触发行为",
         "name": "triggerSubMenuAction",
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-menu/lib/Menu.d.ts",
@@ -5437,7 +5446,7 @@
         ],
         "required": false,
         "type": {
-          "name": "TriggerSubMenuAction"
+          "name": "\"click\" | \"hover\""
         }
       },
       "builtinPlacements": {

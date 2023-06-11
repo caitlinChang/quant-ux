@@ -2,26 +2,14 @@ import componentConfigList from "../componentList";
 
 // 因为 react-typescript-docgen 把所有类型都解析成一个字符串了，所以需要判断一下
 const getExactType = (name) => {
-  const isEnum = !name.split(" | ").length;
-  if (isEnum) {
-    const arr = name.split(" | ");
-    const hasTypeStr = arr.find((item) => {
-      if (!/^\"*\"$/g.test(item)) {
-        // 存在字符串
-        return true;
-      }
-    });
-    if (hasTypeStr) {
-      // 存在类型字符串，那就是个 union 类型
-      if (arr.includes("ReactNode")) {
-        return ["ReactNode", null];
-      } else {
-        // 不处理
-        return ["any", null];
-      }
+  const contents = getEnum(name);
+  if (contents) {
+    // 存在类型字符串，那就是个 union 类型
+    if (contents.includes("ReactNode")) {
+      return ["ReactNode", null];
     } else {
       // 不存在，那就认为是 enum
-      return ["enum", arr];
+      return ["enum", contents];
     }
   }
   const isArray = name.includes("[]");
@@ -31,9 +19,22 @@ const getExactType = (name) => {
   return [name, null];
 };
 
+function getEnum(str) {
+  const regex = /"(.*?)"/g;
+  const matches = str.match(regex);
+
+  if (matches) {
+    const textContents = matches.map((match) => match.replace(/"/g, ""));
+    return textContents;
+  } else {
+    console.log("No matches found.");
+  }
+}
+
 // 判断它的 TS 类型是什么，然后决定如何渲染配置
 export const getTSType = (propsConfig) => {
   const [type, list] = getExactType(propsConfig.type.name);
+
   // 过滤掉一些 className 的配置，或者AriaAttributes的配置
   if (/className|ClassName|aria-/.test(propsConfig.name)) {
     return null;
@@ -65,15 +66,14 @@ export const getTSType = (propsConfig) => {
   }
 };
 
-function renderArray(data) {
+function renderArray(propsConfig) {
   // 也许需要mock数据
+  const fieldNames = getFieldNames(propsConfig);
   return {
-    ...data,
+    ...propsConfig,
     renderConfig: {
       type: "array",
-      // component: "a-input",
-      // decorator: {},
-      // props: {},
+      fieldNames,
     },
   };
 }
@@ -122,7 +122,12 @@ function renderNumber(data) {
     },
   };
 }
-
+/**
+ * 渲染枚举值
+ * @param {*} data
+ * @param {*} list
+ * @returns
+ */
 function renderEnum(data, list) {
   const options = list.map((item) => {
     return {
@@ -155,12 +160,17 @@ function renderEnum(data, list) {
           getPopupContainer: () =>
             document.getElementById("properties-warpper"),
           options: options,
+          style: "width: 120px",
         },
       },
     };
   }
 }
-
+/**
+ * 调接口获取解析后的属性
+ * @param {*} componentName
+ * @returns
+ */
 export const requestComponentProps = async (componentName) => {
   const str = componentName.split("-")[1];
   try {
@@ -169,4 +179,55 @@ export const requestComponentProps = async (componentName) => {
   } catch (err) {
     console.log("获取组件属性失败", err);
   }
+};
+/**
+ * 获取匹配属性面板的自增组件的字段，一般来讲，需要 label 和 value
+ * 类似于获取 fieldNames
+ * @param {*} propsConfig
+ * @returns
+ */
+export const getFieldNames = (propsConfig) => {
+  let _label = "label";
+  let _value = "value";
+  const itemMap = propsConfig.type?.item;
+  if (!itemMap)
+    return {
+      label: _label,
+      value: _value,
+    };
+  const keys = Object.keys(itemMap);
+  if (!keys.length)
+    return {
+      label: _label,
+      value: _value,
+    };
+  // 适用于 antd 组件的命名规则
+  if (/ReactNode/.test(itemMap.title)) {
+    _label = "title";
+  }
+  if (/ReactNode/.test(itemMap.label)) {
+    _label = "label";
+  }
+
+  if (/string/.test(itemMap.value)) {
+    _value = "value";
+  }
+  if (/string/.test(itemMap.key)) {
+    _value = "key";
+  }
+  if (/string/.test(itemMap.dataIndex)) {
+    _value = "dataIndex";
+  }
+  const obj = {
+    label: _label,
+    value: _value,
+  };
+
+  if (itemMap.disabled) {
+    obj.disabled = false;
+  }
+  if (itemMap.icon) {
+    obj.icon = "icon";
+  }
+  return obj;
 };

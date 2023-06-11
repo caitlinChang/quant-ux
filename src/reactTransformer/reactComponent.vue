@@ -2,13 +2,13 @@
   <div>
     <h1>常用</h1>
     <div class="custome-widget-wrapper">
-      <div v-for="item in componentInfo" :key="item.name">
-        <div class="antd4-warpper" @click="(e) => $emit('onclick', {...item}, e)">
+      <div v-for="item in componentList" :key="item.name">
+        <div
+          class="antd4-warpper"
+          @click="(e) => $emit('onclick', { ...item }, e)"
+        >
           <div>
-            <component
-              :is="item.component"
-              v-bind="{ ...item.props }"
-            />
+            <component :is="item.component" v-bind="{ ...item.props }" />
           </div>
           <span class="display-name">{{ item.displayName }}</span>
         </div>
@@ -16,17 +16,20 @@
     </div>
     <h1>布局</h1>
     <h1>Formula</h1>
+    <h1>Icon</h1>
   </div>
 </template>
 
 <script>
-import componentInfo from "./componentList.js";
+import componentList from "./componentList.js";
 import componentMap from "./util/constant";
+import iconMap from "./util/icon";
 
 export default {
   name: "ReactComponent",
   components: {
     ...componentMap,
+    ...iconMap,
   },
   props: {
     onClick: {
@@ -36,7 +39,7 @@ export default {
   },
   data() {
     return {
-      componentInfo
+      componentList,
     };
   },
   methods: {},
