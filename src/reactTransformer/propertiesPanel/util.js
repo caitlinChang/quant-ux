@@ -1,4 +1,5 @@
 import componentConfigList from "../componentList";
+import { get } from "lodash";
 
 // 因为 react-typescript-docgen 把所有类型都解析成一个字符串了，所以需要判断一下
 const getExactType = (name) => {
@@ -230,4 +231,43 @@ export const getFieldNames = (propsConfig) => {
     obj.icon = "icon";
   }
   return obj;
+};
+
+/**
+ * 获取组件中具体某个属性的类型，用于props中第一层的属性
+ * @param {*} propsNamePath
+ * @param {*} componentName
+ */
+export const getPropType = (propsName, componentName) => {
+  const propsConfig = requestComponentProps(componentName);
+  const typeName = get(propsConfig, `props.${propsName}.type.name`);
+  const properties = get(propsConfig, `props.${propsName}.type`);
+  const [type, list] = getExactType(typeName);
+  return {
+    type,
+    properties,
+  };
+};
+/**
+ * 获取组件中具体某个属性的类型，用于props中非第一层的属性
+ * @param {*} propsNamePath
+ * @param {*} componentName
+ * @returns
+ */
+export const getNestedPropType = (type, properties) => {
+  if (type === "array") {
+    // 返回 item 中是 ReactNode类型的 key
+    if (properties.item && Object.keys(properties.item).length) {
+      const itemList = Object.keys(properties.item);
+      const reactNodeItemList = itemList.filter((i) => {
+        const [itemType, list] = getExactType(properties.item[i]);
+        return itemType === "ReactNode";
+      });
+      return reactNodeItemList;
+    }
+  } else if (type === "object") {
+    // 返回 item 中是 ReactNode类型的 key
+  } else {
+    // 暂不处理
+  }
 };
