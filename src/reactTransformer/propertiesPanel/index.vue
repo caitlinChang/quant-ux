@@ -99,7 +99,6 @@ export default {
       this.propsList = list
         .map((item) => getTSType(item))
         .filter((item) => item?.renderConfig);
-      console.log("this.propsList = ", this.propsList);
     },
     handleBlur(key, e) {
       if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {

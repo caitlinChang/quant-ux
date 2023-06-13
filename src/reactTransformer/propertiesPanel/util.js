@@ -28,7 +28,7 @@ function getEnum(str) {
     const textContents = matches.map((match) => match.replace(/"/g, ""));
     return textContents;
   } else {
-    console.log("No matches found.");
+    console.warn("No matches found.");
   }
 }
 
@@ -238,10 +238,12 @@ export const getFieldNames = (propsConfig) => {
  * @param {*} propsNamePath
  * @param {*} componentName
  */
-export const getPropType = (propsName, componentName) => {
-  const propsConfig = requestComponentProps(componentName);
-  const typeName = get(propsConfig, `props.${propsName}.type.name`);
-  const properties = get(propsConfig, `props.${propsName}.type`);
+export const getPropType = (propsName, propsConfig) => {
+  const typeName = get(propsConfig, `${propsName}.type.name`);
+  const properties = get(propsConfig, `${propsName}.type`);
+  if(!typeName) {
+    return null
+  }
   const [type, list] = getExactType(typeName);
   return {
     type,
