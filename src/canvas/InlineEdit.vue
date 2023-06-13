@@ -11,25 +11,25 @@ export default {
   },
   components: {},
   methods: {
+    // 第一次双击进入 widget 的编辑态
     inlineEditInit(widget, resizeToWidth = false, e) {
       this.logger.log(-1, "inlineEditInit", "enter", resizeToWidth);
       this.cleanUpInlineEdit();
       const div = this.renderFactory.getLabelNode(widget);
       if (!div && widget) {
-        // 到底哪些是可以编辑的，从 ast 结构来看，只有 react node 或者 string 的可以编辑
-        // 或者 JS DOC 中声明可编辑
         const editableDiv = document.querySelector(
           `.ComponentWidget_${widget.id}`
         );
         this._inlineEditWidget = widget;
         this._inlineEditDiv = editableDiv;
         this.own(
-          on(this._inlineEditDiv, "mousedown", (e) => this.judgeClickOut(e))
+          on(this._inlineEditDiv, "dblclick", (e) => this.judgeClickOut(e))
         );
         /**
          * FIXME: 在使用 ant-radio-group 时，无法实现内容编辑，可能因为 ant-radio-group 本身的click事件总是会触发radio元素的focus
          * 不知道其他表单元素是否会有这样的情况
          */
+        // this.own(on(this._inlineEditDiv, "dblclick", (e) => this.stopEvent(e)));
         this.own(on(this._inlineEditDiv, "click", (e) => this.stopEvent(e)));
         /** end */
         this._inlineEditResizeToWidth = resizeToWidth;
@@ -43,6 +43,9 @@ export default {
         this._inlineFocus(null, false, resizeToWidth);
       }
     },
+    // 第二次双击 widget 内部的 ReactNode props, 该 ReactNode 才能进行编辑
+    inlineEditConfirm() {},
+
     _enterEditWdiget(e) {
       // 针对单个的widget,进入 编辑模式；
       if (e) {
@@ -82,9 +85,9 @@ export default {
         // this.clickInEditWidget = true;
         const target = e.target;
         if (target.classList.contains("MatcInlineEditableStarted")) {
-            return;
+          return;
         } else {
-          css.remove(target, 'MatcInlineEditableStarted');
+          css.remove(target, "MatcInlineEditableStarted");
           this._inlineEditDiv = target;
           this._inlineTargetFocus();
         }

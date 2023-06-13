@@ -40,9 +40,7 @@ export default {
       Object.keys(props).forEach((propsName) => {
         const info = getPropType(propsName, this.propsConfig);
         if (info.type === "ReactNode") {
-          // props[propsName] = (
-          //   <div class="can-edit-wrapper">{props[propsName]}</div>
-          // );
+          props[propsName] = setSlotWrapper(props[propsName]);
         } else if (info.type === "array") {
           // 检查 array 中每一项的类型
           const itemTypeList = getNestedPropType(info.type, info.properties);
