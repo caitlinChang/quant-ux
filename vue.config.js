@@ -1,4 +1,6 @@
 var path = require("path");
+var fs = require("fs");
+
 module.exports = {
   devServer: {
     proxy: {
@@ -59,5 +61,14 @@ module.exports = {
     config.resolve.alias.set("help", path.resolve("src/help"));
     config.resolve.alias.set("player", path.resolve("src/player"));
     config.resolve.alias.set("style", path.resolve("src/style"));
+    config.resolve.extensions.add(".tsx").add(".ts");
+    config.module
+      .rule("tsx")
+      .test(/\.tsx?$|\.ts?$/)
+      .exclude.add(/node_modules/)
+      .end()
+      .use("ts-loader")
+      .loader("ts-loader")
+      .end();
   },
 };

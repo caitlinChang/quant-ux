@@ -5,11 +5,15 @@
 </template>
 
 <script>
-import React from 'react';
 import eventBus from "./eventBus";
 import componentList from "./util/constant";
-import { getPropType, getNestedPropType,requestComponentProps } from "./propertiesPanel/util";
-import slotWrapper from './slots/SlotWrapper';
+import {
+  getPropType,
+  getNestedPropType,
+  requestComponentProps,
+} from "./propertiesPanel/util";
+import { setSlotWrapper } from "./slots/SlotWrapper";
+
 export default {
   name: "VueWrapper",
   components: {
@@ -20,7 +24,7 @@ export default {
     return {
       selectedId: "",
       componentProps: {},
-      propsConfig:{}
+      propsConfig: {},
     };
   },
   methods: {
@@ -47,7 +51,7 @@ export default {
               const obj = { ...item };
               for (let key in item) {
                 if (itemTypeList.includes(key)) {
-                  obj[key] = slotWrapper(item[key]);
+                  obj[key] = setSlotWrapper(item[key]);
                 }
               }
               return obj;
@@ -60,7 +64,7 @@ export default {
   mounted() {
     if (this.componentInfo.id) {
       this.resolveComponentProps(this.componentInfo.component);
-      
+
       eventBus.on(`${this.componentInfo.id}:updateProps`, (props) => {
         const newProps = { ...this.componentProps, ...props };
         this.handleProps(newProps);
