@@ -172,7 +172,8 @@
 
 .MatcInlineEditableStarted{
 	z-index:90010;
-	outline: none;
+	outline: 1px dashed rgb(255, 0, 93);
+	position:relative
 }
 
 .MatcCanvasModeedit .MatcWidgetDND:hover{

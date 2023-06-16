@@ -21,16 +21,16 @@ export default {
           `.ComponentWidget_${widget.id}`
         );
         this._inlineEditWidget = widget;
-        this._inlineEditDiv = editableDiv;
-        this.own(
-          on(this._inlineEditDiv, "dblclick", (e) => this.judgeClickOut(e))
-        );
+        // this._inlineEditDiv = editableDiv;
+        this._inlineWrapper = editableDiv;
+       
         /**
          * FIXME: 在使用 ant-radio-group 时，无法实现内容编辑，可能因为 ant-radio-group 本身的click事件总是会触发radio元素的focus
          * 不知道其他表单元素是否会有这样的情况
          */
-        // this.own(on(this._inlineEditDiv, "dblclick", (e) => this.stopEvent(e)));
-        this.own(on(this._inlineEditDiv, "click", (e) => this.stopEvent(e)));
+        this._clickListener = on(this._inlineWrapper, "click", (e) => this.headOffClick(e));
+        this._dbclickListener = on(this._inlineWrapper, "dblclick", (e) => this.inlineEditConfirm(e));
+        this._mouseDownListener = on(this._inlineWrapper, "mousedown", (e) => this.stopEvent(e));
         /** end */
         this._inlineEditResizeToWidth = resizeToWidth;
         this._enterEditWdiget();
@@ -44,7 +44,50 @@ export default {
       }
     },
     // 第二次双击 widget 内部的 ReactNode props, 该 ReactNode 才能进行编辑
-    inlineEditConfirm() {},
+    inlineEditConfirm(e) {
+      if (e) {
+        e.stopPropagation();
+      }
+      // 双击选中当前文本
+      const target = e.target;
+      if (target.classList.contains("can-edit")) { 
+        var selection = window.getSelection();
+        var range = document.createRange();
+
+        range.selectNodeContents(target);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        this._inlineEditDiv = target;
+        this._editDivListener = on(this._inlineEditDiv, "mousedown", (e) => this.startEdit(e));
+      }
+    },
+
+    startEdit(e) {
+      if (e) {
+        e.stopPropagation();
+      }
+      if (this._inlineEditStarted && this._inlineEditDiv) {
+        this._inlineInnerHTML = this._inlineEditDiv.innerHTML;
+        domAttr.set(this._inlineEditDiv, "contenteditable", true);
+        this._inlineEditDiv.setAttribute("contentEditable", true);
+        this._inlineEditDiv.focus();
+        css.add(this._inlineEditDiv, "MatcInlineEditableStarted");
+      }
+    },
+
+    headOffClick(e) {
+      console.log('触发这个事件了吗')
+      if (e) {
+        e.stopPropagation();
+      }
+      const target = e.target;
+      if (target.getAttribute("contenteditable") !== "true") {
+        console.log('mousedown 发生在其他非编辑元素上');
+        this.clearCurInlineEditDev();
+      } else {
+        console.log('mousedown 发生在编辑元素上');
+      }
+    },
 
     _enterEditWdiget(e) {
       // 针对单个的widget,进入 编辑模式；
@@ -57,41 +100,6 @@ export default {
 
       this._inlineEditStarted = true;
       return true;
-    },
-
-    _inlineTargetFocus() {
-      if (this._inlineEditStarted && this._inlineEditDiv) {
-        this._inlineInnerHTML = this._inlineEditDiv.innerHTML;
-        domAttr.set(this._inlineEditDiv, "contenteditable", true);
-        this._inlineEditDiv.setAttribute("contentEditable", true);
-        this._inlineEditDiv.focus();
-        css.add(this._inlineEditDiv, "MatcInlineEditableStarted");
-        this.setCursor(this._inlineEditDiv);
-      }
-    },
-
-    stopEvent(e) {
-      if (e) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
-    },
-
-    judgeClickOut(e) {
-      if (e) {
-        e.stopPropagation();
-      }
-      if (this._inlineEditStarted) {
-        // this.clickInEditWidget = true;
-        const target = e.target;
-        if (target.classList.contains("MatcInlineEditableStarted")) {
-          return;
-        } else {
-          css.remove(target, "MatcInlineEditableStarted");
-          this._inlineEditDiv = target;
-          this._inlineTargetFocus();
-        }
-      }
     },
 
     inlineEditKeyPress(e) {
@@ -199,7 +207,18 @@ export default {
       this.cleanUpInlineEdit();
       this.clearInlineEditSelections();
     },
-
+    // 清除当前编辑元素的各种状态
+    clearCurInlineEditDev() {
+      if (this._inlineEditDiv) {
+        domAttr.set(this._inlineEditDiv, "contenteditable", false);
+        this._inlineEditDiv.setAttribute("contentEditable", false);
+        this._inlineEditDiv.blur();
+        css.remove(this._inlineEditDiv, "MatcInlineEditableStarted");
+        this._inlineEditDiv = null;
+        this._editDivListener.remove();
+        this.clearInlineEditSelections();
+      }
+    },
     clearInlineEditSelections() {
       if (window.getSelection) {
         if (window.getSelection().empty) {
@@ -271,7 +290,7 @@ export default {
       return true;
     },
 
-    //
+    // 没有用到
     _inlineOnBlur() {
       this._inlineEditStarted = false;
     },
@@ -292,13 +311,7 @@ export default {
         this._inlineCopyEventListener.remove();
       }
 
-      if (this._inlineEditDiv) {
-        domAttr.set(this._inlineEditDiv, "contenteditable", false);
-        this._inlineEditDiv.setAttribute("contentEditable", false);
-        this._inlineEditDiv.blur();
-        css.remove(this._inlineEditDiv, "MatcInlineEditableStarted");
-        this._inlineEditDiv = null;
-      }
+      this.clearCurInlineEditDev()
 
       if (this._inlineMouseDown) {
         this._inlineMouseDown.remove();
@@ -314,6 +327,10 @@ export default {
       this._inlineInnerHTML = null;
       this._inlineEditStarted = false;
       this._inlineEditResizeToWidth = false;
+      this._inlineWrapper = null;
+      this._clickListener?.remove();
+      this._dbclickListener?.remove();
+      this._mouseDownListener?.remove();
 
       if (this._inlinebBlurListener) {
         this._inlinebBlurListener.remove();

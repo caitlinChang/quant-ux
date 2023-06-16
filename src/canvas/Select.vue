@@ -163,7 +163,7 @@ import CanvasSelection from './CanvasSelection'
 
 			const now = new Date().getTime()
 			if (this._selectWidget && this._selectWidget.id == id && !forceSelection) {
-				if (now - this._lastWidgetSelected < 3000) {
+				if (now - this._lastWidgetSelected < 1000) {
 					this.onWidgetDoubleClick(this._selectWidget, e)
 				} else {
 					this.logger.log(1, "onComponentSelected", "ignore double > ");

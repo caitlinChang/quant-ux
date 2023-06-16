@@ -17,12 +17,12 @@ export default {
 			initWiring() {
 				this.logger.log(-1,"initWiring", "enter");
 				this.own(on(this.dndContainer, "mousedown", (e) => this.dispatchMouseDown(e)));
-				// mouseup 事件应该是用来添加标准线对齐等操作，先注释掉
-				// this.own(on(this.dndContainer, "mouseup", (e) => this.dispatchMouseUp(e)));
-				// this.own(on(this.dndContainer, touch.over, (e) => this.dispatchOver(e)));
-				// this.own(on(this.dndContainer, touch.out, (e) => this.dispatchOut(e)));
-				// this.own(on(this.dndContainer, 'dblclick', (e) => this.dispatchDoubleClick(e)));
-				//dispatchBackroundClick 函数的作用是在用户单击画布背景时触发。该函数检查是否已启动内联编辑，如果是，则检查单击的目标是否为内联编辑区域，如果是，则不执行任何操作。否则，它将调用 dispatchMouseDownCanvas 函数，该函数将处理单击事件并执行相应的操作。
+				// mouseup 事件应该是用来添加标准线对齐等操作
+				this.own(on(this.dndContainer, "mouseup", (e) => this.dispatchMouseUp(e)));
+				this.own(on(this.dndContainer, touch.over, (e) => this.dispatchOver(e)));
+				this.own(on(this.dndContainer, touch.out, (e) => this.dispatchOut(e)));
+				this.own(on(this.dndContainer, 'dblclick', (e) => this.dispatchDoubleClick(e)));
+				// dispatchBackroundClick 函数的作用是在用户单击画布背景时触发。如果点击事件发生在 selectedWidget 上，就不会触发这里的事件，在inlineEdit内部会拦截
 				this.own(on(this.container, "mousedown", (e) => this.dispatchBackroundClick(e)));
 			},
 
@@ -40,10 +40,6 @@ export default {
 			this.logger.log(-1, "dispatchBackroundClick", "enter", this._inlineEditStarted);
 			if (this._inlineEditStarted) {
 				let target = e.target
-				// if (this.clickInEditWidget) {
-				// 	this.clickInEditWidget = false
-				// 	return
-				// }
 				this.dispatchMouseDownCanvas(e, target)
 			}
 		},
