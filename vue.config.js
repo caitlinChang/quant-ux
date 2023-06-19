@@ -70,5 +70,12 @@ module.exports = {
       .use("ts-loader")
       .loader("ts-loader")
       .end();
+    config.module.rules.delete("svg");
+    config.module
+      .rule("svg")
+      .test(/\.svg$/)
+      .use("svgr")
+      .loader("@svgr/webpack")
+      .end();
   },
 };

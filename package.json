@@ -12,6 +12,7 @@
     "@ant-design/icons": "^4.8.0",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
+    "@svgr/webpack": "^8.0.1",
     "ant-design-vue": "^1.7.8",
     "antd": "^4.24.8",
     "axios": "^1.4.0",

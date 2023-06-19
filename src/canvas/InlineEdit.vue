@@ -21,7 +21,6 @@ export default {
           `.ComponentWidget_${widget.id}`
         );
         this._inlineEditWidget = widget;
-        // this._inlineEditDiv = editableDiv;
         this._inlineWrapper = editableDiv;
        
         /**
@@ -76,16 +75,12 @@ export default {
     },
 
     headOffClick(e) {
-      console.log('触发这个事件了吗')
       if (e) {
         e.stopPropagation();
       }
       const target = e.target;
       if (target.getAttribute("contenteditable") !== "true") {
-        console.log('mousedown 发生在其他非编辑元素上');
         this.clearCurInlineEditDev();
-      } else {
-        console.log('mousedown 发生在编辑元素上');
       }
     },
 

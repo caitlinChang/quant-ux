@@ -66,6 +66,7 @@
 import eventBus from "../eventBus";
 import * as componentProps from "../props/input.json";
 import { getTSType, requestComponentProps } from "./util.js";
+import { set } from "lodash";
 
 const formItemLayout = {
   labelCol: { span: 4 },
@@ -165,6 +166,18 @@ export default {
       this.formData = {};
     },
   },
+  mounted() {
+    eventBus.on("canvasEdit", (path, value) => {
+      // 通知 model 更新
+      const key = path.split(".")[0].split('[')[0];
+      const newValue = set(this.formData, path, value);
+      console.log('接受到 canvas 编辑变化', key, newValue[key])
+      this.$emit("setComponentProps", key, newValue[key]);
+    });
+  },
+  unmounted() {
+    eventBus.off("canvasEdit")
+  }
 };
 </script>
 
