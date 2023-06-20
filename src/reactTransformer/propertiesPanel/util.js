@@ -273,3 +273,12 @@ export const getNestedPropType = (type, properties) => {
     // 暂不处理
   }
 };
+/**
+ * 根据路径解析出 第一个key
+ * @param {*} path 
+ */
+export const getCurKey = (path) => { 
+  const regex = /(\w+)|(\d+)/g;
+  const matches = path.match(regex);
+  return matches[0];
+}

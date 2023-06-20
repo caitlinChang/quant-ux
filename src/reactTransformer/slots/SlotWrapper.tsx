@@ -6,7 +6,7 @@ import eventBus from "../eventBus";
 const SlotWrapper = (props: {
   path: string;
   id: string;
-  children: ReactNode;
+  children?: ReactNode;
 }) => {
   const handleBlur = (e: any) => {
     const value = e.target.innerHTML;

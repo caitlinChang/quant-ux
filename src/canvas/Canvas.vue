@@ -40,8 +40,9 @@
 		</div>
 	</div>
 	<!-- Status -->
-	<div class="MatcMessage" data-dojo-attach-point="message">
-	</div>
+	<div class="MatcMessage" data-dojo-attach-point="message"></div>
+	<!--Context Menu-->
+	<div class="ContextMenuWrapper" data-dojo-attach-point="contextMenu"></div>
 </div>
 
 </template>
