@@ -274,32 +274,40 @@ export const getNestedPropType = (type, properties) => {
   }
 };
 /**
- * 根据路径解析出 第一个key
- * @param {*} path 
+ * 根据路径解析出第一个key, 用于把变化的值通知给 props
+ * eg. a.b[0].c.name => a
+ * @param {string} path 
  */
-export const getCurKey = (path) => { 
+export const getFirstKey = (path) => { 
   const regex = /(\w+)|(\d+)/g;
   const matches = path.match(regex);
   return matches[0];
 }
 
-export const getCurIndex = (path) => {
+/**
+ * 方便 contentMenu 操作时对嵌套的，深层级的属性进行处理
+ * eg. a.b[0].c.name => { index: 0, keyPath:a.b }
+ * eg. a.b[0].c[1].label => {index:1, keyPath: a.b[0].c }
+ * eg. a.b.c => {index: null, keyPath: a.b.c }
+ * @param {string} path 
+ */
+export const getRecentPath = (path) => {
   const pathParts = path.split(".");
   let index = null;
-  let key = "";
+  let keyPath = path;
 
   for (let i = pathParts.length - 1; i >= 0; i--) {
     const part = pathParts[i];
     if (/\[\d+\]$/.test(part)) {
       // 检查是否是以 [数字] 结尾的数组索引表示
       index = parseInt(part.match(/\d+/)[0]); // 提取数组索引
-      key = pathParts.slice(0, i).join("."); // 提取索引之前的键
+      keyPath = pathParts.slice(0, i).join("."); // 提取索引之前的键
       break;
     }
   }
 
   return {
     index,
-    key,
+    keyPath,
   };
 };
