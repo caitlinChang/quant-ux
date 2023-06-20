@@ -3,6 +3,8 @@ import { List } from "antd";
 import "./index.less";
 import EventBus from "../eventBus";
 import { set, get } from "lodash";
+import { v4 as uuidv4 } from "uuid";
+import { getCurKey } from "../propertiesPanel/util";
 
 enum ContenxtMenuType {
   ADD_SAME_LEVEL_ITEM = "add same level item",
@@ -39,10 +41,15 @@ export default (props: PropsType) => {
       case ContenxtMenuType.ADD_SUB_ITEM:
         children = get(props.originalProps, props.path) as any;
         _value = children && Array.isArray(children) ? children : [];
-        _value.push({});
+        _value.push({
+          [props.originalProps.label]: "请编辑",
+          [props.originalProps.value]: uuidv4().substr(0, 5),
+        });
         break;
       case ContenxtMenuType.DELETE_ITEM:
+      // _value =
       case ContenxtMenuType.COPY_ITEM:
+
       case ContenxtMenuType.SMART_FILL:
       default:
         break;

@@ -282,3 +282,24 @@ export const getCurKey = (path) => {
   const matches = path.match(regex);
   return matches[0];
 }
+
+export const getCurIndex = (path) => {
+  const pathParts = path.split(".");
+  let index = null;
+  let key = "";
+
+  for (let i = pathParts.length - 1; i >= 0; i--) {
+    const part = pathParts[i];
+    if (/\[\d+\]$/.test(part)) {
+      // 检查是否是以 [数字] 结尾的数组索引表示
+      index = parseInt(part.match(/\d+/)[0]); // 提取数组索引
+      key = pathParts.slice(0, i).join("."); // 提取索引之前的键
+      break;
+    }
+  }
+
+  return {
+    index,
+    key,
+  };
+};
