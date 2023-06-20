@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueWrapper from "../vueWrapper";
+import ContextMenu from '../contextMenu/index.tsx';
 /**
  * 根据 react component 配置信息, 创建一个真实的DOM节点
  * @param {*} componentInfo
@@ -18,3 +19,16 @@ export const createReactRootDom = (componentInfo) => {
   }).$mount();
   return node.$el;
 };
+
+export const createContextMenu = (props) => {
+  console.log('contentMenu props', props);
+  const container = document.createElement("div");
+  const node = new Vue({
+    el: container,
+    render: (h) =>
+      h(ContextMenu, {
+        props
+      }),
+  }).$mount();
+  return node.$el;
+}

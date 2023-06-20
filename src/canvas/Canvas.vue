@@ -87,6 +87,9 @@ import Prototyping from 'canvas/Prototyping'
 import FastDomUtil from 'core/FastDomUtil'
 import SVGEditor from '../svg/SVGEditor'
 
+import EventBus from '../reactTransformer/eventBus/index';
+import { createContextMenu } from '../reactTransformer/util/index'
+
 export default {
   name: 'Canvas',
 	mixins:[DojoWidget, _DragNDrop, Util, Render, Lines, DnD, Add, Select, Distribute, Tools,
@@ -711,6 +714,16 @@ export default {
 		}
 	},
 	mounted () {
+		EventBus.on('ContextMenu',(type, event, props) => {
+			if(type === 'show'){
+				// this.contextMenu
+				const contextMenuDom = createContextMenu(props);
+				this.contextMenu.appendChild(contextMenuDom);
+				css.add(this.contextMenu, 'show');
+			}else if(type === 'close'){
+				console.log('看能不能取到 contextMenu', this.contextMenu)
+			}
+		})
 	},
 	beforeDestroy () {
 		this.logger.log(3,"beforeDestroy", "enter > ");

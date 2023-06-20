@@ -33,10 +33,7 @@ const SlotWrapper = (props: {
     });
   };
   const handleContextMenu = (e: any) => {
-    console.log("handleContextMenu e = ", e);
-    // eventBus.emit(`${props.id}:contenxtMenu`, {
-    //   type: "hide",
-    // });
+    eventBus.emit('ContextMenu','show', e, props)
   };
   return (
     <div
