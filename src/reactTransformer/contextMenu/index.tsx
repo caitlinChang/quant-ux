@@ -2,7 +2,7 @@ import React from "react";
 import { List } from "antd";
 import "./index.less";
 import EventBus from "../eventBus";
-import { set, get } from "lodash";
+import { get } from "lodash";
 import { v4 as uuidv4 } from "uuid";
 import { getRecentPath } from "../util/propsValueUtils";
 import { SlotWrapperProps } from "../slots/SlotWrapper";
@@ -15,12 +15,27 @@ enum ContenxtMenuType {
   SMART_FILL = "smart fill",
 }
 
-const menu = [
-  "add same level item",
-  "add sub item",
-  "delete item",
-  "copy item",
-  "智能填充",
+const menu: { label: string; value: ContenxtMenuType }[] = [
+  {
+    label: "添加同级",
+    value: ContenxtMenuType.ADD_SAME_LEVEL_ITEM,
+  },
+  {
+    label: "添加子级",
+    value: ContenxtMenuType.ADD_SUB_ITEM,
+  },
+  {
+    label: "删除",
+    value: ContenxtMenuType.DELETE_ITEM,
+  },
+  {
+    label: "复制",
+    value: ContenxtMenuType.COPY_ITEM,
+  },
+  {
+    label: "智能填充",
+    value: ContenxtMenuType.SMART_FILL,
+  },
 ];
 
 export type PropsType = SlotWrapperProps & {
@@ -29,27 +44,35 @@ export type PropsType = SlotWrapperProps & {
 
 const getAddItem = (props: PropsType) => {
   // 获取fieldNames
-  return {
-    [props.label]: "请编辑",
-    [props.value]: uuidv4().substr(0, 5),
-  };
+  const { fieldNames } = props;
+  if (!fieldNames) {
+    console.log("获取不到标准的fieldNames，请检查");
+  } else {
+    return {
+      [fieldNames.label]: "请编辑",
+      [fieldNames.value]: uuidv4().substr(0, 5),
+    };
+  }
 };
 
 export default (props: PropsType) => {
-  console.log("contentMenu内部 props = ", props);
   const addItem = getAddItem(props.widgetProps);
 
-  const handleClickMenu = (e: any) => {
+  const filteredMenu = menu;
+
+  const handleClickMenu = (item: {
+    label: string;
+    value: ContenxtMenuType;
+  }) => {
     const { index, keyPath } = getRecentPath(props.path);
     let _value: any = get(props.widgetProps, keyPath);
     let children = [];
     let transfer = null;
-    console.log("index = ", index, "keyPath = ", keyPath, "_value = ", _value);
     if (index === null || !Array.isArray(_value)) {
       return;
     }
 
-    switch (e.target.innerHTML) {
+    switch (item.value) {
       case ContenxtMenuType.ADD_SAME_LEVEL_ITEM:
         _value.splice(index, 0, addItem);
         EventBus.emit("canvasEdit", keyPath, _value);
@@ -86,8 +109,15 @@ export default (props: PropsType) => {
       size="small"
       className="widget-item_context-menu"
       bordered
-      dataSource={menu}
-      renderItem={(item) => <div onClick={handleClickMenu}>{item}</div>}
+      dataSource={filteredMenu}
+      renderItem={(item) => (
+        <div
+          className="widget-item_context-menu-item"
+          onClick={() => handleClickMenu(item)}
+        >
+          {item.label}
+        </div>
+      )}
     />
   );
 };

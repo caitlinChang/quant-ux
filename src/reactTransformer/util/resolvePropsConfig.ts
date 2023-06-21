@@ -37,11 +37,11 @@ export const getTSType = (propsConfig: PropItemConfigType) => {
   }
 };
 
-function renderArray(propsConfig: PropItemConfigType) {
+function renderArray(propConfig: PropItemConfigType) {
   // 也许需要mock数据
-  const fieldNames = getFieldNames(propsConfig);
+  const fieldNames = getFieldNames(propConfig);
   return {
-    ...propsConfig,
+    ...propConfig,
     renderConfig: {
       type: "array",
       fieldNames,

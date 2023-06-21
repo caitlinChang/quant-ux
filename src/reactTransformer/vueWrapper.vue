@@ -18,7 +18,7 @@ import {
 } from "./util/propsValueUtils";
 import { requestComponentProps} from './util/request'
 import { setSlotWrapper } from "./slots/SlotWrapper";
-
+import { getFieldNames } from './util/getFieldNames';
 export default {
   name: "VueWrapper",
   components: {
@@ -55,6 +55,7 @@ export default {
         } else if (info.type === "array") {
           // 检查 array 中每一项的类型
           const itemTypeList = getNestedPropType(info.type, info.properties);
+          const fieldNames = getFieldNames(this.propsConfig[propsName]);
           if (itemTypeList?.length) {
             props[propsName] = props[propsName].map((item, index) => {
               const obj = { ...item };
@@ -65,6 +66,7 @@ export default {
                     widgetId: this.componentInfo.id,
                     widgetProps: this.componentProps,
                     path: `${propsName}[${index}].${key}`,
+                    fieldNames
                   });
                 }
               }

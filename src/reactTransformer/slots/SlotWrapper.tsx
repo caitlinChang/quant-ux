@@ -1,9 +1,11 @@
 import React, { ReactNode } from "react";
 import eventBus from "../eventBus";
+import { StandardArrayItemType } from "../util/getFieldNames";
 export type SlotWrapperProps = {
   path: string;
   widgetId: string;
   widgetProps: any;
+  fieldNames?: StandardArrayItemType;
   children?: ReactNode;
 };
 // import "./slotWrapper.less";
@@ -57,12 +59,7 @@ const SlotWrapper = (props: SlotWrapperProps) => {
  * @param id
  * @returns
  */
-export const setSlotWrapper = (props: {
-  children: ReactNode;
-  path: string;
-  widgetId: string;
-  widgetProps: any;
-}) => {
+export const setSlotWrapper = (props: SlotWrapperProps) => {
   const { children, ...resProps } = props;
   return React.createElement(SlotWrapper, resProps, props.children);
 };
