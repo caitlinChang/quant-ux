@@ -60,10 +60,15 @@ export default (props: PropsType) => {
 
   const filteredMenu = menu;
 
-  const handleClickMenu = (item: {
-    label: string;
-    value: ContenxtMenuType;
-  }) => {
+  const handleClickMenu = (
+    e: any,
+    item: {
+      label: string;
+      value: ContenxtMenuType;
+    }
+  ) => {
+    console.log("click the menu item", item);
+    e.stopPropagation();
     const { index, keyPath } = getRecentPath(props.path);
     let _value: any = get(props.widgetProps, keyPath);
     let children = [];
@@ -102,6 +107,8 @@ export default (props: PropsType) => {
       default:
         break;
     }
+
+    EventBus.emit("ContextMenu", "close");
   };
 
   return (
@@ -113,7 +120,7 @@ export default (props: PropsType) => {
       renderItem={(item) => (
         <div
           className="widget-item_context-menu-item"
-          onClick={() => handleClickMenu(item)}
+          onClick={(e) => handleClickMenu(e, item)}
         >
           {item.label}
         </div>

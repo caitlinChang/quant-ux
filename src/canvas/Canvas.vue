@@ -87,8 +87,9 @@ import Prototyping from 'canvas/Prototyping'
 import FastDomUtil from 'core/FastDomUtil'
 import SVGEditor from '../svg/SVGEditor'
 
-import EventBus from '../reactTransformer/eventBus/index';
-import { createContextMenu } from '../reactTransformer/util/getDom'
+import eventBus from '../reactTransformer/eventBus/index';
+import { createContextMenu } from '../reactTransformer/util/getDom';
+import ReactDom from "react-dom";
 
 export default {
   name: 'Canvas',
@@ -110,7 +111,11 @@ export default {
     components: {
 		SVGEditor
 	},
-    methods: {
+	methods: {
+		onClickContextMenuAway() {
+			eventBus.emit('ContextMenu', 'close');
+		},
+		
 		postCreate (){
 
 			this.logger = new Logger("Canvas")
@@ -714,25 +719,33 @@ export default {
 		}
 	},
 	mounted () {
-		EventBus.on('ContextMenu',(type, event, props) => {
-			if (type === 'show') {
+		eventBus.on('ContextMenu', (type, event, props) => {
+			console.log('this.contextMenu', this.contextMenu);
+			if (type === 'show' && this.contextMenu) {
 				if (this.contextMenu.classList.contains("ContextMenuActive")) {
 					css.remove(this.contextMenu, 'ContextMenuActive');
 					return;
 				}
-				console.log('触发了吗-----', props)
 				createContextMenu(props, this.contextMenu);
 				this.contextMenu.style.left = `${event.clientX}px`;
 				this.contextMenu.style.top = `${event.clientY}px`;
 				css.add(this.contextMenu, 'ContextMenuActive');
 				
-			}else if(type === 'close'){
+			} else if (type === 'close') {
+				if (!this.contextMenu.classList.contains("ContextMenuActive")) {
+					return;
+				}
 				css.remove(this.contextMenu, 'ContextMenuActive');
+				ReactDom.unmountComponentAtNode(this.contextMenu);
+				this.contextMenu.removeAttribute('style');
 			}
 		})
+
+		this.clickContextMenuAway = on(win.body(),"click", lang.hitch(this,"onClickContextMenuAway"));
 	},
 	beforeDestroy () {
-		this.logger.log(3,"beforeDestroy", "enter > ");
+		this.logger.log(3, "beforeDestroy", "enter > ");
+		this.clickContextMenuAway.remove();
 		this.destroy()
 	}
 }

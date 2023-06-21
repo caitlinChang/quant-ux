@@ -20,6 +20,7 @@
   position:fixed;
   z-index: 999999;
   display: none;
+  background-color: #fff;
 }
 .ContextMenuActive {
   display: block;

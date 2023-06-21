@@ -37,6 +37,8 @@ const SlotWrapper = (props: SlotWrapperProps) => {
     });
   };
   const handleContextMenu = (e: any) => {
+    e.stopPropagation();
+    e.preventDefault();
     eventBus.emit("ContextMenu", "show", e, props);
   };
   return (

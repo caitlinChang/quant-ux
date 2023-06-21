@@ -2,6 +2,7 @@
 import domAttr from "dojo/domAttr";
 import css from "dojo/css";
 import on from "dojo/on";
+import eventBus from '../reactTransformer/eventBus';
 
 export default {
   name: "InlineEdit",
@@ -29,7 +30,10 @@ export default {
          */
         this._clickListener = on(this._inlineWrapper, "click", (e) => this.headOffClick(e));
         this._dbclickListener = on(this._inlineWrapper, "dblclick", (e) => this.inlineEditConfirm(e));
-        this._mouseDownListener = on(this._inlineWrapper, "mousedown", (e) => this.stopEvent(e));
+        this._mouseDownListener = on(this._inlineWrapper, "mousedown", (e) => {
+          eventBus.emit('ContextMenu','close')
+          this.stopEvent(e)
+        });
         /** end */
         this._inlineEditResizeToWidth = resizeToWidth;
         this._enterEditWdiget();
