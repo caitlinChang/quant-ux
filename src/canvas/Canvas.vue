@@ -88,7 +88,7 @@ import FastDomUtil from 'core/FastDomUtil'
 import SVGEditor from '../svg/SVGEditor'
 
 import EventBus from '../reactTransformer/eventBus/index';
-import { createContextMenu } from '../reactTransformer/util/index'
+import { createContextMenu } from '../reactTransformer/util/getDom'
 
 export default {
   name: 'Canvas',
@@ -715,13 +715,19 @@ export default {
 	},
 	mounted () {
 		EventBus.on('ContextMenu',(type, event, props) => {
-			if(type === 'show'){
-				// this.contextMenu
-				const contextMenuDom = createContextMenu(props);
-				this.contextMenu.appendChild(contextMenuDom);
-				css.add(this.contextMenu, 'show');
+			if (type === 'show') {
+				if (this.contextMenu.classList.contains("ContextMenuActive")) {
+					css.remove(this.contextMenu, 'ContextMenuActive');
+					return;
+				}
+				console.log('触发了吗-----', props)
+				createContextMenu(props, this.contextMenu);
+				this.contextMenu.style.left = `${event.clientX}px`;
+				this.contextMenu.style.top = `${event.clientY}px`;
+				css.add(this.contextMenu, 'ContextMenuActive');
+				
 			}else if(type === 'close'){
-				console.log('看能不能取到 contextMenu', this.contextMenu)
+				css.remove(this.contextMenu, 'ContextMenuActive');
 			}
 		})
 	},

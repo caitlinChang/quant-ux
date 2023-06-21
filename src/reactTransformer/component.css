@@ -15,3 +15,12 @@
   pointer-events: none;
   z-index:-1;
 }
+
+.ContextMenuWrapper{
+  position:fixed;
+  z-index: 999999;
+  display: none;
+}
+.ContextMenuActive {
+  display: block;
+}

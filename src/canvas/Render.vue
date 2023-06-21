@@ -12,7 +12,7 @@ import SimpleGrid from 'canvas/SimpleGrid'
 import RenderFlow from 'canvas/RenderFlow'
 import Wiring from 'canvas/Wiring'
 import ModelUtil from 'core/ModelUtil'
-import { createReactRootDom } from '../reactTransformer/util/index'
+import { createReactRootDom } from '../reactTransformer/util/getDom'
 
 export default {
     name: 'Render',

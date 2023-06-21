@@ -34,5 +34,5 @@ Object.keys(antdIcons).forEach((key) => {
   // 双驼峰转中划线
   iconMap[getVueTypeName(key, "antd")] = module;
 });
-console.log("iconMap = ", iconMap);
+// console.log("iconMap = ", iconMap);
 export default iconMap;

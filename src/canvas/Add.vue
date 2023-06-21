@@ -4,7 +4,7 @@ import lang from 'dojo/_base/lang'
 import css from 'dojo/css'
 import win from 'dojo/_base/win'
 import ModelUtil from 'core/ModelUtil';
-import { createReactRootDom }  from '../reactTransformer/util/index'
+import { createReactRootDom }  from '../reactTransformer/util/getDom'
 
 
 export default {

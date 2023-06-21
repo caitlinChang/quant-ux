@@ -46,7 +46,12 @@ export default {
       Object.keys(props).forEach((propsName) => {
         const info = getPropType(propsName, this.propsConfig);
         if (info.type === "ReactNode") {
-          props[propsName] = setSlotWrapper(props[propsName], propsName, this.componentInfo.id);
+          props[propsName] = setSlotWrapper({
+            widgetId: this.componentInfo.id,
+            widgetProps: this.componentProps,
+            path: propsName,
+            children: props[propsName],
+          });
         } else if (info.type === "array") {
           // 检查 array 中每一项的类型
           const itemTypeList = getNestedPropType(info.type, info.properties);
@@ -55,7 +60,12 @@ export default {
               const obj = { ...item };
               for (let key in item) {
                 if (itemTypeList.includes(key)) {
-                  obj[key] = setSlotWrapper(item[key],`${propsName}[${index}].${key}`, this.componentInfo.id);
+                  obj[key] = setSlotWrapper({
+                    children: item[key],
+                    widgetId: this.componentInfo.id,
+                    widgetProps: this.componentProps,
+                    path: `${propsName}[${index}].${key}`,
+                  });
                 }
               }
               return obj;
