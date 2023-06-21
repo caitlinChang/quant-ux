@@ -65,7 +65,8 @@
 <script>
 import eventBus from "../eventBus";
 import * as componentProps from "../props/input.json";
-import { getFirstKey, requestComponentProps } from "./util.js";
+import { requestComponentProps } from '../util/request';
+import { getFirstKey } from '../util/propsValueUtils'
 import { getTSType } from "../util/resolvePropsConfig";
 import { set } from "lodash";
 

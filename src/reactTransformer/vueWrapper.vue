@@ -15,8 +15,8 @@ import componentList from "./util/constant";
 import {
   getPropType,
   getNestedPropType,
-  requestComponentProps,
-} from "./propertiesPanel/util";
+} from "./util/propsValueUtils";
+import { requestComponentProps} from './util/request'
 import { setSlotWrapper } from "./slots/SlotWrapper";
 
 export default {

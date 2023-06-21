@@ -1,22 +1,7 @@
-import componentConfigList from "../componentList";
 import { getExactType } from "../util/common";
 import { get } from "lodash";
 
-/**
- * 调接口获取解析后的属性
- * @param {*} componentName
- * @returns
- */
-export const requestComponentProps = async (componentName) => {
-  const str = componentName.split("-")[1];
-  try {
-    const res = require("../props/" + str + ".json"); //await axios.get("../props/" + str + ".json");
-    return res[0];
-  } catch (err) {
-    console.log("获取组件属性失败", err);
-  }
-};
-
+// 该文件中是一些对 props 值的处理方法
 
 /**
  * 获取组件中具体某个属性的类型，用于props中第一层的属性
@@ -26,8 +11,8 @@ export const requestComponentProps = async (componentName) => {
 export const getPropType = (propsName, propsConfig) => {
   const typeName = get(propsConfig, `${propsName}.type.name`);
   const properties = get(propsConfig, `${propsName}.type`);
-  if(!typeName) {
-    return null
+  if (!typeName) {
+    return null;
   }
   const [type, list] = getExactType(typeName);
   return {
@@ -61,20 +46,20 @@ export const getNestedPropType = (type, properties) => {
 /**
  * 根据路径解析出第一个key, 用于把变化的值通知给 props
  * eg. a.b[0].c.name => a
- * @param {string} path 
+ * @param {string} path
  */
-export const getFirstKey = (path) => { 
+export const getFirstKey = (path) => {
   const regex = /(\w+)|(\d+)/g;
   const matches = path.match(regex);
   return matches[0];
-}
+};
 
 /**
  * 方便 contentMenu 操作时对嵌套的，深层级的属性进行处理
  * eg. a.b[0].c.name => { index: 0, keyPath:a.b }
  * eg. a.b[0].c[1].label => {index:1, keyPath: a.b[0].c }
  * eg. a.b.c => {index: null, keyPath: a.b.c }
- * @param {string} path 
+ * @param {string} path
  */
 export const getRecentPath = (path) => {
   const pathParts = path.split(".");

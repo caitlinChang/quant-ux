@@ -4,7 +4,7 @@ import "./index.less";
 import EventBus from "../eventBus";
 import { set, get } from "lodash";
 import { v4 as uuidv4 } from "uuid";
-import { getRecentPath } from "../propertiesPanel/util";
+import { getRecentPath } from "../util/propsValueUtils";
 import { SlotWrapperProps } from "../slots/SlotWrapper";
 
 enum ContenxtMenuType {
