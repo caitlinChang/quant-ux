@@ -64,14 +64,16 @@ export const getFirstKey = (path) => {
 export const getRecentPath = (path) => {
   const pathParts = path.split(".");
   let index = null;
-  let keyPath = path;
+  let keyPath = "";
 
   for (let i = pathParts.length - 1; i >= 0; i--) {
     const part = pathParts[i];
     if (/\[\d+\]$/.test(part)) {
       // 检查是否是以 [数字] 结尾的数组索引表示
       index = parseInt(part.match(/\d+/)[0]); // 提取数组索引
-      keyPath = pathParts.slice(0, i).join("."); // 提取索引之前的键
+      const arr = path.split(`[${index}]`); // 提取索引之前的键
+      arr.pop(); // 去掉最后一个空字符串
+      keyPath = arr.join(".");
       break;
     }
   }

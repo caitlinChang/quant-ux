@@ -1,18 +1,18 @@
 import React from "react";
 import { List } from "antd";
 import "./index.less";
-import EventBus from "../eventBus";
+import eventBus from "../eventBus";
 import { get } from "lodash";
 import { v4 as uuidv4 } from "uuid";
 import { getRecentPath } from "../util/propsValueUtils";
 import { SlotWrapperProps } from "../slots/SlotWrapper";
 
-enum ContenxtMenuType {
-  ADD_SAME_LEVEL_ITEM = "add same level item",
-  ADD_SUB_ITEM = "add sub item",
-  DELETE_ITEM = "delete item",
-  COPY_ITEM = "copy item",
-  SMART_FILL = "smart fill",
+export enum ContenxtMenuType {
+  ADD_SAME_LEVEL_ITEM,
+  ADD_SUB_ITEM,
+  DELETE_ITEM,
+  COPY_ITEM,
+  SMART_FILL,
 }
 
 const menu: { label: string; value: ContenxtMenuType }[] = [
@@ -38,11 +38,14 @@ const menu: { label: string; value: ContenxtMenuType }[] = [
   },
 ];
 
-export type PropsType = SlotWrapperProps & {
-  hasChildren?: boolean;
+const onFilter = (menu, props) => {
+  const { meta } = props;
+  let newMenu = [...menu];
+  newMenu = newMenu.filter((item) => meta.includes(item.value));
+  return newMenu;
 };
 
-const getAddItem = (props: PropsType) => {
+const getAddItem = (props: SlotWrapperProps) => {
   // 获取fieldNames
   const { fieldNames } = props;
   if (!fieldNames) {
@@ -55,10 +58,9 @@ const getAddItem = (props: PropsType) => {
   }
 };
 
-export default (props: PropsType) => {
-  const addItem = getAddItem(props.widgetProps);
-
-  const filteredMenu = menu;
+export default (props: SlotWrapperProps) => {
+  const addItem = getAddItem(props);
+  const filteredMenu = onFilter(menu, props);
 
   const handleClickMenu = (
     e: any,
@@ -67,9 +69,9 @@ export default (props: PropsType) => {
       value: ContenxtMenuType;
     }
   ) => {
-    console.log("click the menu item", item);
     e.stopPropagation();
     const { index, keyPath } = getRecentPath(props.path);
+
     let _value: any = get(props.widgetProps, keyPath);
     let children = [];
     let transfer = null;
@@ -79,27 +81,27 @@ export default (props: PropsType) => {
 
     switch (item.value) {
       case ContenxtMenuType.ADD_SAME_LEVEL_ITEM:
-        _value.splice(index, 0, addItem);
-        EventBus.emit("canvasEdit", keyPath, _value);
+        _value.splice(index + 1, 0, addItem);
+        eventBus.emit("canvasEdit", keyPath, _value, true);
         break;
       case ContenxtMenuType.ADD_SUB_ITEM:
         children = _value[index].children || [];
         children.unshift(addItem);
-
-        EventBus.emit(
+        eventBus.emit(
           "canvasEdit",
           `${keyPath}[${index}].${children}`,
-          children
+          children,
+          true
         );
         break;
       case ContenxtMenuType.DELETE_ITEM:
         _value.splice(index, 1);
-        EventBus.emit("canvasEdit", keyPath, _value);
+        eventBus.emit("canvasEdit", keyPath, _value, true);
         break;
       case ContenxtMenuType.COPY_ITEM:
         transfer = _value[index];
         _value.splice(index, 0, transfer);
-        EventBus.emit("canvasEdit", keyPath, _value);
+        eventBus.emit("canvasEdit", keyPath, _value, true);
         break;
       case ContenxtMenuType.SMART_FILL:
         console.log("暂不支持此功能");
@@ -108,7 +110,7 @@ export default (props: PropsType) => {
         break;
     }
 
-    EventBus.emit("ContextMenu", "close");
+    eventBus.emit("ContextMenu", "close");
   };
 
   return (

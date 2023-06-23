@@ -19,6 +19,7 @@ import {
 import { requestComponentProps} from './util/request'
 import { setSlotWrapper } from "./slots/SlotWrapper";
 import { getFieldNames } from './util/getFieldNames';
+
 export default {
   name: "VueWrapper",
   components: {
@@ -48,9 +49,10 @@ export default {
         if (info.type === "ReactNode") {
           props[propsName] = setSlotWrapper({
             widgetId: this.componentInfo.id,
-            widgetProps: this.componentProps,
+            widgetProps: this.componentInfo.props,
             path: propsName,
             children: props[propsName],
+            meta:[4]
           });
         } else if (info.type === "array") {
           // 检查 array 中每一项的类型
@@ -64,9 +66,10 @@ export default {
                   obj[key] = setSlotWrapper({
                     children: item[key],
                     widgetId: this.componentInfo.id,
-                    widgetProps: this.componentProps,
+                    widgetProps: this.componentInfo.props,
                     path: `${propsName}[${index}].${key}`,
-                    fieldNames
+                    fieldNames,
+                    meta:[0,2,4]
                   });
                 }
               }
@@ -91,6 +94,8 @@ export default {
         const { type, path } = props;
         // console.log(type, path);
       })
+
+      // console.log('this.componentProps = ', this.componentProps, this.componentInfo)
     }
   },
   unmounted() {

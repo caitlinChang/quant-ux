@@ -720,7 +720,6 @@ export default {
 	},
 	mounted () {
 		eventBus.on('ContextMenu', (type, event, props) => {
-			console.log('this.contextMenu', this.contextMenu);
 			if (type === 'show' && this.contextMenu) {
 				if (this.contextMenu.classList.contains("ContextMenuActive")) {
 					css.remove(this.contextMenu, 'ContextMenuActive');

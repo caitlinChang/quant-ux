@@ -169,11 +169,18 @@ export default {
     },
   },
   mounted() {
-    eventBus.on("canvasEdit", (path, value) => {
+    eventBus.on("canvasEdit", (path, value, updateCanvas) => {
       // 通知 model 更新
       const key = getFirstKey(path);
       const newValue = set(this.formData, path, value);
-      console.log('接受到 canvas 编辑变化', key, newValue[key])
+      
+      if (updateCanvas) {
+        // 通过contextMenu 修改的值，需要通过 eventBus 通知组件更新
+        console.log('接受到 canvas 编辑变化', this.selectedId)
+        eventBus.emit(`${this.selectedId}:updateProps`, {
+          [key]: newValue[key],
+        });
+      }
       this.$emit("setComponentProps", key, newValue[key]);
     });
   },

@@ -3,7 +3,8 @@ import React from "react";
 import ReactDom from "react-dom";
 // @ts-ignore
 import VueWrapper from "../vueWrapper";
-import ContextMenu, { PropsType as ContextMenuProps } from "../contextMenu";
+import ContextMenu from "../contextMenu";
+import { SlotWrapperProps } from "../slots/SlotWrapper";
 /**
  * 根据 react component 配置信息, 创建一个真实的DOM节点
  * 这里用了一个 VueWrapper 组件, 用来包裹 react 组件，使用
@@ -25,10 +26,7 @@ export const createReactRootDom = (componentInfo) => {
   return node.$el;
 };
 
-export const createContextMenu = (
-  props: ContextMenuProps,
-  container: HTMLElement
-) => {
+export const createContextMenu = (props: SlotWrapperProps, container: HTMLElement) => {
   const element = React.createElement(ContextMenu, props);
   ReactDom.render(element, container);
 };

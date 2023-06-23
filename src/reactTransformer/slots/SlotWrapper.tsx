@@ -1,22 +1,29 @@
 import React, { ReactNode } from "react";
 import eventBus from "../eventBus";
 import { StandardArrayItemType } from "../util/getFieldNames";
+import { ContenxtMenuType } from "../contextMenu/index";
+
 export type SlotWrapperProps = {
   path: string;
   widgetId: string;
   widgetProps: any;
   fieldNames?: StandardArrayItemType;
   children?: ReactNode;
+  meta?: ContenxtMenuType[];
 };
+
 // import "./slotWrapper.less";
+
 // 这里也存在两种情况，一种是可以拖拽替换，另外一种是编辑内部的文本，如何区分这两种情况, JSDoc???
 // 暂时不考虑拖拽替换的情况
+
 const SlotWrapper = (props: SlotWrapperProps) => {
   const handleBlur = (e: any) => {
     const value = e.target.innerHTML;
     // 通知 Model 更新props
     eventBus.emit("canvasEdit", props.path, value);
   };
+
   const handleMouseenter = (e: any) => {
     console.log(
       "handleMouseenter e = ",
@@ -39,6 +46,7 @@ const SlotWrapper = (props: SlotWrapperProps) => {
   const handleContextMenu = (e: any) => {
     e.stopPropagation();
     e.preventDefault();
+    // 展示快捷菜单
     eventBus.emit("ContextMenu", "show", e, props);
   };
   return (
