@@ -176,7 +176,6 @@ export default {
       
       if (updateCanvas) {
         // 通过contextMenu 修改的值，需要通过 eventBus 通知组件更新
-        console.log('接受到 canvas 编辑变化', this.selectedId)
         eventBus.emit(`${this.selectedId}:updateProps`, {
           [key]: newValue[key],
         });

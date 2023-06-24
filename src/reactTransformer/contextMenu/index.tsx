@@ -42,6 +42,14 @@ const onFilter = (menu, props) => {
   const { meta } = props;
   let newMenu = [...menu];
   newMenu = newMenu.filter((item) => meta.includes(item.value));
+  // 如果只剩一个则不能再删除
+  const { index, keyPath } = getRecentPath(props.path);
+  const value = get(props.widgetProps, keyPath);
+  if (index === 0 && value?.length === 1) {
+    newMenu = newMenu.filter(
+      (item) => item.value !== ContenxtMenuType.DELETE_ITEM
+    );
+  }
   return newMenu;
 };
 

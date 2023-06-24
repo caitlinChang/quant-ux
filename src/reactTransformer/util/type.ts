@@ -11,6 +11,9 @@ export type PropItemConfigType = {
     name: TypeName;
     item?: any;
   };
+  controlledEvent?: boolean;
+  controlledState?: boolean;
+  valuePath?: string;
 };
 
 // 定义解析propsConfig后的类型，是前端渲染 propertiesPanel 和 渲染到画布时要处理的数据类型

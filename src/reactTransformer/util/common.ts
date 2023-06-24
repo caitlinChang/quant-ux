@@ -29,3 +29,27 @@ export const getExactType = (name: PropItemConfigType["type"]["name"]) => {
   }
   return [name, null];
 };
+
+// 从 propsConfig 中找到 受控组件的事件和状态字段
+export const findControlledProps = (propsConfig: {
+  [key: string]: PropItemConfigType;
+}) => { 
+  const controlledProps: {
+    value?: string;
+    onChange?: string;
+    valuePath?: string;
+  } = {}
+  Object.entries(propsConfig).forEach(([key,item]) => {
+    if (item.controlledState) {
+      controlledProps.value = key
+    }
+    if(item.controlledEvent) {
+      controlledProps.onChange = key
+      controlledProps.valuePath = item.valuePath
+    }
+  });
+  if (controlledProps.value && controlledProps.onChange) { 
+    return controlledProps
+  }
+  return null;
+}

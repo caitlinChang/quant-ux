@@ -77,6 +77,17 @@
             "name": "MenuProps"
           }
         ],
+        "mock": [
+          {
+            "danger": true,
+            "disabled": "boolean",
+            "icon": "ReactNode",
+            "key": "string",
+            "label": "ReactNode",
+            "title": "string",
+            "children": "ItemType[]"
+          }
+        ],
         "required": false,
         "type": {
           "name": "ItemType[]",
@@ -125,6 +136,8 @@
           }
         ],
         "required": false,
+        "controlledEvent": true,
+        "valuePath": "selectedKeys",
         "type": {
           "name": "SelectEventHandler"
         }
@@ -5299,8 +5312,9 @@
       },
       "selectedKeys": {
         "defaultValue": null,
-        "description": "",
+        "description": "controlledState",
         "name": "selectedKeys",
+        "controlledState": true,
         "parent": {
           "fileName": "ant-design-4.24.10/node_modules/rc-menu/lib/Menu.d.ts",
           "name": "MenuProps"

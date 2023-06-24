@@ -19,6 +19,7 @@ import {
 import { requestComponentProps} from './util/request'
 import { setSlotWrapper } from "./slots/SlotWrapper";
 import { getFieldNames } from './util/getFieldNames';
+import { findControlledProps } from './util/common';
 
 export default {
   name: "VueWrapper",
@@ -28,18 +29,39 @@ export default {
   props: ["componentInfo"],
   data() {
     return {
+      value: undefined,
+      controlledNames: null,
       selectedId: "",
       componentProps: {},
       propsConfig: {},
-      showAction:true
+      showAction: true,
     };
   },
   methods: {
+    onChange(value) { 
+      let _value = value;
+      if (this.controlledNames.valuePath) {
+        _value = value[this.controlledNames.valuePath]
+      }
+      this.value = _value;
+      // 更新props
+      eventBus.emit(`canvasEdit`, this.controlledNames.value,_value,false);
+    },
     async resolveComponentProps(name, id) {
       const res = await requestComponentProps(name);
       this.propsConfig = res.props;
-      const newProps = JSON.parse(JSON.stringify(this.componentInfo.props));
+      let newProps = JSON.parse(JSON.stringify(this.componentInfo.props));
       this.handleProps(newProps);
+      
+      const controlledNames = findControlledProps(this.propsConfig);
+      if (controlledNames) {
+        this.controlledNames = controlledNames;
+        newProps = {
+          ...newProps,
+          [controlledNames.value]: newProps[controlledNames.value] || this.value,
+          [controlledNames.onChange]: this.onChange,
+        }
+      }
       this.componentProps = newProps;
     },
     //处理组件的 props，如果某个props类型是 ReactNode, 要包裹上一层元素，用于处理数据同步
@@ -79,6 +101,10 @@ export default {
         }
       });
     },
+    // 对受控组件的处理
+    controlledComponent() {
+      
+    }
   },
   mounted() {
     if (this.componentInfo.id) {
@@ -90,12 +116,7 @@ export default {
         this.componentProps = newProps;
       });
 
-      eventBus.on(`${this.componentInfo.id}:action`, (props) => {
-        const { type, path } = props;
-        // console.log(type, path);
-      })
-
-      // console.log('this.componentProps = ', this.componentProps, this.componentInfo)
+      console.log('this.componentProps = ', this.componentProps, this.componentInfo)
     }
   },
   unmounted() {
