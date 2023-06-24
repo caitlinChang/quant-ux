@@ -20,6 +20,7 @@ import { requestComponentProps} from './util/request'
 import { setSlotWrapper } from "./slots/SlotWrapper";
 import { getFieldNames } from './util/getFieldNames';
 import { findControlledProps } from './util/common';
+import { getMockData } from './util/mock'
 
 export default {
   name: "VueWrapper",
@@ -50,7 +51,14 @@ export default {
     async resolveComponentProps(name, id) {
       const res = await requestComponentProps(name);
       this.propsConfig = res.props;
-      let newProps = JSON.parse(JSON.stringify(this.componentInfo.props));
+      let newProps = {};
+      if (this.componentInfo.props && Object.keys(this.componentInfo.props).length) {
+        newProps = JSON.parse(JSON.stringify(this.componentInfo.props));
+      } else {
+        newProps = this.setMockDataForProps(res.props);
+      }
+      
+      console.log('newProps = ', newProps);
       this.handleProps(newProps);
       
       const controlledNames = findControlledProps(this.propsConfig);
@@ -100,6 +108,17 @@ export default {
           }
         }
       });
+    },
+    setMockDataForProps(propsConfig) { 
+      // const res = await requestComponentProps(componentName);
+      const data = {};
+      Object.entries(propsConfig).forEach(([key, item]) => {
+        if (item.needMock) {
+          data[key] = getMockData(propsConfig[key]);
+        }
+      });
+      console.log('mockData = ', data);
+      return data;
     },
     // 对受控组件的处理
     controlledComponent() {

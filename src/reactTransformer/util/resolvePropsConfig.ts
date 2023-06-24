@@ -3,11 +3,15 @@ import { getExactType } from "./common";
 import { PropItemConfigType } from "./type";
 
 // 判断它的 TS 类型是什么，然后决定如何渲染配置
-export const getTSType = (propsConfig: PropItemConfigType) => {
+export const getTSType = (propsConfig: any) => {
   const [type, list] = getExactType(propsConfig.type.name);
 
   // 过滤掉一些 className 的配置，或者AriaAttributes的配置
   if (/className|ClassName|aria-/.test(propsConfig.name)) {
+    return null;
+  }
+  // 过滤掉 HTMLAttributes 的配置
+  if (["HTMLAttributes"].includes(propsConfig.declarations.name)) {
     return null;
   }
   // 过滤掉没有 description 的

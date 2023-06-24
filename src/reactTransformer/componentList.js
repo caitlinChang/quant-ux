@@ -184,19 +184,19 @@ const componentConfigList = [
     displayName: "菜单",
     cagegory: "表单",
     component: "antd-menu",
-    props: {
-      items: [
-        {
-          label: "菜单一",
-          key: 0,
-        },
-        {
-          label: "菜单二",
-          key: 1,
-        },
-      ],
-    },
+    // props: {
+    //   items: [
+    //     {
+    //       label: "菜单一",
+    //       key: 0,
+    //     },
+    //     {
+    //       label: "菜单二",
+    //       key: 1,
+    //     },
+    //   ],
   },
+  // },
   {
     _type: "antd4",
     w: 500,

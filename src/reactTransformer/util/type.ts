@@ -1,7 +1,12 @@
-import { ReactNode } from "react";
 import { StandardArrayItemType } from "./getFieldNames";
 
-type TypeName = ReactNode | "string" | "number" | "boolean" | "array";
+export type TypeName =
+  | "ReactNode"
+  | "string"
+  | "number"
+  | "boolean"
+  | "array"
+  | "ICON";
 
 // 定义前后端协议 propsConfig是每个配置项的信息，包括类型和默认值等等
 export type PropItemConfigType = {
@@ -11,6 +16,7 @@ export type PropItemConfigType = {
     name: TypeName;
     item?: any;
   };
+  needMock?: boolean; // 是否需要mock数据去填充
   controlledEvent?: boolean;
   controlledState?: boolean;
   valuePath?: string;
