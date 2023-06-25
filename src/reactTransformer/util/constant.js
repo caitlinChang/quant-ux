@@ -2,13 +2,23 @@ import * as antdComponents from "antd";
 
 const componentMap = {};
 
-const getVueTypeName = (key, prefix) => {
+export const getVueTypeName = (key, prefix) => {
   const name = key
     .replace(/([A-Z])/g, "-$1")
     .toLowerCase()
     .replace(/^-/, "");
   return prefix ? `${prefix}-${name}` : name;
 };
+
+export function revertName(name) {
+  const words = name.split("-");
+  words.shift();
+  const capitalizedWords = words.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1)
+  );
+  return capitalizedWords.join("");
+}
+
 
 const nextComponent = ["Button", "Typography", "Radio", "Checkbox"];
 

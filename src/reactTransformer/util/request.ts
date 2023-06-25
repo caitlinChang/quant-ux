@@ -10,5 +10,8 @@ export const requestComponentProps = async (componentName) => {
     return res[0];
   } catch (err) {
     console.log("获取组件属性失败", err);
+    return {
+      props: {},
+    };
   }
 };

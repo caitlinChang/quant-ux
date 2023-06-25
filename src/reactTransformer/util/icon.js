@@ -1,17 +1,8 @@
 import * as antdIcons from "@ant-design/icons";
+import { revertName, getVueTypeName } from "./constant";
 
 const iconMap = {};
-
-export const getVueTypeName = (key, prefix) => {
-  const name = key
-    .replace(/([A-Z])/g, "-$1")
-    .toLowerCase()
-    .replace(/^-/, "");
-  return prefix ? `${prefix}-${name}` : name;
-};
-
 const nextComponent = ["Button", "Typography", "Radio", "Checkbox"];
-
 
 Object.keys(antdIcons).forEach((key) => {
   if (!antdIcons[key]) return;
@@ -32,5 +23,18 @@ Object.keys(antdIcons).forEach((key) => {
   }
   // 双驼峰转中划线
   iconMap[getVueTypeName(key, "antd")] = module;
+});
+
+export const iconList = Object.keys(iconMap).map((key) => {
+  return {
+    _type: "antd4",
+    w: 30,
+    h: 30,
+    name: key,
+    displayName: revertName(key),
+    cagegory: "ICON",
+    component: key,
+    props: {},
+  };
 });
 export default iconMap;

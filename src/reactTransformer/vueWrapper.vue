@@ -12,6 +12,7 @@
 <script>
 import eventBus from "./eventBus";
 import componentList from "./util/constant";
+import iconMap from './util/icon';
 import {
   getPropType,
   getNestedPropType,
@@ -26,6 +27,7 @@ export default {
   name: "VueWrapper",
   components: {
     ...componentList,
+    ...iconMap
   },
   props: ["componentInfo"],
   data() {
@@ -60,9 +62,7 @@ export default {
       }
 
       // 对原始的props 做层slotWrapper 方便画布操作
-      console.log('prev newProps = ', {...newProps})
       this.handleProps(newProps);
-      console.log('newProps = ', newProps);
       const controlledNames = findControlledProps(this.propsConfig);
       if (controlledNames) {
         this.controlledNames = controlledNames;

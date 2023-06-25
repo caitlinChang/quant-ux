@@ -14,16 +14,29 @@
         </div>
       </div>
     </div>
-    <h1>布局</h1>
-    <h1>Formula</h1>
+    <!-- <h1>布局</h1>
+    <h1>Formula</h1> -->
     <h1>Icon</h1>
+    <div class="custome-widget-wrapper">
+      <div v-for="item in iconList" :key="item.name">
+        <div
+          class="antd4-icon-warpper"
+          @click="(e) => $emit('onclick', { ...item }, e)"
+        >
+          <div>
+            <component :is="item.component" v-bind="{ ...iconProps }" />
+          </div>
+          <!-- <span class="display-name">{{ item.displayName }}</span> -->
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import componentList from "./componentList.js";
 import componentMap from "./util/constant";
-import iconMap from "./util/icon";
+import iconMap, { iconList } from "./util/icon";
 
 export default {
   name: "ReactComponent",
@@ -40,6 +53,13 @@ export default {
   data() {
     return {
       componentList,
+      iconList,
+      iconProps: {
+        style: {
+          fontSize: '18px',
+          margin:'6px'
+        }
+      }
     };
   },
   methods: {},
@@ -82,5 +102,13 @@ export default {
   width: 100%;
   position: absolute;
   bottom: 5px;
+}
+.antd4-icon-warpper {
+  margin: 10px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  width: 30px;
+  height:30px;
+  box-sizing: border-box;
 }
 </style>

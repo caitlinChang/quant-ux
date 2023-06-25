@@ -6,14 +6,17 @@ import { get } from "lodash";
 import { v4 as uuidv4 } from "uuid";
 import { getRecentPath } from "../util/propsValueUtils";
 import { SlotWrapperProps } from "../slots/SlotWrapper";
+import { deleteParam } from "../util/setPropsValue";
 
 export enum ContenxtMenuType {
   ADD_SAME_LEVEL_ITEM,
   ADD_SUB_ITEM,
-  DELETE_ITEM,
+  DELETE_ITEM, // 删除数据中的这一项
   COPY_ITEM,
   SMART_FILL,
   REPLACE_ICON,
+  DELETE, // 删除这个字段，或者将这个字段的值置为null
+  ADD_ICON,
 }
 
 const menu: { label: string; value: ContenxtMenuType }[] = [
@@ -38,8 +41,16 @@ const menu: { label: string; value: ContenxtMenuType }[] = [
     value: ContenxtMenuType.SMART_FILL,
   },
   {
-    label: "替换ICON",
+    label: "替换 ICON",
     value: ContenxtMenuType.REPLACE_ICON,
+  },
+  {
+    label: "删除",
+    value: ContenxtMenuType.DELETE,
+  },
+  {
+    label: "添加 ICON",
+    value: ContenxtMenuType.ADD_ICON,
   },
 ];
 
@@ -118,6 +129,16 @@ export default (props: SlotWrapperProps) => {
         break;
       case ContenxtMenuType.SMART_FILL:
         console.log("暂不支持此功能");
+        break;
+      case ContenxtMenuType.REPLACE_ICON:
+        // 打开 widgets 选择面板
+        break;
+      case ContenxtMenuType.DELETE:
+        transfer = deleteParam(props.path, props.widgetProps);
+        eventBus.emit("canvasEdit", keyPath, transfer[keyPath], true);
+        break;
+      case ContenxtMenuType.ADD_ICON:
+        // 打开 widgets 选择面板
         break;
       default:
         break;
