@@ -5,6 +5,7 @@ import { PropItemConfigType, TypeName } from "./type";
 import { getExactType } from "./common";
 import { v4 as uuidv4 } from "uuid";
 import { SpecialKey } from "./specialKey";
+import { ControlOutlined } from "@ant-design/icons";
 
 function getRandomBoolean() {
   return Math.random() < 0.5;
@@ -20,7 +21,11 @@ export const getMockDataByType = (keyName, type: TypeName): any => {
     return false;
   }
   if (keyName === SpecialKey.ICON) {
-    return <div>ICON</div>;
+      return React.createElement(ControlOutlined, {
+        style: {
+          padding: "5px",
+        },
+      });
   }
   switch (type) {
     case "string":
@@ -28,9 +33,9 @@ export const getMockDataByType = (keyName, type: TypeName): any => {
     case "number":
       return getRandomInteger();
     // case "boolean":
-    //   return getRandomBoolean(); //??? boolean 类型的到底需不需要mock呢
+    //   return getRandomBoolean(); //??? boolean 类型应该需要取默认值，而不是随机mock
     case "ReactNode":
-      return <div>TaskFlow Editor</div>;
+      return "TaskFlow Editor";
     default:
       return undefined;
   }

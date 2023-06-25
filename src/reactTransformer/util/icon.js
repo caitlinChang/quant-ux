@@ -12,7 +12,6 @@ const getVueTypeName = (key, prefix) => {
 
 const nextComponent = ["Button", "Typography", "Radio", "Checkbox"];
 
-console.log("antdIcons = ", antdIcons);
 
 Object.keys(antdIcons).forEach((key) => {
   if (!antdIcons[key]) return;
@@ -34,5 +33,4 @@ Object.keys(antdIcons).forEach((key) => {
   // 双驼峰转中划线
   iconMap[getVueTypeName(key, "antd")] = module;
 });
-// console.log("iconMap = ", iconMap);
 export default iconMap;

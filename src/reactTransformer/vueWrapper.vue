@@ -52,15 +52,15 @@ export default {
       const res = await requestComponentProps(name);
       this.propsConfig = res.props;
       let newProps = {};
+      console.log('this.componentInfo.props = ', this.componentInfo.props);
       if (this.componentInfo.props && Object.keys(this.componentInfo.props).length) {
         newProps = JSON.parse(JSON.stringify(this.componentInfo.props));
       } else {
         newProps = this.setMockDataForProps(res.props);
       }
       
-      console.log('newProps = ', newProps);
       this.handleProps(newProps);
-      
+      console.log('newProps = ', newProps);
       const controlledNames = findControlledProps(this.propsConfig);
       if (controlledNames) {
         this.controlledNames = controlledNames;
@@ -110,14 +110,12 @@ export default {
       });
     },
     setMockDataForProps(propsConfig) { 
-      // const res = await requestComponentProps(componentName);
       const data = {};
       Object.entries(propsConfig).forEach(([key, item]) => {
         if (item.needMock) {
           data[key] = getMockData(propsConfig[key]);
         }
       });
-      console.log('mockData = ', data);
       return data;
     },
     // 对受控组件的处理

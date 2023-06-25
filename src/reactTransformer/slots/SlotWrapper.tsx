@@ -50,7 +50,7 @@ const SlotWrapper = (props: SlotWrapperProps) => {
     eventBus.emit("ContextMenu", "show", e, props);
   };
   return (
-    <div
+    <span
       className="slot-wrapper can-edit"
       // onMouseOver={handleMouseenter}
       // onMouseOut={handleMouseleave}
@@ -58,7 +58,7 @@ const SlotWrapper = (props: SlotWrapperProps) => {
       onBlur={handleBlur}
     >
       {props.children}
-    </div>
+    </span>
   );
 };
 /**
