@@ -5,7 +5,7 @@ import { PropItemConfigType, TypeName } from "./type";
 import { getExactType } from "./common";
 import { v4 as uuidv4 } from "uuid";
 import { SpecialKey } from "./specialKey";
-import { ControlOutlined } from "@ant-design/icons";
+// import { ControlOutlined } from "@ant-design/icons";
 
 function getRandomBoolean() {
   return Math.random() < 0.5;
@@ -21,11 +21,14 @@ export const getMockDataByType = (keyName, type: TypeName): any => {
     return false;
   }
   if (keyName === SpecialKey.ICON) {
-      return React.createElement(ControlOutlined, {
-        style: {
-          padding: "5px",
+      return [
+        "ControlOutlined",
+        {
+          style: {
+            padding: "5px",
+          },
         },
-      });
+      ];
   }
   switch (type) {
     case "string":

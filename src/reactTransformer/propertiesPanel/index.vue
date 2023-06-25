@@ -158,7 +158,10 @@ export default {
       this.resolveComponentProps(widget.component);
       setTimeout(() => {
         const { props } = widget;
-        this.formData = JSON.parse(JSON.stringify(props));
+        // TODO: 这一段逻辑与 mock 后setFormData的逻辑要优化
+        if (Object.keys(props).length) {
+          this.formData = JSON.parse(JSON.stringify(props));
+        }
       });
     },
     clearPropertiesPanel() {
@@ -170,7 +173,18 @@ export default {
   },
   mounted() {
     eventBus.on("canvasEdit", (path, value, updateCanvas) => {
+      
       // 通知 model 更新
+      if (!path) {
+        // 传入的不是props中的某个字段，而是整个props
+        setTimeout(() => {
+          this.formData = {...value};
+        })
+        Object.keys(value).forEach((key) => {
+          this.$emit("setComponentProps", key, value[key]);
+        })
+        return;
+      }
       const key = getFirstKey(path);
       const newValue = set(this.formData, path, value);
       

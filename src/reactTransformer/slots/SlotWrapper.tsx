@@ -2,6 +2,10 @@ import React, { ReactNode } from "react";
 import eventBus from "../eventBus";
 import { StandardArrayItemType } from "../util/getFieldNames";
 import { ContenxtMenuType } from "../contextMenu/index";
+import componentList from "../util/constant";
+import iconList, { getVueTypeName } from "../util/icon";
+
+const componentMap = { ...componentList, ...iconList };
 
 export type SlotWrapperProps = {
   path: string;
@@ -49,6 +53,18 @@ const SlotWrapper = (props: SlotWrapperProps) => {
     // 展示快捷菜单
     eventBus.emit("ContextMenu", "show", e, props);
   };
+
+  const renderChildren = () => {
+    const { children } = props;
+    if (typeof children === "string") {
+      return children;
+    } else {
+      const [componentName, componentProps] = children;
+      const _name = getVueTypeName(componentName, "antd");
+      return React.createElement(componentMap[_name], componentProps);
+    }
+  };
+
   return (
     <span
       className="slot-wrapper can-edit"
@@ -57,7 +73,7 @@ const SlotWrapper = (props: SlotWrapperProps) => {
       onContextMenu={handleContextMenu}
       onBlur={handleBlur}
     >
-      {props.children}
+      {renderChildren()}
     </span>
   );
 };

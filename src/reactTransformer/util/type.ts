@@ -32,3 +32,13 @@ export type RenderConfigType = {
   };
   props?: any;
 } | null;
+
+// 这里的string 是一个 componentName
+export type ReactNodeProp =
+  | [string]
+  | [
+      string,
+      {
+        [key: string]: any;
+      }
+    ];

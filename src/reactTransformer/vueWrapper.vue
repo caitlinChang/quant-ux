@@ -52,13 +52,15 @@ export default {
       const res = await requestComponentProps(name);
       this.propsConfig = res.props;
       let newProps = {};
-      console.log('this.componentInfo.props = ', this.componentInfo.props);
       if (this.componentInfo.props && Object.keys(this.componentInfo.props).length) {
         newProps = JSON.parse(JSON.stringify(this.componentInfo.props));
       } else {
         newProps = this.setMockDataForProps(res.props);
+        eventBus.emit('canvasEdit', '', {...newProps}, false)
       }
-      
+
+      // 对原始的props 做层slotWrapper 方便画布操作
+      console.log('prev newProps = ', {...newProps})
       this.handleProps(newProps);
       console.log('newProps = ', newProps);
       const controlledNames = findControlledProps(this.propsConfig);
@@ -79,7 +81,7 @@ export default {
         if (info.type === "ReactNode") {
           props[propsName] = setSlotWrapper({
             widgetId: this.componentInfo.id,
-            widgetProps: this.componentInfo.props,
+            widgetProps: { ...this.componentInfo.props },
             path: propsName,
             children: props[propsName],
             meta:[4]
@@ -96,7 +98,7 @@ export default {
                   obj[key] = setSlotWrapper({
                     children: item[key],
                     widgetId: this.componentInfo.id,
-                    widgetProps: this.componentInfo.props,
+                    widgetProps:  { ...this.componentInfo.props },
                     path: `${propsName}[${index}].${key}`,
                     fieldNames,
                     meta:[0,2,4]
@@ -133,7 +135,6 @@ export default {
         this.componentProps = newProps;
       });
 
-      console.log('this.componentProps = ', this.componentProps, this.componentInfo)
     }
   },
   unmounted() {

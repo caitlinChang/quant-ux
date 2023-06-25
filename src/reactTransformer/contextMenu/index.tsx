@@ -13,6 +13,7 @@ export enum ContenxtMenuType {
   DELETE_ITEM,
   COPY_ITEM,
   SMART_FILL,
+  REPLACE_ICON,
 }
 
 const menu: { label: string; value: ContenxtMenuType }[] = [
@@ -35,6 +36,10 @@ const menu: { label: string; value: ContenxtMenuType }[] = [
   {
     label: "智能填充",
     value: ContenxtMenuType.SMART_FILL,
+  },
+  {
+    label: "替换ICON",
+    value: ContenxtMenuType.REPLACE_ICON,
   },
 ];
 

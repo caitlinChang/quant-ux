@@ -2,7 +2,7 @@ import * as antdIcons from "@ant-design/icons";
 
 const iconMap = {};
 
-const getVueTypeName = (key, prefix) => {
+export const getVueTypeName = (key, prefix) => {
   const name = key
     .replace(/([A-Z])/g, "-$1")
     .toLowerCase()
