@@ -21,13 +21,14 @@ import { requestComponentProps} from './util/request'
 import { setSlotWrapper } from "./slots/SlotWrapper";
 import { getFieldNames } from './util/getFieldNames';
 import { findControlledProps } from './util/common';
-import { getMockData } from './util/mock'
+import { getMockData } from './util/mock';
+import { clone } from 'lodash';
 
 export default {
   name: "VueWrapper",
   components: {
     ...componentList,
-    ...iconMap
+    ...iconMap,
   },
   props: ["componentInfo"],
   data() {
@@ -35,8 +36,9 @@ export default {
       value: undefined,
       controlledNames: null,
       selectedId: "",
-      componentProps: {},
-      propsConfig: {},
+      componentProps: {}, // 经过 handleProps处理过后的，真正的传给组件的参数
+      rawProps:{}, // 原始的 props， 在model中存储的props数据模型
+      propsConfig: {}, // props的类型配置信息
       showAction: true,
     };
   },
@@ -54,10 +56,12 @@ export default {
       const res = await requestComponentProps(name);
       this.propsConfig = res.props;
       let newProps = {};
-      if (this.componentInfo.props && Object.keys(this.componentInfo.props).length) {
-        newProps = JSON.parse(JSON.stringify(this.componentInfo.props));
+      this.rawProps = this.componentInfo.props;
+      if (this.rawProps && Object.keys(this.rawProps).length) {
+        newProps = clone(this.rawProps);
       } else {
-        newProps = this.setMockDataForProps(res.props);
+        this.rawProps = this.setMockDataForProps(res.props);
+        newProps = clone(this.rawProps);
         eventBus.emit('canvasEdit', '', {...newProps}, false)
       }
 
@@ -76,12 +80,13 @@ export default {
     },
     //处理组件的 props，如果某个props类型是 ReactNode, 要包裹上一层元素，用于处理数据同步
     handleProps(props) {
+      const cloneProps = clone(props);
       Object.keys(props).forEach((propsName) => {
         const info = getPropType(propsName, this.propsConfig);
         if (info.type === "ReactNode") {
           props[propsName] = setSlotWrapper({
             widgetId: this.componentInfo.id,
-            widgetProps: { ...this.componentInfo.props },
+            widgetProps: { ...cloneProps },
             path: propsName,
             children: props[propsName],
             meta:[4]
@@ -98,7 +103,7 @@ export default {
                   obj[key] = setSlotWrapper({
                     children: item[key],
                     widgetId: this.componentInfo.id,
-                    widgetProps:  { ...this.componentInfo.props },
+                    widgetProps:  { ...cloneProps },
                     path: `${propsName}[${index}].${key}`,
                     fieldNames,
                     meta:[0,2,4]
@@ -128,9 +133,9 @@ export default {
   mounted() {
     if (this.componentInfo.id) {
       this.resolveComponentProps(this.componentInfo.component);
-
+      // 监听属性面板的更新
       eventBus.on(`${this.componentInfo.id}:updateProps`, (props) => {
-        const newProps = { ...this.componentProps, ...props };
+        const newProps = clone({ ...this.rawProps, ...props });
         this.handleProps(newProps);
         this.componentProps = newProps;
       });

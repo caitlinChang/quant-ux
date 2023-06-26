@@ -1,9 +1,10 @@
 import React from "react";
 import { SlotWrapperProps } from "./SlotWrapper";
 import eventBus from "../eventBus";
+import "./slotWrapper.less";
 
-// ICON 的占位符
-const ICONSlot = (props: SlotWrapperProps) => {
+// 进行替换操作时塞进去的占位符
+export const IconSlot = (props: SlotWrapperProps) => {
   const handleContextMenu = (e: any) => {
     e.stopPropagation();
     e.preventDefault();
@@ -13,9 +14,10 @@ const ICONSlot = (props: SlotWrapperProps) => {
       meta: [...props.meta, 5],
     });
   };
+
   return (
-    <span className="icon-slot-wrapper" onContextMenu={handleContextMenu}>
-      {props.children}
+    <span className="icon-slot" onContextMenu={handleContextMenu}>
+      SLOT
     </span>
   );
 };
@@ -28,7 +30,7 @@ const ICONSlot = (props: SlotWrapperProps) => {
  * @param id
  * @returns
  */
-export const setIconSlotWrapper = (props: SlotWrapperProps) => {
+export const setIconSlot = (props: SlotWrapperProps) => {
   const { children, ...resProps } = props;
-  return React.createElement(ICONSlot, resProps, props.children);
+  return React.createElement(IconSlot, resProps, props.children);
 };

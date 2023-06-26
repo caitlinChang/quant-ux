@@ -4,8 +4,9 @@ import { StandardArrayItemType } from "../util/getFieldNames";
 import { ContenxtMenuType } from "../contextMenu/index";
 import componentList, { getVueTypeName } from "../util/constant";
 import iconList from "../util/icon";
+import { IconSlot } from "../slots/IconSlot";
 
-const componentMap = { ...componentList, ...iconList };
+const componentMap = { ...componentList, ...iconList, IconSlot };
 
 export type SlotWrapperProps = {
   path: string;
@@ -44,7 +45,10 @@ const SlotWrapper = (props: SlotWrapperProps) => {
       return children;
     } else {
       const [componentName, componentProps] = children;
-      const _name = getVueTypeName(componentName, "antd");
+      const _name =
+        componentName === "IconSlot"
+          ? "IconSlot"
+          : getVueTypeName(componentName, "antd");
       return React.createElement(componentMap[_name], componentProps);
     }
   };

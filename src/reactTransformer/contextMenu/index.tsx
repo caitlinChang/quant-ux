@@ -2,11 +2,11 @@ import React from "react";
 import { List } from "antd";
 import "./index.less";
 import eventBus from "../eventBus";
-import { get } from "lodash";
+import _, { get } from "lodash";
 import { v4 as uuidv4 } from "uuid";
 import { getRecentPath } from "../util/propsValueUtils";
 import { SlotWrapperProps } from "../slots/SlotWrapper";
-import { deleteParam } from "../util/setPropsValue";
+import { deleteParam, setParam } from "../util/setPropsValue";
 
 export enum ContenxtMenuType {
   ADD_SAME_LEVEL_ITEM,
@@ -131,14 +131,19 @@ export default (props: SlotWrapperProps) => {
         console.log("暂不支持此功能");
         break;
       case ContenxtMenuType.REPLACE_ICON:
-        // 打开 widgets 选择面板
+        // 将原有ICON删除，替换成占位符
+        transfer = setParam(props.path, props.widgetProps, [
+          "IconSlot",
+          { style: { fontSize: "16px" } },
+        ]);
+        eventBus.emit("canvasEdit", keyPath, transfer[keyPath], true);
         break;
       case ContenxtMenuType.DELETE:
         transfer = deleteParam(props.path, props.widgetProps);
         eventBus.emit("canvasEdit", keyPath, transfer[keyPath], true);
         break;
       case ContenxtMenuType.ADD_ICON:
-        // 打开 widgets 选择面板
+        // 添加 ICON 占位符
         break;
       default:
         break;
