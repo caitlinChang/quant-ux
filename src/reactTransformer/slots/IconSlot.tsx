@@ -2,6 +2,7 @@ import React from "react";
 import { SlotWrapperProps } from "./SlotWrapper";
 import eventBus from "../eventBus";
 import "./slotWrapper.less";
+import { BorderInnerOutlined } from "@ant-design/icons";
 
 // 进行替换操作时塞进去的占位符
 export const IconSlot = (props: SlotWrapperProps) => {
@@ -14,10 +15,19 @@ export const IconSlot = (props: SlotWrapperProps) => {
       meta: [...props.meta, 5],
     });
   };
-
+  const handleClick = (e: any) => {
+    e.stopPropagation();
+    e.preventDefault();
+    // 展示快捷菜单
+    eventBus.emit("fillSlot", props);
+  };
   return (
-    <span className="icon-slot" onContextMenu={handleContextMenu}>
-      SLOT
+    <span
+      className="icon-slot"
+      onClick={handleClick}
+      onContextMenu={handleContextMenu}
+    >
+      <BorderInnerOutlined style={{ fontSize: "20px", color: "#888" }} />
     </span>
   );
 };

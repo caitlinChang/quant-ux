@@ -49,7 +49,10 @@ const SlotWrapper = (props: SlotWrapperProps) => {
         componentName === "IconSlot"
           ? "IconSlot"
           : getVueTypeName(componentName, "antd");
-      return React.createElement(componentMap[_name], componentProps);
+      return React.createElement(
+        componentMap[_name],
+        componentName === "IconSlot" ? props : componentProps
+      );
     }
   };
 

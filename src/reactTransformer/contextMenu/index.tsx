@@ -132,11 +132,12 @@ export default (props: SlotWrapperProps) => {
         break;
       case ContenxtMenuType.REPLACE_ICON:
         // 将原有ICON删除，替换成占位符
-        transfer = setParam(props.path, props.widgetProps, [
-          "IconSlot",
-          { style: { fontSize: "16px" } },
-        ]);
-        eventBus.emit("canvasEdit", keyPath, transfer[keyPath], true);
+        // transfer = setParam(props.path, props.widgetProps, [
+        //   "IconSlot",
+        //   { style: { fontSize: "16px" } },
+        // ]);
+        eventBus.emit("fillSlot", props);
+        // eventBus.emit("canvasEdit", keyPath, transfer[keyPath], true);
         break;
       case ContenxtMenuType.DELETE:
         transfer = deleteParam(props.path, props.widgetProps);

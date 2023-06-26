@@ -86,6 +86,10 @@ import Services from "services/Services";
 import CheckBox from "common/CheckBox";
 import ModelUtil from "core/ModelUtil";
 import ReactComponent from "../../../reactTransformer/reactComponent.vue";
+import eventBus from '../../../reactTransformer/eventBus';
+import { setParam } from '../../../reactTransformer/util/setPropsValue';
+import { getRecentPath } from "../../../reactTransformer/util/propsValueUtils";
+import { revertName } from '../../../reactTransformer/util/constant'
 
 export default {
   name: "CreateButton2",
@@ -118,9 +122,13 @@ export default {
       tab: "widgets",
       importableApps: [],
       curWideget: "antd4",
+      forSlot: false, // 为了处理替换 ReactNode 新增的变量
     };
   },
   methods: {
+    setForSlot(value) {
+      this.forSlot = value;
+    },
     setIcons(icons) {
       this.icons = icons;
     },
@@ -1107,8 +1115,19 @@ export default {
     },
 
     onCreateCustomWeget(widget, e) {
+      if (this.forSlot) {
+        const { index, keyPath } = getRecentPath(this.forSlot.path);
+        const transfer = setParam(this.forSlot.path, this.forSlot.widgetProps, [revertName(widget.component), {
+          style: {
+            padding: "5px",
+          },
+        }]);
+        eventBus.emit("canvasEdit", keyPath, transfer[keyPath], true);
+      } else {
+        this.emit("change", widget, e);
+      }
+      this.forSlot = false;
       this.hideDropDown();
-      this.emit("change", widget, e);
     },
 
     _getPreviewSize(child) {
@@ -1149,6 +1168,11 @@ export default {
       }
     },
   },
-  mounted() {},
+  mounted() {
+    eventBus.on('fillSlot', (props) => {
+      this.showDropDown();
+      this.forSlot = props;
+    })
+  },
 };
 </script>
