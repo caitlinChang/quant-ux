@@ -10,10 +10,7 @@ export const getTSType = (propsConfig: any) => {
   if (/className|ClassName|aria-/.test(propsConfig.name)) {
     return null;
   }
-  // 过滤掉 HTMLAttributes 的配置
-  if (["HTMLAttributes"].includes(propsConfig.declarations.name)) {
-    return null;
-  }
+
   // 过滤掉没有 description 的
   if (!propsConfig.description) {
     return null;

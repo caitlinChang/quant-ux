@@ -7,6 +7,9 @@ import { v4 as uuidv4 } from "uuid";
 import { getRecentPath } from "../util/propsValueUtils";
 import { SlotWrapperProps } from "../slots/SlotWrapper";
 import { deleteParam, setParam } from "../util/setPropsValue";
+import { getFieldNames } from "../util/index";
+
+console.log(getFieldNames);
 
 export enum ContenxtMenuType {
   ADD_SAME_LEVEL_ITEM,
@@ -85,7 +88,7 @@ const getAddItem = (props: SlotWrapperProps) => {
 export default (props: SlotWrapperProps) => {
   const addItem = getAddItem(props);
   const filteredMenu = onFilter(menu, props);
-
+  console.log("status = ", status);
   const handleClickMenu = (
     e: any,
     item: {
@@ -105,12 +108,16 @@ export default (props: SlotWrapperProps) => {
 
     switch (item.value) {
       case ContenxtMenuType.ADD_SAME_LEVEL_ITEM:
-        _value.splice(index + 1, 0, addItem);
+        transfer = { ..._value[index] };
+        // 重新设置key值
+        transfer[props.fieldNames.value] = uuidv4().substr(0, 5);
+        _value.splice(index + 1, 0, transfer);
         eventBus.emit("canvasEdit", keyPath, _value, true);
         break;
       case ContenxtMenuType.ADD_SUB_ITEM:
         children = _value[index].children || [];
         children.unshift(addItem);
+        console.log("children", children);
         eventBus.emit(
           "canvasEdit",
           `${keyPath}[${index}].${children}`,
@@ -128,7 +135,6 @@ export default (props: SlotWrapperProps) => {
         eventBus.emit("canvasEdit", keyPath, _value, true);
         break;
       case ContenxtMenuType.SMART_FILL:
-        console.log("暂不支持此功能");
         break;
       case ContenxtMenuType.REPLACE_ICON:
         // 将原有ICON删除，替换成占位符
