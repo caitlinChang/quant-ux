@@ -316,7 +316,7 @@
       class="MatcToobarPropertiesSection MatcToolbarSectionHidden"
       data-dojo-attach-point="propertiesCntr"
     >
-      <properties-panel ref="propertiesPanel" @setComponentProps="setWidgetProps" />
+      <!-- <properties-panel ref="propertiesPanel" @setComponentProps="setWidgetProps" /> -->
     </div>
   </div>
 </template>
@@ -341,7 +341,8 @@ import CollabUser from "canvas/toolbar/components/CollabUser";
 import CreateVectorButton from "canvas/toolbar/components/CreateVectorButton";
 import ModelUtil from "../../core/ModelUtil";
 import HelpButton from "help/HelpButton";
-import PropertiesPanel from "../../reactTransformer/propertiesPanel/index.vue";
+// import PropertiesPanel from "../../reactTransformer/propertiesPanel/index.vue";
+import { createPanel, removePanel } from '../../reactTransformer/propertiesPanel/panel'
 
 export default {
   name: "Toolbar",
@@ -371,7 +372,7 @@ export default {
     EditModeButton: EditModeButton,
     CollabUser: CollabUser,
     CreateVectorButton: CreateVectorButton,
-    PropertiesPanel,
+    // PropertiesPanel,
   },
   computed: {
     hasProtoMoto() {
@@ -711,7 +712,9 @@ export default {
           this._selectedWidget = component;
           this._selectionID = component.id;
           this.showWidgetProperties(component);
-          this.$refs.propertiesPanel.onSetWidgetProperties(component);
+          // this.$refs.propertiesPanel.onSetWidgetProperties(component);
+          // 填充panel
+          createPanel(component, this.propertiesCntr);
           this.showCopyPaste();
           this.showDevTools();
           this.showTools();

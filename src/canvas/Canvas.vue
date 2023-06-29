@@ -88,7 +88,7 @@ import FastDomUtil from 'core/FastDomUtil'
 import SVGEditor from '../svg/SVGEditor'
 
 import eventBus from '../reactTransformer/eventBus/index';
-import { createContextMenu } from '../reactTransformer/util/getDom';
+import { createContextMenu, removeReactDom } from '../reactTransformer/util/getDom';
 import ReactDom from "react-dom";
 
 export default {
@@ -735,7 +735,7 @@ export default {
 					return;
 				}
 				css.remove(this.contextMenu, 'ContextMenuActive');
-				ReactDom.unmountComponentAtNode(this.contextMenu);
+				removeReactDom(this.contextMenu);
 				this.contextMenu.removeAttribute('style');
 			}
 		})

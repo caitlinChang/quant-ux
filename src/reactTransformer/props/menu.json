@@ -99,17 +99,17 @@
               }
             },
             "icon":{
-              "name":{
+              "name": {
                 "defaultValue": null,
                 "description": "菜单项",
                 "name": "items",
                 "needMock": true,
                 "required": false,
-                "type":{
-                  "name":"string"
+                "type": {
+                  "name": "string"
                 }
+              }
             }
-
           }
         }
       },

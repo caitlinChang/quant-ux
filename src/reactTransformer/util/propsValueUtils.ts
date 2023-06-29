@@ -32,8 +32,7 @@ export const getNestedPropType = (type, properties) => {
     if (properties.item && Object.keys(properties.item).length) {
       const itemList = Object.keys(properties.item);
       const reactNodeItemList = itemList.filter((i) => {
-        const [itemType, list] = getExactType(properties.item[i]);
-        return itemType === "ReactNode";
+        return i.type.name === "ReactNode";
       });
       return reactNodeItemList;
     }

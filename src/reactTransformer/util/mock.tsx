@@ -2,7 +2,6 @@
 
 import React, { ReactNode } from "react";
 import { PropItemConfigType, TypeName } from "./type";
-import { getExactType } from "./common";
 import { v4 as uuidv4 } from "uuid";
 import { SpecialKey } from "./specialKey";
 // import { ControlOutlined } from "@ant-design/icons";
@@ -21,14 +20,14 @@ export const getMockDataByType = (keyName, type: TypeName): any => {
     return false;
   }
   if (keyName === SpecialKey.ICON) {
-      return [
-        "ControlOutlined",
-        {
-          style: {
-            padding: "5px",
-          },
+    return [
+      "ControlOutlined",
+      {
+        style: {
+          padding: "5px",
         },
-      ];
+      },
+    ];
   }
   switch (type) {
     case "string":
@@ -46,11 +45,10 @@ export const getMockDataByType = (keyName, type: TypeName): any => {
 
 // 根据 props 的类型生成 mock 数据
 export const getMockData = (config: PropItemConfigType): any => {
-  console.log("config = ", config);
   const {
     type: { name, item },
   } = config;
-  const [typeName, _] = getExactType(name);
+  const typeName = name;
   if (typeName === "array") {
     // 先默认生成3条数据
     return new Array(3).fill(0).map(() => {
@@ -59,16 +57,10 @@ export const getMockData = (config: PropItemConfigType): any => {
         if (key === "children") {
           //   itemValue[key] = [];
         } else {
-          //   const [keyType, _] = getExactType(value as TypeName);
-          itemValue[key] = getMockDataByType(key, value as TypeName);
+          itemValue[key] = getMockDataByType(key, value as unknown as TypeName);
         }
       });
-      // 如果有子节点，则为子节点生成一条随机数据
-      // 现在只处理子节点类型与父节点类型完全相同的情况
-      //   if (itemValue.children) {
-      //     const { children, ...rest } = itemValue;
-      //     itemValue.children = [rest];
-      //   }
+
       return itemValue;
     });
   } else {

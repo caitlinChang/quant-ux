@@ -1,10 +1,5 @@
 <template>
   <div class="custom-widget-warpper">
-    <!-- <div v-if="showAction" class="widget_action">
-      <img class="widget_action-item widget_action-add" src="./static/imgs/child_branch.png" />
-      <img class="widget_action-actived widget_action-add" src="./static/imgs/same_level_branch.png" />
-      <div class="widget_action-deactived"></div>
-    </div> -->
     <component :is="componentInfo.component" v-bind="componentProps" />
   </div>
 </template>
