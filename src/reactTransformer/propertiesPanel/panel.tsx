@@ -1,4 +1,4 @@
-import React, { useEffect, ReactNode } from "react";
+import React, { useEffect, ReactNode, useMemo } from "react";
 import ReactDom from "react-dom";
 import {
   Tree,
@@ -9,48 +9,62 @@ import {
   InputNumber,
   Switch,
   Form,
+  Tooltip,
+  Space,
 } from "antd";
 import { requestComponentProps } from "../util/request";
 import { getTSType } from "../util/resolvePropsConfig";
-import { isArray, set, get } from "lodash";
+import { isArray, set, get, clone } from "lodash";
 import { PropItemConfigType, TypeName } from "../util/type";
-import { getFirstKey } from "../util/propsValueUtils";
+import { getFirstKey, transferPath } from "../util/propsValueUtils";
 import eventBus from "../eventBus";
-import { getTreeNode } from "./util";
+import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import SlotRender from "./components/SlotRender";
 
 const AntdPanel = Collapse.Panel;
 
+const formatPath = (path) => {
+  if (path) {
+    return `${path}.`;
+  } else {
+    return "";
+  }
+};
+
 const Panel = (props: any) => {
-  console.log("props = ", props);
   const [treeData, setTreeData] = React.useState([]);
-  const [propsConfig, setPropsConfig] = React.useState({});
-  const [propsData, setPropsData] = React.useState({});
-  const [formData, setFormData] = React.useState({});
+  const [propsConfig, setPropsConfig] = React.useState(null);
+  const [formData, setFormData] = React.useState(clone(props.props)); // 维护的是组件的 props
 
   const resolveComponentProps = async (name: string) => {
     const res = await requestComponentProps(name);
     const list = Object.values(res.props);
-    const propsList = list
+    const propsConfig = list
       .map((item) => getTSType(item))
       .filter((item) => item?.renderConfig);
 
-    setPropsConfig(propsList);
-    // transfer
-    const treeData = propsList
-      .map((propItem) => {
-        const node = getTreeNode(propItem, "", props.props);
-        if (isArray(node)) {
-          return node;
-        }
-        return [node];
-      })
-      .flat();
-    setTreeData(treeData);
+    setPropsConfig(propsConfig);
   };
 
-  const handleChangeProp = (path, value) => {
-    console.log("path = ", path, value);
+  useEffect(() => {
+    if (propsConfig) {
+      const treeData = propsConfig
+        .map((propItem) => {
+          const node = getTreeNode(propItem, "", formData);
+          if (isArray(node)) {
+            return node;
+          }
+          return [node];
+        })
+        .flat();
+      setTreeData(treeData);
+    }
+  }, [formData, propsConfig]);
+
+  const handleChangeProp = (path, _value) => {
+    const { key, value, newFormData } = transferPath(path, _value, formData);
+    setFormData(newFormData);
+    eventBus.emit("updateModel", key, value);
   };
 
   const renderProp = (node: {
@@ -61,7 +75,7 @@ const Panel = (props: any) => {
     if (!node.config) {
       return;
     }
-    const value = get(propsData, node.key);
+    const value = get(formData, node.key);
     const defaultValue = node.config.defaultValue;
     const {
       type: { name, item },
@@ -69,46 +83,40 @@ const Panel = (props: any) => {
     if (name === TypeName.Choice) {
       console.log("item = ", item);
       return (
-        <Form.Item>
-          <Radio.Group
-            options={[]}
-            value={value}
-            onChange={(value) => handleChangeProp(node.key, value)}
-          />
-        </Form.Item>
+        <Radio.Group
+          options={[]}
+          value={value}
+          onChange={(value) => handleChangeProp(node.key, value)}
+        />
       );
     } else if (name === TypeName.String) {
       return (
-        <Form.Item>
-          <Input
-            value={value}
-            onChange={(value) => handleChangeProp(node.key, value)}
-          />
-        </Form.Item>
+        <Input
+          value={value}
+          onChange={(value) => handleChangeProp(node.key, value)}
+        />
       );
     } else if (name === TypeName.Number) {
       return (
-        <Form.Item>
-          <InputNumber
-            value={value}
-            onChange={(value) => handleChangeProp(node.key, value)}
-          />
-        </Form.Item>
+        <InputNumber
+          value={value}
+          onChange={(value) => handleChangeProp(node.key, value)}
+        />
       );
     } else if (name === TypeName.Boolean) {
       return (
-        <Form.Item name={node.key}>
-          <Switch
-            value={value}
-            onChange={(value) => handleChangeProp(node.key, value)}
-          />
-        </Form.Item>
+        <Switch
+          value={value}
+          onChange={(value) => handleChangeProp(node.key, value)}
+        />
       );
     } else if (name === TypeName.ReactNode) {
       return (
-        <Form.Item>
-          <SlotRender node={node} value={value} />
-        </Form.Item>
+        <SlotRender
+          node={node}
+          value={value}
+          onChange={(value) => handleChangeProp(node.key, value)}
+        />
       );
     }
   };
@@ -128,6 +136,136 @@ const Panel = (props: any) => {
     );
   };
 
+  /**
+   *
+   * @param title 节点名称
+   * @param hasChildren 是否可以添加下一级
+   * @param isArrayItem 是否是数组项，是数组项才可以自增自减
+   * @param required 是否是必填的项，必填的项不可以 clear
+   * @returns
+   */
+  const TreeNodeTitle = (props: {
+    config: PropItemConfigType;
+    path: string;
+    propsValue: any;
+    index?: number;
+  }) => {
+    const { index = -1, config } = props;
+    const {
+      type: { item },
+    } = config;
+    const _title = config.description || config.name;
+    const title = index >= 0 ? `${_title} - ${index + 1}` : _title;
+    const hasChildren = !!item?.children;
+
+    const handleDelete = () => {
+      const oldValue = get(props.propsValue, props.path) || [];
+      const newValue = clone(oldValue);
+      newValue.splice(index, 1);
+      handleChangeProp(props.path, newValue);
+      // const { key, value } = transferPath(
+      //   props.path,
+      //   newValue,
+      //   props.propsValue
+      // );
+      // // 更新到模型
+      // eventBus.emit("updateModel", key, value);
+    };
+    const handleAdd = () => {
+      // TODO: 对添加项的 mock
+      const newValue = clone(get(props.propsValue, props.path)) || [];
+      newValue.push({});
+      handleChangeProp(props.path, newValue);
+      // const { key, value } = transferPath(
+      //   props.path,
+      //   newValue,
+      //   props.propsValue
+      // );
+      // // 更新到模型
+      // eventBus.emit("updateModel", key, value);
+    };
+    return (
+      <Space>
+        {title}
+        {/* {!required && (
+          <Tooltip title="清空">
+            <CloseCircleFilled style={{ color: "#e1e1e1", cursor: "pointer" }} />
+          </Tooltip>
+        )} */}
+        {index >= 0 && (
+          <>
+            <Tooltip title="删除">
+              <MinusOutlined
+                onClick={handleDelete}
+                style={{ color: "#555", cursor: "pointer" }}
+              />
+            </Tooltip>
+          </>
+        )}
+        {hasChildren && (
+          <Tooltip title="添加">
+            <PlusOutlined
+              onClick={handleAdd}
+              style={{ color: "#555", cursor: "pointer" }}
+            />
+          </Tooltip>
+        )}
+      </Space>
+    );
+  };
+
+  const getTreeNode = (
+    config: PropItemConfigType,
+    path: string,
+    propsValue
+  ) => {
+    const {
+      type: { name, item, property },
+    } = config;
+    const curPath = `${formatPath(path)}${config.name}`;
+    let children = [];
+
+    if (name === TypeName.Object) {
+      children = Object.entries(property).map(([_, info]) => {
+        return getTreeNode(info, curPath, propsValue);
+      });
+      // TODO: 等待后端协议
+    } else if (name === TypeName.Array) {
+      const value = get(propsValue, curPath) || [];
+      children = value.map((_, index) => {
+        return {
+          title: (
+            <TreeNodeTitle
+              propsValue={propsValue}
+              path={curPath}
+              config={config}
+              index={index}
+            />
+          ),
+          key: `${curPath}[${index}]`,
+          children: Object.entries(item).map(([_, info]) => {
+            // 如果是 Children 类型，就是依然将父级的propsConfig 当作自己的 Config 传进去
+            const _config =
+              info.type.name === TypeName.Children ? config : info;
+            return getTreeNode(
+              _config,
+              `${curPath}[${index}].${_}`,
+              propsValue
+            );
+          }),
+        };
+      });
+    }
+    return {
+      title: (
+        <TreeNodeTitle propsValue={propsValue} path={curPath} config={config} />
+      ),
+      key: curPath,
+      children,
+      config: config,
+    };
+  };
+
   useEffect(() => {
     resolveComponentProps(props.component);
     eventBus.on("canvasEdit", (path, value, updateCanvas) => {
@@ -136,7 +274,7 @@ const Panel = (props: any) => {
         // 传入的不是props中的某个字段，而是整个props
         console.log("update value = ", value);
         setTimeout(() => {
-          setPropsData({ ...value });
+          setFormData({ ...value });
         });
         Object.keys(value).forEach((key) => {
           // this.$emit("setComponentProps", key, value[key]);
@@ -144,7 +282,7 @@ const Panel = (props: any) => {
         return;
       }
       const key = getFirstKey(path);
-      const newValue = set(propsData, path, value);
+      const newValue = set(formData, path, value);
 
       if (updateCanvas) {
         // 通过contextMenu 修改的值，需要通过 eventBus 通知组件更新
@@ -163,7 +301,7 @@ const Panel = (props: any) => {
       <Form>{renderChildren(treeData)}</Form>
     </div>
   );
-};
+};;
 
 export const createPanel = (props, container) => {
   const element = React.createElement(Panel, props);

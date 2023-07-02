@@ -2447,11 +2447,8 @@ export default {
   mounted() {
     console.log('toolbar mounted-----')
     // 更新 model 中的数据
-    eventBus.on('updateModel', (path, value, propsValue) => {
-      const key = getFirstKey(path);
-      const keyValue = set(clone(propsValue), path, value)[key];
-      console.log('updateModel', key, keyValue)
-      this.setWidgetProps(key, keyValue)
+    eventBus.on('updateModel', (key, value) => {
+      this.setWidgetProps(key, value)
     })
   },
   unmounted() {
