@@ -343,6 +343,9 @@ import ModelUtil from "../../core/ModelUtil";
 import HelpButton from "help/HelpButton";
 // import PropertiesPanel from "../../reactTransformer/propertiesPanel/index.vue";
 import { createPanel, removePanel } from '../../reactTransformer/propertiesPanel/panel'
+import eventBus from '../../reactTransformer/eventBus';
+import { getFirstKey } from '../../reactTransformer/util/propsValueUtils';
+import { set, clone } from 'lodash';
 
 export default {
   name: "Toolbar",
@@ -714,6 +717,7 @@ export default {
           this.showWidgetProperties(component);
           // this.$refs.propertiesPanel.onSetWidgetProperties(component);
           // 填充panel
+          console.log('选中的component = ', component)
           createPanel(component, this.propertiesCntr);
           this.showCopyPaste();
           this.showDevTools();
@@ -2440,6 +2444,18 @@ export default {
       }
     },
   },
-  mounted() {},
+  mounted() {
+    console.log('toolbar mounted-----')
+    // 更新 model 中的数据
+    eventBus.on('updateModel', (path, value, propsValue) => {
+      const key = getFirstKey(path);
+      const keyValue = set(clone(propsValue), path, value)[key];
+      console.log('updateModel', key, keyValue)
+      this.setWidgetProps(key, keyValue)
+    })
+  },
+  unmounted() {
+    eventBus.off('updateModel')
+  }
 };
 </script>

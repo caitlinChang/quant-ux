@@ -26,22 +26,22 @@ export const getPropType = (propsName, propsConfig) => {
  * @param {*} componentName
  * @returns
  */
-export const getNestedPropType = (type, properties) => {
-  if (type === "array") {
-    // 返回 item 中是 ReactNode类型的 key
-    if (properties.item && Object.keys(properties.item).length) {
-      const itemList = Object.keys(properties.item);
-      const reactNodeItemList = itemList.filter((i) => {
-        return i.type.name === "ReactNode";
-      });
-      return reactNodeItemList;
-    }
-  } else if (type === "object") {
-    // 返回 item 中是 ReactNode类型的 key
-  } else {
-    // 暂不处理
-  }
-};
+// export const getNestedPropType = (type, properties) => {
+//   if (type === "array") {
+//     // 返回 item 中是 ReactNode类型的 key
+//     if (properties.item && Object.keys(properties.item).length) {
+//       const itemList = Object.keys(properties.item);
+//       const reactNodeItemList = itemList.filter((i) => {
+//         return i.type.name === "ReactNode";
+//       });
+//       return reactNodeItemList;
+//     }
+//   } else if (type === "object") {
+//     // 返回 item 中是 ReactNode类型的 key
+//   } else {
+//     // 暂不处理
+//   }
+// };
 /**
  * 根据路径解析出第一个key, 用于把变化的值通知给 props
  * eg. a.b[0].c.name => a

@@ -8,6 +8,7 @@ export enum TypeName {
   Object = "object",
   Children = "children", // 类型为children 代表和父类型一致
   ReactNode = "ReactNode",
+  Choice = "choice", // enum 多选或者单选，值为 string | string[]
   ICON = "ICON", // TODO：ICON 可以与 ReactNode 合成一个吗？？？
 }
 
@@ -25,6 +26,7 @@ export type PropItemConfigType = {
   name: string;
   type: ObjectItemType;
   description?: string;
+  defaultValue?: any;
   needMock?: boolean; // 是否需要mock数据去填充
   required?: boolean;
   controlledState?: boolean;

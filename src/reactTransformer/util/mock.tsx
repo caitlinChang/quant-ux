@@ -15,7 +15,10 @@ function getRandomInteger() {
 }
 
 // 根据数据类型随机生成 mock 数据
-export const getMockDataByType = (keyName, type: TypeName): any => {
+export const getMockDataByType = (keyName, config: PropItemConfigType): any => {
+  const {
+    type: { name },
+  } = config;
   if (keyName === SpecialKey.DISABLED) {
     return false;
   }
@@ -29,7 +32,7 @@ export const getMockDataByType = (keyName, type: TypeName): any => {
       },
     ];
   }
-  switch (type) {
+  switch (name) {
     case "string":
       return uuidv4().substr(0, 5);
     case "number":
@@ -57,13 +60,13 @@ export const getMockData = (config: PropItemConfigType): any => {
         if (key === "children") {
           //   itemValue[key] = [];
         } else {
-          itemValue[key] = getMockDataByType(key, value as unknown as TypeName);
+          itemValue[key] = getMockDataByType(key, value);
         }
       });
 
       return itemValue;
     });
   } else {
-    return getMockDataByType(config.name, name);
+    return getMockDataByType(config.name, config);
   }
 };

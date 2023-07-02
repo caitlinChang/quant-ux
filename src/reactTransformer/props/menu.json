@@ -22,7 +22,8 @@
         ],
         "required": false,
         "type": {
-          "name": "\"light\" | \"dark\""
+          "name": "choice",
+          "item": ["light", "dark"]
         }
       },
       "inlineIndent": {
@@ -41,64 +42,67 @@
         "needMock": true,
         "required": false,
         "type": {
-          "name": "ItemType[]",
+          "name": "array",
           "item": {
-            "danger":  {
-              "type":{
-                "name":"boolean"
+            "danger": {
+              "type": {
+                "name": "boolean"
               },
-              "description":"是否危险"
+              "description": "是否危险"
             },
             "disabled": {
-              "type":{
-                "name":"boolean"
+              "type": {
+                "name": "boolean"
               },
-              "description":"是否"
+              "description": "是否禁用"
             },
             "icon": {
-              "name":"icon",
-              "type":{
-                "name":"ReactNode"
+              "name": "icon",
+              "description": "ICON",
+              "type": {
+                "name": "ReactNode"
               }
             },
             "key": {
-              "name":"key",
-              "type":{
-                "name":"string"
+              "name": "key",
+              "type": {
+                "name": "string"
               }
             },
             "label": {
-              "name":"label",
-              "type":{
-                "name":"ReactNode"
+              "name": "label",
+              "description": "展示文案",
+              "type": {
+                "name": "ReactNode"
               }
             },
             "title": {
-              "name":"title",
-              "description":"收缩时展示的悬浮标题",
-              "type":{
-                "name":"string"
+              "name": "title",
+              "description": "收缩时展示的悬浮标题",
+              "type": {
+                "name": "string"
               }
             },
             "children": {
-              "name":"children",
-              "type":{
-                "name":"children"
+              "name": "children",
+              "description": "children",
+              "type": {
+                "name": "children"
               }
             }
           },
-          "properties":{
-            "name":{
+          "properties": {
+            "name": {
               "defaultValue": null,
               "description": "菜单项",
               "name": "items",
               "needMock": true,
               "required": false,
-              "type":{
-                "name":"string"
+              "type": {
+                "name": "string"
               }
             },
-            "icon":{
+            "icon": {
               "name": {
                 "defaultValue": null,
                 "description": "菜单项",
@@ -225,7 +229,8 @@
         ],
         "required": false,
         "type": {
-          "name": "\"ltr\" | \"rtl\""
+          "name": "choice",
+          "item": ["ltr", "rtl"]
         }
       },
       "mode": {
@@ -234,7 +239,8 @@
         "name": "mode",
         "required": false,
         "type": {
-          "name": "\"horizontal\" | \"vertical\" | \"inline\""
+          "name": "choice",
+          "item": ["horizontal", "vertical", "inline"]
         }
       },
       "inlineCollapsed": {
@@ -381,7 +387,8 @@
         "name": "triggerSubMenuAction",
         "required": false,
         "type": {
-          "name": "\"click\" | \"hover\""
+          "name": "choice",
+          "item": ["click", "hover"]
         }
       },
       "expandIcon": {

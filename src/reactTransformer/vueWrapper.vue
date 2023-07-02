@@ -8,10 +8,6 @@
 import eventBus from "./eventBus";
 import componentList from "./util/constant";
 import iconMap from './util/icon';
-import {
-  getPropType,
-  getNestedPropType,
-} from "./util/propsValueUtils";
 import { requestComponentProps} from './util/request'
 import { setSlotWrapper } from "./slots/SlotWrapper";
 import { getFieldNames } from './util/getFieldNames';
@@ -57,28 +53,26 @@ export default {
       } else {
         this.rawProps = this.setMockDataForProps(res.props);
         newProps = clone(this.rawProps);
-        eventBus.emit('canvasEdit', '', {...newProps}, false)
+        // mock 的数据也需要更新到 model 中
+        setTimeout(() => {
+          Object.keys(this.rawProps).forEach(i => {
+            
+            eventBus.emit('updateModel',i, this.rawProps[i])
+          })
+        })
       }
 
       // 对原始的props 做层slotWrapper 方便画布操作
       this.handleProps(newProps);
-      const controlledNames = findControlledProps(this.propsConfig);
-      if (controlledNames) {
-        this.controlledNames = controlledNames;
-        newProps = {
-          ...newProps,
-          [controlledNames.value]: newProps[controlledNames.value] || this.value,
-          [controlledNames.onChange]: this.onChange,
-        }
-      }
       this.componentProps = newProps;
     },
     //处理组件的 props，如果某个props类型是 ReactNode, 要包裹上一层元素，用于处理数据同步
     handleProps(props) {
       const cloneProps = clone(props);
       Object.keys(props).forEach((propsName) => {
-        const info = getPropType(propsName, this.propsConfig);
-        if (info.type === "ReactNode") {
+        const info = this.propsConfig[propsName]; //getPropType(propsName, this.propsConfig);
+        const { type: { name, item } } = info;
+        if (name === "ReactNode") {
           props[propsName] = setSlotWrapper({
             widgetId: this.componentInfo.id,
             widgetProps: { ...cloneProps },
@@ -86,9 +80,10 @@ export default {
             children: props[propsName],
             meta:[4]
           });
-        } else if (info.type === "array") {
+        } else if (name === "array") {
           // 检查 array 中每一项的类型
-          const itemTypeList = getNestedPropType(info.type, info.properties);
+          const itemTypeList = Object.keys(item).filter(i => item[i].type.name === 'ReactNode')
+          console.log('itemTypeList = ', itemTypeList)
           const fieldNames = getFieldNames(this.propsConfig[propsName]);
           if (itemTypeList?.length) {
             props[propsName] = props[propsName].map((item, index) => {
@@ -120,10 +115,7 @@ export default {
       });
       return data;
     },
-    // 对受控组件的处理
-    controlledComponent() {
-      
-    }
+    
   },
   mounted() {
     if (this.componentInfo.id) {
