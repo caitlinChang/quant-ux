@@ -26,6 +26,15 @@ export const createReactRootDom = (componentInfo) => {
   return node.$el;
 };
 
+export const createVueDom = (wrapper) => {
+  const container = document.createElement("div");
+  const node = new Vue({
+    el: container,
+    render: (h) => h(wrapper),
+  }).$mount();
+  return node.$el;
+};
+
 /**
  * 这个方法是在某 dom 元素上挂一个 react 生成的 dom
  * 注意卸载该 dom 需要用react 提供的卸载 dom 的方法，而不是直接removeChild

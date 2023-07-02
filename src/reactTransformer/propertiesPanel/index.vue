@@ -106,7 +106,7 @@ export default {
     handleBlur(key, e) {
       if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
         // TODO: 看看能够替换 dojo 中 事件机制
-        eventBus.emit(`${this.selectedId}:updateProps`, {
+        eventBus.emit(`${this.selectedId}:propsUpdate`, {
           [key]: e.target.value,
         });
         // 通知 model 更新
@@ -124,7 +124,7 @@ export default {
         }
         const value = e?.target?.value || e;
         // TODO: 看看能够替换 dojo 中 事件机制
-        eventBus.emit(`${this.selectedId}:updateProps`, {
+        eventBus.emit(`${this.selectedId}:propsUpdate`, {
           [key]: value,
         });
         // 通知 model 更新
@@ -140,7 +140,7 @@ export default {
       };
       const oldValue = this.formData[name];
       oldValue.splice(index, 1, value);
-      eventBus.emit(`${this.selectedId}:updateProps`, {
+      eventBus.emit(`${this.selectedId}:propsUpdate`, {
         [name]: oldValue,
       });
       // 通知 model 更新
@@ -190,7 +190,7 @@ export default {
       
       if (updateCanvas) {
         // 通过contextMenu 修改的值，需要通过 eventBus 通知组件更新
-        eventBus.emit(`${this.selectedId}:updateProps`, {
+        eventBus.emit(`${this.selectedId}:propsUpdate`, {
           [key]: newValue[key],
         });
       }

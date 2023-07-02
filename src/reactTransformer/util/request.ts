@@ -4,6 +4,7 @@
  * @returns
  */
 export const requestComponentProps = async (componentName) => {
+  if (!componentName) return Promise.resolve({ props: {} });
   const str = componentName.split("-")[1];
   try {
     const res = require("../props/" + str + ".json"); //await axios.get("../props/" + str + ".json");

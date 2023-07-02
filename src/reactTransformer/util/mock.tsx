@@ -15,7 +15,7 @@ function getRandomInteger() {
 }
 
 // 根据数据类型随机生成 mock 数据
-export const getMockDataByType = (keyName, config: PropItemConfigType): any => {
+const getMockDataByType = (keyName, config: PropItemConfigType): any => {
   const {
     type: { name },
   } = config;
@@ -46,8 +46,20 @@ export const getMockDataByType = (keyName, config: PropItemConfigType): any => {
   }
 };
 
+export const getMockedProps = (propsConfig: {
+  [key: string]: PropItemConfigType;
+}): any => {
+  const data = {};
+  Object.entries(propsConfig).forEach(([key, item]) => {
+    if (item.needMock) {
+      data[key] = getMockData(propsConfig[key]);
+    }
+  });
+  return data;
+};
+
 // 根据 props 的类型生成 mock 数据
-export const getMockData = (config: PropItemConfigType): any => {
+const getMockData = (config: PropItemConfigType): any => {
   const {
     type: { name, item },
   } = config;

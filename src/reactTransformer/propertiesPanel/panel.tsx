@@ -31,10 +31,11 @@ const formatPath = (path) => {
   }
 };
 
-const Panel = (props: any) => {
+const Panel = () => {
   const [treeData, setTreeData] = React.useState([]);
   const [propsConfig, setPropsConfig] = React.useState(null);
-  const [formData, setFormData] = React.useState(clone(props.props)); // 维护的是组件的 props
+  const [formData, setFormData] = React.useState({}); // 维护的是组件的 props
+  const [selectWidget, setSelectWidget] = React.useState(null); // 当前选中的 widget
 
   const resolveComponentProps = async (name: string) => {
     const res = await requestComponentProps(name);
@@ -42,30 +43,16 @@ const Panel = (props: any) => {
     const propsConfig = list
       .map((item) => getTSType(item))
       .filter((item) => item?.renderConfig);
-
     setPropsConfig(propsConfig);
+
+    return propsConfig;
   };
 
-  useEffect(() => {
-    if (propsConfig) {
-      const treeData = propsConfig
-        .map((propItem) => {
-          const node = getTreeNode(propItem, "", formData);
-          if (isArray(node)) {
-            return node;
-          }
-          return [node];
-        })
-        .flat();
-      setTreeData(treeData);
-    }
-  }, [formData, propsConfig]);
-
   const handleChangeProp = (path, _value) => {
-    console.log("path = ", path, _value);
+    // console.log("path = ", path, _value);
     const { key, value, newFormData } = transferPath(path, _value, formData);
     setFormData(newFormData);
-    console.log("path = ", key, value, newFormData);
+    // console.log("path = ", key, value, newFormData);
     eventBus.emit("updateModel", key, value);
   };
 
@@ -255,8 +242,22 @@ const Panel = (props: any) => {
     };
   };
 
+  const getTreedata = (propsConfig, formData) => {
+    if (propsConfig) {
+      const treeData = propsConfig
+        .map((propItem) => {
+          const node = getTreeNode(propItem, "", formData);
+          if (isArray(node)) {
+            return node;
+          }
+          return [node];
+        })
+        .flat();
+      setTreeData(treeData);
+    }
+  };
+
   useEffect(() => {
-    resolveComponentProps(props.component);
     eventBus.on("canvasEdit", (path, value, updateCanvas) => {
       // 通知 model 更新
       if (!path) {
@@ -275,19 +276,46 @@ const Panel = (props: any) => {
 
       if (updateCanvas) {
         // 通过contextMenu 修改的值，需要通过 eventBus 通知组件更新
-        eventBus.emit(`${props.id}:updateProps`, {
+        eventBus.emit(`${selectWidget.id}:propsUpdate`, {
           [key]: newValue[key],
         });
       }
       // this.$emit("setComponentProps", key, newValue[key]);
     });
-    return () => eventBus.off("canvasEdit");
+
+    eventBus.on("selectWidget", async (widget) => {
+      const propsConfig = await resolveComponentProps(widget.component);
+      setFormData(widget.props || {});
+      setSelectWidget(widget);
+      getTreedata(propsConfig, { ...widget.props });
+      // 用于接收画布侧的数据
+      eventBus.on(`${widget.id}:canvasUpdate`, (key, value) => {
+        const newValue = set(formData, key, value);
+        setFormData(newValue);
+        getTreedata(propsConfig, newValue);
+        eventBus.emit("updateModel", key, value);
+      });
+    });
+    eventBus.on("deSelectWidget", () => {
+      setPropsConfig(null);
+      setFormData(null);
+      setSelectWidget(null);
+    });
+    return () => {
+      eventBus.off("canvasEdit");
+      eventBus.off("canvasUpdate");
+      eventBus.off("selectWidget");
+    };
   }, []);
 
   return (
     <div>
-      <Typography.Title level={5}>Menu</Typography.Title>
-      <Form>{renderChildren(treeData)}</Form>
+      {!!selectWidget?.id && (
+        <>
+          <Typography.Title level={5}>Menu</Typography.Title>
+          <Form>{renderChildren(treeData)}</Form>
+        </>
+      )}
     </div>
   );
 };;

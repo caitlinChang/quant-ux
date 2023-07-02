@@ -341,11 +341,8 @@ import CollabUser from "canvas/toolbar/components/CollabUser";
 import CreateVectorButton from "canvas/toolbar/components/CreateVectorButton";
 import ModelUtil from "../../core/ModelUtil";
 import HelpButton from "help/HelpButton";
-// import PropertiesPanel from "../../reactTransformer/propertiesPanel/index.vue";
-import { createPanel, removePanel } from '../../reactTransformer/propertiesPanel/panel'
+import { createPanel, removePanel } from "../../reactTransformer/propertiesPanel/panel.tsx";
 import eventBus from '../../reactTransformer/eventBus';
-import { getFirstKey } from '../../reactTransformer/util/propsValueUtils';
-import { set, clone } from 'lodash';
 
 export default {
   name: "Toolbar",
@@ -375,7 +372,6 @@ export default {
     EditModeButton: EditModeButton,
     CollabUser: CollabUser,
     CreateVectorButton: CreateVectorButton,
-    // PropertiesPanel,
   },
   computed: {
     hasProtoMoto() {
@@ -716,9 +712,7 @@ export default {
           this._selectionID = component.id;
           this.showWidgetProperties(component);
           // this.$refs.propertiesPanel.onSetWidgetProperties(component);
-          // 填充panel
-          console.log('选中的component = ', component)
-          createPanel(component, this.propertiesCntr);
+          eventBus.emit('selectWidget', component);
           this.showCopyPaste();
           this.showDevTools();
           this.showTools();
@@ -2445,14 +2439,10 @@ export default {
     },
   },
   mounted() {
-    console.log('toolbar mounted-----')
-    // 更新 model 中的数据
-    eventBus.on('updateModel', (key, value) => {
-      this.setWidgetProps(key, value)
-    })
+    createPanel({}, this.propertiesCntr)
   },
   unmounted() {
-    eventBus.off('updateModel')
+    removePanel(this.propertiesCntr)
   }
 };
 </script>

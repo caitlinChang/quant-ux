@@ -12,7 +12,7 @@ import { requestComponentProps} from './util/request'
 import { setSlotWrapper } from "./slots/SlotWrapper";
 import { getFieldNames } from './util/getFieldNames';
 import { findControlledProps } from './util/common';
-import { getMockData } from './util/mock';
+import { getMockedProps } from './util/mock';
 import { clone } from 'lodash';
 
 export default {
@@ -51,13 +51,13 @@ export default {
       if (this.rawProps && Object.keys(this.rawProps).length) {
         newProps = clone(this.rawProps);
       } else {
-        this.rawProps = this.setMockDataForProps(res.props);
+        this.rawProps = getMockedProps(res.props);
         newProps = clone(this.rawProps);
         // mock 的数据也需要更新到 model 中
         setTimeout(() => {
           Object.keys(this.rawProps).forEach(i => {
-            
-            eventBus.emit('updateModel',i, this.rawProps[i])
+            console.log('触发了吗 ===', `${id}:canvasUpdate`)
+            eventBus.emit(`${id}:canvasUpdate`,i, this.rawProps[i])
           })
         })
       }
@@ -106,22 +106,13 @@ export default {
         }
       });
     },
-    setMockDataForProps(propsConfig) { 
-      const data = {};
-      Object.entries(propsConfig).forEach(([key, item]) => {
-        if (item.needMock) {
-          data[key] = getMockData(propsConfig[key]);
-        }
-      });
-      return data;
-    },
     
   },
   mounted() {
     if (this.componentInfo.id) {
-      this.resolveComponentProps(this.componentInfo.component);
+      this.resolveComponentProps(this.componentInfo.component, this.componentInfo.id);
       // 监听属性面板的更新
-      eventBus.on(`${this.componentInfo.id}:updateProps`, (props) => {
+      eventBus.on(`${this.componentInfo.id}:propsUpdate`, (props) => {
         const newProps = clone({ ...this.rawProps, ...props });
         this.handleProps(newProps);
         this.componentProps = newProps;
@@ -132,7 +123,7 @@ export default {
   unmounted() {
     const { id } = this.componentInfo;
     if (this.componentInfo.id) {
-      eventBus.off(`${id}:updateProps`);
+      eventBus.off(`${id}:propsUpdate`);
       eventBus.off(`${this.componentInfo.id}:action`)
     }
   },
