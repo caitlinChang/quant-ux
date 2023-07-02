@@ -62,8 +62,10 @@ const Panel = (props: any) => {
   }, [formData, propsConfig]);
 
   const handleChangeProp = (path, _value) => {
+    console.log("path = ", path, _value);
     const { key, value, newFormData } = transferPath(path, _value, formData);
     setFormData(newFormData);
+    console.log("path = ", key, value, newFormData);
     eventBus.emit("updateModel", key, value);
   };
 
@@ -152,37 +154,22 @@ const Panel = (props: any) => {
   }) => {
     const { index = -1, config } = props;
     const {
-      type: { item },
+      type: { item, name },
     } = config;
     const _title = config.description || config.name;
     const title = index >= 0 ? `${_title} - ${index + 1}` : _title;
-    const hasChildren = !!item?.children;
 
     const handleDelete = () => {
-      const oldValue = get(props.propsValue, props.path) || [];
+      const oldValue = get(formData, props.path) || [];
       const newValue = clone(oldValue);
       newValue.splice(index, 1);
       handleChangeProp(props.path, newValue);
-      // const { key, value } = transferPath(
-      //   props.path,
-      //   newValue,
-      //   props.propsValue
-      // );
-      // // 更新到模型
-      // eventBus.emit("updateModel", key, value);
     };
     const handleAdd = () => {
       // TODO: 对添加项的 mock
-      const newValue = clone(get(props.propsValue, props.path)) || [];
+      const newValue = get(formData, props.path) || [];
       newValue.push({});
       handleChangeProp(props.path, newValue);
-      // const { key, value } = transferPath(
-      //   props.path,
-      //   newValue,
-      //   props.propsValue
-      // );
-      // // 更新到模型
-      // eventBus.emit("updateModel", key, value);
     };
     return (
       <Space>
@@ -202,7 +189,7 @@ const Panel = (props: any) => {
             </Tooltip>
           </>
         )}
-        {hasChildren && (
+        {name === "array" && index === -1 && (
           <Tooltip title="添加">
             <PlusOutlined
               onClick={handleAdd}
@@ -246,7 +233,9 @@ const Panel = (props: any) => {
           children: Object.entries(item).map(([_, info]) => {
             // 如果是 Children 类型，就是依然将父级的propsConfig 当作自己的 Config 传进去
             const _config =
-              info.type.name === TypeName.Children ? config : info;
+              info.type.name === TypeName.Children
+                ? { ...config, description: "Children" }
+                : info;
             return getTreeNode(
               _config,
               `${curPath}[${index}].${_}`,
