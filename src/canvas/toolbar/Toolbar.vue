@@ -2439,7 +2439,10 @@ export default {
     },
   },
   mounted() {
-    createPanel({}, this.propertiesCntr)
+    createPanel({}, this.propertiesCntr);
+    eventBus.on('updateModel', (key, value) => {
+      this.setWidgetProps(key, value)
+    })
   },
   unmounted() {
     removePanel(this.propertiesCntr)

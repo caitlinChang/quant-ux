@@ -47,14 +47,24 @@ const Panel = () => {
 
     return propsConfig;
   };
-
   const handleChangeProp = (path, _value) => {
-    // console.log("path = ", path, _value);
     const { key, value, newFormData } = transferPath(path, _value, formData);
     setFormData(newFormData);
-    // console.log("path = ", key, value, newFormData);
+    eventBus.emit(`${selectWidget.id}:propsUpdate`, newFormData);
     eventBus.emit("updateModel", key, value);
   };
+
+  const handleSelectComponent = (path: string) => {
+    eventBus.emit("fillSlot", {
+      path,
+      id: selectWidget.id,
+      formData,
+    });
+  };
+
+  useEffect(() => {
+    getTreedata(propsConfig, formData);
+  },[formData, propsConfig])
 
   const renderProp = (node: {
     title: ReactNode;
@@ -70,7 +80,6 @@ const Panel = () => {
       type: { name, item },
     } = node.config;
     if (name === TypeName.Choice) {
-      console.log("item = ", item);
       return (
         <Radio.Group
           options={[]}
@@ -82,14 +91,14 @@ const Panel = () => {
       return (
         <Input
           value={value}
-          onChange={(value) => handleChangeProp(node.key, value)}
+          onBlur={(value) => handleChangeProp(node.key, value)}
         />
       );
     } else if (name === TypeName.Number) {
       return (
         <InputNumber
           value={value}
-          onChange={(value) => handleChangeProp(node.key, value)}
+          onBlur={(value) => handleChangeProp(node.key, value)}
         />
       );
     } else if (name === TypeName.Boolean) {
@@ -105,6 +114,7 @@ const Panel = () => {
           node={node}
           value={value}
           onChange={(value) => handleChangeProp(node.key, value)}
+          onSelectComponent={() => handleSelectComponent(node.key)}
         />
       );
     }
@@ -147,14 +157,14 @@ const Panel = () => {
     const title = index >= 0 ? `${_title} - ${index + 1}` : _title;
 
     const handleDelete = () => {
-      const oldValue = get(formData, props.path) || [];
+      const oldValue = get(props.propsValue, props.path) || [];
       const newValue = clone(oldValue);
       newValue.splice(index, 1);
       handleChangeProp(props.path, newValue);
     };
     const handleAdd = () => {
       // TODO: 对添加项的 mock
-      const newValue = get(formData, props.path) || [];
+      const newValue = get(props.propsValue, props.path) || [];
       newValue.push({});
       handleChangeProp(props.path, newValue);
     };
@@ -223,11 +233,7 @@ const Panel = () => {
               info.type.name === TypeName.Children
                 ? { ...config, description: "Children" }
                 : info;
-            return getTreeNode(
-              _config,
-              `${curPath}[${index}].${_}`,
-              propsValue
-            );
+            return getTreeNode(_config, `${curPath}[${index}]`, propsValue);
           }),
         };
       });
@@ -242,11 +248,11 @@ const Panel = () => {
     };
   };
 
-  const getTreedata = (propsConfig, formData) => {
+  const getTreedata = (propsConfig, data) => {
     if (propsConfig) {
       const treeData = propsConfig
         .map((propItem) => {
-          const node = getTreeNode(propItem, "", formData);
+          const node = getTreeNode(propItem, "", data);
           if (isArray(node)) {
             return node;
           }
@@ -318,7 +324,7 @@ const Panel = () => {
       )}
     </div>
   );
-};;
+};
 
 export const createPanel = (props, container) => {
   const element = React.createElement(Panel, props);

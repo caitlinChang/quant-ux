@@ -88,7 +88,7 @@ import ModelUtil from "core/ModelUtil";
 import ReactComponent from "../../../reactTransformer/reactComponent.vue";
 import eventBus from '../../../reactTransformer/eventBus';
 import { setParam } from '../../../reactTransformer/util/setPropsValue';
-import { getRecentPath } from "../../../reactTransformer/util/propsValueUtils";
+import { getRecentPath, transferPath } from "../../../reactTransformer/util/propsValueUtils";
 import { revertName } from '../../../reactTransformer/util/constant'
 
 export default {
@@ -1116,13 +1116,15 @@ export default {
 
     onCreateCustomWeget(widget, e) {
       if (this.forSlot) {
-        const { index, keyPath } = getRecentPath(this.forSlot.path);
-        const transfer = setParam(this.forSlot.path, this.forSlot.widgetProps, [revertName(widget.component), {
+        const { path, id, formData } = this.forSlot;
+        const _value = [revertName(widget.component), {
           style: {
             padding: "5px",
           },
-        }]);
-        eventBus.emit("canvasEdit", keyPath, transfer[keyPath], true);
+        }];
+        const { key, value, newFormData } = transferPath(path, _value, formData);
+        eventBus.emit(`${id}:canvasUpdate`, key, value);
+        eventBus.emit(`${id}:propsUpdate`, newFormData);
       } else {
         this.emit("change", widget, e);
       }

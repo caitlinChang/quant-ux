@@ -2,7 +2,6 @@ import React, { ReactNode, useState, useEffect } from "react";
 import { Radio, Input, Button } from "antd";
 import { isArray } from "lodash";
 import { PropItemConfigType } from "../../../util/type";
-
 export type ValueType = string | [string, any];
 
 export default (props: {
@@ -13,6 +12,7 @@ export default (props: {
   };
   value?: ValueType;
   onChange?: (value: ValueType) => void;
+  onSelectComponent?: () => void;
 }) => {
   const [type, setType] = useState<"text" | "component">("text");
   const { node, value } = props;
@@ -27,25 +27,24 @@ export default (props: {
     props.onChange?.(value);
   };
   const handleChangeType = (v) => {
-    setType(v);
+    setType(v.target.value);
   };
-  const handleSelectWidget = () => {};
   return (
     <div>
-      <Radio.Group value={type} onClick={() => handleChangeType(node.key)}>
+      <Radio.Group value={type} onChange={handleChangeType}>
         <Radio value="text">输入文本</Radio>
         <Radio value="component">选择组件</Radio>
       </Radio.Group>
       {type === "text" && (
         <Input
-          value={value}
-          onChange={(e) => handleChangeProp(e.target.value)}
+          defaultValue={value}
+          onBlur={(e) => handleChangeProp(e.target.value)}
         />
       )}
       {type === "component" && (
         <div>
           <div>当前选中组件：{value[0]}</div>
-          <Button onClick={handleSelectWidget}>点击选择组件</Button>
+          <Button onClick={props.onSelectComponent}>点击选择组件</Button>
         </div>
       )}
     </div>

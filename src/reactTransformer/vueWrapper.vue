@@ -53,10 +53,11 @@ export default {
       } else {
         this.rawProps = getMockedProps(res.props);
         newProps = clone(this.rawProps);
-        // mock 的数据也需要更新到 model 中
+        //TODO: 因为 组件是先添加再被选中的，所以这个里的事件触发
+        // 会比 panel 中的事件注册更早，所以这里要用setTimeout 
         setTimeout(() => {
           Object.keys(this.rawProps).forEach(i => {
-            console.log('触发了吗 ===', `${id}:canvasUpdate`)
+            //mock 的数据也需要更新到 model 中
             eventBus.emit(`${id}:canvasUpdate`,i, this.rawProps[i])
           })
         })
@@ -83,7 +84,6 @@ export default {
         } else if (name === "array") {
           // 检查 array 中每一项的类型
           const itemTypeList = Object.keys(item).filter(i => item[i].type.name === 'ReactNode')
-          console.log('itemTypeList = ', itemTypeList)
           const fieldNames = getFieldNames(this.propsConfig[propsName]);
           if (itemTypeList?.length) {
             props[propsName] = props[propsName].map((item, index) => {
