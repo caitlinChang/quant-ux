@@ -1,6 +1,10 @@
 <template>
   <div class="custom-widget-warpper">
-    <component :is="componentInfo.component" v-bind="componentProps" />
+    <component :is="componentInfo.component" v-bind="componentProps" >
+      <template v-slot:default>
+        xxxx
+      </template>
+    </component>
   </div>
 </template>
 

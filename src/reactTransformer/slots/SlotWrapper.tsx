@@ -85,5 +85,5 @@ export const setSlotWrapper = (props: SlotWrapperProps) => {
   const { children, ...resProps } = props;
   const el = React.createElement(SlotWrapper, resProps, props.children);
   console.log('setSlotWrapper el', el, children)
-  return () => <div>xxxx</div>;
+  return <div>xxxx</div>;
 };
