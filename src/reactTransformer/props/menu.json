@@ -7,7 +7,7 @@
     "methods": [],
     "props": {
       "theme": {
-        "defaultValue": null,
+        "defaultValue": "light",
         "description": "主题颜色",
         "name": "theme",
         "parent": {
@@ -384,7 +384,7 @@
         }
       },
       "triggerSubMenuAction": {
-        "defaultValue": null,
+        "defaultValue": "hover",
         "description": "SubMenu 展开/关闭的触发行为",
         "name": "triggerSubMenuAction",
         "required": false,

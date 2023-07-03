@@ -42,7 +42,6 @@ const Panel = () => {
     return propsConfig;
   };
   const handleChangeProp = (path, _value) => {
-    console.log("handleChangeProp = ", path, _value);
     const { key, value, newFormData } = transferPath(path, _value, formData);
     setFormData(newFormData);
     eventBus.emit(`${selectWidget.id}:propsUpdate`, newFormData);
@@ -71,6 +70,10 @@ const Panel = () => {
     }
     const value = get(formData, node.key);
     const defaultValue = node.config.defaultValue;
+    let _value = value;
+    if (value === undefined) {
+      _value = (defaultValue !== null && defaultValue !== undefined) ? defaultValue : _value;
+    }
     const {
       type: { name, item },
     } = node.config;
@@ -82,28 +85,28 @@ const Panel = () => {
       return (
         <Radio.Group
           options={options}
-          value={value}
+          value={_value}
           onChange={(e) => handleChangeProp(node.key, e.target.value)}
         />
       );
     } else if (name === TypeName.String) {
       return (
         <Input
-          value={value}
+          value={_value}
           onBlur={(e) => handleChangeProp(node.key, e.target.value)}
         />
       );
     } else if (name === TypeName.Number) {
       return (
         <InputNumber
-          value={value}
-          onBlur={(value) => handleChangeProp(node.key, value)}
+          value={_value}
+          onBlur={(e) => handleChangeProp(node.key, e.target.value)}
         />
       );
     } else if (name === TypeName.Boolean) {
       return (
         <Switch
-          value={value}
+          value={_value}
           onChange={(value) => handleChangeProp(node.key, value)}
         />
       );
@@ -111,7 +114,7 @@ const Panel = () => {
       return (
         <SlotRender
           node={node}
-          value={value}
+          value={_value}
           onChange={(value) => handleChangeProp(node.key, value)}
           onSelectComponent={() => handleSelectComponent(node.key)}
         />

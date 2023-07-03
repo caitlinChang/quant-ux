@@ -1,13 +1,4 @@
 import { PropItemConfigType, TypeName, ObjectItemType } from "./type";
-import React, { ReactNode } from "react";
-import { get, isObject } from "lodash";
-import { Tooltip, Space } from "antd";
-import {
-  PlusOutlined,
-  MinusOutlined,
-  SisternodeOutlined,
-  CloseCircleFilled,
-} from "@ant-design/icons";
 
 export const formatPath = (path) => {
   if (path) {
