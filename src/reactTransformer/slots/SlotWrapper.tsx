@@ -6,6 +6,7 @@ import componentList, { getVueTypeName } from "../util/constant";
 import iconList from "../util/icon";
 import { IconSlot } from "../slots/IconSlot";
 import { transferPath } from "../util/propsValueUtils";
+import { isArray } from "lodash";
 
 const componentMap = { ...componentList, ...iconList, IconSlot };
 
@@ -42,9 +43,7 @@ const SlotWrapper = (props: SlotWrapperProps) => {
 
   const renderChildren = () => {
     const { children } = props;
-    if (typeof children === "string") {
-      return children;
-    } else {
+    if (isArray(children)) {
       const [componentName, componentProps] = children;
       const _name =
         componentName === "IconSlot"
@@ -54,6 +53,8 @@ const SlotWrapper = (props: SlotWrapperProps) => {
         componentMap[_name],
         componentName === "IconSlot" ? props : componentProps
       );
+    } else {
+      return children;
     }
   };
 

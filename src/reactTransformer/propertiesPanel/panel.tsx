@@ -93,6 +93,7 @@ const Panel = () => {
       return (
         <Input
           value={_value}
+          allowClear
           onBlur={(e) => handleChangeProp(node.key, e.target.value)}
         />
       );
@@ -100,6 +101,7 @@ const Panel = () => {
       return (
         <InputNumber
           value={_value}
+          allowClear
           onBlur={(e) => handleChangeProp(node.key, e.target.value)}
         />
       );
