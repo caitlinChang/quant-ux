@@ -11,9 +11,9 @@ import iconMap from './util/icon';
 import { requestComponentProps} from './util/request'
 import { setSlotWrapper } from "./slots/SlotWrapper";
 import { getFieldNames } from './util/getFieldNames';
-import { findControlledProps } from './util/common';
 import { getMockedProps } from './util/mock';
-import { clone } from 'lodash';
+import { clone, get } from 'lodash';
+import { formatPath } from './util/common';
 
 export default {
   name: "VueWrapper",
@@ -62,49 +62,66 @@ export default {
           })
         })
       }
-
       // 对原始的props 做层slotWrapper 方便画布操作
-      this.handleProps(newProps);
-      this.componentProps = newProps;
+      const _props = this.handleProps(newProps);
+      this.componentProps = _props;
     },
+
+    getWrapperProps(config, path, rawProps, fieldNames) {
+      const curValue = get(rawProps, path);
+      const { type: { name, property, item } } = config;
+      if (name === 'ReactNode') {
+        return setSlotWrapper({
+          widgetId: this.componentInfo.id,
+          widgetProps: { ...rawProps },
+          path: path,
+          children: curValue,
+          fieldNames,
+          meta: [4]
+        });
+      } else if (name === 'object') { 
+        if (curValue) {
+          const obj = {};
+          Object.keys(curValue).forEach(key => {
+            const keyConfig = property[key];
+            obj[key] = this.getWrapperProps(keyConfig, `${formatPath(path)}.${key}`, rawProps);
+          });
+          return obj;
+        }
+        return curValue;
+      } else if (name === 'array') { 
+        if (curValue) {
+          const fieldNames = getFieldNames(config);
+          return curValue.map((_item, index) => {
+            const obj = {};
+            Object.keys(_item).forEach(key => {
+              const keyConfig = item[key];
+              if (key === 'children' && keyConfig.type.name === 'children') {
+                obj[key] = this.getWrapperProps({...config,name:'children'}, `${formatPath(path)}[${index}].${key}`, rawProps);
+              }else {
+                obj[key] = this.getWrapperProps(keyConfig, `${formatPath(path)}[${index}].${key}`, rawProps, fieldNames);
+              }
+              
+            });
+            return obj;
+          })
+        }
+        return curValue;
+      } else{
+        return curValue;
+      }
+    },
+
     //处理组件的 props，如果某个props类型是 ReactNode, 要包裹上一层元素，用于处理数据同步
     handleProps(props) {
       const cloneProps = clone(props);
-      Object.keys(props).forEach((propsName) => {
-        const info = this.propsConfig[propsName]; //getPropType(propsName, this.propsConfig);
-        const { type: { name, item } } = info;
-        if (name === "ReactNode") {
-          props[propsName] = setSlotWrapper({
-            widgetId: this.componentInfo.id,
-            widgetProps: { ...cloneProps },
-            path: propsName,
-            children: props[propsName],
-            meta:[4]
-          });
-        } else if (name === "array") {
-          // 检查 array 中每一项的类型
-          const itemTypeList = Object.keys(item).filter(i => item[i].type.name === 'ReactNode')
-          const fieldNames = getFieldNames(this.propsConfig[propsName]);
-          if (itemTypeList?.length) {
-            props[propsName] = props[propsName].map((item, index) => {
-              const obj = { ...item };
-              for (let key in item) {
-                if (itemTypeList.includes(key)) {
-                  obj[key] = setSlotWrapper({
-                    children: item[key],
-                    widgetId: this.componentInfo.id,
-                    widgetProps:  { ...cloneProps },
-                    path: `${propsName}[${index}].${key}`,
-                    fieldNames,
-                    meta:[0,2,4]
-                  });
-                }
-              }
-              return obj;
-            });
-          }
-        }
+      const obj = {}
+      Object.keys(props).map((propsName) => {
+        const config = this.propsConfig[propsName]; 
+        obj[propsName] = this.getWrapperProps(config, propsName, cloneProps);
       });
+      // console.log('obj = ', obj)
+      return obj;
     },
     
   },
@@ -114,8 +131,8 @@ export default {
       // 监听属性面板的更新
       eventBus.on(`${this.componentInfo.id}:propsUpdate`, (props) => {
         const newProps = clone({ ...this.rawProps, ...props });
-        this.handleProps(newProps);
-        this.componentProps = newProps;
+        const _props = this.handleProps(newProps);
+        this.componentProps = _props;
       });
 
     }
@@ -124,7 +141,6 @@ export default {
     const { id } = this.componentInfo;
     if (this.componentInfo.id) {
       eventBus.off(`${id}:propsUpdate`);
-      eventBus.off(`${this.componentInfo.id}:action`)
     }
   },
 };

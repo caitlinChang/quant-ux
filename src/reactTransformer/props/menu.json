@@ -23,7 +23,7 @@
         "required": false,
         "type": {
           "name": "choice",
-          "item": ["light", "dark"]
+          "enum": ["light", "dark"]
         }
       },
       "inlineIndent": {
@@ -45,12 +45,14 @@
           "name": "array",
           "item": {
             "danger": {
+              "name": "danger",
               "type": {
                 "name": "boolean"
               },
               "description": "是否危险"
             },
             "disabled": {
+              "name": "disabled",
               "type": {
                 "name": "boolean"
               },
@@ -230,7 +232,7 @@
         "required": false,
         "type": {
           "name": "choice",
-          "item": ["ltr", "rtl"]
+          "enum": ["ltr", "rtl"]
         }
       },
       "mode": {
@@ -240,7 +242,7 @@
         "required": false,
         "type": {
           "name": "choice",
-          "item": ["horizontal", "vertical", "inline"]
+          "enum": ["horizontal", "vertical", "inline"]
         }
       },
       "inlineCollapsed": {
@@ -388,7 +390,7 @@
         "required": false,
         "type": {
           "name": "choice",
-          "item": ["click", "hover"]
+          "enum": ["click", "hover"]
         }
       },
       "expandIcon": {
@@ -397,7 +399,7 @@
         "name": "expandIcon",
         "required": false,
         "type": {
-          "name": "RenderIconType"
+          "name": "ReactNode"
         }
       },
       "overflowedIndicator": {

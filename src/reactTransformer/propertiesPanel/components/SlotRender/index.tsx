@@ -43,7 +43,7 @@ export default (props: {
       )}
       {type === "component" && (
         <div>
-          <div>当前选中组件：{value[0]}</div>
+          <div>当前选中组件：{value?.[0] || '暂无'}</div>
           <Button onClick={props.onSelectComponent}>点击选择组件</Button>
         </div>
       )}

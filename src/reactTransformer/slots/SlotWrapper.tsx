@@ -5,6 +5,7 @@ import { ContenxtMenuType } from "../contextMenu/index";
 import componentList, { getVueTypeName } from "../util/constant";
 import iconList from "../util/icon";
 import { IconSlot } from "../slots/IconSlot";
+import { transferPath } from "../util/propsValueUtils";
 
 const componentMap = { ...componentList, ...iconList, IconSlot };
 
@@ -19,9 +20,9 @@ export type SlotWrapperProps = {
 
 const SlotWrapper = (props: SlotWrapperProps) => {
   const handleBlur = (e: any) => {
-    const value = e.target.innerHTML;
-    // 通知 Model 更新props
-    eventBus.emit("canvasEdit", props.path, value);
+    const _value = e.target.innerHTML;
+    const { key, value } = transferPath(props.path, _value, props.widgetProps);
+    eventBus.emit(`${props.widgetId}:canvasUpdate`, key, value);
   };
 
   // 展示快捷菜单

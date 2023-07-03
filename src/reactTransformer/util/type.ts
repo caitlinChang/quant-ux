@@ -21,6 +21,7 @@ export type ObjectItemType = {
   property?: {
     [key: string]: PropItemConfigType;
   };
+  enum?: string[];
 };
 export type PropItemConfigType = {
   name: string;

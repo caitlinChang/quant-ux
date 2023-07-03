@@ -9,6 +9,14 @@ import {
   CloseCircleFilled,
 } from "@ant-design/icons";
 
+export const formatPath = (path) => {
+  if (path) {
+    return `${path}.`;
+  } else {
+    return "";
+  }
+};
+
 function getEnum(str: string) {
   const regex = /"(.*?)"/g;
   const matches = str.match(regex);
@@ -62,6 +70,8 @@ export const findControlledProps = (propsConfig: {
   }
   return null;
 };
+
+
 
 
 

@@ -20,16 +20,11 @@ import { getFirstKey, transferPath } from "../util/propsValueUtils";
 import eventBus from "../eventBus";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import SlotRender from "./components/SlotRender";
+import { formatPath } from "../util/common";
 
 const AntdPanel = Collapse.Panel;
 
-const formatPath = (path) => {
-  if (path) {
-    return `${path}.`;
-  } else {
-    return "";
-  }
-};
+
 
 const Panel = () => {
   const [treeData, setTreeData] = React.useState([]);
@@ -44,10 +39,10 @@ const Panel = () => {
       .map((item) => getTSType(item))
       .filter((item) => item?.renderConfig);
     setPropsConfig(propsConfig);
-
     return propsConfig;
   };
   const handleChangeProp = (path, _value) => {
+    console.log("handleChangeProp = ", path, _value);
     const { key, value, newFormData } = transferPath(path, _value, formData);
     setFormData(newFormData);
     eventBus.emit(`${selectWidget.id}:propsUpdate`, newFormData);
@@ -64,7 +59,7 @@ const Panel = () => {
 
   useEffect(() => {
     getTreedata(propsConfig, formData);
-  },[formData, propsConfig])
+  }, [formData, propsConfig]);
 
   const renderProp = (node: {
     title: ReactNode;
@@ -79,19 +74,23 @@ const Panel = () => {
     const {
       type: { name, item },
     } = node.config;
+
     if (name === TypeName.Choice) {
+      const options = node.config.type.enum?.map?.((i) => {
+        return { label: i, value: i };
+      });
       return (
         <Radio.Group
-          options={[]}
+          options={options}
           value={value}
-          onChange={(value) => handleChangeProp(node.key, value)}
+          onChange={(e) => handleChangeProp(node.key, e.target.value)}
         />
       );
     } else if (name === TypeName.String) {
       return (
         <Input
           value={value}
-          onBlur={(value) => handleChangeProp(node.key, value)}
+          onBlur={(e) => handleChangeProp(node.key, e.target.value)}
         />
       );
     } else if (name === TypeName.Number) {
@@ -231,7 +230,7 @@ const Panel = () => {
             // 如果是 Children 类型，就是依然将父级的propsConfig 当作自己的 Config 传进去
             const _config =
               info.type.name === TypeName.Children
-                ? { ...config, description: "Children" }
+                ? { ...config, description: "Children", name: "children" }
                 : info;
             return getTreeNode(_config, `${curPath}[${index}]`, propsValue);
           }),

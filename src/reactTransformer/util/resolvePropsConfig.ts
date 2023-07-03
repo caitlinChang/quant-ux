@@ -1,6 +1,6 @@
 import { getFieldNames } from "./getFieldNames";
 import { getExactType } from "./common";
-import { PropItemConfigType } from "./type";
+import { PropItemConfigType, TypeName } from "./type";
 
 // 判断它的 TS 类型是什么，然后决定如何渲染配置
 export const getTSType = (propsConfig: any) => {
@@ -16,17 +16,17 @@ export const getTSType = (propsConfig: any) => {
     return null;
   }
   switch (type) {
-    case "ReactNode":
+    case TypeName.ReactNode:
       return "ReactNode";
-    case "string":
+    case TypeName.String:
       return renderString(propsConfig);
-    case "number":
+    case TypeName.Number:
       return renderNumber(propsConfig);
-    case "boolean":
+    case TypeName.Boolean:
       return renderBoolean(propsConfig);
-    case "enum":
-      return renderEnum(propsConfig, list);
-    case "array":
+    case TypeName.Choice:
+      return renderEnum(propsConfig, []);
+    case TypeName.Array:
       return renderArray(propsConfig); // 渲染自增数据
     case "any":
       return null;
