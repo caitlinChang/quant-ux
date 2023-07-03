@@ -1,1 +1,77 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/radio/index.tsx",
+    "description": "",
+    "displayName": "antd-table",
+    "methods": [],
+    "props": {
+      "bordered": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "是否展示外边框和列边框",
+        "defaultValue": false
+      },
+      "columns": {
+        "type": {
+          "name": "array",
+          "item": {
+            "align": {
+              "name": "align",
+              "description": "设置列内容的对齐方式",
+              "type": {
+                "name": "choice",
+                "enum": ["left", "right", "center"]
+              }
+            },
+            "title": {
+              "name": "title",
+              "description": "列头显示文字",
+              "type": {
+                "name": "ReactNode"
+              }
+            },
+            "width": {
+              "name": "width",
+              "description": "列宽度",
+              "type": {
+                "name": "number"
+              }
+            },
+            "sortOrder": {
+              "name": "sortOrder",
+              "description": "排序",
+              "type": {
+                "name": "choice",
+                "enum": ["ascend", "descend", null]
+              }
+            },
+            "fixed": {
+              "name": "fixed",
+              "description": "列是否固定",
+              "type": {
+                "name": "choice",
+                "enum": [true, "left", "right"]
+              }
+            },
+            "filterSearch": {
+              "name": "filterSearch",
+              "description": "是否支持搜索",
+              "type": {
+                "name": "boolean"
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": "表格列配置",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
+      }
+    }
+  }
+]

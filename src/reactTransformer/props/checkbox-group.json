@@ -1,0 +1,55 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/radio/index.tsx",
+    "description": "",
+    "displayName": "radio-group",
+    "methods": [],
+    "props": {
+      "options": {
+        "defaultValue": null,
+        "description": "选项",
+        "name": "options",
+        "required": false,
+        "needMock": true,
+        "type": {
+          "name": "array",
+          "item": {
+            "label": {
+              "name": "label",
+              "description": "选项文案",
+              "type": {
+                "name": "ReactNode"
+              },
+              "required": false
+            },
+            "value": {
+              "name": "value",
+              "type": {
+                "name": "string"
+              },
+              "required": false
+            },
+            "disabled": {
+              "name": "disabled",
+              "description": "是否禁用",
+              "type": {
+                "name": "boolean"
+              },
+              "required": false
+            }
+          }
+        }
+      },
+      "disabled": {
+        "defaultValue": false,
+        "description": "是否禁用",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  }
+]

@@ -1,1 +1,98 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/button/index.tsx",
+    "description": "",
+    "displayName": "button",
+    "methods": [],
+    "props": {
+      "children": {
+        "description": "内容",
+        "type": {
+          "name": "ReactNode"
+        },
+        "needMock": true,
+        "required": false,
+        "name": "children"
+      },
+      "block": {
+        "name": "block",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "宽度自适应"
+      },
+      "danger": {
+        "name": "danger",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "设置危险按钮"
+      },
+      "disabled": {
+        "name": "disabled",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "按钮失效状态"
+      },
+      "ghost": {
+        "name": "ghost",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "幽灵属性，使按钮背景透明"
+      },
+      "icon": {
+        "name": "icon",
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "description": "设置按钮的图标类型"
+      },
+      "loading": {
+        "name": "loading",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "按钮是否在载入状态"
+      },
+      "shape": {
+        "name": "shape",
+        "defaultValue": "default",
+        "type": {
+          "name": "choice",
+          "enum": ["circle", "round", "default"]
+        },
+        "required": false,
+        "description": "设置按钮形状"
+      },
+      "size": {
+        "name": "size",
+        "defaultValue": "middle",
+        "type": {
+          "name": "choice",
+          "enum": ["large", "middle", "small"]
+        },
+        "required": false,
+        "description": "设置按钮大小"
+      },
+      "type": {
+        "name": "type",
+        "defaultValue": "default",
+        "type": {
+          "name": "choice",
+          "enum": ["primary", "ghost", "dashed", "link", "text", "default"]
+        },
+        "required": false,
+        "description": "设置按钮类型"
+      }
+    }
+  }
+]

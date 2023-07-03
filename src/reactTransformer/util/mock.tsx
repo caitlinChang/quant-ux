@@ -40,7 +40,7 @@ const getMockDataByType = (keyName, config: PropItemConfigType): any => {
     // case "boolean":
     //   return getRandomBoolean(); //??? boolean 类型应该需要取默认值，而不是随机mock
     case "ReactNode":
-      return "TaskFlow Editor";
+      return "Please edit something.";
     default:
       return undefined;
   }

@@ -4,7 +4,10 @@ import { PropItemConfigType, TypeName } from "./type";
 
 // 判断它的 TS 类型是什么，然后决定如何渲染配置
 export const getTSType = (propsConfig: any) => {
-  const [type, list] = getExactType(propsConfig.type.name);
+  // const [type, list] = getExactType(propsConfig.type.name);
+  const {
+    type: { name },
+  } = propsConfig;
 
   // 过滤掉一些 className 的配置，或者AriaAttributes的配置
   if (/className|ClassName|aria-/.test(propsConfig.name)) {
@@ -15,9 +18,16 @@ export const getTSType = (propsConfig: any) => {
   if (!propsConfig.description) {
     return null;
   }
-  switch (type) {
+  switch (name) {
     case TypeName.ReactNode:
-      return "ReactNode";
+      return {
+        ...propsConfig,
+        renderConfig: {
+          component: "a-input-number",
+          decorator: {},
+          props: {},
+        },
+      };
     case TypeName.String:
       return renderString(propsConfig);
     case TypeName.Number:
@@ -28,11 +38,6 @@ export const getTSType = (propsConfig: any) => {
       return renderEnum(propsConfig, []);
     case TypeName.Array:
       return renderArray(propsConfig); // 渲染自增数据
-    case "any":
-      return null;
-    case "() => void":
-      // return "function";
-      return null;
     default:
       return null;
   }

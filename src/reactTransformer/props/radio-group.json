@@ -1,0 +1,94 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/radio/index.tsx",
+    "description": "",
+    "displayName": "radio-group",
+    "methods": [],
+    "props": {
+      "buttonStyle": {
+        "defaultValue": "outline",
+        "description": "风格样式",
+        "name": "buttonStyle",
+        "required": false,
+        "type": {
+          "name": "choice",
+          "enum": ["outline", "solid"]
+        }
+      },
+      "options": {
+        "defaultValue": null,
+        "description": "选项",
+        "name": "options",
+        "required": false,
+        "needMock": true,
+        "type": {
+          "name": "array",
+          "item": {
+            "label": {
+              "name": "label",
+              "description": "选项文案",
+              "type": {
+                "name": "ReactNode"
+              },
+              "required": false
+            },
+            "value": {
+              "name": "value",
+              "type": {
+                "name": "string"
+              },
+              "required": false
+            },
+            "disabled": {
+              "name": "disabled",
+              "description": "是否禁用",
+              "type": {
+                "name": "boolean"
+              },
+              "required": false
+            }
+          }
+        }
+      },
+      "optionType": {
+        "defaultValue": "default",
+        "description": "options 类型",
+        "name": "optionType",
+        "required": false,
+        "type": {
+          "name": "choice",
+          "enum": ["default", "button"]
+        }
+      },
+      "size": {
+        "defaultValue": "middle",
+        "description": "大小，只对按钮样式生效",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "choice",
+          "enum": ["large", "middle", "small"]
+        }
+      },
+      "disabled": {
+        "defaultValue": false,
+        "description": "是否禁用",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "name": {
+        "defaultValue": null,
+        "description": "",
+        "name": "name",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      }
+    }
+  }
+]

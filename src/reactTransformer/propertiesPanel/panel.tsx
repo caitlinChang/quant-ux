@@ -39,6 +39,7 @@ const Panel = () => {
       .map((item) => getTSType(item))
       .filter((item) => item?.renderConfig);
     setPropsConfig(propsConfig);
+
     return propsConfig;
   };
   const handleChangeProp = (path, _value) => {
@@ -272,7 +273,6 @@ const Panel = () => {
       // 通知 model 更新
       if (!path) {
         // 传入的不是props中的某个字段，而是整个props
-        console.log("update value = ", value);
         setTimeout(() => {
           setFormData({ ...value });
         });

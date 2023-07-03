@@ -70,9 +70,7 @@ const componentConfigList = [
     displayName: "按钮",
     cagegory: "常用",
     component: "antd-button",
-    props: {
-      children: "请编辑",
-    },
+    // props: {},
   },
   {
     _type: "antd4",
@@ -138,13 +136,10 @@ const componentConfigList = [
     cagegory: "表单",
     component: "antd-radio-group",
     props: {
-      // value: 0,
       options: [
         { label: "可编辑_1", value: 0 },
         { label: "可编辑_2", value: 1 },
       ],
-      // readonly: true,
-      // disabled: true,
     },
   },
   {
@@ -155,13 +150,6 @@ const componentConfigList = [
     displayName: "复选组",
     cagegory: "表单",
     component: "antd-checkbox-group",
-    props: {
-      value: 0,
-      options: [
-        { label: "可编辑_1", value: 0 },
-        { label: "可编辑_2", value: 1 },
-      ],
-    },
   },
   {
     _type: "antd4",

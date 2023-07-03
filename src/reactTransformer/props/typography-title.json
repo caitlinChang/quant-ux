@@ -1,0 +1,111 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/menu/index.tsx",
+    "description": "",
+    "displayName": "typographt-title",
+    "methods": [],
+    "props": {
+      "children": {
+        "description": "内容",
+        "type": {
+          "name": "ReactNode"
+        },
+        "needMock": true,
+        "required": false,
+        "name": "children"
+      },
+      "code": {
+        "description": "添加代码标记",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "code"
+      },
+      "copyable": {
+        "description": "是否可复制",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "copyable"
+      },
+      "delete": {
+        "description": "添加删除线标记",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "delete"
+      },
+      "disabled": {
+        "description": "禁用文本",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "disabled"
+      },
+      "editable": {
+        "description": "是否可编辑",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "editable"
+      },
+      "ellipsis": {
+        "description": "是否自动溢出省略",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "ellipsis"
+      },
+      "level": {
+        "defaultValue": 1,
+        "description": "标题级别",
+        "type": {
+          "name": "choice",
+          "enum": [1, 2, 3, 4, 5]
+        },
+        "required": false,
+        "name": "level"
+      },
+      "mark": {
+        "description": "是否可编辑",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "mark"
+      },
+      "italic": {
+        "description": "是否可编辑",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "italic"
+      },
+      "type": {
+        "description": "文本类型",
+        "type": {
+          "name": "choice",
+          "enum": ["secondary", "success", "warning", "danger"]
+        },
+        "required": false,
+        "name": "type"
+      },
+      "underline": {
+        "description": "是否可编辑",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "underline"
+      }
+    }
+  }
+]

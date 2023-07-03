@@ -24,10 +24,6 @@ export default {
         this._inlineEditWidget = widget;
         this._inlineWrapper = editableDiv;
        
-        /**
-         * FIXME: 在使用 ant-radio-group 时，无法实现内容编辑，可能因为 ant-radio-group 本身的click事件总是会触发radio元素的focus
-         * 不知道其他表单元素是否会有这样的情况
-         */
         this._clickListener = on(this._inlineWrapper, "click", (e) => this.headOffClick(e));
         this._dbclickListener = on(this._inlineWrapper, "dblclick", (e) => this.inlineEditConfirm(e));
         this._mouseDownListener = on(this._inlineWrapper, "mousedown", (e) => {
@@ -81,6 +77,11 @@ export default {
     headOffClick(e) {
       if (e) {
         e.stopPropagation();
+         /**
+         * FIXME: 在使用 ant-radio-group 时，无法实现内容编辑，可能因为 ant-radio-group 本身的click事件总是会触发radio元素的focus
+         * 不知道其他表单元素是否会有这样的情况
+         */
+        e.preventDefault();
       }
       const target = e.target;
       if (target.getAttribute("contenteditable") !== "true") {

@@ -64,11 +64,13 @@ export default {
       }
       // 对原始的props 做层slotWrapper 方便画布操作
       const _props = this.handleProps(newProps);
+      console.log('_props = ', _props)
       this.componentProps = _props;
     },
 
     getWrapperProps(config, path, rawProps, fieldNames) {
       const curValue = get(rawProps, path);
+      
       const { type: { name, property, item } } = config;
       if (name === 'ReactNode') {
         return setSlotWrapper({
