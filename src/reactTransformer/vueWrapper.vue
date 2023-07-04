@@ -1,8 +1,8 @@
 <template>
   <div class="custom-widget-warpper">
     <component :is="componentInfo.component" v-bind="componentProps" >
-      <template v-slot:default>
-        xxxx
+      <template v-if="childrenProps" v-slot:default>
+        <slot-wrapper v-bind="childrenProps" />
       </template>
     </component>
   </div>
@@ -13,17 +13,17 @@ import eventBus from "./eventBus";
 import componentList from "./util/constant";
 import iconMap from './util/icon';
 import { requestComponentProps} from './util/request'
-import { setSlotWrapper } from "./slots/SlotWrapper";
+import { setSlotWrapper, SlotWrapper } from "./slots/SlotWrapper";
 import { getFieldNames } from './util/getFieldNames';
 import { getMockedProps } from './util/mock';
 import { clone, get } from 'lodash';
 import { formatPath } from './util/common';
-
 export default {
   name: "VueWrapper",
   components: {
     ...componentList,
     ...iconMap,
+    'slot-wrapper':SlotWrapper
   },
   props: ["componentInfo"],
   data() {
@@ -35,6 +35,7 @@ export default {
       rawProps:{}, // 原始的 props， 在model中存储的props数据模型
       propsConfig: {}, // props的类型配置信息
       showAction: true,
+      childrenProps: null
     };
   },
   methods: {
@@ -68,7 +69,7 @@ export default {
       }
       // 对原始的props 做层slotWrapper 方便画布操作
       const _props = this.handleProps(newProps);
-      console.log('_props = ', _props)
+      console.log('props',_props)
       this.componentProps = _props;
     },
 
@@ -77,6 +78,17 @@ export default {
       
       const { type: { name, property, item } } = config;
       if (name === 'ReactNode') {
+        // children 需要特殊处理，用 slot 传递
+        if (path === 'children') {
+          return {
+            widgetId: this.componentInfo.id,
+            widgetProps: { ...rawProps },
+            path: path,
+            children: curValue,
+            fieldNames,
+            meta: [4]
+          }
+        }
         return setSlotWrapper({
           widgetId: this.componentInfo.id,
           widgetProps: { ...rawProps },
@@ -126,8 +138,9 @@ export default {
         const config = this.propsConfig[propsName]; 
         obj[propsName] = this.getWrapperProps(config, propsName, cloneProps);
       });
-      // console.log('obj = ', obj)
-      return obj;
+      const { children, ...restProps } = obj;
+      this.childrenProps = children;
+      return restProps;
     },
     
   },

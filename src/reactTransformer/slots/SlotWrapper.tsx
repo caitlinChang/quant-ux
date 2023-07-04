@@ -19,10 +19,7 @@ export type SlotWrapperProps = {
   meta?: ContenxtMenuType[];
 };
 
-const SlotWrapper = (props: SlotWrapperProps) => {
-
-  console.log('slotWrapper props', props)
-
+export const SlotWrapper = (props: SlotWrapperProps) => {
   const handleBlur = (e: any) => {
     const _value = e.target.innerHTML;
     const { key, value } = transferPath(props.path, _value, props.widgetProps);
@@ -46,7 +43,6 @@ const SlotWrapper = (props: SlotWrapperProps) => {
 
   const renderChildren = () => {
     const { children } = props;
-    console.log("slotWrapper children", children)
     if (isArray(children)) {
       const [componentName, componentProps] = children;
       const _name =
@@ -58,18 +54,17 @@ const SlotWrapper = (props: SlotWrapperProps) => {
         componentName === "IconSlot" ? props : componentProps
       );
     } else {
-      
       return children;
     }
   };
-  
+
   return (
     <span
       className="slot-wrapper can-edit"
       onContextMenu={handleContextMenu}
       onBlur={handleBlur}
     >
-     {renderChildren()}
+      {renderChildren()}
     </span>
   );
 };
@@ -84,6 +79,6 @@ const SlotWrapper = (props: SlotWrapperProps) => {
 export const setSlotWrapper = (props: SlotWrapperProps) => {
   const { children, ...resProps } = props;
   const el = React.createElement(SlotWrapper, resProps, props.children);
-  console.log('setSlotWrapper el', el, children)
-  return <div>xxxx</div>;
+  return el;
 };
+
