@@ -2,7 +2,7 @@
   <div class="custom-widget-warpper">
     <component :is="componentInfo.component" v-bind="componentProps" >
       <template v-if="childrenProps" v-slot:default>
-        <slot-wrapper v-bind="childrenProps" />
+        <slot-wrapper :props="childrenProps" />
       </template>
     </component>
   </div>
@@ -23,7 +23,7 @@ export default {
   components: {
     ...componentList,
     ...iconMap,
-    'slot-wrapper':SlotWrapper
+    slotWrapper: SlotWrapper,
   },
   props: ["componentInfo"],
   data() {
@@ -52,7 +52,7 @@ export default {
       const res = await requestComponentProps(name);
       this.propsConfig = res.props;
       let newProps = {};
-      this.rawProps = this.componentInfo.props;
+      this.rawProps = clone(this.componentInfo.props);
       if (this.rawProps && Object.keys(this.rawProps).length) {
         newProps = clone(this.rawProps);
       } else {
@@ -69,7 +69,6 @@ export default {
       }
       // 对原始的props 做层slotWrapper 方便画布操作
       const _props = this.handleProps(newProps);
-      console.log('props',_props)
       this.componentProps = _props;
     },
 
@@ -140,6 +139,7 @@ export default {
       });
       const { children, ...restProps } = obj;
       this.childrenProps = children;
+      console.log('restProps', restProps, this.childrenProps)
       return restProps;
     },
     

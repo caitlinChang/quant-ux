@@ -17,13 +17,17 @@ export type SlotWrapperProps = {
   fieldNames?: StandardArrayItemType;
   children?: ReactNode;
   meta?: ContenxtMenuType[];
+  props?: SlotWrapperProps;
 };
 
 export const SlotWrapper = (props: SlotWrapperProps) => {
+
+  const _props = props.props ? props.props : props;
+
   const handleBlur = (e: any) => {
     const _value = e.target.innerHTML;
-    const { key, value } = transferPath(props.path, _value, props.widgetProps);
-    eventBus.emit(`${props.widgetId}:canvasUpdate`, key, value);
+    const { key, value } = transferPath(_props.path, _value, _props.widgetProps);
+    eventBus.emit(`${_props.widgetId}:canvasUpdate`, key, value);
   };
 
   // 展示快捷菜单
@@ -42,7 +46,7 @@ export const SlotWrapper = (props: SlotWrapperProps) => {
   };
 
   const renderChildren = () => {
-    const { children } = props;
+    const { children } = _props;
     if (isArray(children)) {
       const [componentName, componentProps] = children;
       const _name =
@@ -51,19 +55,14 @@ export const SlotWrapper = (props: SlotWrapperProps) => {
           : getVueTypeName(componentName, "antd");
       return React.createElement(
         componentMap[_name],
-        componentName === "IconSlot" ? props : componentProps
+        componentName === "IconSlot" ? _props : componentProps
       );
     } else {
       return children;
     }
   };
-
   return (
-    <span
-      className="slot-wrapper can-edit"
-      onContextMenu={handleContextMenu}
-      onBlur={handleBlur}
-    >
+    <span className="slot-wrapper can-edit" onBlur={handleBlur}>
       {renderChildren()}
     </span>
   );
