@@ -1,0 +1,32 @@
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Panel",
+    "methods": [],
+    "props": {
+      "header":{
+        "type":{
+          "name":"ReactNode"
+        },
+        "name":"header",
+        "required":false,
+        "description":"标题"
+      },
+      "key":{
+        "name":"key",
+        "type":{
+          "name":"string"
+        }
+      },
+      "showArrow":{
+        "type":{
+          "name":"boolean"
+        },
+        "name":"showArrow",
+        "required":false,
+        "description":"是否显示当前面板的箭头"
+      }
+    }
+  }
+]

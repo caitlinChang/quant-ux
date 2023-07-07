@@ -1,1 +1,75 @@
-[]
+[
+  {
+    "tags": {},
+    "description": "",
+    "displayName": "Collapse",
+    "methods": [],
+    "props": {
+      "accordion": {
+        "type": {
+          "name": "boolean"
+        },
+        "name": "accordion",
+        "required": false,
+        "description": "手风琴模式"
+      },
+      "activeKey":{
+        "type": {
+          "name": "string"
+        },
+        "name": "activeKey",
+        "required": false,
+        "description": "当前激活 tab 面板的 key"
+      },
+      "bordered":{
+        "type": {
+          "name": "boolean"
+        },
+        "name": "bordered",
+        "required": false,
+        "description": "是否显示边框"
+      },
+      "collapsible":{
+        "type": {
+          "name": "choice",
+          "enum": [
+            "header",
+            "icon",
+            "disabled"
+          ]
+        },
+        "name": "collapsible",
+        "required": false,
+        "description": "指定可折叠触发区域"
+      },
+      "expandIconPosition":{
+        "type": {
+          "name": "choice",
+          "enum": [
+            "start",
+            "end"
+          ]
+        },
+        "name": "expandIconPosition",
+        "required": false,
+        "description": "设置图标位置"
+      },
+      "expandIcon":{
+        "type": {
+          "name": "func"
+        },
+        "name": "expandIcon",
+        "required": false,
+        "description": ""
+      },
+      "ghost":{
+        "type": {
+          "name": "boolean"
+        },
+        "name": "ghost",
+        "required": false,
+        "description": "设置折叠面板透明且无边框"
+      }
+    }
+  }
+]

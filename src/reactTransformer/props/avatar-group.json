@@ -1,0 +1,147 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/avatar/index.tsx",
+    "description": "",
+    "displayName": "Group",
+    "methods": [],
+    "props": {
+      "className": {
+        "defaultValue": null,
+        "description": "",
+        "name": "className",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+          "name": "GroupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+            "name": "GroupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+          "name": "GroupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+            "name": "GroupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "maxCount": {
+        "defaultValue": null,
+        "description": "显示的最大头像个数",
+        "name": "maxCount",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+          "name": "GroupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+            "name": "GroupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "maxStyle": {
+        "defaultValue": null,
+        "description": "",
+        "name": "maxStyle",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+          "name": "GroupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+            "name": "GroupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "maxPopoverPlacement": {
+        "defaultValue": null,
+        "description": "多余头像气泡弹出位置",
+        "name": "maxPopoverPlacement",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+          "name": "GroupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+            "name": "GroupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "enum": [ "top", "bottom"],
+          "name": "choice"
+        }
+      },
+      "maxPopoverTrigger": {
+        "defaultValue": null,
+        "description": "多余头像 Popover 的触发方式",
+        "name": "maxPopoverTrigger",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+          "name": "GroupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+            "name": "GroupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name":"choice",
+          "enum":[ "hover", "focus", "click"]
+        }
+      },
+      "size": {
+        "defaultValue": "middle",
+        "description": "大小",
+        "name": "size",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+          "name": "GroupProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/avatar/group.tsx",
+            "name": "GroupProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "choice",
+          "enum":["larget", "small", "middle"]
+        }
+      }
+    }
+  }
+]

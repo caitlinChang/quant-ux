@@ -21,21 +21,24 @@ export const getInitialProps = (key) => {
   return fakeProps;
 };
 
-// const componentConfigList = Object.keys(componentMap).map((key) => {
-//   const initialProps = getInitialProps(key);
-//   return {
-//     _type: "antd4",
-//     type: "antd4",
-//     // w: 200,
-//     // h: 60,
-//     // "name":"Typography.Text.1",
-//     displayName:key,
-//     cagegory:'Text',
-//     component: key,
-//     id: uuidv4(),
-//     props: initialProps,
-//   }
-// })
+// 在黑名单中的不会展示
+const blackList = ['affix', 'anchor','back-top','avatar','breadcrumb','calendar','card','carousel']
+
+const _componentConfigList = Object.keys(componentMap).map((key) => {
+  const initialProps = getInitialProps(key);
+  return {
+    _type: "antd4",
+    w: 200,
+    h: 60,
+    name: key,
+    displayName:key,
+    cagegory:'Ant Design',
+    component: key,
+    // props: initialProps,
+  }
+})
+console.log('_componentConfigList = ', _componentConfigList);
+
 const componentConfigList = [
   {
     _type: "antd4",
@@ -70,7 +73,6 @@ const componentConfigList = [
     displayName: "按钮",
     cagegory: "常用",
     component: "antd-button",
-    // props: {},
   },
   {
     _type: "antd4",
@@ -81,8 +83,6 @@ const componentConfigList = [
     cagegory: "表单",
     component: "antd-input",
     props: {
-      // value: "请编辑",
-      placeholder: "请输入",
     },
   },
   {
@@ -94,9 +94,6 @@ const componentConfigList = [
     cagegory: "表单",
     component: "antd-select",
     props: {
-      // value: "请编辑",
-      placeholder: "请选择",
-      options: [{ label: "可编辑", value: 0 }],
     },
   },
   {
@@ -107,12 +104,6 @@ const componentConfigList = [
     displayName: "单选",
     cagegory: "表单",
     component: "antd-radio",
-    props: {
-      value: "请编辑",
-      checked: true,
-      // placeholder: "请选择",
-      // options: [{ label: "可编辑", value: 0 }],
-    },
   },
   {
     _type: "antd4",
@@ -173,18 +164,6 @@ const componentConfigList = [
     cagegory: "表单",
     component: "antd-menu",
     props: {
-      // items: [
-      //   {
-      //     label: "菜单一",
-      //     icon: "ying",
-      //     key: 0,
-      //   },
-      //   {
-      //     label: "菜单二",
-      //     icon: "yingxxx",
-      //     key: 1,
-      //   },
-      // ],
     },
   },
   {
