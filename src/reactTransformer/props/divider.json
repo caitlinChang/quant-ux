@@ -2,119 +2,43 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/divider/index.tsx",
-    "description": "",
-    "displayName": "divider",
+    "description": "分割线",
+    "displayName": "Divider",
     "methods": [],
     "props": {
-      "prefixCls": {
-        "defaultValue": null,
-        "description": "",
-        "name": "prefixCls",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-          "name": "DividerProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-            "name": "DividerProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
       "type": {
         "defaultValue": null,
-        "description": "",
+        "description": "布局",
         "name": "type",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-          "name": "DividerProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-            "name": "DividerProps"
-          }
-        ],
         "required": false,
         "type": {
-          "name": "\"horizontal\" | \"vertical\""
+          "name": "choice",
+          "enum": ["horizontal", "vertical"]
         }
       },
       "orientation": {
         "defaultValue": null,
-        "description": "",
+        "description": "分割线标题的位置",
         "name": "orientation",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-          "name": "DividerProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-            "name": "DividerProps"
-          }
-        ],
         "required": false,
         "type": {
-          "name": "\"left\" | \"right\" | \"center\""
+          "name": "choice",
+          "enum": ["left", "right", "center"]
         }
       },
       "orientationMargin": {
         "defaultValue": null,
-        "description": "",
+        "description": "标题和最近 left/right 边框之间的距离",
         "name": "orientationMargin",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-          "name": "DividerProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-            "name": "DividerProps"
-          }
-        ],
         "required": false,
         "type": {
-          "name": "string | number"
-        }
-      },
-      "className": {
-        "defaultValue": null,
-        "description": "",
-        "name": "className",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-          "name": "DividerProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-            "name": "DividerProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string"
+          "name": "number"
         }
       },
       "dashed": {
-        "defaultValue": null,
-        "description": "",
+        "defaultValue": false,
+        "description": "是否虚线",
         "name": "dashed",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-          "name": "DividerProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-            "name": "DividerProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "boolean"
@@ -124,35 +48,15 @@
         "defaultValue": null,
         "description": "",
         "name": "style",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-          "name": "DividerProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-            "name": "DividerProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "CSSProperties"
         }
       },
       "plain": {
-        "defaultValue": null,
-        "description": "",
+        "defaultValue": false,
+        "description": "文字是否显示为普通正文样式",
         "name": "plain",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-          "name": "DividerProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/divider/index.tsx",
-            "name": "DividerProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "boolean"

@@ -1,1 +1,60 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/space/index.tsx",
+    "description": "间距布局",
+    "displayName": "Space",
+    "methods": [],
+    "props": {
+      "align": {
+        "type": {
+          "name": "choice",
+          "enum": ["start", "end", "center", "baseline", "stretch"]
+        },
+        "name": "align",
+        "required": false,
+        "defaultValue": "",
+        "description": "对齐方式"
+      },
+      "direction": {
+        "type": {
+          "name": "choice",
+          "enum": ["horizontal", "vertical"]
+        },
+        "name": "direction",
+        "defaultValue": "horizontal",
+        "required": false,
+        "description": "间距方向"
+      },
+      "wrap": {
+        "type": {
+          "name": "boolean"
+        },
+        "name": "wrap",
+        "defaultValue": false,
+        "required": false,
+        "description": "是否换行",
+        "tips": "仅在 horizontal 时有效"
+      },
+      "split": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "name": "split",
+        "defaultValue": null,
+        "required": false,
+        "description": "设置拆分"
+      },
+      "size": {
+        "type": {
+          "name": "choice",
+          "enum": ["small", "middle", "large", "number"]
+        },
+        "name": "size",
+        "defaultValue": "small",
+        "required": false,
+        "description": "间距大小"
+      }
+    }
+  }
+]

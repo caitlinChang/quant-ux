@@ -20,8 +20,7 @@ export function revertName(name) {
 }
 
 
-const nextComponent = ["Button", "Typography", "Radio", "Checkbox"];
-
+const nextComponent = ["Button", "Typography", "Radio", "Checkbox", "Form"];
 Object.keys(antdComponents).forEach((key) => {
   if (!antdComponents[key]) return;
   const module = antdComponents[key];
@@ -36,6 +35,8 @@ Object.keys(antdComponents).forEach((key) => {
         } else if (module[item].type?.render) {
           componentMap[getVueTypeName(`${key}${item}`, "antd")] =
             module[item].type;
+        } else if (typeof module[item] === "function") {
+          componentMap[getVueTypeName(`${key}${item}`, "antd")] = module[item];
         }
       }
     });

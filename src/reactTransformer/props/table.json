@@ -1,9 +1,9 @@
 [
   {
     "tags": {},
-    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/radio/index.tsx",
-    "description": "",
-    "displayName": "antd-table",
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/table/index.tsx",
+    "description": "表格",
+    "displayName": "Table",
     "methods": [],
     "props": {
       "bordered": {
@@ -31,6 +31,13 @@
               "description": "列头显示文字",
               "type": {
                 "name": "ReactNode"
+              }
+            },
+            "dataIndex": {
+              "name": "dataIndex",
+              "description": "列数据字段名",
+              "type": {
+                "name": "string"
               }
             },
             "width": {
@@ -70,6 +77,67 @@
         "defaultValue": {
           "value": "[]",
           "computed": false
+        }
+      },
+      "dataSource": {
+        "type": {
+          "name": "array"
+        }
+      },
+      "expandable": {
+        "type": {
+          "name": "object",
+          "property": {
+            "columnTitle": {
+              "name": "columnTitle",
+              "description": "展开列的标题",
+              "defaultValue": null,
+              "type": {
+                "name": "ReactNode"
+              }
+            },
+            "columnWidth": {
+              "name": "columnWidth",
+              "description": "展开列的宽度",
+              "defaultValue": null,
+              "type": {
+                "name": "number"
+              }
+            },
+            "expandRowByClick": {
+              "name": "expandRowByClick",
+              "description": "设置点击行展开",
+              "defaultValue": false,
+              "type": {
+                "name": "boolean"
+              }
+            },
+            "fixed": {
+              "name": "fixed",
+              "description": "展开图表列是否固定",
+              "defaultValue": false,
+              "type": {
+                "name": "choice",
+                "enum": [true, "left", "right"]
+              }
+            },
+            "indentSize": {
+              "name": "indentSize",
+              "description": "展开图表列缩进宽度",
+              "defaultValue": 15,
+              "type": {
+                "name": "number"
+              }
+            }
+          }
+        }
+      },
+      "pagination": {
+        "name": "pagination",
+        "defaultValue": null,
+        "type": {
+          "name": "import",
+          "value": "pagination"
         }
       }
     }

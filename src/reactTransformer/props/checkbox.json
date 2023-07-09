@@ -1,1 +1,104 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/radio/index.tsx",
+    "description": "复选框",
+    "displayName": "Checkbox",
+    "methods": [],
+    "props": {
+      "defaultChecked": {
+        "defaultValue": null,
+        "description": "",
+        "name": "defaultChecked",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "checked": {
+        "defaultValue": null,
+        "description": "当前是否选中",
+        "name": "checked",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "",
+        "name": "disabled",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "onChange": {
+        "defaultValue": null,
+        "description": "",
+        "name": "onChange",
+        "parent": {
+          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+          "name": "AbstractCheckboxProps"
+        },
+        "declarations": [
+          {
+            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
+            "name": "AbstractCheckboxProps"
+          }
+        ],
+        "required": false,
+        "type": {
+          "name": "(e: RadioChangeEvent) => void"
+        }
+      },
+      "value": {
+        "defaultValue": null,
+        "description": "",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "any"
+        }
+      },
+      "autoFocus": {
+        "defaultValue": null,
+        "description": "是否自动聚焦",
+        "name": "autoFocus",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      }
+    }
+  }
+]

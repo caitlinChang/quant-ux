@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/upload/index.tsx",
+    "description": "This is a placeholder, not real render in dom",
+    "displayName": "upload",
+    "methods": [],
+    "props": {
+      "listType": {
+        "name": "listType",
+        "defaultValue": "text",
+        "type": {
+          "name": "choice",
+          "enum": ["text", "picture", "picture-card"]
+        },
+        "description": "上传列表的内建样式"
+      },
+      "maxCount": {}
+    }
+  }
+]

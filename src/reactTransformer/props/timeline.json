@@ -1,1 +1,48 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/timeline/index.tsx",
+    "description": "时间轴",
+    "displayName": "Timeline",
+    "methods": [],
+    "childrenComponent": ["timeline-item"],
+    "props": {
+      "mode": {
+        "type": {
+          "name": "choice",
+          "enum": ["left", "alternate", "right"]
+        },
+        "name": "mode",
+        "required": false,
+        "description": "时间轴和内容的相对位置"
+      },
+      "pending": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "name": "pending",
+        "required": false,
+        "defaultValue": null,
+        "description": "指定是否最后一个节点为幽灵节点"
+      },
+      "pendingDot": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "name": "pendingDot",
+        "required": false,
+        "defaultValue": ["LoadingOutlined"],
+        "description": "当最后一个节点为幽灵节点时，指定其图标"
+      },
+      "reverse": {
+        "type": {
+          "name": "boolean"
+        },
+        "name": "reverse",
+        "required": false,
+        "defaultValue": false,
+        "description": "节点排序"
+      }
+    }
+  }
+]

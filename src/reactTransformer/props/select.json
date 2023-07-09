@@ -2,8 +2,8 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/select/index.tsx",
-    "description": "",
-    "displayName": "select",
+    "description": "选择框",
+    "displayName": "Select",
     "methods": [],
     "props": {
       "placement": {
@@ -28,18 +28,8 @@
       },
       "status": {
         "defaultValue": null,
-        "description": "",
+        "description": "设置校验状态",
         "name": "status",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/select/index.tsx",
-          "name": "SelectProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/select/index.tsx",
-            "name": "SelectProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "choice",

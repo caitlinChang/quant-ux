@@ -1,0 +1,48 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/time-line/index.tsx",
+    "description": "时间选择器",
+    "displayName": "TimePicker",
+    "methods": [],
+    "props": {
+      "color": {
+        "type": {
+          "name": "ColorPicker"
+        },
+        "name": "color",
+        "required": false,
+        "defaultValue": "blue",
+        "description": "圆圈颜色"
+      },
+      "dot": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "name": "dot",
+        "defaultValue": null,
+        "description": "自定义时间轴点"
+      },
+      "label": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "name": "label",
+        "required": false,
+        "defaultValue": null,
+        "description": "设置标签"
+      },
+      "position": {
+        "type": {
+          "name": "choice",
+          "enum": ["left", "right"]
+        },
+        "name": "position",
+        "required": false,
+        "defaultValue": null,
+        "description": "自定义节点位置"
+      }
+    }
+  }
+]

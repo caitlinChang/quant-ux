@@ -2,8 +2,8 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/auto-complete/index.tsx",
-    "description": "",
-    "displayName": "autocomplete",
+    "description": "自动完成",
+    "displayName": "AutoComplete",
     "methods": [],
     "props": {
       "dataSource": {

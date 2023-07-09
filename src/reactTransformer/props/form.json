@@ -1,1 +1,110 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/form/index.tsx",
+    "description": "表单容器",
+    "displayName": "Form",
+    "methods": [],
+    "childrenComponent": ["form-item"],
+    "props": {
+      "colon": {
+        "name": "colon",
+        "defaultValue": true,
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "是否显示 label 后面的冒号",
+        "tips": "只有在属性 layout 为 horizontal 时有效"
+      },
+      "disabled": {
+        "name": "disabled",
+        "defaultValue": false,
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "是否禁用所有表单项",
+        "tips": ""
+      },
+      "labelAlign": {
+        "name": "labelAlign",
+        "defaultValue": "right",
+        "type": {
+          "name": "choice",
+          "enum": ["left", "right"],
+          "required": false
+        },
+        "required": false,
+        "description": "label 标签的文本对齐方式",
+        "tips": ""
+      },
+      "labelWrap": {
+        "name": "labelWrap",
+        "defaultValue": true,
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "是否换行显示 label",
+        "tips": ""
+      },
+      "labelCol": {
+        "name": "labelCol",
+        "defaultValue": 6,
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "label 占据比例",
+        "tips": "1 - 24 之间的数值"
+      },
+      "wrapperCol": {
+        "name": "wrapperCol",
+        "defaultValue": 14,
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "表单项占据比例",
+        "tips": "1 - 24 之间的数值"
+      },
+      "layout": {
+        "name": "layout",
+        "defaultValue": "horizontal",
+        "type": {
+          "name": "choice",
+          "enum": ["horizontal", "vertical", "inline"],
+          "required": false
+        },
+        "required": false,
+        "description": "表单布局",
+        "tips": ""
+      },
+      "requiredMark": {
+        "name": "requiredMark",
+        "defaultValue": "optional",
+        "type": {
+          "name": "choice",
+          "enum": ["optional", "required", "hidden"],
+          "required": false
+        },
+        "required": false,
+        "description": "必选样式",
+        "tips": ""
+      },
+      "size": {
+        "name": "size",
+        "defaultValue": "middle",
+        "type": {
+          "name": "choice",
+          "enum": ["small", "middle", "large"],
+          "required": false
+        },
+        "required": false,
+        "description": "表单大小",
+        "tips": ""
+      }
+    }
+  }
+]

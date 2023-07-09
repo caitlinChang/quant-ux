@@ -1,1 +1,204 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/comment/index.tsx",
+    "description": "下拉列表",
+    "displayName": "Dropdown",
+    "methods": [],
+    "props": {
+      "arrow": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "下拉框箭头是否显示",
+        "name": "arrow",
+        "defaultValue": false
+      },
+      "autoAdjustOverflow": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "自动调整位置",
+        "name": "autoAdjustOverflow",
+        "defaultValue": true
+      },
+      "autoFocus": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "默认获取焦点",
+        "name": "autoFocus",
+        "defaultValue": false
+      },
+      "disabled": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "禁用",
+        "name": "disabled",
+        "defaultValue": false
+      },
+      "placement": {
+        "type": {
+          "name": "choice",
+          "enum": [
+            "topLeft",
+            "topCenter",
+            "topRight",
+            "bottomLeft",
+            "bottomCenter",
+            "bottomRight"
+          ]
+        },
+        "required": false,
+        "description": "菜单弹出位置",
+        "name": "placement",
+        "defaultValue": "'bottomLeft'"
+      },
+      "trigger": {
+        "type": {
+          "name": "choice",
+          "enum": ["click", "hover", "contextMenu"]
+        },
+        "required": false,
+        "description": "触发下拉的行为",
+        "name": "trigger",
+        "defaultValue": "'hover'"
+      },
+      "open": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "菜单是否展开",
+        "name": "open",
+        "defaultValue": false
+      },
+      "menu": {
+        "type": {
+          "name": "object",
+          "property": {
+            "items": {
+              "defaultValue": null,
+              "description": "菜单项",
+              "name": "items",
+              "needMock": true,
+              "required": false,
+              "type": {
+                "name": "array",
+                "item": {
+                  "danger": {
+                    "name": "danger",
+                    "type": {
+                      "name": "boolean"
+                    },
+                    "description": "是否危险"
+                  },
+                  "disabled": {
+                    "name": "disabled",
+                    "type": {
+                      "name": "boolean"
+                    },
+                    "description": "是否禁用"
+                  },
+                  "icon": {
+                    "name": "icon",
+                    "description": "ICON",
+                    "type": {
+                      "name": "ReactNode"
+                    }
+                  },
+                  "key": {
+                    "name": "key",
+                    "type": {
+                      "name": "string"
+                    }
+                  },
+                  "label": {
+                    "name": "label",
+                    "description": "展示文案",
+                    "type": {
+                      "name": "ReactNode"
+                    }
+                  },
+                  "title": {
+                    "name": "title",
+                    "description": "收缩时展示的悬浮标题",
+                    "type": {
+                      "name": "string"
+                    }
+                  },
+                  "children": {
+                    "name": "children",
+                    "description": "children",
+                    "type": {
+                      "name": "children"
+                    }
+                  }
+                },
+                "properties": {
+                  "name": {
+                    "defaultValue": null,
+                    "description": "菜单项",
+                    "name": "items",
+                    "needMock": true,
+                    "required": false,
+                    "type": {
+                      "name": "string"
+                    }
+                  },
+                  "icon": {
+                    "name": {
+                      "defaultValue": null,
+                      "description": "菜单项",
+                      "name": "items",
+                      "needMock": true,
+                      "required": false,
+                      "type": {
+                        "name": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "disabled": {
+              "defaultValue": null,
+              "description": "",
+              "name": "disabled",
+              "parent": {
+                "fileName": "ant-design-4.24.10/node_modules/rc-menu/lib/Menu.d.ts",
+                "name": "MenuProps"
+              },
+              "declarations": [
+                {
+                  "fileName": "ant-design-4.24.10/node_modules/rc-menu/lib/Menu.d.ts",
+                  "name": "MenuProps"
+                }
+              ],
+              "required": false,
+              "type": {
+                "name": "boolean"
+              }
+            },
+            "selectable": {
+              "defaultValue": null,
+              "description": "是否允许选中",
+              "name": "selectable",
+              "required": false,
+              "type": {
+                "name": "boolean"
+              }
+            }
+          }
+        },
+        "required": false,
+        "name": "menu"
+      }
+    }
+  }
+]

@@ -1,1 +1,140 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/modal/index.tsx",
+    "description": "弹窗",
+    "displayName": "Modal",
+    "methods": [],
+    "props": {
+      "cancelText": {
+        "defaultValue": "取消",
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "name": "cancelText",
+        "description": "取消按钮文字"
+      },
+      "okText": {
+        "defaultValue": "确定",
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "name": "okText",
+        "description": "确认按钮文字"
+      },
+      "okType": {
+        "defaultValue": "primary",
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "name": "okType",
+        "description": "确认按钮类型"
+      },
+      "title": {
+        "defaultValue": "提示",
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "name": "title",
+        "description": "标题"
+      },
+      "open": {
+        "defaultValue": "false",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "open",
+        "description": "是否显示 Modal"
+      },
+      "width": {
+        "defaultValue": "520px",
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "name": "width",
+        "description": "宽度"
+      },
+      "centered": {
+        "defaultValue": "false",
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "centered",
+        "description": "垂直居中展示 Modal"
+      },
+      "closable": {
+        "defaultValue": true,
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "closable",
+        "description": "是否显示右上角的关闭按钮"
+      },
+      "closeIcon": {
+        "defaultValue": ["CloseOutlined"],
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "name": "closeIcon",
+        "description": "自定义关闭图标"
+      },
+      "footer": {
+        "defaultValue": false,
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "name": "footer",
+        "description": "底部内容",
+        "tips": "当不需要默认底部按钮时，可以设为 footer={null}"
+      },
+      "mask": {
+        "defaultValue": true,
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "mask",
+        "description": "是否展示遮罩",
+        "tips": "设置为 false 时，不展示遮罩，不会响应键盘"
+      },
+      "maskClosable": {
+        "defaultValue": true,
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "maskClosable",
+        "description": "点击蒙层是否允许关闭",
+        "tips": "默认为 true，如果需要点击蒙层不关闭，可以设置为 false"
+      },
+      "maskStyle": {
+        "defaultValue": "false",
+        "type": {
+          "name": "CSSProperties"
+        },
+        "required": false,
+        "name": "maskStyle",
+        "description": ""
+      },
+      "keyboard": {
+        "defaultValue": true,
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "name": "keyboard",
+        "description": "是否支持键盘 esc 关闭"
+      }
+    }
+  }
+]

@@ -2,8 +2,8 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/menu/index.tsx",
-    "description": "",
-    "displayName": "typographt-title",
+    "description": "标题",
+    "displayName": "TypographtTitle",
     "methods": [],
     "props": {
       "children": {

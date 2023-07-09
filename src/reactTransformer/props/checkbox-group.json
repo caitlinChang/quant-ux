@@ -2,8 +2,8 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/radio/index.tsx",
-    "description": "",
-    "displayName": "radio-group",
+    "description": "复选框组合",
+    "displayName": "CheckboxGroup",
     "methods": [],
     "props": {
       "options": {

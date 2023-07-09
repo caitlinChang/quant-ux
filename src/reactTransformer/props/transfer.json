@@ -2,504 +2,111 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/transfer/index.tsx",
-    "description": "",
+    "description": "穿梭框",
     "displayName": "Transfer",
     "methods": [],
     "props": {
-      "prefixCls": {
-        "defaultValue": null,
-        "description": "",
-        "name": "prefixCls",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
-      "className": {
-        "defaultValue": null,
-        "description": "",
-        "name": "className",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
-      "disabled": {
-        "defaultValue": null,
-        "description": "",
-        "name": "disabled",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean"
-        }
-      },
-      "dataSource": {
-        "defaultValue": null,
-        "description": "",
-        "name": "dataSource",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "RecordType[]"
-        }
-      },
-      "targetKeys": {
-        "defaultValue": null,
-        "description": "",
-        "name": "targetKeys",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string[]"
-        }
-      },
-      "selectedKeys": {
-        "defaultValue": null,
-        "description": "",
-        "name": "selectedKeys",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string[]"
-        }
-      },
-      "render": {
-        "defaultValue": null,
-        "description": "",
-        "name": "render",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "TransferRender<RecordType>"
-        }
-      },
-      "onChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onChange",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "(targetKeys: string[], direction: TransferDirection, moveKeys: string[]) => void"
-        }
-      },
-      "onSelectChange": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onSelectChange",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "(sourceSelectedKeys: string[], targetSelectedKeys: string[]) => void"
-        }
-      },
-      "style": {
-        "defaultValue": null,
-        "description": "",
-        "name": "style",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "CSSProperties"
-        }
-      },
-      "listStyle": {
-        "defaultValue": null,
-        "description": "",
-        "name": "listStyle",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "CSSProperties | ((style: ListStyle) => CSSProperties)"
-        }
-      },
-      "operationStyle": {
-        "defaultValue": null,
-        "description": "",
-        "name": "operationStyle",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "CSSProperties"
-        }
-      },
       "titles": {
-        "defaultValue": null,
-        "description": "",
-        "name": "titles",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
         "type": {
-          "name": "ReactNode[]"
-        }
-      },
-      "operations": {
-        "defaultValue": null,
-        "description": "",
-        "name": "operations",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
+          "name": "array",
+          "item": "ReactNode"
         },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
         "required": false,
-        "type": {
-          "name": "string[]"
-        }
-      },
-      "showSearch": {
-        "defaultValue": null,
-        "description": "",
-        "name": "showSearch",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean"
-        }
-      },
-      "filterOption": {
-        "defaultValue": null,
-        "description": "",
-        "name": "filterOption",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "(inputValue: string, item: RecordType) => boolean"
-        }
-      },
-      "locale": {
-        "defaultValue": null,
-        "description": "",
-        "name": "locale",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "Partial<TransferLocale>"
-        }
-      },
-      "footer": {
-        "defaultValue": null,
-        "description": "",
-        "name": "footer",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "(props: TransferListProps<RecordType>, info?: { direction: TransferDirection; }) => ReactNode"
-        }
-      },
-      "rowKey": {
-        "defaultValue": null,
-        "description": "",
-        "name": "rowKey",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "(record: RecordType) => string"
-        }
-      },
-      "onSearch": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onSearch",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "(direction: TransferDirection, value: string) => void"
-        }
-      },
-      "onScroll": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onScroll",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "(direction: TransferDirection, e: SyntheticEvent<HTMLUListElement, Event>) => void"
-        }
-      },
-      "showSelectAll": {
-        "defaultValue": null,
-        "description": "",
-        "name": "showSelectAll",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean"
-        }
-      },
-      "selectAllLabels": {
-        "defaultValue": null,
-        "description": "",
-        "name": "selectAllLabels",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "SelectAllLabel[]"
-        }
-      },
-      "oneWay": {
-        "defaultValue": null,
-        "description": "",
-        "name": "oneWay",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "boolean"
-        }
-      },
-      "pagination": {
-        "defaultValue": null,
-        "description": "",
-        "name": "pagination",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "PaginationType"
-        }
-      },
-      "status": {
-        "defaultValue": null,
-        "description": "",
-        "name": "status",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-          "name": "TransferProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/transfer/index.tsx",
-            "name": "TransferProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "\"\" | \"warning\" | \"error\""
-        }
+        "description": "标题集合，顺序从左至右",
+        "defaultValue": []
       }
+    },
+    "dataSource": {
+      "type": {
+        "name": "array",
+        "item": {
+          "title": {
+            "type": {
+              "name": "string"
+            },
+            "required": false,
+            "description": "标题",
+            "defaultValue": ""
+          },
+          "key": {
+            "type": {
+              "name": "string"
+            },
+            "required": false,
+            "description": "key",
+            "defaultValue": ""
+          },
+          "description": {
+            "type": {
+              "name": "string"
+            },
+            "required": false,
+            "description": "描述",
+            "defaultValue": ""
+          },
+          "disabled": {
+            "type": {
+              "name": "boolean"
+            },
+            "required": false,
+            "description": "是否禁用",
+            "defaultValue": false
+          }
+        }
+      },
+      "required": false,
+      "description": "数据源",
+      "tips": "其中的数据将会被渲染到左边一栏中，targetKeys 中指定的除外。注意：务必指定 key 属性，或者通过 rowKey 参数指定。",
+      "defaultValue": []
+    },
+    "showSelectAll": {
+      "type": {
+        "name": "boolean"
+      },
+      "required": false,
+      "description": "是否显示全选勾选框",
+      "defaultValue": true
+    },
+    "showSearch": {
+      "type": {
+        "name": "boolean"
+      },
+      "required": false,
+      "description": "是否显示搜索框",
+      "defaultValue": false
+    },
+    "pagination": {
+      "type": {
+        "name": "boolean"
+      },
+      "required": false,
+      "description": "是否分页",
+      "defaultValue": false
+    },
+    "operations": {
+      "type": {
+        "name": "array",
+        "item": "string"
+      },
+      "required": false,
+      "description": "操作文案集合，顺序从上至下",
+      "defaultValue": [">", "<"]
+    },
+    "oneWay": {
+      "type": {
+        "name": "boolean"
+      },
+      "required": false,
+      "description": "单向",
+      "defaultValue": false
+    },
+    "disabled": {
+      "type": {
+        "name": "boolean"
+      },
+      "required": false,
+      "description": "是否禁用",
+      "defaultValue": false
     }
   }
 ]

@@ -2,8 +2,8 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/comment/index.tsx",
-    "description": "",
-    "displayName": "comment",
+    "description": "评论",
+    "displayName": "Comment",
     "methods": [],
     "props": {
       "actions": {
@@ -27,18 +27,8 @@
       },
       "author": {
         "defaultValue": null,
-        "description": "The element to display as the comment author.",
+        "description": "要显示为注释作者的元素",
         "name": "author",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-          "name": "CommentProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-            "name": "CommentProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactNode"
@@ -46,18 +36,8 @@
       },
       "avatar": {
         "defaultValue": null,
-        "description": "The element to display as the comment avatar - generally an antd Avatar",
+        "description": "评论头像",
         "name": "avatar",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-          "name": "CommentProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-            "name": "CommentProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactNode"
@@ -84,18 +64,8 @@
       },
       "content": {
         "defaultValue": null,
-        "description": "The main content of the comment",
+        "description": "评论的主要内容",
         "name": "content",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-          "name": "CommentProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-            "name": "CommentProps"
-          }
-        ],
         "required": true,
         "type": {
           "name": "ReactNode"
@@ -103,18 +73,8 @@
       },
       "children": {
         "defaultValue": null,
-        "description": "Nested comments should be provided as children of the Comment",
+        "description": "嵌套注释",
         "name": "children",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-          "name": "CommentProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-            "name": "CommentProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactNode"
@@ -160,18 +120,8 @@
       },
       "datetime": {
         "defaultValue": null,
-        "description": "A datetime element containing the time to be displayed",
+        "description": "展示时间",
         "name": "datetime",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-          "name": "CommentProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-            "name": "CommentProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactNode"

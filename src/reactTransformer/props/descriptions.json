@@ -2,7 +2,7 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/descriptions/index.tsx",
-    "description": "",
+    "description": "描述列表",
     "displayName": "Descriptions",
     "methods": [],
     "props": {
@@ -10,16 +10,6 @@
         "defaultValue": null,
         "description": "",
         "name": "prefixCls",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "string"
@@ -29,16 +19,6 @@
         "defaultValue": null,
         "description": "",
         "name": "className",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "string"
@@ -48,16 +28,6 @@
         "defaultValue": null,
         "description": "",
         "name": "style",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "CSSProperties"
@@ -67,54 +37,25 @@
         "defaultValue": null,
         "description": "",
         "name": "bordered",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "boolean"
         }
       },
       "size": {
-        "defaultValue": null,
-        "description": "",
+        "defaultValue": "middle",
+        "description": "大小",
         "name": "size",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
-          "name": "\"middle\" | \"small\" | \"default\""
+          "name": "choice",
+          "enum": ["small", "middle", "large"]
         }
       },
       "title": {
         "defaultValue": null,
-        "description": "",
+        "description": "标题",
         "name": "title",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactNode"
@@ -122,79 +63,36 @@
       },
       "extra": {
         "defaultValue": null,
-        "description": "",
+        "description": "操作区",
         "name": "extra",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactNode"
         }
       },
       "column": {
-        "defaultValue": {
-          "value": "{\n  xxl: 3,\n  xl: 3,\n  lg: 3,\n  md: 3,\n  sm: 2,\n  xs: 1,\n}"
-        },
+        "defaultValue": 3,
         "description": "",
         "name": "column",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
-          "name": "number | Partial<Record<Breakpoint, number>>"
+          "name": "number"
         }
       },
       "layout": {
         "defaultValue": null,
-        "description": "",
+        "description": "布局",
         "name": "layout",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
-          "name": "\"horizontal\" | \"vertical\""
+          "name": "choice",
+          "enum": ["horizontal", "vertical"]
         }
       },
       "colon": {
-        "defaultValue": {
-          "value": "true"
-        },
+        "defaultValue": true,
         "description": "",
         "name": "colon",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "boolean"

@@ -1,0 +1,39 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/space/index.tsx",
+    "description": "",
+    "displayName": "space",
+    "methods": [],
+    "props": {
+      "block": {
+        "name": "block",
+        "description": "将宽度调整为父元素宽度的选项",
+        "type": {
+          "name": "boolean"
+        },
+        "defaultValue": false
+      },
+      "direction": {
+        "type": {
+          "name": "choice",
+          "enum": ["horizontal", "vertical"]
+        },
+        "name": "direction",
+        "defaultValue": "horizontal",
+        "required": false,
+        "description": "间距方向"
+      },
+      "size": {
+        "type": {
+          "name": "choice",
+          "item": ["large", "middle", "small"]
+        },
+        "required": false,
+        "description": "大小",
+        "defaultValue": "middle",
+        "name": "size"
+      }
+    }
+  }
+]

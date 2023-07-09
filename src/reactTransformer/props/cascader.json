@@ -2,8 +2,8 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/cascader/index.tsx",
-    "description": "",
-    "displayName": "cascader",
+    "description": "级联选择器",
+    "displayName": "Cascader",
     "methods": [],
     "props": {
       "id": {

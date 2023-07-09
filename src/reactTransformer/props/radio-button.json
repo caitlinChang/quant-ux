@@ -45,18 +45,8 @@
       },
       "disabled": {
         "defaultValue": null,
-        "description": "",
+        "description": "是否禁用",
         "name": "disabled",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
-          "name": "AbstractCheckboxProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
-            "name": "AbstractCheckboxProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "boolean"

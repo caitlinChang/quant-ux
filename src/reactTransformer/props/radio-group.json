@@ -2,8 +2,8 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/radio/index.tsx",
-    "description": "",
-    "displayName": "radio-group",
+    "description": "单选组",
+    "displayName": "RadioGroup",
     "methods": [],
     "props": {
       "buttonStyle": {

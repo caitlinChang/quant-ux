@@ -1,1 +1,207 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/tree/index.tsx",
+    "description": "树",
+    "displayName": "Tree",
+    "methods": [],
+    "props": {
+      "autoExpandParent": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": false,
+        "name": "autoExpandParent",
+        "description": "是否自动展开父节点"
+      },
+      "treeData": {
+        "type": {
+          "name": "array",
+          "item": {
+            "title": {
+              "type": {
+                "name": "ReactNode"
+              },
+              "required": false,
+              "defaultValue": null,
+              "name": "title",
+              "description": "节点标题"
+            },
+            "selectable": {
+              "type": {
+                "name": "boolean"
+              },
+              "required": false,
+              "defaultValue": true,
+              "name": "selectable",
+              "description": "是否支持选中"
+            },
+            "key": {
+              "type": {
+                "name": "ID"
+              },
+              "required": false,
+              "defaultValue": null,
+              "name": "key",
+              "description": "节点 key"
+            },
+            "isLeaf": {
+              "type": {
+                "name": "boolean"
+              },
+              "required": false,
+              "defaultValue": false,
+              "name": "isLeaf",
+              "description": "是否是叶子节点"
+            },
+            "disabled": {
+              "type": {
+                "name": "boolean"
+              },
+              "required": false,
+              "defaultValue": false,
+              "name": "disabled",
+              "description": "是否禁用"
+            },
+            "disableCheckbox": {
+              "type": {
+                "name": "boolean"
+              },
+              "required": false,
+              "defaultValue": false,
+              "name": "disableCheckbox",
+              "description": "是否禁用 checkbox"
+            },
+            "checkable": {
+              "type": {
+                "name": "boolean"
+              },
+              "required": false,
+              "defaultValue": false,
+              "name": "checkable",
+              "description": "是否显示 checkbox"
+            },
+            "icon": {
+              "type": {
+                "name": "ReactNode"
+              },
+              "required": false,
+              "defaultValue": null,
+              "name": "icon",
+              "description": "自定义图标"
+            }
+          }
+        },
+        "needMock": true,
+        "required": false,
+        "defaultValue": [],
+        "name": "treeData",
+        "description": "tree 数据",
+        "tips": "如果设置了 treeData，则不需要手动构造 TreeNode 节点（可以设置 TreeNode 的其他属性）"
+      },
+      "blockNode": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": false,
+        "name": "blockNode",
+        "description": "是否节点占据一行"
+      },
+      "checkable": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": false,
+        "name": "checkable",
+        "description": "节点前添加 Checkbox 复选框"
+      },
+      "checkStrictly": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": false,
+        "name": "checkStrictly",
+        "description": "checkable 状态下节点选择完全受控",
+        "tips": "（父子节点选中状态不再关联）"
+      },
+      "draggable": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": false,
+        "name": "draggable",
+        "description": "是否开启拖拽节点功能"
+      },
+      "disabled": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": false,
+        "name": "disabled",
+        "description": "是否禁用"
+      },
+      "expandedKeys": {
+        "type": {
+          "name": "array",
+          "item": "string"
+        },
+        "required": false,
+        "defaultValue": [],
+        "name": "expandedKeys",
+        "description": "展开指定的树节点"
+      },
+      "selectable": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": true,
+        "name": "selectable",
+        "description": "是否支持选中"
+      },
+      "showIcon": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": false,
+        "name": "showIcon",
+        "description": "是否展示 TreeNode title 前的图标",
+        "tips": "没有默认样式，如设置为 true，需要自行定义图标相关样式"
+      },
+      "showLine": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": false,
+        "name": "showLine",
+        "description": "是否展示连接线"
+      },
+      "multiple": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": false,
+        "name": "multiple",
+        "description": "支持点选多个节点（节点本身）"
+      },
+      "icon": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "defaultValue": null,
+        "name": "icon",
+        "description": "自定义图标"
+      }
+    }
+  }
+]

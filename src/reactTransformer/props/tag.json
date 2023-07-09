@@ -1,1 +1,61 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/tag/index.tsx",
+    "description": "标签",
+    "displayName": "Tag",
+    "methods": [],
+    "props": {
+      "color": {
+        "type": {
+          "name": "choice",
+          "enum": [
+            "magenta",
+            "red",
+            "volcano",
+            "orange",
+            "gold",
+            "lime",
+            "green",
+            "cyan",
+            "blue",
+            "geekblue",
+            "purple",
+            "processing",
+            "error",
+            "success",
+            "default"
+          ]
+        },
+        "required": false,
+        "description": "标签色",
+        "defaultValue": null,
+        "name": "color"
+      },
+      "icon": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "description": "选项卡关闭图标",
+        "name": "icon"
+      },
+      "closable": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "标签是否可以关闭",
+        "name": "closable"
+      },
+      "closeIcon": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "description": "自定义关闭图标",
+        "name": "closeIcon"
+      }
+    }
+  }
+]

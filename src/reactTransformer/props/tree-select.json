@@ -2,28 +2,243 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/tree-select/index.tsx",
-    "description": "This is a placeholder, not real render in dom",
-    "displayName": "TreeNode",
+    "description": "树选择",
+    "displayName": "TreeSelect",
     "methods": [],
     "props": {
-      "value": {
+      "allowClear": {
         "defaultValue": null,
-        "description": "",
-        "name": "value",
-        "parent": {
-          "fileName": "ant-design-4.24.10/node_modules/rc-tree-select/lib/TreeNode.d.ts",
-          "name": "TreeNodeProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/node_modules/rc-tree-select/lib/TreeNode.d.ts",
-            "name": "TreeNodeProps"
-          }
-        ],
-        "required": true,
+        "description": "是否显示清除按钮",
+        "name": "allowClear",
+        "required": false,
         "type": {
-          "name": "Key"
+          "name": "boolean"
         }
+      },
+      "bordered": {
+        "defaultValue": null,
+        "description": "是否有边框",
+        "name": "bordered",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "autoClearSearchValue": {
+        "defaultValue": true,
+        "description": "是否自动清除搜索框内容",
+        "name": "autoClearSearchValue",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "disabled": {
+        "defaultValue": null,
+        "description": "是否禁用",
+        "name": "disabled",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": null,
+        "description": "指定默认选中的条目",
+        "name": "defaultValue",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "dropdownMatchSelectWidth": {
+        "defaultValue": true,
+        "description": "下拉菜单和选择器同宽",
+        "tips": "默认将设置 min-width。",
+        "name": "dropdownMatchSelectWidth",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "listHeight": {
+        "defaultValue": 256,
+        "description": "下拉菜单的高度",
+        "name": "listHeight",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "maxTagCount": {
+        "defaultValue": null,
+        "description": "最多显示多少个 tag",
+        "name": "maxTagCount",
+        "required": false,
+        "type": {
+          "name": "number"
+        }
+      },
+      "maxTagPlaceholder": {
+        "defaultValue": null,
+        "description": "隐藏 tag 时显示的内容",
+        "name": "maxTagPlaceholder",
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "multiple": {
+        "defaultValue": null,
+        "description": "支持多选",
+        "tips": "当设置 treeCheckable 时自动变为 true",
+        "name": "multiple",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "placeholder": {
+        "defaultValue": null,
+        "description": "选择框默认文字",
+        "name": "placeholder",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "placement": {
+        "defaultValue": "bottomLeft",
+        "description": "下拉菜单的展开位置",
+        "name": "placement",
+        "required": false,
+        "type": {
+          "name": "choice",
+          "enum": ["bottomLeft", "bottomRight", "topLeft", "topRight"]
+        }
+      },
+      "showArrow": {
+        "defaultValue": null,
+        "description": "显示 suffixIcon",
+        "name": "placeholder",
+        "required": false,
+        "type": {
+          "name": "booean"
+        }
+      },
+      "showSearch": {
+        "defaultValue": null,
+        "description": "是否支持搜索框",
+        "name": "showSearch",
+        "required": false,
+        "type": {
+          "name": "bolean"
+        }
+      },
+      "size": {
+        "defaultValue": "middle",
+        "description": "输入框大小",
+        "name": "size",
+        "required": false,
+        "type": {
+          "name": "choice",
+          "enum": ["large", "middle", "small"]
+        }
+      },
+      "status": {
+        "defaultValue": null,
+        "description": "设置校验状态",
+        "name": "status",
+        "required": false,
+        "type": {
+          "name": "choice",
+          "enum": ["warning", "error", null]
+        }
+      },
+      "treeData": {
+        "type": {
+          "name": "array",
+          "item": {
+            "title": {
+              "type": {
+                "name": "ReactNode"
+              },
+              "required": false,
+              "defaultValue": null,
+              "name": "title",
+              "description": "节点标题"
+            },
+            "selectable": {
+              "type": {
+                "name": "boolean"
+              },
+              "required": false,
+              "defaultValue": true,
+              "name": "selectable",
+              "description": "是否支持选中"
+            },
+            "key": {
+              "type": {
+                "name": "ID"
+              },
+              "required": false,
+              "defaultValue": null,
+              "name": "key",
+              "description": "节点 key"
+            },
+            "isLeaf": {
+              "type": {
+                "name": "boolean"
+              },
+              "required": false,
+              "defaultValue": false,
+              "name": "isLeaf",
+              "description": "是否是叶子节点"
+            },
+            "disabled": {
+              "type": {
+                "name": "boolean"
+              },
+              "required": false,
+              "defaultValue": false,
+              "name": "disabled",
+              "description": "是否禁用"
+            },
+            "disableCheckbox": {
+              "type": {
+                "name": "boolean"
+              },
+              "required": false,
+              "defaultValue": false,
+              "name": "disableCheckbox",
+              "description": "是否禁用 checkbox"
+            },
+            "checkable": {
+              "type": {
+                "name": "boolean"
+              },
+              "required": false,
+              "defaultValue": false,
+              "name": "checkable",
+              "description": "是否显示 checkbox"
+            },
+            "icon": {
+              "type": {
+                "name": "ReactNode"
+              },
+              "required": false,
+              "defaultValue": null,
+              "name": "icon",
+              "description": "自定义图标"
+            }
+          }
+        },
+        "needMock": true,
+        "required": false,
+        "defaultValue": [],
+        "name": "treeData",
+        "description": "tree 数据",
+        "tips": "如果设置了 treeData，则不需要手动构造 TreeNode 节点（可以设置 TreeNode 的其他属性）"
       }
     }
   }

@@ -1,0 +1,68 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/comment/index.tsx",
+    "description": "",
+    "displayName": "dropdown-button",
+    "methods": [],
+    "props": {
+      "buttonsRender": {
+        "type": {
+          "name": "Function"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "() => null",
+          "computed": false
+        }
+      },
+      "loading": {
+        "type": {
+          "name": "Boolean"
+        },
+        "required": false,
+        "description": "设置按钮载入状态",
+        "defaultValue": false
+      },
+      "danger": {
+        "type": {
+          "name": "Boolean"
+        },
+        "required": false,
+        "description": "设置危险按钮",
+        "name": "danger",
+        "defaultValue": false
+      },
+      "icon": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "name": "icon",
+        "required": false,
+        "description": "右侧的 icon",
+        "defaultValue": ["EllipsisOutlined"]
+      },
+      "size": {
+        "name": "size",
+        "defaultValue": "middle",
+        "type": {
+          "name": "choice",
+          "enum": ["large", "middle", "small"]
+        },
+        "required": false,
+        "description": "设置按钮大小"
+      },
+      "type": {
+        "name": "type",
+        "defaultValue": "default",
+        "type": {
+          "name": "choice",
+          "enum": ["primary", "ghost", "dashed", "link", "text", "default"]
+        },
+        "required": false,
+        "description": "设置按钮类型"
+      }
+    }
+  }
+]

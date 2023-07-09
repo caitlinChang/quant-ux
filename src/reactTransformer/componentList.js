@@ -13,7 +13,7 @@ export const getInitialProps = (key) => {
           fakeProps[propsName] = "请编辑";
         }
       });
-      return config[0].props;
+      return config[0];
     }
   } catch (e) {
     // console.log('e = ', e)
@@ -22,22 +22,62 @@ export const getInitialProps = (key) => {
 };
 
 // 在黑名单中的不会展示
-const blackList = ['affix', 'anchor','back-top','avatar','breadcrumb','calendar','card','carousel']
+const blackList = [
+  "antd-affix",
+  "antd-anchor",
+  "antd-alert",
+  "antd-back-top",
+  "antd-avatar",
+  "antd-breadcrumb",
+  "antd-calendar",
+  "antd-card",
+  "antd-carousel",
+  "antd-config-provider",
+  "antd-drawer",
+  "antd-empty",
+  "antd-image",
+  "antd-grid",
+  "antd-layout",
+  "antd-list",
+  "antd-mentions",
+  "antd-popover",
+  "antd-rate",
+  "antd-result",
+  "antd-row",
+  "antd-col",
+  "antd-skeleton",
+  "antd-slider",
+  "antd-spin",
+  "antd-message",
+  "antd-notification",
+  "antd-version",
+  "antd-form-list",
+  "antd-form-error-list",
+  "antd-form-provider",
+  "antd-typography",
+  "antd-typography-link",
+  "antd-typography-paragraph",
+  "antd-upload",
+  "antd-button-group",
+];
 
-const _componentConfigList = Object.keys(componentMap).map((key) => {
-  const initialProps = getInitialProps(key);
-  return {
-    _type: "antd4",
-    w: 200,
-    h: 60,
-    name: key,
-    displayName:key,
-    cagegory:'Ant Design',
-    component: key,
-    // props: initialProps,
-  }
-})
-console.log('_componentConfigList = ', _componentConfigList);
+const _componentConfigList = Object.keys(componentMap)
+  .filter((i) => !blackList.includes(i))
+  .map((key) => {
+    const initialProps = getInitialProps(key);
+    return {
+      _type: "antd4",
+      w: 200,
+      h: 60,
+      name: key,
+      description: initialProps.description,
+      displayName: initialProps.displayName || key,
+      cagegory: "Ant Design",
+      component: key,
+      // props: initialProps,
+    };
+  });
+// console.log("_componentConfigList = ", _componentConfigList);
 
 const componentConfigList = [
   {
@@ -82,8 +122,7 @@ const componentConfigList = [
     displayName: "单行输入",
     cagegory: "表单",
     component: "antd-input",
-    props: {
-    },
+    props: {},
   },
   {
     _type: "antd4",
@@ -93,8 +132,7 @@ const componentConfigList = [
     displayName: "下拉选择器",
     cagegory: "表单",
     component: "antd-select",
-    props: {
-    },
+    props: {},
   },
   {
     _type: "antd4",
@@ -163,8 +201,7 @@ const componentConfigList = [
     displayName: "菜单",
     cagegory: "表单",
     component: "antd-menu",
-    props: {
-    },
+    props: {},
   },
   {
     _type: "antd4",
@@ -177,4 +214,4 @@ const componentConfigList = [
     props: {},
   },
 ];
-export default componentConfigList;
+export default _componentConfigList;

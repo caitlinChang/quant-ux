@@ -1,0 +1,20 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/form/index.tsx",
+    "description": "表单列表容器",
+    "displayName": "FormList",
+    "methods": [],
+    "props": {
+      "children": {
+        "name": "children",
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "description": "表单元素",
+        "tips": ""
+      }
+    }
+  }
+]

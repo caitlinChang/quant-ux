@@ -1,11 +1,11 @@
 [
   {
     "tags": {},
-    "description": "",
+    "description": "徽章",
     "displayName": "Badge",
     "methods": [],
     "props": {
-      "color":{
+      "color": {
         "defaultValue": "primary",
         "description": "颜色",
         "name": "color",
@@ -14,17 +14,17 @@
           "name": "string"
         }
       },
-      "status":{
+      "status": {
         "defaultValue": "default",
         "description": "状态",
         "name": "status",
         "required": false,
         "type": {
           "name": "choice",
-          "enum":["default", "success", "warning", "error"]
+          "enum": ["default", "success", "warning", "error"]
         }
       },
-      "text":{
+      "text": {
         "defaultValue": "",
         "description": "文本",
         "name": "text",
@@ -33,7 +33,7 @@
           "name": "ReactNode"
         }
       },
-      "title":{
+      "title": {
         "defaultValue": "",
         "description": "提示文本",
         "name": "title",
@@ -42,7 +42,7 @@
           "name": "string"
         }
       },
-      "dot":{
+      "dot": {
         "defaultValue": false,
         "description": "是否为小圆点",
         "name": "dot",
@@ -51,7 +51,7 @@
           "name": "boolean"
         }
       },
-      "showZero":{
+      "showZero": {
         "defaultValue": false,
         "description": "当数值为 0 时，是否展示 Badge",
         "name": "showZero",
@@ -60,7 +60,7 @@
           "name": "boolean"
         }
       },
-      "count":{
+      "count": {
         "defaultValue": 0,
         "description": "展示的数字,大于 overflowCount 时显示为 ${overflowCount}+，为 0 时隐藏",
         "name": "count",
@@ -76,7 +76,7 @@
         "required": false,
         "type": {
           "name": "choice",
-          "enum":["default", "small"]
+          "enum": ["default", "small"]
         }
       }
     }

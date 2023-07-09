@@ -2,8 +2,8 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/button/index.tsx",
-    "description": "",
-    "displayName": "button",
+    "description": "按钮",
+    "displayName": "Button",
     "methods": [],
     "props": {
       "children": {

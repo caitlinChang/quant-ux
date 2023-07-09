@@ -1,1 +1,127 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/steps/index.tsx",
+    "description": "步骤条",
+    "displayName": "Steps",
+    "methods": [],
+    "props": {
+      "current": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "defaultValue": 0,
+        "name": "current",
+        "description": "当前步骤"
+      },
+      "items": {
+        "type": {
+          "name": "array",
+          "item": {
+            "title": {
+              "type": {
+                "name": "ReactNode"
+              },
+              "required": false,
+              "name": "title",
+              "description": "标题"
+            },
+            "subTitle": {
+              "type": {
+                "name": "ReactNode"
+              },
+              "required": false,
+              "name": "subTitle",
+              "description": "子标题"
+            },
+            "status": {
+              "type": {
+                "name": "choice",
+                "enum": ["wait", "process", "finish", "error"]
+              },
+              "required": false,
+              "name": "status",
+              "description": "状态",
+              "defaultValue": "wait"
+            },
+            "icon": {
+              "type": {
+                "name": "ReactNode"
+              },
+              "required": false,
+              "name": "icon",
+              "description": "图标"
+            },
+            "disabled": {
+              "type": {
+                "name": "bool"
+              },
+              "required": false,
+              "name": "disabled",
+              "description": "是否禁用"
+            },
+            "description": {
+              "type": {
+                "name": "ReactNode"
+              },
+              "required": false,
+              "name": "description",
+              "description": "描述"
+            }
+          }
+        },
+        "required": false,
+        "defaultValue": [],
+        "name": "items",
+        "description": "指定步骤条的主题",
+        "docblock": "指定步骤条的主题。目前支持三种主题：default（默认）、simple（简洁）和 navigation（导航）",
+        "properties": []
+      },
+      "direction": {
+        "type": {
+          "name": "choice",
+          "enum": ["horizontal", "vertical"]
+        },
+        "required": false,
+        "defaultValue": "horizontal",
+        "name": "direction",
+        "description": "指定步骤条方向",
+        "docblock": "指定步骤条方向。目前支持水平（horizontal）和竖直（vertical）两种方向"
+      },
+      "labelPlacement": {
+        "type": {
+          "name": "choice",
+          "enum": ["horizontal", "vertical"]
+        },
+        "required": false,
+        "defaultValue": "horizontal",
+        "name": "labelPlacement",
+        "description": "指定标签放置位置",
+        "docblock": "指定标签放置位置。目前支持水平（horizontal）和竖直（vertical）两种方向"
+      },
+      "type": {
+        "type": {
+          "name": "choice",
+          "enum": ["default", "simple", "navigation"]
+        },
+        "required": false,
+        "defaultValue": "default",
+        "name": "type",
+        "description": "指定步骤条的主题",
+        "tips": "指定步骤条的主题。目前支持三种主题：default（默认）、simple（简洁）和 navigation（导航）"
+      },
+      "status": {
+        "type": {
+          "name": "choice",
+          "enum": ["wait", "process", "finish", "error"]
+        },
+        "required": false,
+        "defaultValue": "wait",
+        "name": "status",
+        "description": "状态",
+        "tips": "状态"
+      }
+    }
+  }
+]

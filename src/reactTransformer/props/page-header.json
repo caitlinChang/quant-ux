@@ -2,62 +2,23 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/page-header/index.tsx",
-    "description": "",
-    "displayName": "pageheader",
+    "description": "页头",
+    "displayName": "PageHeader",
     "methods": [],
     "props": {
       "backIcon": {
-        "defaultValue": null,
-        "description": "",
+        "defaultValue": ["ArrowLeft"],
+        "description": "自定义返回 icon ",
         "name": "backIcon",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactNode"
         }
       },
-      "prefixCls": {
-        "defaultValue": null,
-        "description": "",
-        "name": "prefixCls",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
       "title": {
         "defaultValue": null,
-        "description": "",
+        "description": "自定义标题文字",
         "name": "title",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactNode"
@@ -65,18 +26,8 @@
       },
       "subTitle": {
         "defaultValue": null,
-        "description": "",
+        "description": "自定义的二级标题文字",
         "name": "subTitle",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactNode"
@@ -86,16 +37,6 @@
         "defaultValue": null,
         "description": "",
         "name": "style",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "CSSProperties"
@@ -105,16 +46,6 @@
         "defaultValue": null,
         "description": "",
         "name": "breadcrumb",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "BreadcrumbProps | ReactElement<CompoundedComponent, string | JSXElementConstructor<any>>"
@@ -124,16 +55,6 @@
         "defaultValue": null,
         "description": "",
         "name": "breadcrumbRender",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "(props: PageHeaderProps, defaultDom: ReactNode) => ReactNode"
@@ -143,16 +64,6 @@
         "defaultValue": null,
         "description": "",
         "name": "tags",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactElement<TagType, string | JSXElementConstructor<any>> | ReactElement<TagType, string | JSXElementConstructor<any>>[]"
@@ -160,18 +71,8 @@
       },
       "footer": {
         "defaultValue": null,
-        "description": "",
+        "description": "页脚",
         "name": "footer",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactNode"
@@ -179,18 +80,8 @@
       },
       "extra": {
         "defaultValue": null,
-        "description": "",
+        "description": "操作区",
         "name": "extra",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "ReactNode"
@@ -198,75 +89,17 @@
       },
       "avatar": {
         "defaultValue": null,
-        "description": "",
+        "description": "标题栏旁的头像",
         "name": "avatar",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "AvatarProps"
         }
       },
-      "onBack": {
-        "defaultValue": null,
-        "description": "",
-        "name": "onBack",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "(e?: MouseEvent<HTMLDivElement, MouseEvent>) => void"
-        }
-      },
-      "className": {
-        "defaultValue": null,
-        "description": "",
-        "name": "className",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
       "ghost": {
-        "defaultValue": null,
-        "description": "",
+        "defaultValue": true,
+        "description": "背景色",
         "name": "ghost",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-          "name": "PageHeaderProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/page-header/index.tsx",
-            "name": "PageHeaderProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "boolean"

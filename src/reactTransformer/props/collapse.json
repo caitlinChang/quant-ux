@@ -1,7 +1,7 @@
 [
   {
     "tags": {},
-    "description": "",
+    "description": "折叠面板",
     "displayName": "Collapse",
     "methods": [],
     "props": {
@@ -13,7 +13,7 @@
         "required": false,
         "description": "手风琴模式"
       },
-      "activeKey":{
+      "activeKey": {
         "type": {
           "name": "string"
         },
@@ -21,7 +21,7 @@
         "required": false,
         "description": "当前激活 tab 面板的 key"
       },
-      "bordered":{
+      "bordered": {
         "type": {
           "name": "boolean"
         },
@@ -29,32 +29,25 @@
         "required": false,
         "description": "是否显示边框"
       },
-      "collapsible":{
+      "collapsible": {
         "type": {
           "name": "choice",
-          "enum": [
-            "header",
-            "icon",
-            "disabled"
-          ]
+          "enum": ["header", "icon", "disabled"]
         },
         "name": "collapsible",
         "required": false,
         "description": "指定可折叠触发区域"
       },
-      "expandIconPosition":{
+      "expandIconPosition": {
         "type": {
           "name": "choice",
-          "enum": [
-            "start",
-            "end"
-          ]
+          "enum": ["start", "end"]
         },
         "name": "expandIconPosition",
         "required": false,
         "description": "设置图标位置"
       },
-      "expandIcon":{
+      "expandIcon": {
         "type": {
           "name": "func"
         },
@@ -62,7 +55,7 @@
         "required": false,
         "description": ""
       },
-      "ghost":{
+      "ghost": {
         "type": {
           "name": "boolean"
         },

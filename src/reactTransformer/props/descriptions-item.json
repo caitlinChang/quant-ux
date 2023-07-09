@@ -1,0 +1,43 @@
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/comment/index.tsx",
+    "description": "",
+    "displayName": "descriptions-item",
+    "methods": [],
+    "props": {
+      "label": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "name": "label",
+        "required": false,
+        "description": "内容"
+      },
+      "span": {
+        "type": {
+          "name": "number"
+        },
+        "name": "span",
+        "required": false,
+        "description": "栅格占位格数，为 0 时相当于 display: none"
+      },
+      "contentStyle": {
+        "type": {
+          "name": "CSSProperties"
+        },
+        "name": "contentStyle",
+        "required": false,
+        "description": ""
+      },
+      "labelStyle": {
+        "type": {
+          "name": "CSSProperties"
+        },
+        "name": "labelStyle",
+        "required": false,
+        "description": ""
+      }
+    }
+  }
+]

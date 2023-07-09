@@ -2,141 +2,55 @@
   {
     "tags": {},
     "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/progress/index.tsx",
-    "description": "",
-    "displayName": "progress",
+    "description": "进度条",
+    "displayName": "Progress",
     "methods": [],
     "props": {
-      "prefixCls": {
-        "defaultValue": null,
-        "description": "",
-        "name": "prefixCls",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
-      "className": {
-        "defaultValue": null,
-        "description": "",
-        "name": "className",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
       "type": {
-        "defaultValue": null,
-        "description": "",
+        "defaultValue": "line",
+        "description": "类型",
         "name": "type",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
         "required": false,
         "type": {
-          "name": "\"line\" | \"circle\" | \"dashboard\""
+          "name": "choice",
+          "enum": ["line", "circle", "dashboard"]
         }
       },
       "percent": {
         "defaultValue": null,
-        "description": "",
+        "description": "百分比",
         "name": "percent",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "number"
         }
       },
-      "format": {
-        "defaultValue": null,
-        "description": "",
-        "name": "format",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "(percent?: number, successPercent?: number) => ReactNode"
-        }
-      },
       "status": {
         "defaultValue": null,
-        "description": "",
+        "description": "状态",
         "name": "status",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
         "required": false,
         "type": {
-          "name": "\"success\" | \"normal\" | \"exception\" | \"active\""
+          "name": "choice",
+          "enum": ["success", "exception", "active", "normal"]
         }
       },
       "showInfo": {
-        "defaultValue": null,
-        "description": "",
+        "defaultValue": true,
+        "description": "是否显示进度数值或状态图标",
         "name": "showInfo",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "strokeColor": {
+        "defaultValue": null,
+        "description": "进度条的色彩",
+        "name": "strokeColor",
+        "required": false,
+        "type": {
+          "name": "string"
         }
       },
       "strokeWidth": {
@@ -159,57 +73,48 @@
         }
       },
       "strokeLinecap": {
-        "defaultValue": null,
-        "description": "",
+        "defaultValue": "round",
+        "description": "进度条的样式",
         "name": "strokeLinecap",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
         "required": false,
         "type": {
-          "name": "\"butt\" | \"square\" | \"round\""
+          "name": "choice",
+          "enum": ["butt", "round", "square"]
         }
       },
-      "strokeColor": {
+      "success": {
         "defaultValue": null,
-        "description": "",
-        "name": "strokeColor",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
+        "description": "成功进度条相关配置",
+        "name": "success",
         "required": false,
         "type": {
-          "name": "string | string[] | ProgressGradient"
+          "name": "object",
+          "property": {
+            "percent": {
+              "defaultValue": null,
+              "description": "成功的进度百分比",
+              "name": "percent",
+              "required": false,
+              "type": {
+                "name": "number"
+              }
+            },
+            "strokeColor": {
+              "defaultValue": null,
+              "description": "成功的进度条的色彩",
+              "name": "strokeColor",
+              "required": false,
+              "type": {
+                "name": "string"
+              }
+            }
+          }
         }
       },
       "trailColor": {
         "defaultValue": null,
         "description": "",
         "name": "trailColor",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "string"
@@ -217,56 +122,17 @@
       },
       "width": {
         "defaultValue": null,
-        "description": "",
+        "description": "进度条画布宽度",
         "name": "width",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "number"
-        }
-      },
-      "success": {
-        "defaultValue": null,
-        "description": "",
-        "name": "success",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "SuccessProps"
         }
       },
       "style": {
         "defaultValue": null,
         "description": "",
         "name": "style",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "CSSProperties"
@@ -274,18 +140,9 @@
       },
       "gapDegree": {
         "defaultValue": null,
-        "description": "",
+        "description": "仪表盘进度条缺口角度",
+        "tips": "可取值 0 ~ 360",
         "name": "gapDegree",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "number"
@@ -293,75 +150,18 @@
       },
       "gapPosition": {
         "defaultValue": null,
-        "description": "",
+        "description": "仪表盘进度条缺口位置",
         "name": "gapPosition",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
         "required": false,
         "type": {
-          "name": "\"top\" | \"bottom\" | \"left\" | \"right\""
-        }
-      },
-      "size": {
-        "defaultValue": null,
-        "description": "",
-        "name": "size",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "ProgressSize"
+          "name": "choice",
+          "enum": ["top", "bottom", "left", "right"]
         }
       },
       "steps": {
         "defaultValue": null,
-        "description": "",
+        "description": "进度条总共步数",
         "name": "steps",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "number"
-        }
-      },
-      "successPercent": {
-        "defaultValue": null,
-        "description": "@deprecated Use `success` instead",
-        "name": "successPercent",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-          "name": "ProgressProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/progress/progress.tsx",
-            "name": "ProgressProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "number"

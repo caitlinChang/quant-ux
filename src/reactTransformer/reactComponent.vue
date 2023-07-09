@@ -7,9 +7,10 @@
           class="antd4-warpper"
           @click="(e) => $emit('onclick', { ...item }, e)"
         >
-          <div>
+          <!-- <div>
             <component :is="item.component" v-bind="{ ...item.props }" />
-          </div>
+          </div> -->
+          <span class="display-desc">{{ item.description }}</span>
           <span class="display-name">{{ item.displayName }}</span>
         </div>
       </div>
@@ -102,6 +103,12 @@ export default {
   width: 100%;
   position: absolute;
   bottom: 5px;
+}
+.display-desc {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  color: #555;
 }
 .antd4-icon-warpper {
   margin: 10px;

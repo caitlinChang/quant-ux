@@ -1,1 +1,66 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/switch/index.tsx",
+    "description": "开关",
+    "displayName": "Switch",
+    "methods": [],
+    "props": {
+      "checked": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "指定当前是否选中",
+        "defaultValue": false,
+        "name": "checked"
+      },
+      "checkedChildren": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "name": "checkedChildren",
+        "defaultValue": null,
+        "description": "选中时的内容"
+      },
+      "autoFocus": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "自动获取焦点",
+        "defaultValue": false,
+        "name": "autoFocus"
+      },
+      "disabled": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "是否禁用",
+        "defaultValue": false,
+        "name": "disabled"
+      },
+      "loading": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "加载中的开关",
+        "defaultValue": false,
+        "name": "loading"
+      },
+      "size": {
+        "type": {
+          "name": "choice",
+          "enum": ["small", "default"]
+        },
+        "required": false,
+        "description": "开关大小，可选值：default small",
+        "defaultValue": "default",
+        "name": "size"
+      }
+    }
+  }
+]

@@ -1,1 +1,160 @@
-[]
+[
+  {
+    "tags": {},
+    "filePath": "/Users/yingyingchang/Downloads/ant-design-4.24.10/components/comment/index.tsx",
+    "description": "日期选择器",
+    "displayName": "DatePicker",
+    "methods": [],
+    "props": {
+      "allowClear": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "是否显示清除按钮",
+        "defaultValue": false,
+        "name": "allowClear"
+      },
+      "autoFocus": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "自动获取焦点",
+        "defaultValue": false,
+        "name": "autoFocus"
+      },
+      "bordered": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "是否有边框",
+        "defaultValue": true,
+        "name": "bordered"
+      },
+      "disabled": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "禁用",
+        "defaultValue": false,
+        "name": "disabled"
+      },
+      "mode": {
+        "type": {
+          "name": "choice",
+          "item": ["time", "date", "month", "year", "decade"]
+        },
+        "required": false,
+        "description": "设置选择器模式为多选或标签",
+        "defaultValue": "date",
+        "name": "mode"
+      },
+      "nextIcon": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "description": "自定义下一个图标",
+        "defaultValue": ["RightOutlined"],
+        "name": "nextIcon"
+      },
+      "prevIcon": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "description": "自定义上一个图标",
+        "defaultValue": ["LeftOutlined"],
+        "name": "prevIcon"
+      },
+      "suffixIcon": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "description": "自定义的选择框后缀图标",
+        "defaultValue": ["CalendarOutlined"],
+        "name": "suffixIcon"
+      },
+      "superNextIcon": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "description": "自定义 << 图标",
+        "defaultValue": ["DoubleRightOutlined"],
+        "name": "superNextIcon"
+      },
+      "superPrevIcon": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "description": "自定义 >> 图标",
+        "defaultValue": ["DoubleLeftOutlined"],
+        "name": "superPrevIcon"
+      },
+      "open": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "控制弹层是否展开",
+        "defaultValue": false,
+        "name": "open"
+      },
+      "picker": {
+        "type": {
+          "name": "choice",
+          "item": ["time", "date", "month", "year", "decade"]
+        },
+        "required": false,
+        "description": "设置选择器模式为多选或标签",
+        "defaultValue": "date",
+        "name": "picker"
+      },
+      "placeholder": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "输入框提示文字",
+        "defaultValue": "请选择日期",
+        "name": "placeholder"
+      },
+      "placement": {
+        "type": {
+          "name": "choice",
+          "item": ["top", "bottom", "left", "right"]
+        },
+        "required": false,
+        "description": "浮层预设位置：top bottom left right",
+        "defaultValue": "bottom",
+        "name": "placement"
+      },
+      "size": {
+        "type": {
+          "name": "choice",
+          "item": ["large", "middle", "small"]
+        },
+        "required": false,
+        "description": "输入框大小",
+        "defaultValue": "middle",
+        "name": "size"
+      },
+      "status": {
+        "type": {
+          "name": "choice",
+          "item": ["success", "warning", "error", "validating"]
+        },
+        "required": false,
+        "description": "校验状态，如不设置，则会根据校验规则自动生成",
+        "defaultValue": "",
+        "name": "status"
+      }
+    }
+  }
+]
