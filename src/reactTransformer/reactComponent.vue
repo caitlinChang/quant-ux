@@ -1,33 +1,38 @@
 <template>
-  <div>
-    <h1>常用</h1>
-    <div class="custome-widget-wrapper">
-      <div v-for="item in componentList" :key="item.name">
-        <div
-          class="antd4-warpper"
-          @click="(e) => $emit('onclick', { ...item }, e)"
-        >
-          <!-- <div>
-            <component :is="item.component" v-bind="{ ...item.props }" />
-          </div> -->
-          <span class="display-desc">{{ item.description }}</span>
-          <span class="display-name">{{ item.displayName }}</span>
+  <div class="wrapper">
+    <ul class="sidebar">
+      <li v-for="item in categoryList" :key="item.key" @click="type = item.key" :class="{'sidebar-active': type === item.key}">{{item.label}}</li>
+    </ul>
+    <div v-show="type === 'antd4'" class="widgets-list">
+      <h1>常用</h1>
+      <div class="custome-widget-wrapper">
+        <div v-for="item in componentList" :key="item.name">
+          <div
+            class="antd4-warpper"
+            @click="(e) => $emit('onclick', { ...item }, e)"
+          >
+            <!-- <div>
+              <component :is="item.component" v-bind="{ ...item.props }" />
+            </div> -->
+            <span class="display-desc">{{ item.description }}</span>
+            <span class="display-name">{{ item.displayName }}</span>
+          </div>
         </div>
       </div>
     </div>
-    <!-- <h1>布局</h1>
-    <h1>Formula</h1> -->
-    <h1>Icon</h1>
-    <div class="custome-widget-wrapper">
-      <div v-for="item in iconList" :key="item.name">
-        <div
-          class="antd4-icon-warpper"
-          @click="(e) => $emit('onclick', { ...item }, e)"
-        >
-          <div>
-            <component :is="item.component" v-bind="{ ...iconProps }" />
+    <div v-show="type === 'Icon'" class="widgets-list">
+      <h1>Icon</h1>
+      <div class="custome-widget-wrapper">
+        <div v-for="item in iconList" :key="item.name">
+          <div
+            class="antd4-icon-warpper"
+            @click="(e) => $emit('onclick', { ...item }, e)"
+          >
+            <div>
+              <component :is="item.component" v-bind="{ ...iconProps }" />
+            </div>
+            <!-- <span class="display-name">{{ item.displayName }}</span> -->
           </div>
-          <!-- <span class="display-name">{{ item.displayName }}</span> -->
         </div>
       </div>
     </div>
@@ -55,6 +60,24 @@ export default {
     return {
       componentList,
       iconList,
+      type: "antd4",
+      categoryList: [{
+        label: 'Ant Design',
+        key:'antd4'
+      },
+      {
+        label: '布局',
+        key:'Layout'
+      },
+      {
+        label: 'Formula',
+        key:'formula'
+      },
+      {
+        label: 'Icon',
+        key:'Icon'
+      }
+      ],
       iconProps: {
         style: {
           fontSize: '18px',
@@ -69,6 +92,19 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  display: flex;
+}
+.sidebar {
+  position: absolute;
+}
+.sidebar-active {
+  color:#3787f2;
+}
+.widgets-list {
+  flex: 1;
+  margin-left: 120px;
+}
 .custome-widget-wrapper {
   display: flex;
   flex-wrap: wrap;

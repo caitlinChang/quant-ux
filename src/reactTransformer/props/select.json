@@ -290,7 +290,7 @@
               "description": "",
               "name": "value",
               "type": {
-                "name": "string"
+                "name": "ID"
               }
             }
           }

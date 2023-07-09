@@ -172,7 +172,7 @@ export default {
 							}
 						}
 					} else {
-						console.erro('_showMultiVisualProperties() No style for widget', widget)
+						console.error('_showMultiVisualProperties() No style for widget', widget)
 					}
 					isAllSVG = widget.type === 'SVGPaths' && isAllSVG
 					hasBackground = hasBackground && widget?.has?.backgroundColor

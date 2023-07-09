@@ -14,21 +14,21 @@
       <div class="MatcCreateBtnCntr MatcPadding">
         <div class="container-fluid">
           <div class="row" v-show="tab === 'widgets'">
-            <div
-              v-show="curWideget !== 'antd4'"
+            <!-- <div
+              v-show="curWideget !== 'antd4' && curWideget !== 'Icon'"
               class="MatcCreateBtnElementList MatcCreateBtnRight"
               data-dojo-attach-point="rightCntr"
             >
               <div class="MatcHint">Loading Widgets...</div>
-            </div>
+            </div> -->
             <div
-              v-show="curWideget === 'antd4'"
+              v-if="curWideget === 'antd4'"
               class="MatcCreateBtnElementList MatcCreateBtnRight"
               data-dojo-attach-point="customWedgets"
             >
               <ReactComponent @onclick="onCreateCustomWeget" />
             </div>
-            <div class="col-md-2 MatcCreateBtnLeft">
+            <div v-if="false" class="col-md-2 MatcCreateBtnLeft">
               <div class="form-group has-feedback">
                 <input
                   type="search"
@@ -101,13 +101,13 @@ export default {
     return {
       screenWidth: 300,
       screenHeight: 600,
-      selectedCategory: "WireFrame",
+      selectedCategory: "antd4",
       showSubCatgeoryLabels: false,
       icons: [],
       categoryNames: {
-        Bootstrap: "Bootstrap 3",
-        Bootstrap4: "Bootstrap 4",
-        OpenUI: "OpenUI5",
+        antd4: "antd4",
+        // Bootstrap4: "Bootstrap 4",
+        // OpenUI: "OpenUI5",
       },
       previewSizes: {
         default: {
@@ -145,7 +145,7 @@ export default {
       this.renderFactory.setModel(m);
       this.renderFactory.setSymbol(true);
       // this.categoriesList = ["WireFrame", "Material", "IOS", "OpenUI", "Bootstrap4", "Charts" ];
-      this.categoriesList = ["antd4"];
+      this.categoriesList = ["antd4", "Icon"];
       this._importedApps = {};
       /**
        * set to last added category...
@@ -158,7 +158,7 @@ export default {
       // if (this.model.imports)
       this.importableApps =
         await Services.getModelService().findMyAppSummaries();
-      setTimeout(lang.hitch(this, "init"), 2000);
+      // setTimeout(lang.hitch(this, "init"), 2000);
     },
 
     setJwtToken(t) {
@@ -173,8 +173,8 @@ export default {
         this.renderTemplates();
       }
       setTimeout(() => {
-        this.searchBox.select();
-        this.searchBox.focus();
+        this.searchBox?.select();
+        this.searchBox?.focus();
       }, 250);
       css.add(this.domNode, "MatcToolbarItemActive");
     },
@@ -189,36 +189,36 @@ export default {
          * load themes
          */
         let coreThemes = await Services.getSymbolService().getCore();
-        this.onThemesLoaded(coreThemes);
+        // this.onThemesLoaded(coreThemes);
 
-        this.own(
-          on(this.searchBox, "mousedown", function (e) {
-            e.stopPropagation();
-            return false;
-          })
-        );
-        // chrome messes with this now! We have new pointer events!
-        this.own(
-          on(this.searchBox, "pointerdown", function (e) {
-            e.stopPropagation();
-            return false;
-          })
-        );
+        // this.own(
+        //   on(this.searchBox, "mousedown", function (e) {
+        //     e.stopPropagation();
+        //     return false;
+        //   })
+        // );
+        // // chrome messes with this now! We have new pointer events!
+        // this.own(
+        //   on(this.searchBox, "pointerdown", function (e) {
+        //     e.stopPropagation();
+        //     return false;
+        //   })
+        // );
 
-        this.own(
-          on(this.searchBox, "keypress", function (e) {
-            e.stopPropagation();
-          })
-        );
-        this.own(
-          on(this.searchBox, "keydown", function (e) {
-            e.stopPropagation();
-          })
-        );
-        this.own(on(this.searchBox, "keyup", lang.hitch(this, "onSearch")));
-        this.own(
-          on(this.searchRemoveBtn, touch.press, lang.hitch(this, "resetSearch"))
-        );
+        // this.own(
+        //   on(this.searchBox, "keypress", function (e) {
+        //     e.stopPropagation();
+        //   })
+        // );
+        // this.own(
+        //   on(this.searchBox, "keydown", function (e) {
+        //     e.stopPropagation();
+        //   })
+        // );
+        // this.own(on(this.searchBox, "keyup", lang.hitch(this, "onSearch")));
+        // this.own(
+        //   on(this.searchRemoveBtn, touch.press, lang.hitch(this, "resetSearch"))
+        // );
       }
     },
 
@@ -1108,7 +1108,7 @@ export default {
       if (child.category) {
         this.model.lastCategory = child.category;
       } else {
-        this.model.lastCategory = "WireFrame";
+        this.model.lastCategory = "antd4";
       }
       this.hideDropDown();
       this.emit("change", value, e);
