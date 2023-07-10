@@ -7,9 +7,6 @@ import { v4 as uuidv4 } from "uuid";
 import { getRecentPath } from "../util/propsValueUtils";
 import { SlotWrapperProps } from "../slots/SlotWrapper";
 import { deleteParam, setParam } from "../util/setPropsValue";
-import { getFieldNames } from "../util/index";
-
-console.log(getFieldNames);
 
 export enum ContenxtMenuType {
   ADD_SAME_LEVEL_ITEM,

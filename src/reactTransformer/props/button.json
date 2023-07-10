@@ -6,6 +6,14 @@
     "displayName": "Button",
     "methods": [],
     "props": {
+      "style": {
+        "name": "style",
+        "type": {
+          "name": "CSSProperties"
+        },
+        "required": false,
+        "description": ""
+      },
       "children": {
         "description": "内容",
         "type": {

@@ -64,17 +64,17 @@ const blackList = [
 const _componentConfigList = Object.keys(componentMap)
   .filter((i) => !blackList.includes(i))
   .map((key) => {
-    const initialProps = getInitialProps(key);
+    const propsConfig = getInitialProps(key);
     return {
       _type: "antd4",
       w: 200,
       h: 60,
       name: key,
-      description: initialProps.description,
-      displayName: initialProps.displayName || key,
+      description: propsConfig.description,
+      displayName: propsConfig.displayName || key,
       cagegory: "Ant Design",
       component: key,
-      // props: initialProps,
+      props: propsConfig.propsValue || {},
     };
   });
 // console.log("_componentConfigList = ", _componentConfigList);

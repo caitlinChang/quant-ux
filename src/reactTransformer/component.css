@@ -25,3 +25,8 @@
 .ContextMenuActive {
   display: block;
 }
+/* AutoComplete 不支持 style 属性，在画布上也不能直接设置行内样式，所以通过这种方式设置宽度 */
+.ant-select-auto-complete {
+  /* min-width: 200px; */
+  width: 100%;
+}

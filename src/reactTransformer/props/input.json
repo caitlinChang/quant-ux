@@ -5,7 +5,21 @@
     "description": "输入框",
     "displayName": "Input",
     "methods": [],
+    "propsValue": {
+      "style": {
+        "width": "180px"
+      }
+    },
     "props": {
+      "style": {
+        "defaultValue": null,
+        "description": "",
+        "name": "style",
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
       "addonAfter": {
         "defaultValue": null,
         "description": "后置标签",

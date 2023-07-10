@@ -1,6 +1,6 @@
 <template>
   <div class="custom-widget-warpper">
-    <component :is="componentInfo.component" v-bind="componentProps" >
+    <component :is="componentInfo.component" v-bind="componentProps">
       <template v-if="childrenProps" v-slot:default>
         <slot-wrapper :props="childrenProps" />
       </template>
@@ -74,8 +74,7 @@ export default {
 
     getWrapperProps(config, path, rawProps, fieldNames) {
       const curValue = get(rawProps, path);
-      
-      const { type: { name, property, item } } = config;
+      const { name, property, item } = config.type || {};
       if (name === 'ReactNode') {
         // children 需要特殊处理，用 slot 传递
         if (path === 'children') {
@@ -139,7 +138,6 @@ export default {
       });
       const { children, ...restProps } = obj;
       this.childrenProps = children;
-      console.log('restProps', restProps, this.childrenProps)
       return restProps;
     },
     
@@ -205,4 +203,5 @@ export default {
   height: 2px;
   background: #ddd;
 }
+
 </style>

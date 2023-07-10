@@ -90,7 +90,8 @@
       },
       "options": {
         "defaultValue": [],
-        "description": "自动完成的数据源",
+        "description": "下拉列表数据",
+        "needMock": true,
         "name": "options",
         "required": false,
         "type": {

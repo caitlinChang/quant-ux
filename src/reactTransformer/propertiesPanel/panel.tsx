@@ -43,6 +43,11 @@ const Panel = () => {
     return propsConfig;
   };
   const handleChangeProp = (path, _value) => {
+    if (!selectWidget?.id) {
+      // console.error("当前没有选中widget", selectWidget);
+      console.log("当前没有选中widget", selectWidget);
+      return;
+    }
     const { key, value, newFormData } = transferPath(path, _value, formData);
     setFormData(newFormData);
     eventBus.emit(`${selectWidget.id}:propsUpdate`, newFormData);
@@ -73,7 +78,10 @@ const Panel = () => {
     const defaultValue = node.config.defaultValue;
     let _value = value;
     if (value === undefined) {
-      _value = (defaultValue !== null && defaultValue !== undefined) ? defaultValue : _value;
+      _value =
+        defaultValue !== null && defaultValue !== undefined
+          ? defaultValue
+          : _value;
     }
     const {
       type: { name, item },
@@ -149,6 +157,7 @@ const Panel = () => {
    * @returns
    */
   const TreeNodeTitle = (props: {
+    handleChangeProp: (path: string, value: any) => void;
     config: PropItemConfigType;
     path: string;
     propsValue: any;
@@ -165,13 +174,13 @@ const Panel = () => {
       const oldValue = get(props.propsValue, props.path) || [];
       const newValue = clone(oldValue);
       newValue.splice(index, 1);
-      handleChangeProp(props.path, newValue);
+      props.handleChangeProp(props.path, newValue);
     };
     const handleAdd = () => {
       // TODO: 对添加项的 mock
       const newValue = get(props.propsValue, props.path) || [];
       newValue.push({});
-      handleChangeProp(props.path, newValue);
+      props.handleChangeProp(props.path, newValue);
     };
     return (
       <Space>
@@ -225,6 +234,7 @@ const Panel = () => {
         return {
           title: (
             <TreeNodeTitle
+              handleChangeProp={handleChangeProp}
               propsValue={propsValue}
               path={curPath}
               config={config}
@@ -245,7 +255,12 @@ const Panel = () => {
     }
     return {
       title: (
-        <TreeNodeTitle propsValue={propsValue} path={curPath} config={config} />
+        <TreeNodeTitle
+          handleChangeProp={handleChangeProp}
+          propsValue={propsValue}
+          path={curPath}
+          config={config}
+        />
       ),
       key: curPath,
       children,
@@ -296,6 +311,7 @@ const Panel = () => {
     eventBus.on("selectWidget", async (widget) => {
       const propsConfig = await resolveComponentProps(widget.component);
       setFormData(widget.props || {});
+      console.log("选中widget = ", widget);
       setSelectWidget(widget);
       getTreedata(propsConfig, { ...widget.props });
       // 用于接收画布侧的数据

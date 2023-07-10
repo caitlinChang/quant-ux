@@ -16,7 +16,7 @@ export const requestComponentProps = async (componentName) => {
   const arr = componentName.split("-");
   arr.shift();
   const str = arr.join("-");
-  console.log(`获取${str}的组件属性`)
+  // console.log(`获取${str}的组件属性`)
   try {
     const res = require("../props/" + str + ".json"); //await axios.get("../props/" + str + ".json");
     return res[0];
