@@ -1,8 +1,12 @@
 <template>
   <div class="custom-widget-warpper">
     <component :is="componentInfo.component" v-bind="componentProps">
-      <template v-if="childrenProps" v-slot:default>
-        <slot-wrapper :props="childrenProps" />
+      <template v-if="childrenList.length >= 1" v-slot:default>
+        <template v-for="(c,index) in childrenList">
+          <slot-wrapper v-if="c.type === 'text'" :props="c.widgetProps" :key="index"/>
+          <!-- <component v-if="c.type === 'component'" :key="index" :is="c.componentName" v-bind="c.componentProps" /> -->
+          <children-wrapper v-if="c.type === 'component'" :key="index" :componentInfo="c.componentInfo" />
+        </template>
       </template>
     </component>
   </div>
@@ -10,20 +14,22 @@
 
 <script>
 import eventBus from "./eventBus";
-import componentList from "./util/constant";
+import componentList, { getVueTypeName } from "./util/constant";
 import iconMap from './util/icon';
 import { requestComponentProps} from './util/request'
 import { setSlotWrapper, SlotWrapper } from "./slots/SlotWrapper";
 import { getFieldNames } from './util/getFieldNames';
 import { getMockedProps } from './util/mock';
-import { clone, get } from 'lodash';
+import { clone, get, isArray } from 'lodash';
 import { formatPath } from './util/common';
+import ChildrenWrapper from './slots/ChildrenWrapper.vue';
 export default {
   name: "VueWrapper",
   components: {
     ...componentList,
     ...iconMap,
     slotWrapper: SlotWrapper,
+    ChildrenWrapper,
   },
   props: ["componentInfo"],
   data() {
@@ -35,7 +41,7 @@ export default {
       rawProps:{}, // 原始的 props， 在model中存储的props数据模型
       propsConfig: {}, // props的类型配置信息
       showAction: true,
-      childrenProps: null
+      childrenList:[]
     };
   },
   methods: {
@@ -137,9 +143,44 @@ export default {
         obj[propsName] = this.getWrapperProps(config, propsName, cloneProps);
       });
       const { children, ...restProps } = obj;
-      this.childrenProps = children;
+      
+      this.handleChildren(children);
+     
       return restProps;
     },
+
+    handleChildren(childrenProps) {
+      if (!childrenProps) {
+        this.childrenProps = null;
+        return;
+      }
+      const { children, ...rest } = childrenProps
+      if (typeof children === 'string') {
+        this.childrenList = [{
+          type: 'text',
+          widgetProps: { ...rest, children: children }
+        }]
+      } else if (isArray(children)) {
+        this.childrenList = children.map(item => {
+          if (typeof item === 'string') {
+            return {
+              type: 'text',
+              widgetProps: { ...rest, children: item }
+            }
+          } else {
+            const [name, props] = item;
+            return {
+              type: 'component',
+              componentInfo: {
+                component: getVueTypeName(name, "antd"),
+                props:{... (props || {})}
+              }
+            }
+        }
+       }) 
+      }
+      console.log('this.childrenList = ', this.childrenList)
+    }
     
   },
   mounted() {

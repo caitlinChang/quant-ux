@@ -7,6 +7,17 @@
     "methods": [],
     "childrenComponent": ["form-item"],
     "props": {
+      "children": {
+        "name": "children",
+        "defaultValue": "",
+        "type": {
+          "name": "ReactNode",
+          "component": ["Form.Item"]
+        },
+        "required": false,
+        "description": "容器",
+        "tips": ""
+      },
       "colon": {
         "name": "colon",
         "defaultValue": true,

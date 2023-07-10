@@ -1,10 +1,18 @@
 import React, { ReactNode, useState, useEffect } from "react";
 import { Radio, Input, Button, Tooltip } from "antd";
-import { isArray } from "lodash";
+import { isArray, set } from "lodash";
 import { PropItemConfigType } from "../../../util/type";
-import { CloseCircleFilled } from "@ant-design/icons";
-export type ValueType = string | [string, any];
-
+import {
+  CloseCircleFilled,
+  MinusOutlined,
+  PlusOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
+export type ValueType = string | [string, any][];
+const IconStyle = {
+  color: "#e1e1e1",
+  cursor: "pointer",
+};
 export default (props: {
   node: {
     title: ReactNode;
@@ -13,22 +21,62 @@ export default (props: {
   };
   value?: ValueType;
   onChange?: (value: ValueType) => void;
-  onSelectComponent?: () => void;
+  onSelectComponent?: (index: number) => void;
 }) => {
   const [type, setType] = useState<"text" | "component">("text");
+  const [componentList, setComponentList] = useState([]);
+  const [text, setText] = useState("");
   const { node, value } = props;
 
   useEffect(() => {
-    if (isArray(props.value)) {
+    if (isArray(value)) {
+      if (isArray(value[0])) {
+        setComponentList(value);
+      } else {
+        setComponentList([value]);
+      }
       setType("component");
+    } else {
+      setText(value);
+      setType("text");
     }
-  }, [props.value]);
+  }, [value]);
 
   const handleChangeProp = (value?: ValueType) => {
     props.onChange?.(value);
   };
   const handleChangeType = (v) => {
     setType(v.target.value);
+  };
+
+  const handleChangeComponent = (v, index) => {
+    const _componentList = [...componentList];
+    _componentList[index] = v;
+    setComponentList(_componentList);
+    props.onChange?.(_componentList);
+  };
+
+  const handleDeleteChild = (index: number) => {
+    const _componentList = [...componentList];
+    _componentList.splice(index, 1);
+    setComponentList(_componentList);
+    props.onChange?.(_componentList);
+  };
+
+  const handleAddComponent = () => {
+    const _componentList = [...componentList];
+    _componentList.push([]);
+    setComponentList(_componentList);
+    props.onChange?.(_componentList);
+  };
+
+  const handleChangeText = (e) => {
+    if (!e) {
+      console.log("编辑文本失败, HTMLEvent 不存在", e);
+    }
+    const value = e.target.value;
+    setText(value);
+    props.onChange?.(value);
   };
   return (
     <div>
@@ -37,26 +85,43 @@ export default (props: {
         <Radio value="component">选择组件</Radio>
       </Radio.Group>
       {type === "text" && (
-        <Input
-          defaultValue={value}
-          onBlur={(e) => handleChangeProp(e.target.value)}
-        />
+        <Input defaultValue={text} onBlur={(e) => handleChangeText(e)} />
       )}
       {type === "component" && (
         <div>
-          <span>
-            当前选中组件：{value?.[0] || "暂无"}
-            <Tooltip title="清除">
-              <CloseCircleFilled style={{
-                color: "#e1e1e1",
-                cursor:'pointer'
-              }}
-              onClick={() => handleChangeProp()} />
-            </Tooltip>
-          </span>
-          <Button size="small" onClick={props.onSelectComponent}>
-            选择
-          </Button>
+          <div>
+            <Button
+              size="small"
+              icon={<PlusOutlined />}
+              onClick={handleAddComponent}
+            />
+          </div>
+          {componentList.map((c, index) => {
+            return (
+              <div>
+                <span key={index}>{c[0] ? `已选中 ${c[0]}` : "请选择"}</span>
+                <Button
+                  size="small"
+                  icon={<SearchOutlined />}
+                  onClick={() => props.onSelectComponent(index)}
+                />
+                {componentList.length === 1 && (
+                  <Button
+                    size="small"
+                    icon={<CloseCircleFilled />}
+                    onClick={() => handleChangeProp()}
+                  />
+                )}
+                {componentList.length >= 1 && (
+                  <Button
+                    size="small"
+                    icon={<MinusOutlined />}
+                    onClick={() => handleDeleteChild(index)}
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

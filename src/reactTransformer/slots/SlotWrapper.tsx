@@ -77,7 +77,15 @@ export const SlotWrapper = (props: SlotWrapperProps) => {
  */
 export const setSlotWrapper = (props: SlotWrapperProps) => {
   const { children, ...resProps } = props;
-  const el = React.createElement(SlotWrapper, resProps, props.children);
-  return el;
+  if (typeof children === "string") {
+    // 文本
+    return React.createElement(SlotWrapper, resProps, children);
+  } else if (isArray(children[0])) {
+    // TODO: 处理多组件的情况
+    return React.createElement(SlotWrapper, resProps, children[0]);
+  } else {
+    // TODO: 准备弃用
+    return React.createElement(SlotWrapper, resProps, children);
+  }
 };
 

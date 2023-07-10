@@ -61,22 +61,27 @@ export default {
       componentList,
       iconList,
       type: "antd4",
-      categoryList: [{
-        label: 'Ant Design',
-        key:'antd4'
-      },
-      {
-        label: '布局',
-        key:'Layout'
-      },
-      {
-        label: 'Formula',
-        key:'formula'
-      },
-      {
-        label: 'Icon',
-        key:'Icon'
-      }
+      categoryList: [
+        {
+          label: 'Common',
+          key:'common'
+        },
+        {
+          label: 'Ant Design',
+          key:'antd4'
+        },
+        {
+          label: 'Layout',
+          key:'Layout'
+        },
+        {
+          label: 'Formula',
+          key:'formula'
+        },
+        {
+          label: 'Icon',
+          key:'Icon'
+        }
       ],
       iconProps: {
         style: {

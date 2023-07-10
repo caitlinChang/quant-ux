@@ -54,9 +54,10 @@ const Panel = () => {
     eventBus.emit("updateModel", key, value);
   };
 
-  const handleSelectComponent = (path: string) => {
+  const handleSelectComponent = (path: string, index: number) => {
+    const _path = `${path}.${index}`;
     eventBus.emit("fillSlot", {
-      path,
+      path: _path,
       id: selectWidget.id,
       formData,
     });
@@ -127,7 +128,9 @@ const Panel = () => {
           node={node}
           value={_value}
           onChange={(value) => handleChangeProp(node.key, value)}
-          onSelectComponent={() => handleSelectComponent(node.key)}
+          onSelectComponent={(index: number) =>
+            handleSelectComponent(node.key, index)
+          }
         />
       );
     }

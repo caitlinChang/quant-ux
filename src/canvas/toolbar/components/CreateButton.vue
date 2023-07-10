@@ -126,9 +126,6 @@ export default {
     };
   },
   methods: {
-    setForSlot(value) {
-      this.forSlot = value;
-    },
     setIcons(icons) {
       this.icons = icons;
     },
@@ -1117,12 +1114,9 @@ export default {
     onCreateCustomWeget(widget, e) {
       if (this.forSlot) {
         const { path, id, formData } = this.forSlot;
-        const _value = [revertName(widget.component), {
-          style: {
-            padding: "5px",
-          },
-        }];
+        const _value = [revertName(widget.component), null];
         const { key, value, newFormData } = transferPath(path, _value, formData);
+        console.log('key,value = ',key,value)
         eventBus.emit(`${id}:canvasUpdate`, key, value);
         eventBus.emit(`${id}:propsUpdate`, newFormData);
       } else {
