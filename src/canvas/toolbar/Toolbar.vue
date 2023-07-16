@@ -916,6 +916,8 @@ export default {
 
       this.cleanUpUI();
 
+      // eventBus.emit("deSelectWidget")
+
       this._selectedWidget = null;
 
       this._selectedLine = null;
@@ -939,6 +941,8 @@ export default {
        * drop downs!
        */
       this.createBTN.hideDropDown();
+
+      // removePanel(this.propertiesCntr);
     },
 
     _blurInputFields() {

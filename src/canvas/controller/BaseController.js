@@ -1601,8 +1601,6 @@ export default class BaseController extends Core {
 	getWidgetName (screenID, name){
 		var screen = this.model.screens[screenID];
 		if (screen) {
-			console.log('screen = ', screen)
-			console.log('this.model.widgets = ', this.model.widgets)
 			var children = screen.children;
 			var names = {}; // names 对象维护了从 name 到 id 的映射
 			for (let i = 0; i < children.length; i++){
@@ -1614,7 +1612,6 @@ export default class BaseController extends Core {
 					console.debug("No widget", widgetID);
 				}
 			}
-			console.log('names = ', names);
 			// also add names of parent screen widgets
 			if(screen.parents && screen.parents.length > 0 ){
 				for(let i = 0; i< screen.parents.length; i++){

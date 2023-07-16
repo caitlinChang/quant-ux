@@ -3,6 +3,10 @@ import * as antdComponents from "antd";
 const componentMap = {};
 
 export const getVueTypeName = (key, prefix) => {
+  if (!key) return;
+  if (/^antd-/.test(key)) {
+    return key;
+  }
   const name = key
     .replace(/([A-Z])/g, "-$1")
     .toLowerCase()

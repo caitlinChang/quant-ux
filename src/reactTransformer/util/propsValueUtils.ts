@@ -1,5 +1,5 @@
 import { getExactType } from "../util/common";
-import { get, set, clone } from "lodash";
+import { get, set, clone, cloneDeep } from "lodash";
 
 // 该文件中是一些对 props 值的处理方法
 
@@ -55,11 +55,11 @@ export const getFirstKey = (path) => {
 
 export const transferPath = (path: string, value: any, formData: any) => {
   const key = getFirstKey(path);
-  const newFormData = set(clone(formData), path, value);
+  const newFormData = set(cloneDeep(formData), path, value);
   return {
     key,
     value: newFormData[key],
-    newFormData
+    newFormData,
   };
 }; 
 

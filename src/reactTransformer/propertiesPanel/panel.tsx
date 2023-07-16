@@ -1,4 +1,4 @@
-import React, { useEffect, ReactNode, useMemo } from "react";
+import React, { useEffect, ReactNode, useMemo, useCallback } from "react";
 import ReactDom from "react-dom";
 import {
   Tree,
@@ -14,7 +14,7 @@ import {
 } from "antd";
 import { requestComponentProps } from "../util/request";
 import { getTSType } from "../util/resolvePropsConfig";
-import { isArray, set, get, clone } from "lodash";
+import { isArray, set, get, clone, cloneDeep } from "lodash";
 import { PropItemConfigType, TypeName } from "../util/type";
 import { getFirstKey, transferPath } from "../util/propsValueUtils";
 import eventBus from "../eventBus";
@@ -24,13 +24,21 @@ import { formatPath } from "../util/common";
 
 const AntdPanel = Collapse.Panel;
 
-
-
 const Panel = () => {
   const [treeData, setTreeData] = React.useState([]);
   const [propsConfig, setPropsConfig] = React.useState(null);
-  const [formData, setFormData] = React.useState({}); // 维护的是组件的 props
+  const [widgetProps, setWidgetProps] = React.useState({}); // 维护当前选中 Widget 的Props
+  const [formData, setFormData] = React.useState({}); // 维护的是当前选中组件的 props，可能是 widget，也可能是 widgetChild
   const [selectWidget, setSelectWidget] = React.useState(null); // 当前选中的 widget
+  const [selectChild, setSelectChild] = React.useState(null); // 当前选中的widget 中的 child
+
+  useEffect(() => {
+    if (selectChild) {
+      return;
+    } else {
+      setWidgetProps(cloneDeep(formData));
+    }
+  }, [selectChild, formData]);
 
   const resolveComponentProps = async (name: string) => {
     const res = await requestComponentProps(name);
@@ -44,22 +52,39 @@ const Panel = () => {
   };
   const handleChangeProp = (path, _value) => {
     if (!selectWidget?.id) {
-      // console.error("当前没有选中widget", selectWidget);
       console.log("当前没有选中widget", selectWidget);
       return;
     }
     const { key, value, newFormData } = transferPath(path, _value, formData);
     setFormData(newFormData);
-    eventBus.emit(`${selectWidget.id}:propsUpdate`, newFormData);
-    eventBus.emit("updateModel", key, value);
+    if (selectChild) {
+      // 当前编辑的是 Child
+      const res = transferPath(
+        `${selectChild.path}.1`,
+        newFormData,
+        widgetProps || {}
+      );
+      eventBus.emit(`${selectWidget.id}:propsUpdate`, res.newFormData);
+      eventBus.emit("updateModel", res.key, res.value);
+    } else {
+      // 当前编辑的是 Widget
+      eventBus.emit(`${selectWidget.id}:propsUpdate`, newFormData);
+      eventBus.emit("updateModel", key, value);
+    }
   };
 
   const handleSelectComponent = (path: string, index: number) => {
-    const _path = `${path}.${index}`;
+    let _path = `${path}.${index}`;
+    let data = cloneDeep(formData);
+    if (selectChild) {
+      _path = `${selectChild.path}.1.${_path}`;
+      data = cloneDeep(widgetProps);
+    }
+
     eventBus.emit("fillSlot", {
       path: _path,
       id: selectWidget.id,
-      formData,
+      formData: data,
     });
   };
 
@@ -102,7 +127,7 @@ const Panel = () => {
     } else if (name === TypeName.String) {
       return (
         <Input
-          value={_value}
+          defaultValue={_value}
           allowClear
           onBlur={(e) => handleChangeProp(node.key, e.target.value)}
         />
@@ -286,54 +311,81 @@ const Panel = () => {
     }
   };
 
+  const clear = () => {
+    setPropsConfig(null);
+    setFormData({});
+    setSelectWidget(null);
+    setSelectChild(null);
+  };
+
   useEffect(() => {
-    eventBus.on("canvasEdit", (path, value, updateCanvas) => {
-      // 通知 model 更新
-      if (!path) {
-        // 传入的不是props中的某个字段，而是整个props
-        setTimeout(() => {
-          setFormData({ ...value });
-        });
-        Object.keys(value).forEach((key) => {
-          // this.$emit("setComponentProps", key, value[key]);
-        });
+    eventBus.on("selectWidget", async (widget) => {
+      if (selectWidget?.id === widget.id) {
+        // 防止重复点击
         return;
       }
-      const key = getFirstKey(path);
-      const newValue = set(formData, path, value);
-
-      if (updateCanvas) {
-        // 通过contextMenu 修改的值，需要通过 eventBus 通知组件更新
-        eventBus.emit(`${selectWidget.id}:propsUpdate`, {
-          [key]: newValue[key],
-        });
-      }
-      // this.$emit("setComponentProps", key, newValue[key]);
-    });
-
-    eventBus.on("selectWidget", async (widget) => {
-      const propsConfig = await resolveComponentProps(widget.component);
-      setFormData(widget.props || {});
-      console.log("选中widget = ", widget);
+      const { component, props = {} } = widget;
+      clear();
+      const propsConfig = await resolveComponentProps(component);
+      setFormData(props);
       setSelectWidget(widget);
-      getTreedata(propsConfig, { ...widget.props });
+      getTreedata(propsConfig, { ...props });
       // 用于接收画布侧的数据
+      // TODO: 去掉事件名中的 id
       eventBus.on(`${widget.id}:canvasUpdate`, (key, value) => {
+        if (selectChild) {
+          console.log(
+            "canvasUpdate：Panel 面板正在编辑子组件的属性，无法处理画布事件"
+          );
+          return;
+        }
         const newValue = set(formData, key, value);
-        setFormData(newValue);
+        setFormData({ ...newValue });
         getTreedata(propsConfig, newValue);
         eventBus.emit("updateModel", key, value);
       });
     });
-    eventBus.on("deSelectWidget", () => {
-      setPropsConfig(null);
-      setFormData(null);
-      setSelectWidget(null);
+    // 用于接收选中 widgetChildren 中的数据变化
+    eventBus.on("selectWidgetChild", async (widget) => {
+      if (
+        widget.component === selectChild?.component &&
+        widget.path === selectChild?.path
+      ) {
+        // 防止重复点击
+        return;
+      }
+      const { component, props = {} } = widget;
+      setSelectChild(widget);
+      const propsConfig = await resolveComponentProps(component);
+      getTreedata(propsConfig, { ...props });
+      setFormData(cloneDeep(props));
+      // TODO: 去掉事件名中的 id
     });
+    eventBus.on("childCanvasUpdate", (key, value) => {
+      if (!selectChild) {
+        console.log(
+          "childCanvasUpdate：当前Panel面板编辑的是根组件属性，没有选中子组件，无法处理子组件的画布事件"
+        );
+        return;
+      }
+      const newValue = set(formData, key, value);
+      setFormData(newValue);
+      getTreedata(propsConfig, newValue);
+      //更新下 rootWidget的数据
+      const rootKey = `${selectChild.path}.1.${key}`;
+      const newInfo = transferPath(rootKey, value, widgetProps);
+      setWidgetProps(newInfo.newFormData);
+      eventBus.emit("updateModel", newInfo.key, newInfo.value);
+    });
+
+    eventBus.on("deSelectWidget", () => {
+      clear();
+    });
+
     return () => {
-      eventBus.off("canvasEdit");
-      eventBus.off("canvasUpdate");
+      selectWidget?.id && eventBus.off(`${selectWidget.id}:canvasUpdate`);
       eventBus.off("selectWidget");
+      eventBus.off("selectWidgetChild");
     };
   }, []);
 
@@ -354,6 +406,6 @@ export const createPanel = (props, container) => {
   ReactDom.render(element, container);
 };
 export const removePanel = (container: HTMLElement) => {
-  ReactDom.unmountComponentAtNode(container);
+  container && ReactDom.unmountComponentAtNode(container);
 };
 export default Panel;

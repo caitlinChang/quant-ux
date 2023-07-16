@@ -4,8 +4,7 @@
       <template v-if="childrenList.length >= 1" v-slot:default>
         <template v-for="(c,index) in childrenList">
           <slot-wrapper v-if="c.type === 'text'" :props="c.widgetProps" :key="index"/>
-          <!-- <component v-if="c.type === 'component'" :key="index" :is="c.componentName" v-bind="c.componentProps" /> -->
-          <children-wrapper v-if="c.type === 'component'" :key="index" :componentInfo="c.componentInfo" />
+          <children-wrapper :rootWidgetId="componentInfo.id" :path="`children.${index}`" v-if="c.type === 'component'" :key="index" :componentInfo="c.componentInfo" @selectWidgetChildren="(c, path) => handleSelectChildren(c, path ? `children.${index}.${path}` : `children.${index}`)" />
         </template>
       </template>
     </component>
@@ -14,15 +13,16 @@
 
 <script>
 import eventBus from "./eventBus";
-import componentList, { getVueTypeName } from "./util/constant";
+import componentList from "./util/constant";
 import iconMap from './util/icon';
 import { requestComponentProps} from './util/request'
 import { setSlotWrapper, SlotWrapper } from "./slots/SlotWrapper";
 import { getFieldNames } from './util/getFieldNames';
 import { getMockedProps } from './util/mock';
-import { clone, get, isArray } from 'lodash';
+import { clone, get } from 'lodash';
 import { formatPath } from './util/common';
 import ChildrenWrapper from './slots/ChildrenWrapper.vue';
+import { handleChildren } from './util/childrenUtils';
 export default {
   name: "VueWrapper",
   components: {
@@ -45,6 +45,13 @@ export default {
     };
   },
   methods: {
+    handleSelectChildren(componentInfo, path) {
+      // 选中一个 Children 时，设置该 children 的
+      eventBus.emit(`selectWidgetChild`, {
+        ...componentInfo,
+        path
+      });
+    },
     onChange(value) { 
       let _value = value;
       if (this.controlledNames.valuePath) {
@@ -52,7 +59,7 @@ export default {
       }
       this.value = _value;
       // 更新props
-      eventBus.emit(`canvasEdit`, this.controlledNames.value,_value,false);
+      
     },
     async resolveComponentProps(name, id) {
       const res = await requestComponentProps(name);
@@ -77,9 +84,19 @@ export default {
       const _props = this.handleProps(newProps);
       this.componentProps = _props;
     },
-
+    /**
+     * 递归获取组件每一个层级的props
+     * @param {*} config 
+     * @param {*} path 
+     * @param {*} rawProps 
+     * @param {*} fieldNames 
+     */
     getWrapperProps(config, path, rawProps, fieldNames) {
       const curValue = get(rawProps, path);
+      if (!config) {
+        console.log(`${path} 的 config 值为 undefined`)
+        return;
+      }
       const { name, property, item } = config.type || {};
       if (name === 'ReactNode') {
         // children 需要特殊处理，用 slot 传递
@@ -143,45 +160,19 @@ export default {
         obj[propsName] = this.getWrapperProps(config, propsName, cloneProps);
       });
       const { children, ...restProps } = obj;
-      
-      this.handleChildren(children);
+      if (!children) {
+        this.childrenProps = null;
+      } else {
+        this.setChildrenList(children)
+      }
      
       return restProps;
-    },
+    },    
 
-    handleChildren(childrenProps) {
-      if (!childrenProps) {
-        this.childrenProps = null;
-        return;
-      }
-      const { children, ...rest } = childrenProps
-      if (typeof children === 'string') {
-        this.childrenList = [{
-          type: 'text',
-          widgetProps: { ...rest, children: children }
-        }]
-      } else if (isArray(children)) {
-        this.childrenList = children.map(item => {
-          if (typeof item === 'string') {
-            return {
-              type: 'text',
-              widgetProps: { ...rest, children: item }
-            }
-          } else {
-            const [name, props] = item;
-            return {
-              type: 'component',
-              componentInfo: {
-                component: getVueTypeName(name, "antd"),
-                props:{... (props || {})}
-              }
-            }
-        }
-       }) 
-      }
-      console.log('this.childrenList = ', this.childrenList)
+    setChildrenList(childrenProps) {
+      const { children, ...rest } = childrenProps;
+      this.childrenList = handleChildren(children, rest);
     }
-    
   },
   mounted() {
     if (this.componentInfo.id) {

@@ -1,10 +1,10 @@
 <template>
-    <div class="child-widget-warpper" @dblclick="handleSelectChildren">
+    <div class="child-widget-warpper" @dblclick="handleDblClick">
       <component :is="componentInfo.component" v-bind="componentProps">
         <template v-if="childrenList.length >= 1" v-slot:default>
           <template v-for="(c,index) in childrenList">
             <slot-wrapper v-if="c.type === 'text'" :props="c.widgetProps" :key="index"/>
-            <children-wrapper v-if="c.type === 'component'" :key="index" :componentInfo="c.componentInfo" />
+            <children-wrapper :rootWidgetId="rootWidgetId" :path="`${path}.children.${index}`" v-if="c.type === 'component'" :key="index" :componentInfo="c.componentInfo" @selectWidgetChildren="(c, path) => $emit('selectWidgetChildren',c, path ? `children.${index}.${path}` : `children.${index}`)" />
           </template>
         </template>
       </component>
@@ -13,14 +13,16 @@
   
   <script>
   import eventBus from "../eventBus";
-  import componentList, { getVueTypeName } from "../util/constant";
+  import componentList from "../util/constant";
   import iconMap from '../util/icon';
   import { requestComponentProps} from '../util/request'
   import { setSlotWrapper, SlotWrapper } from "./SlotWrapper";
   import { getFieldNames } from '../util/getFieldNames';
   import { getMockedProps } from '../util/mock';
-  import { clone, get, isArray } from 'lodash';
+  import { clone, cloneDeep, get } from 'lodash';
   import { formatPath } from '../util/common';
+  import { handleChildren } from '../util/childrenUtils';
+import { transferPath } from '../util/propsValueUtils';
   export default {
     name: "ChildrenWrapper",
     components: {
@@ -28,7 +30,7 @@
       ...iconMap,
       slotWrapper: SlotWrapper,
     },
-    props: ["componentInfo"],
+    props: ["componentInfo", "rootWidgetId", "path"],
     data() {
       return {
         value: undefined, // 受控组件，暂时弃用
@@ -36,13 +38,13 @@
         componentProps: {}, // 经过 handleProps处理过后的，真正的传给组件的参数
         rawProps:{}, // 原始的 props， 在model中存储的props数据模型
         propsConfig: {}, // props的类型配置信息
-        childrenList:[]
+        childrenList: [],
       };
     },
     watch: {
         componentInfo: {
             immediate: true,
-            handler() {
+          handler() {
                 if (!this.componentInfo.component) {
                         return;
                 }
@@ -51,9 +53,11 @@
         }    
     },
     methods: {
-      handleSelectChildren() {
-        // 选中当前的widgets 的 children
-        
+      handleDblClick() {
+        this.$emit('selectWidgetChildren', {
+          ...this.componentInfo,
+          props: cloneDeep(this.rawProps)
+        }, '')
       },
       onChange(value) { 
         let _value = value;
@@ -74,14 +78,15 @@
           // children-wrapper 中
           this.rawProps = getMockedProps(res.props);
           newProps = clone(this.rawProps);
-          //TODO: 因为 组件是先添加再被选中的，所以这个里的事件触发
+          // TODO: 因为 组件是先添加再被选中的，所以这个里的事件触发
           // 会比 panel 中的事件注册更早，所以这里要用setTimeout 
-        //   setTimeout(() => {
-        //     Object.keys(this.rawProps).forEach(i => {
-        //       //mock 的数据也需要更新到 model 中
-        //       eventBus.emit(`${id}:canvasUpdate`,i, this.rawProps[i])
-        //     })
-        //   })
+          setTimeout(() => {
+            Object.keys(this.rawProps).forEach(i => {
+              //mock 的数据也需要更新到 model 中
+              const key = `${this.path}.1.${i}`
+              eventBus.emit(`${this.rootWidgetId}:canvasUpdate`, key, this.rawProps[i])
+            })
+          })
         }
         // 对原始的props 做层slotWrapper 方便画布操作
         const _props = this.handleProps(newProps);
@@ -116,7 +121,11 @@
             const obj = {};
             Object.keys(curValue).forEach(key => {
               const keyConfig = property[key];
-              obj[key] = this.getWrapperProps(keyConfig, `${formatPath(path)}.${key}`, rawProps);
+              if (!keyConfig) {
+                console.log(`${key}找不到对应的propsConfig`)
+              } else {
+                obj[key] = this.getWrapperProps(keyConfig, `${formatPath(path)}.${key}`, rawProps);
+              }
             });
             return obj;
           }
@@ -128,12 +137,15 @@
               const obj = {};
               Object.keys(_item).forEach(key => {
                 const keyConfig = item[key];
+                if (!keyConfig) {
+                  console.log(`【path=${path}】${key}找不到对应的props，请检查`);
+                  return;
+                }
                 if (key === 'children' && keyConfig.type.name === 'children') {
-                  obj[key] = this.getWrapperProps({...config,name:'children'}, `${formatPath(path)}[${index}].${key}`, rawProps);
-                }else {
+                  obj[key] = this.getWrapperProps({ ...config, name:'children' }, `${formatPath(path)}[${index}].${key}`, rawProps);
+                  } else {
                   obj[key] = this.getWrapperProps(keyConfig, `${formatPath(path)}[${index}].${key}`, rawProps, fieldNames);
                 }
-                
               });
               return obj;
             })
@@ -157,40 +169,17 @@
             }
         });
         const { children, ...restProps } = obj;
+        if (!children) {
+          this.childrenProps = null;
+        } else {
+          this.setChildrenList(children)
+        }
         
-        this.handleChildren(children);
-       
         return restProps;
       },
-  
-      handleChildren(childrenProps) {
-        if (!childrenProps) {
-          this.childrenProps = null;
-          return;
-        }
-        const { children, ...rest } = childrenProps
-        if (typeof children === 'string') {
-          this.childrenList = [{
-            type: 'text',
-            widgetProps: { ...rest, children: children }
-          }]
-        } else if (isArray(children)) {
-          this.childrenList = children.map(item => {
-            if (typeof item === 'string') {
-              return {
-                type: 'text',
-                widgetProps: { ...rest, children: item }
-              }
-            } else {
-              const [name, props] = item;
-              return {
-                type: 'component',
-                componentName: getVueTypeName(name, 'antd'),
-                componentProps: {... (props || {})}
-              }
-          }
-         }) 
-        }
+      setChildrenList(childrenProps) {
+        const { children, ...rest } = childrenProps;
+        this.childrenList = handleChildren(children, rest);
       }
     },
   };

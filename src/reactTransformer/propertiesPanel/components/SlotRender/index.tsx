@@ -1,18 +1,30 @@
 import React, { ReactNode, useState, useEffect } from "react";
 import { Radio, Input, Button, Tooltip } from "antd";
-import { isArray, set } from "lodash";
+import { isArray } from "lodash";
+import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { PropItemConfigType } from "../../../util/type";
-import {
-  CloseCircleFilled,
-  MinusOutlined,
-  PlusOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { ChildrenItemType, ChildrenType } from "../../../util/childrenUtils";
+
+const { Search } = Input;
+
 export type ValueType = string | [string, any][];
+
 const IconStyle = {
   color: "#e1e1e1",
   cursor: "pointer",
 };
+
+function getTypeofChildren(valueItem: string | string[]) {
+  if (typeof valueItem === "string") {
+    return ChildrenItemType.Text;
+  } else if (isArray(valueItem)) {
+    return ChildrenItemType.Component;
+  }
+  console.log(
+    "-------------------- 这个children没有type,请检查 -----------------------"
+  );
+}
+
 export default (props: {
   node: {
     title: ReactNode;
@@ -23,37 +35,21 @@ export default (props: {
   onChange?: (value: ValueType) => void;
   onSelectComponent?: (index: number) => void;
 }) => {
-  const [type, setType] = useState<"text" | "component">("text");
-  const [componentList, setComponentList] = useState([]);
-  const [text, setText] = useState("");
+  const [componentList, setComponentList] = useState<ChildrenType>([]);
   const { node, value } = props;
 
   useEffect(() => {
     if (isArray(value)) {
-      if (isArray(value[0])) {
-        setComponentList(value);
-      } else {
-        setComponentList([value]);
-      }
-      setType("component");
+      setComponentList(value);
     } else {
-      setText(value);
-      setType("text");
+      setComponentList([]);
     }
   }, [value]);
 
-  const handleChangeProp = (value?: ValueType) => {
-    props.onChange?.(value);
-  };
-  const handleChangeType = (v) => {
-    setType(v.target.value);
-  };
-
-  const handleChangeComponent = (v, index) => {
-    const _componentList = [...componentList];
-    _componentList[index] = v;
-    setComponentList(_componentList);
-    props.onChange?.(_componentList);
+  const handleChangeType = (value: ChildrenItemType, index: number) => {
+    const newList = [...componentList];
+    newList[index] = value === ChildrenItemType.Text ? "" : [];
+    setComponentList(newList);
   };
 
   const handleDeleteChild = (index: number) => {
@@ -64,66 +60,83 @@ export default (props: {
   };
 
   const handleAddComponent = () => {
-    const _componentList = [...componentList];
-    _componentList.push([]);
-    setComponentList(_componentList);
-    props.onChange?.(_componentList);
+    const newList = [...componentList];
+    newList.push("");
+    setComponentList(newList);
   };
 
-  const handleChangeText = (e) => {
+  const handleChangeText = (e, index) => {
     if (!e) {
       console.log("编辑文本失败, HTMLEvent 不存在", e);
     }
+    const newList = [...componentList];
     const value = e.target.value;
-    setText(value);
-    props.onChange?.(value);
+    newList[index] = value;
+    setComponentList(newList);
+    props.onChange?.(newList);
   };
   return (
     <div>
-      <Radio.Group value={type} onChange={handleChangeType}>
-        <Radio value="text">输入文本</Radio>
-        <Radio value="component">选择组件</Radio>
-      </Radio.Group>
-      {type === "text" && (
-        <Input defaultValue={text} onBlur={(e) => handleChangeText(e)} />
-      )}
-      {type === "component" && (
-        <div>
-          <div>
-            <Button
-              size="small"
-              icon={<PlusOutlined />}
-              onClick={handleAddComponent}
-            />
-          </div>
-          {componentList.map((c, index) => {
-            return (
+      <Button size="small" type="dashed" block onClick={handleAddComponent}>
+        <PlusOutlined /> 添加
+      </Button>
+      {componentList.map((c, index) => {
+        return (
+          <div
+            style={{
+              borderTop: "1px solid #f0f0f0",
+              borderBottom: "1px solid #f0f0f0",
+              padding: "10px 0",
+              margin: "10px 0",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "5px",
+              }}
+            >
+              <Radio.Group
+                size="small"
+                value={getTypeofChildren(c)}
+                onChange={(e) => handleChangeType(e.target.value, index)}
+              >
+                <Radio value="text">文本</Radio>
+                <Radio value="component">组件</Radio>
+              </Radio.Group>
+              <Button
+                size="small"
+                icon={<DeleteOutlined />}
+                onClick={() => handleDeleteChild(index)}
+              ></Button>
+            </div>
+
+            {getTypeofChildren(c) === ChildrenItemType.Text && (
+              <Input
+                size="small"
+                defaultValue={c}
+                // allowClear
+                placeholder="请输入"
+                onBlur={(e) => handleChangeText(e, index)}
+              />
+            )}
+            {getTypeofChildren(c) === ChildrenItemType.Component && (
               <div>
-                <span key={index}>{c[0] ? `已选中 ${c[0]}` : "请选择"}</span>
-                <Button
+                <Search
+                  readonly
+                  value={c[0] || ""}
                   size="small"
-                  icon={<SearchOutlined />}
-                  onClick={() => props.onSelectComponent(index)}
+                  // allowClear
+                  placeholder="请点击选择组件"
+                  onSearch={() => props.onSelectComponent(index)}
+                  style={{ width: "100%" }}
                 />
-                {componentList.length === 1 && (
-                  <Button
-                    size="small"
-                    icon={<CloseCircleFilled />}
-                    onClick={() => handleChangeProp()}
-                  />
-                )}
-                {componentList.length >= 1 && (
-                  <Button
-                    size="small"
-                    icon={<MinusOutlined />}
-                    onClick={() => handleDeleteChild(index)}
-                  />
-                )}
               </div>
-            );
-          })}
-        </div>
-      )}
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };
