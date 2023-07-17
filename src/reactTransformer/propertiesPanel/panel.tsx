@@ -66,6 +66,7 @@ const Panel = (props: { widget: any, selectChild: any }) => {
         newFormData,
         widgetProps || {}
       );
+      console.log('res = ', res);
       eventBus.emit(`${selectWidget.id}:propsUpdate`, res.newFormData);
       eventBus.emit("updateModel", res.key, res.value);
     } else {
@@ -337,6 +338,11 @@ const Panel = (props: { widget: any, selectChild: any }) => {
     }
   }, [props.widget]);
 
+  /**
+   * 切换现在正在选中的组件
+   * @param item 
+   * @returns 
+   */
   const handleChangeSelected = (item: any) => {
     const { path } = item;
     if (!path) {

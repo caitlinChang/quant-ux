@@ -316,7 +316,7 @@
       class="MatcToobarPropertiesSection MatcToolbarSectionHidden"
       data-dojo-attach-point="propertiesCntr"
     >
-      <property-panel :widget="curSelectedWidget" :child="curSelectedChild" />
+      <property-panel :widget="curSelectedWidget" :selectChild="curSelectedChild" />
       <!-- <properties-panel ref="propertiesPanel" @setComponentProps="setWidgetProps" /> -->
     </div>
   </div>
@@ -2460,12 +2460,14 @@ export default {
   },
   mounted() {
     eventBus.on("selectWidgetChild", async (widget) => {
+      console.log('选中子组件-------1', this._selectedWidget)
       if (!this._selectedWidget) {
           console.log(
             "selectWidgetChild：this._selectedWidget 不存在"
           );
           return;
-        }
+      }
+      console.log('选中子组件-------2 = ', widget, this.curSelectedChild)
       if (
         widget.component === this.curSelectedChild?.component &&
         widget.path === this.curSelectedChild?.path
@@ -2473,6 +2475,7 @@ export default {
         // 防止重复点击
         return;
       }
+      console.log('选中子组件-------')
       this.curSelectedChild = cloneDeep(widget);
      
     });
