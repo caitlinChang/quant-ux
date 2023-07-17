@@ -1,5 +1,4 @@
 import React, { useEffect, ReactNode } from "react";
-import ReactDom from "react-dom";
 import {
   Tree,
   Typography,
@@ -17,7 +16,7 @@ import { requestComponentProps } from "../util/request";
 import { getTSType } from "../util/resolvePropsConfig";
 import { isArray, set, get, clone, cloneDeep } from "lodash";
 import { PropItemConfigType, TypeName } from "../util/type";
-import { getFirstKey, transferPath } from "../util/propsValueUtils";
+import { transferPath } from "../util/propsValueUtils";
 import eventBus from "../eventBus";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import SlotRender from "./components/SlotRender";
@@ -26,21 +25,22 @@ import { getVueTypeName } from "../util/constant";
 
 const AntdPanel = Collapse.Panel;
 
-const Panel = () => {
+const Panel = (props: { widget: any, selectChild: any }) => {
+  const { selectChild } = props;
   const [treeData, setTreeData] = React.useState([]);
   const [propsConfig, setPropsConfig] = React.useState(null);
   const [widgetProps, setWidgetProps] = React.useState({}); // 维护当前选中 Widget 的Props
   const [formData, setFormData] = React.useState({}); // 维护的是当前选中组件的 props，可能是 widget，也可能是 widgetChild
   const [selectWidget, setSelectWidget] = React.useState(null); // 当前选中的 widget
-  const [selectChild, setSelectChild] = React.useState(null); // 当前选中的widget 中的 child
-  // console.log("selectWidget = ", selectWidget, selectChild);
+
   useEffect(() => {
     if (selectChild) {
-      return;
+      renderWidgetProps(selectChild);
     } else {
       setWidgetProps(cloneDeep(formData));
     }
   }, [selectChild, formData]);
+
 
   const resolveComponentProps = async (name: string) => {
     const res = await requestComponentProps(name);
@@ -317,87 +317,31 @@ const Panel = () => {
     setPropsConfig(null);
     setFormData({});
     setSelectWidget(null);
-    setSelectChild(null);
+    // setSelectChild(null);
+  };
+
+  const renderWidgetProps = async (widget) => {
+    const { component, props = {} } = widget;
+    const propsConfig = await resolveComponentProps(component);
+    setFormData(cloneDeep(props));
+    getTreedata(propsConfig, { ...props });
   };
 
   useEffect(() => {
-    eventBus.on("selectWidget", async (widget) => {
-      // if (selectWidget?.id === widget.id) {
-      //   // 防止重复点击
-      //   return;
-      // }
-      const { component, props = {} } = widget;
-      clear();
-      const propsConfig = await resolveComponentProps(component);
-      setFormData(cloneDeep(props));
-      console.log('setFormData props = ', cloneDeep(props))
+    const { widget } = props;
+    if (widget?.id) {
+      renderWidgetProps(widget);
       setSelectWidget(widget);
-      getTreedata(propsConfig, { ...props });
-      // 用于接收画布侧的数据
-      // TODO: 去掉事件名中的 id
-      eventBus.on(`${widget.id}:canvasUpdate`, (key, value) => {
-        if (selectChild) {
-          console.log(
-            "canvasUpdate：Panel 面板正在编辑子组件的属性，无法处理画布事件"
-          );
-          return;
-        }
-        console.log('key = ', key, cloneDeep(value))
-        console.log('formData = ', cloneDeep(formData));
-        console.log('widgetprops = ', cloneDeep(widgetProps));
-        const newValue = set(formData, key, value);
-        setFormData({ ...newValue });
-        getTreedata(propsConfig, newValue);
-        eventBus.emit("updateModel", key, value);
-      });
-    });
-    // 用于接收选中 widgetChildren 中的数据变化
-    eventBus.on("selectWidgetChild", async (widget) => {
-      if (
-        widget.component === selectChild?.component &&
-        widget.path === selectChild?.path
-      ) {
-        // 防止重复点击
-        return;
-      }
-      const { component, props = {} } = widget;
-      setSelectChild(widget);
-      const propsConfig = await resolveComponentProps(component);
-      getTreedata(propsConfig, { ...props });
-      setFormData(cloneDeep(props));
-      // TODO: 去掉事件名中的 id
-    });
-
-    // 在画布上编辑子组件的文字时
-    eventBus.on("childCanvasUpdate", (key, value) => {
-      if (!selectChild) {
-        console.log(
-          "childCanvasUpdate：当前Panel面板编辑的是根组件属性，没有选中子组件，无法处理子组件的画布事件"
-        );
-        return;
-      }
-      const newValue = set(formData, key, value);
-      setFormData(newValue);
-      getTreedata(propsConfig, newValue);
-      //更新下 rootWidget的数据
-      const rootKey = `${selectChild.path}.1.${key}`;
-      const newInfo = transferPath(rootKey, value, widgetProps);
-      setWidgetProps(newInfo.newFormData);
-      eventBus.emit("updateModel", newInfo.key, newInfo.value);
-    });
-
-    return () => {
-      selectWidget?.id && eventBus.off(`${selectWidget.id}:canvasUpdate`);
-      eventBus.off("selectWidget");
-      eventBus.off("selectWidgetChild");
-    };
-  }, []);
+    } else {
+      clear();
+    }
+  }, [props.widget]);
 
   const handleChangeSelected = (item: any) => {
     const { path } = item;
     if (!path) {
       // 通知 vueWapper 取消内部的各种选中状态
-      eventBus.emit(`${item.id}:deSelected`)
+      eventBus.emit(`${item.id}:deSelected`);
       // 调用点击事件的方法 - 切换回 rootWidget
       eventBus.emit("reverseElectionWidget", item);
     } else {
@@ -437,15 +381,19 @@ const Panel = () => {
 
       return (
         <Breadcrumb separator=">">
-          <Breadcrumb.Item style={{ cursor:'pointer'}} onClick={() => handleChangeSelected(selectWidget)}>
+          <Breadcrumb.Item
+            style={{ cursor: "pointer" }}
+            onClick={() => handleChangeSelected(selectWidget)}
+          >
             {selectWidget?.description}
           </Breadcrumb.Item>
           {nameList.map((item) => {
             return (
-              <Breadcrumb.Item style={{ cursor:'pointer'}} onClick={() => handleChangeSelected(item)}>
-                <Tooltip title={'点击切换到该子组件'}>
-                  {item.component}
-                </Tooltip>
+              <Breadcrumb.Item
+                style={{ cursor: "pointer" }}
+                onClick={() => handleChangeSelected(item)}
+              >
+                <Tooltip title={"点击切换到该子组件"}>{item.component}</Tooltip>
               </Breadcrumb.Item>
             );
           })}
@@ -466,11 +414,4 @@ const Panel = () => {
   );
 };
 
-export const createPanel = (props, container) => {
-  const element = React.createElement(Panel, props);
-  ReactDom.render(element, container);
-};
-export const removePanel = (container: HTMLElement) => {
-  container && ReactDom.unmountComponentAtNode(container);
-};
 export default Panel;

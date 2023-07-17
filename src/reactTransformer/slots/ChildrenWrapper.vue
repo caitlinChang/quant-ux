@@ -122,7 +122,7 @@
             Object.keys(this.rawProps).forEach(i => {
               //mock 的数据也需要更新到 model 中
               const key = `${this.path}.1.${i}`
-              eventBus.emit(`${this.rootWidgetId}:canvasUpdate`, key, this.rawProps[i])
+              eventBus.emit(`canvasUpdate`, key, this.rawProps[i])
             })
           })
         }

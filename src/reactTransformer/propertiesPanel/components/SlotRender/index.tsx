@@ -41,6 +41,8 @@ export default (props: {
   useEffect(() => {
     if (isArray(value)) {
       setComponentList(value);
+    } else if(value){
+      setComponentList([value]);
     } else {
       setComponentList([]);
     }
@@ -73,7 +75,12 @@ export default (props: {
     const value = e.target.value;
     newList[index] = value;
     setComponentList(newList);
-    props.onChange?.(newList);
+    if (typeof props.value === 'string') {
+      props.onChange?.(value);
+    } else {
+      props.onChange?.(newList);
+    }
+    
   };
   return (
     <div>

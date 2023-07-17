@@ -1116,7 +1116,7 @@ export default {
         const { path, id, formData } = this.forSlot;
         const _value = [revertName(widget.component), null];
         const { key, value, newFormData } = transferPath(path, _value, formData);
-        eventBus.emit(`${id}:canvasUpdate`, key, value);
+        eventBus.emit(`canvasUpdate`, key, value);
         eventBus.emit(`${id}:propsUpdate`, newFormData);
       } else {
         this.emit("change", widget, e);

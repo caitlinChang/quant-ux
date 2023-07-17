@@ -36,13 +36,13 @@ export const SlotWrapper = (props: SlotWrapperProps) => {
     if (_props.rootPath && _props.rootWidgetId) {
       console.log('_props.rootWidgetId = ',_props.rootWidgetId , _props.rootPath)
       eventBus.emit(
-        `${_props.rootWidgetId}:canvasUpdate`,
+        `canvasUpdate`,
         `${_props.rootPath}.1`,
         newFormData
       );
       return;
     }
-    eventBus.emit(`${_props.widgetId}:canvasUpdate`, key, value);
+    eventBus.emit(`canvasUpdate`, key, value);
   };
 
   // 展示快捷菜单

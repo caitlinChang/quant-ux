@@ -316,6 +316,7 @@
       class="MatcToobarPropertiesSection MatcToolbarSectionHidden"
       data-dojo-attach-point="propertiesCntr"
     >
+      <property-panel :widget="curSelectedWidget" :child="curSelectedChild" />
       <!-- <properties-panel ref="propertiesPanel" @setComponentProps="setWidgetProps" /> -->
     </div>
   </div>
@@ -341,8 +342,9 @@ import CollabUser from "canvas/toolbar/components/CollabUser";
 import CreateVectorButton from "canvas/toolbar/components/CreateVectorButton";
 import ModelUtil from "../../core/ModelUtil";
 import HelpButton from "help/HelpButton";
-import { createPanel, removePanel } from "../../reactTransformer/propertiesPanel/panel.tsx";
+import Panel from "../../reactTransformer/propertiesPanel/panel.tsx";
 import eventBus from '../../reactTransformer/eventBus';
+import { set, cloneDeep } from "lodash";
 
 export default {
   name: "Toolbar",
@@ -364,6 +366,8 @@ export default {
       showLabels: false,
       isDeveloperMode: false,
       mode: "",
+      curSelectedWidget: null, // 当前选中的 widget, 因为无法实时获取到 _selectedWidget 的变化
+      curSelectedChild: null, // 当前选中的widget中的子组件
     };
   },
   components: {
@@ -372,6 +376,7 @@ export default {
     EditModeButton: EditModeButton,
     CollabUser: CollabUser,
     CreateVectorButton: CreateVectorButton,
+    PropertyPanel: Panel,
   },
   computed: {
     hasProtoMoto() {
@@ -379,7 +384,7 @@ export default {
     },
     svgEditorVisible() {
       return this.mode === "svg";
-    },
+    }
   },
   methods: {
     postCreate() {
@@ -709,10 +714,12 @@ export default {
           this.cleanUp();
           this._selection = "widget";
           this._selectedWidget = component;
+          this.curSelectedWidget = component;
+          this.curSelectedChild = null;
           this._selectionID = component.id;
           this.showWidgetProperties(component);
           // this.$refs.propertiesPanel.onSetWidgetProperties(component);
-          eventBus.emit('selectWidget', component);
+          // eventBus.emit('selectWidget', component);
           this.showCopyPaste();
           this.showDevTools();
           this.showTools();
@@ -922,6 +929,9 @@ export default {
       this.cleanUpUI();
 
       this._selectedWidget = null;
+
+      this.curSelectedWidget = null;
+      this.curSelectedChild = null;
 
       this._selectedLine = null;
 
@@ -2449,13 +2459,48 @@ export default {
     },
   },
   mounted() {
-    createPanel({}, this.propertiesCntr);
+    eventBus.on("selectWidgetChild", async (widget) => {
+      if (!this._selectedWidget) {
+          console.log(
+            "selectWidgetChild：this._selectedWidget 不存在"
+          );
+          return;
+        }
+      if (
+        widget.component === this.curSelectedChild?.component &&
+        widget.path === this.curSelectedChild?.path
+      ) {
+        // 防止重复点击
+        return;
+      }
+      this.curSelectedChild = cloneDeep(widget);
+     
+    });
+
+    eventBus.on("canvasUpdate", (key, value) => {
+        if (!this._selectedWidget) {
+          console.log(
+            "canvasUpdate：this._selectedWidget 不存在"
+          );
+          return;
+        }
+      const newProps = set(this._selectedWidget.props, key, value);
+      // this._selectedWidget = {
+      //   ...this._selectedWidget,
+      //   props: cloneDeep(newProps)
+      // }
+      this.curSelectedWidget = {
+        ...this._selectedWidget,
+        props: cloneDeep(newProps)
+      }
+      this.setWidgetProps(key, value, true)
+    });
+   
     eventBus.on('updateModel', (key, value) => {
       this.setWidgetProps(key, value, true)
-    })
+    });
   },
   unmounted() {
-    removePanel(this.propertiesCntr)
   }
 };
 </script>

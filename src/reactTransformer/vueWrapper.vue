@@ -97,7 +97,7 @@ export default {
         setTimeout(() => {
           Object.keys(this.rawProps).forEach(i => {
             //mock 的数据也需要更新到 model 中
-            eventBus.emit(`${id}:canvasUpdate`,i, this.rawProps[i])
+            eventBus.emit(`canvasUpdate`,i, this.rawProps[i])
           })
         })
       }
