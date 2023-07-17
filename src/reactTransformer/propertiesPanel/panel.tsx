@@ -329,7 +329,8 @@ const Panel = () => {
       const { component, props = {} } = widget;
       clear();
       const propsConfig = await resolveComponentProps(component);
-      setFormData(props);
+      setFormData(cloneDeep(props));
+      console.log('setFormData props = ', cloneDeep(props))
       setSelectWidget(widget);
       getTreedata(propsConfig, { ...props });
       // 用于接收画布侧的数据
@@ -341,6 +342,9 @@ const Panel = () => {
           );
           return;
         }
+        console.log('key = ', key, cloneDeep(value))
+        console.log('formData = ', cloneDeep(formData));
+        console.log('widgetprops = ', cloneDeep(widgetProps));
         const newValue = set(formData, key, value);
         setFormData({ ...newValue });
         getTreedata(propsConfig, newValue);
@@ -363,6 +367,8 @@ const Panel = () => {
       setFormData(cloneDeep(props));
       // TODO: 去掉事件名中的 id
     });
+
+    // 在画布上编辑子组件的文字时
     eventBus.on("childCanvasUpdate", (key, value) => {
       if (!selectChild) {
         console.log(

@@ -20,7 +20,7 @@
         "defaultValue": "",
         "needMock": true,
         "type": {
-          "name": "string"
+          "name": "ReactNode"
         },
         "required": false,
         "description": "label 标签的文本",

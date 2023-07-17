@@ -3,8 +3,25 @@
       <component :is="componentInfo.component" v-bind="componentProps">
         <template v-if="childrenList.length >= 1" v-slot:default>
           <template v-for="(c,index) in childrenList">
-            <slot-wrapper v-if="c.type === 'text'" :props="c.widgetProps" :key="index"/>
-            <children-wrapper @handleMouseEnter="(path) => $emit('handleMouseEnter', path)" @handleMouseLeave="(path) => $emit('handleMouseLeave', path)" :isMouseenter="isMouseenter" :isActive="isActive" :rootWidgetId="rootWidgetId" :path="`${path}.1.children.${index}`" v-if="c.type === 'component'" :key="index" :componentInfo="c.componentInfo" @selectWidgetChildren="(c, path) => $emit('selectWidgetChildren',c, path ? `children.${index}.1.${path}` : `children.${index}`)" />
+            <slot-wrapper 
+              v-if="c.type === 'text'" 
+              :path="`${path}`" 
+              :props="c.widgetProps"
+              :rootWidgetId="rootWidgetId"
+              :key="index"
+              @dblclick="preventDblClick"  
+            />
+            <children-wrapper 
+              v-if="c.type === 'component'"
+              :isMouseenter="isMouseenter" 
+              :isActive="isActive" 
+              :rootWidgetId="rootWidgetId" 
+              :path="`${path}.1.children.${index}`"  
+              :key="index" 
+              :componentInfo="c.componentInfo" 
+              @handleMouseEnter="(path) => $emit('handleMouseEnter', path)" 
+              @handleMouseLeave="(path) => $emit('handleMouseLeave', path)" 
+              @selectWidgetChildren="(c, path) => $emit('selectWidgetChildren',c, path ? `children.${index}.1.${path}` : `children.${index}`)" />
           </template>
         </template>
       </component>
@@ -67,7 +84,13 @@
         }
         // this.$emit("handleMouseLeave", this.path)
       },
+      preventDblClick(e) {
+        // 阻止触发 selectWidgetChildren 事件
+      },
       handleDblClick(e) {
+        if (e.target.classList.contains("can-edit")) {
+              return;
+        }
         e.stopPropagation();
         this.$emit('selectWidgetChildren', {
           ...this.componentInfo,
@@ -129,7 +152,9 @@
             path: path,
             children: curValue,
             fieldNames,
-            meta: [4]
+            meta: [4],
+            rootWidgetId: this.rootWidgetId,
+            rootPath: this.path, // 嵌套的子组件的路径
           });
         } else if (name === 'object') { 
           if (curValue) {
