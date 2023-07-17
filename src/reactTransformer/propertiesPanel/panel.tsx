@@ -326,7 +326,6 @@ const Panel = () => {
       //   // 防止重复点击
       //   return;
       // }
-      console.log("重新选择了吗？？？？？？");
       const { component, props = {} } = widget;
       clear();
       const propsConfig = await resolveComponentProps(component);
@@ -343,7 +342,6 @@ const Panel = () => {
           return;
         }
         const newValue = set(formData, key, value);
-        // console.log("canvasUpdate = ", key, value, newValue);
         setFormData({ ...newValue });
         getTreedata(propsConfig, newValue);
         eventBus.emit("updateModel", key, value);
