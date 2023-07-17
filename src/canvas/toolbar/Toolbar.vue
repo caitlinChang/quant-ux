@@ -804,7 +804,7 @@ export default {
         } catch (e) {
           console.error(e.stack);
           this.logger.sendError(e);
-        }
+        } 
         this.logger.log(4, "onScreenSelected", "exit");
       } else {
         this.logger.log(0, "onScreenSelected", "exit > Not active!");
@@ -908,6 +908,11 @@ export default {
      ********************************************************/
 
     cleanUp() {
+      //TODO: 需要优化
+      if (this._selectionID) {
+        eventBus.emit(`${this._selectionID}:deSelected`)
+      }
+      
       this.storePropertiesState();
 
       this._flushInputFields();
@@ -915,8 +920,6 @@ export default {
       this._blurInputFields();
 
       this.cleanUpUI();
-
-      // eventBus.emit("deSelectWidget")
 
       this._selectedWidget = null;
 
@@ -2100,7 +2103,7 @@ export default {
       return this.widgetViewModeBtn.getValue();
     },
 
-    setWidgetProps(key, value) {
+    setWidgetProps(key, value, doNotRender) {
       this.logger.log(2, "setWidgetProps", "entry > " + key + " - " + value);
       if (this._selectedWidget) {
         if (this._selectedWidget.props) {
@@ -2109,7 +2112,10 @@ export default {
           this.controller.updateWidgetProperties(
             this._selectedWidget.id,
             newProps,
-            "props"
+            "props",
+            '',
+            '',
+            doNotRender
           );
         }
       }
@@ -2445,7 +2451,7 @@ export default {
   mounted() {
     createPanel({}, this.propertiesCntr);
     eventBus.on('updateModel', (key, value) => {
-      this.setWidgetProps(key, value)
+      this.setWidgetProps(key, value, true)
     })
   },
   unmounted() {

@@ -13,7 +13,7 @@ export default {
   components: {},
   methods: {
     // 第一次双击进入 widget 的编辑态
-    inlineEditInit(widget, resizeToWidth = false, e) {
+    inlineEditInit(widget, resizeToWidth = false) {
       this.logger.log(-1, "inlineEditInit", "enter", resizeToWidth);
       this.cleanUpInlineEdit();
       const div = this.renderFactory.getLabelNode(widget);

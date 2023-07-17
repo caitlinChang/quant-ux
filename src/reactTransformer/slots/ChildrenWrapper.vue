@@ -1,10 +1,10 @@
 <template>
-    <div class="child-widget-warpper" @dblclick="handleDblClick">
+    <div :class="['child-widget-warpper',{'child-widget-warpper_active': isActive === path }]" @dblclick="handleDblClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
       <component :is="componentInfo.component" v-bind="componentProps">
         <template v-if="childrenList.length >= 1" v-slot:default>
           <template v-for="(c,index) in childrenList">
             <slot-wrapper v-if="c.type === 'text'" :props="c.widgetProps" :key="index"/>
-            <children-wrapper :rootWidgetId="rootWidgetId" :path="`${path}.children.${index}`" v-if="c.type === 'component'" :key="index" :componentInfo="c.componentInfo" @selectWidgetChildren="(c, path) => $emit('selectWidgetChildren',c, path ? `children.${index}.${path}` : `children.${index}`)" />
+            <children-wrapper @handleMouseEnter="(path) => $emit('handleMouseEnter', path)" @handleMouseLeave="(path) => $emit('handleMouseLeave', path)" :isMouseenter="isMouseenter" :isActive="isActive" :rootWidgetId="rootWidgetId" :path="`${path}.1.children.${index}`" v-if="c.type === 'component'" :key="index" :componentInfo="c.componentInfo" @selectWidgetChildren="(c, path) => $emit('selectWidgetChildren',c, path ? `children.${index}.1.${path}` : `children.${index}`)" />
           </template>
         </template>
       </component>
@@ -22,7 +22,7 @@
   import { clone, cloneDeep, get } from 'lodash';
   import { formatPath } from '../util/common';
   import { handleChildren } from '../util/childrenUtils';
-import { transferPath } from '../util/propsValueUtils';
+
   export default {
     name: "ChildrenWrapper",
     components: {
@@ -30,7 +30,7 @@ import { transferPath } from '../util/propsValueUtils';
       ...iconMap,
       slotWrapper: SlotWrapper,
     },
-    props: ["componentInfo", "rootWidgetId", "path"],
+    props: ["componentInfo", "rootWidgetId", "path", "isActive", "isMouseenter"],
     data() {
       return {
         value: undefined, // 受控组件，暂时弃用
@@ -42,18 +42,33 @@ import { transferPath } from '../util/propsValueUtils';
       };
     },
     watch: {
-        componentInfo: {
-            immediate: true,
-          handler() {
-                if (!this.componentInfo.component) {
-                        return;
-                }
-                this.resolveComponentProps(this.componentInfo.component, this.componentInfo.id);
-            }
-        }    
+      componentInfo: {
+        immediate: true,
+        handler() {
+          if (!this.componentInfo.component) {
+            return;
+          }
+          this.resolveComponentProps(this.componentInfo.component, this.componentInfo.id);
+        }
+      }    
     },
     methods: {
-      handleDblClick() {
+      handleMouseEnter(e) { 
+        e.stopPropagation();
+        if (this.isMouseenter === this.path) {
+          return;
+        }
+        // this.$emit("handleMouseEnter", this.path)
+      },
+      handleMouseLeave(e) {
+        e.stopPropagation();
+        if (this.isMouseenter !== this.path) {
+          return;
+        }
+        // this.$emit("handleMouseLeave", this.path)
+      },
+      handleDblClick(e) {
+        e.stopPropagation();
         this.$emit('selectWidgetChildren', {
           ...this.componentInfo,
           props: cloneDeep(this.rawProps)
@@ -182,6 +197,12 @@ import { transferPath } from '../util/propsValueUtils';
         this.childrenList = handleChildren(children, rest);
       }
     },
+    mounted() { 
+  
+    },
+    unmounted() {
+      
+    }
   };
   </script>
   
@@ -189,9 +210,15 @@ import { transferPath } from '../util/propsValueUtils';
   .child-widget-warpper{
     position: relative;
   }
-  .child-widget-warpper:hover{
-    position: relative;
-    border:2px dashed #888;
+  .child-widget-warpper_active {
+    border:1px dashed #9b5de5;
+  }
+  /* .child-widget-warpper_enter{
+    border:1px solid #8093f1;
+  } */
+
+  .child-widget-warpper:not(.child-widget-warpper_active):hover{
+    border:1px solid #8093f1;
   }
   .widget_action{
     position:absolute;

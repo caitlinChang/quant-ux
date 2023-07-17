@@ -4,7 +4,7 @@
       <template v-if="childrenList.length >= 1" v-slot:default>
         <template v-for="(c,index) in childrenList">
           <slot-wrapper v-if="c.type === 'text'" :props="c.widgetProps" :key="index"/>
-          <children-wrapper :rootWidgetId="componentInfo.id" :path="`children.${index}`" v-if="c.type === 'component'" :key="index" :componentInfo="c.componentInfo" @selectWidgetChildren="(c, path) => handleSelectChildren(c, path ? `children.${index}.${path}` : `children.${index}`)" />
+          <children-wrapper @handleMouseEnter="handleMouseEnter" @handleMouseLeave="handleMouseLeave" :isMouseenter="isMouseenter" :isActive="isActive" :rootWidgetId="componentInfo.id" :path="`children.${index}`" v-if="c.type === 'component'" :key="index" :componentInfo="c.componentInfo" @selectWidgetChildren="(c, path) => handleSelectChildren(c, path ? `children.${index}.1.${path}` : `children.${index}`)" />
         </template>
       </template>
     </component>
@@ -41,12 +41,24 @@ export default {
       rawProps:{}, // 原始的 props， 在model中存储的props数据模型
       propsConfig: {}, // props的类型配置信息
       showAction: true,
-      childrenList:[]
+      childrenList: [],
+      isActive: '',
+      isMouseenter:'',
     };
   },
   methods: {
+    handleMouseEnter(path) {
+      this.isMouseenter = path;  
+      console.log(' this.isMouseenter = ', this.isMouseenter)
+    },
+    handleMouseLeave(path) {
+      // this.isMouseenter = '';  
+    },
     handleSelectChildren(componentInfo, path) {
+      console.log('handleSelectChildren = ', componentInfo, path);
       // 选中一个 Children 时，设置该 children 的
+      // TODO: 如何取消选中
+      this.isActive = path;
       eventBus.emit(`selectWidgetChild`, {
         ...componentInfo,
         path
@@ -183,8 +195,18 @@ export default {
         const _props = this.handleProps(newProps);
         this.componentProps = _props;
       });
-
+      eventBus.on('reverseElectionChild', (child, path) => {
+        this.handleSelectChildren({
+          ...child
+        }, path)
+      })
+      // TODO: 需要优化，不需要这么多的事件
+      eventBus.on(`${this.componentInfo.id}:deSelected`, () => {
+        this.isActive = false;
+        this.isMouseenter = false;
+      })
     }
+    
   },
   unmounted() {
     const { id } = this.componentInfo;

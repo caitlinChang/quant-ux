@@ -4,6 +4,7 @@ import css from 'dojo/css'
 
 import topic from 'dojo/topic'
 import CanvasSelection from './CanvasSelection'
+import eventBus from '../reactTransformer/eventBus'
 
  export default {
     name: 'Select',
@@ -158,13 +159,13 @@ import CanvasSelection from './CanvasSelection'
 			return this._selectWidget
 		},
 	
-		onComponentSelected(id, forceSelection = false, ignoreParentGroups = null, e){
+		onComponentSelected(id, forceSelection = false, ignoreParentGroups = null){
 			this.logger.log(1,"onComponentSelected", "enter > "+ id + " > ignoreParentGroups : "+ ignoreParentGroups);
 
 			const now = new Date().getTime()
 			if (this._selectWidget && this._selectWidget.id == id && !forceSelection) {
 				if (now - this._lastWidgetSelected < 1000) {
-					this.onWidgetDoubleClick(this._selectWidget, e)
+					this.onWidgetDoubleClick(this._selectWidget)
 				} else {
 					this.logger.log(1, "onComponentSelected", "ignore double > ");
 				}
@@ -254,7 +255,7 @@ import CanvasSelection from './CanvasSelection'
 			this._lastWidgetSelected = now
 		},
 
-		onWidgetDoubleClick(widget, e) {
+		onWidgetDoubleClick(widget) {
 			this.logger.log(-3,"onWidgetDoubleClick", "enter > "+ widget.id);
 			topic.publish("matc/canvas/click", "", "");
 			if (widget.type === 'Script') {
@@ -273,7 +274,7 @@ import CanvasSelection from './CanvasSelection'
 				this.editSVG(widget)
 				return
 			}
-			this.inlineEditInit(widget, false, e)	
+			this.inlineEditInit(widget, false)	
 		},
 
 		onInheritedWidgetSelected (id) {
@@ -785,7 +786,17 @@ import CanvasSelection from './CanvasSelection'
 
 
     },
-    mounted () {
+	mounted() {
+		// 用于 Panel/图层 中选中某个widget时，这里可以模拟点击事件重新出发选中的流程
+		eventBus.on('reverseElectionWidget', (widget) => {
+			if (widget?.id) {
+				this._selectWidget = null;
+				this.onComponentSelected(widget.id);
+			} else {
+				console.log('reverseElectionWidget：widget 不能存在，请检查---------')
+			}
+			
+		})
     }
 }
 </script>

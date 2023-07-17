@@ -1,4 +1,4 @@
-import React, { useEffect, ReactNode, useMemo, useCallback } from "react";
+import React, { useEffect, ReactNode } from "react";
 import ReactDom from "react-dom";
 import {
   Tree,
@@ -11,6 +11,7 @@ import {
   Form,
   Tooltip,
   Space,
+  Breadcrumb,
 } from "antd";
 import { requestComponentProps } from "../util/request";
 import { getTSType } from "../util/resolvePropsConfig";
@@ -21,6 +22,7 @@ import eventBus from "../eventBus";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import SlotRender from "./components/SlotRender";
 import { formatPath } from "../util/common";
+import { getVueTypeName } from "../util/constant";
 
 const AntdPanel = Collapse.Panel;
 
@@ -31,7 +33,7 @@ const Panel = () => {
   const [formData, setFormData] = React.useState({}); // 维护的是当前选中组件的 props，可能是 widget，也可能是 widgetChild
   const [selectWidget, setSelectWidget] = React.useState(null); // 当前选中的 widget
   const [selectChild, setSelectChild] = React.useState(null); // 当前选中的widget 中的 child
-
+  // console.log("selectWidget = ", selectWidget, selectChild);
   useEffect(() => {
     if (selectChild) {
       return;
@@ -320,10 +322,11 @@ const Panel = () => {
 
   useEffect(() => {
     eventBus.on("selectWidget", async (widget) => {
-      if (selectWidget?.id === widget.id) {
-        // 防止重复点击
-        return;
-      }
+      // if (selectWidget?.id === widget.id) {
+      //   // 防止重复点击
+      //   return;
+      // }
+      console.log("重新选择了吗？？？？？？");
       const { component, props = {} } = widget;
       clear();
       const propsConfig = await resolveComponentProps(component);
@@ -340,6 +343,7 @@ const Panel = () => {
           return;
         }
         const newValue = set(formData, key, value);
+        // console.log("canvasUpdate = ", key, value, newValue);
         setFormData({ ...newValue });
         getTreedata(propsConfig, newValue);
         eventBus.emit("updateModel", key, value);
@@ -378,10 +382,6 @@ const Panel = () => {
       eventBus.emit("updateModel", newInfo.key, newInfo.value);
     });
 
-    eventBus.on("deSelectWidget", () => {
-      clear();
-    });
-
     return () => {
       selectWidget?.id && eventBus.off(`${selectWidget.id}:canvasUpdate`);
       eventBus.off("selectWidget");
@@ -389,11 +389,72 @@ const Panel = () => {
     };
   }, []);
 
+  const handleChangeSelected = (item: any) => {
+    const { path } = item;
+    if (!path) {
+      // 通知 vueWapper 取消内部的各种选中状态
+      eventBus.emit(`${item.id}:deSelected`)
+      // 调用点击事件的方法 - 切换回 rootWidget
+      eventBus.emit("reverseElectionWidget", item);
+    } else {
+      if (item.path === selectChild.path) {
+        return;
+      }
+      // 调用画布上点击事件的方法 - 切换到某个child
+      eventBus.emit("reverseElectionChild", item, path);
+    }
+  };
+
+  const renderTitle = () => {
+    if (!selectChild) {
+      return selectWidget?.description;
+    } else {
+      const path = selectChild.path;
+      const reg = /children.\d+(.1)?/g;
+      const arr = path.match(reg) || [];
+      const nameList = arr.map((item, index) => {
+        let _item = item;
+        if (/.\d+.1/.test(item)) {
+          const list = item.split(".");
+          list.pop();
+          _item = list.join(".");
+        }
+        const _arr = [...arr];
+        const r = _arr.slice(0, index);
+        r.push(_item);
+        const key = r.join(".");
+        const [name, props] = get(widgetProps, key) || [];
+        return {
+          component: getVueTypeName(name, "antd"),
+          props: props,
+          path: key,
+        };
+      });
+
+      return (
+        <Breadcrumb separator=">">
+          <Breadcrumb.Item style={{ cursor:'pointer'}} onClick={() => handleChangeSelected(selectWidget)}>
+            {selectWidget?.description}
+          </Breadcrumb.Item>
+          {nameList.map((item) => {
+            return (
+              <Breadcrumb.Item style={{ cursor:'pointer'}} onClick={() => handleChangeSelected(item)}>
+                <Tooltip title={'点击切换到该子组件'}>
+                  {item.component}
+                </Tooltip>
+              </Breadcrumb.Item>
+            );
+          })}
+        </Breadcrumb>
+      );
+    }
+  };
+
   return (
     <div>
       {!!selectWidget?.id && (
         <>
-          <Typography.Title level={5}>Menu</Typography.Title>
+          <Typography.Title level={5}>{renderTitle()}</Typography.Title>
           <Form>{renderChildren(treeData)}</Form>
         </>
       )}

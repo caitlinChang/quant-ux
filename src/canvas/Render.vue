@@ -363,7 +363,7 @@ export default {
 		},
 
 
-		render (sourceModel, isResize = false){
+		render (sourceModel, isResize = false, doNotRender = false){
 			this.logger.log(2,"render", "enter", isResize);
 			let renderStart = new Date().getTime();
 
@@ -379,8 +379,11 @@ export default {
 				 */
 				this.updateScalledModel()
 				// 猜测这里应该渲染 widget 上面的遮罩层
-				this.renderFlowViewFast(this.sourceModel, this.model, isResize);
-
+				if (!doNotRender) {
+					// panel 和 画布上编辑的更新不需要重新渲染
+					this.renderFlowViewFast(this.sourceModel, this.model, isResize);
+				}
+				
 				// render 之后要执行的 callback, 现在还没有加上任何 callback 事件
 				this.afterRender(this.sourceModel, this.model);
 				this.renderComments();

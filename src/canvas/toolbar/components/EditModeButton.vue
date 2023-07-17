@@ -1,6 +1,9 @@
 
 <template>
   <div class="MatcToolbarEditMode">
+    <a @click="save" :class="['MatcToolbarItem']">
+      <span class="MatcToolbarResponsiveIcon mdi ">Save</span>
+    </a>
     <a @click="setDesign" :class="['MatcToolbarItem', {'MatcToolbarEditModeActive': canvasViewMode === 'design'  }]">
       <span class="MatcToolbarResponsiveIcon mdi  mdi-file-edit-outline"/>
       <span class="MatcToolbarResponsiveLabel">
@@ -68,6 +71,9 @@ export default {
       this.$emit('canvasViewMode', this.canvasViewMode)
       this.$emit('change', 'hasDataView', false)
       this.$emit('change', 'renderLines', true)
+    },
+    save() {
+      
     },
     nextView() {
         if (this.canvasViewMode === 'design') {

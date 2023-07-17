@@ -292,7 +292,7 @@ export default class BaseController extends Core {
 	 * 如果是 zoomIn、zoomOut、位移 等操作，就会直接进入canvas 中不同的渲染方式；
 	 * @param {*} render 
 	 */
-	commitModelChange (render = true) {
+	commitModelChange (render = true, IDK = false, doNotRender = false) {
 		this.logger.log(1, "commitModelChange", "enter  > render: " + render + "> changes: " + this._modelHasChanged);
 		// 不是很明白获取继承模型的作用
 		const inheritedModel = this.getInheritedModel(this.model)
@@ -322,7 +322,7 @@ export default class BaseController extends Core {
 		} else {
 			requestAnimationFrame(() => {
 				const isResize = this._modelRenderJobs['all']
-				this._canvas.render(inheritedModel, isResize);			
+				this._canvas.render(inheritedModel, isResize, doNotRender);			
 			})
 			
 		}

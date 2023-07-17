@@ -689,7 +689,7 @@ export default class Widget extends Snapp {
 	* Widget props
 	**********************************************************************/
 
-	updateWidgetProperties (id, props, type, doNotRender, forceCompleteRender = false){
+	updateWidgetProperties (id, props, type, doNotRender, forceCompleteRender = false, notRenderComponent = false){
 		this.logger.log(-1,"updateWidgetProperties", "enter > " + type+ " > doNotRender: "+ doNotRender);
 		this.startModelChange()
 		
@@ -706,6 +706,7 @@ export default class Widget extends Snapp {
 		if(!doNotRender){
 			// fast if not templates
 			if (widget.component) {
+				// 这个函数啥也没做
 				this.renderComponent(widget, type);
 			} else {
 				this.renderWidget(widget, type);
@@ -725,7 +726,7 @@ export default class Widget extends Snapp {
 		}
 
 		this.checkTemplateAutoUpdate([{id: id, type:'widget', action:'change', prop:'props'}])
-		this.commitModelChange(true, true)
+		this.commitModelChange(true, true, notRenderComponent)
 	}
 
 	createWidgetPropertiesCommand (id, props, type, inlineLabel){
