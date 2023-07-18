@@ -25,7 +25,11 @@ import { getVueTypeName } from "../util/constant";
 
 const AntdPanel = Collapse.Panel;
 
-const Panel = (props: { widget: any, selectChild: any }) => {
+const Panel = (props: {
+  widget: any;
+  selectChild: any;
+  updateModel?: (key: string, value: any, doNotRender?: boolean) => void;
+}) => {
   const { selectChild } = props;
   const [treeData, setTreeData] = React.useState([]);
   const [propsConfig, setPropsConfig] = React.useState(null);
@@ -45,7 +49,7 @@ const Panel = (props: { widget: any, selectChild: any }) => {
     const { widget } = props;
     if (widget?.id) {
       renderWidgetProps(widget);
-      setWidgetProps(cloneDeep(widget.props))
+      setWidgetProps(cloneDeep(widget.props));
       setSelectWidget(widget);
     } else {
       clear();
@@ -93,14 +97,13 @@ const Panel = (props: { widget: any, selectChild: any }) => {
         newFormData,
         widgetProps || {}
       );
-      console.log('res = ', res);
       eventBus.emit(`${selectWidget.id}:propsUpdate`, res.newFormData);
-      eventBus.emit("updateModel", res.key, res.value);
+      props.updateModel?.(res.key, res.value, true);
     } else {
       // 当前编辑的是 Widget
-      setWidgetProps(cloneDeep(newFormData))
+      setWidgetProps(cloneDeep(newFormData));
       eventBus.emit(`${selectWidget.id}:propsUpdate`, newFormData);
-      eventBus.emit("updateModel", key, value);
+      props.updateModel?.(key, value, true);
     }
   };
 
@@ -340,8 +343,8 @@ const Panel = (props: { widget: any, selectChild: any }) => {
 
   /**
    * 切换现在正在选中的组件
-   * @param item 
-   * @returns 
+   * @param item
+   * @returns
    */
   const handleChangeSelected = (item: any) => {
     const { path } = item;
@@ -370,7 +373,7 @@ const Panel = (props: { widget: any, selectChild: any }) => {
       const nameList = arr.map((item, index) => {
         let _item = item;
         if (/\[\d+\]\[1\]/.test(item)) {
-          _item = item.replace(/\[1\]/, '');
+          _item = item.replace(/\[1\]/, "");
         }
         const _arr = [...arr];
         const r = _arr.slice(0, index);
@@ -383,7 +386,7 @@ const Panel = (props: { widget: any, selectChild: any }) => {
           path: key,
         };
       });
-      
+
       return (
         <Breadcrumb separator=">">
           <Breadcrumb.Item

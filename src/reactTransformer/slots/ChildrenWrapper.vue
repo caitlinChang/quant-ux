@@ -218,12 +218,6 @@
         this.childrenList = handleChildren(children, rest);
       }
     },
-    mounted() { 
-  
-    },
-    unmounted() {
-      
-    }
   };
   </script>
   

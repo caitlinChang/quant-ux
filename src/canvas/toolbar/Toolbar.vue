@@ -316,7 +316,7 @@
       class="MatcToobarPropertiesSection MatcToolbarSectionHidden"
       data-dojo-attach-point="propertiesCntr"
     >
-      <property-panel :widget="curSelectedWidget" :selectChild="curSelectedChild" />
+      <property-panel :widget="curSelectedWidget" :selectChild="curSelectedChild" @updateModel="setWidgetProps" />
       <!-- <properties-panel ref="propertiesPanel" @setComponentProps="setWidgetProps" /> -->
     </div>
   </div>
@@ -2115,6 +2115,7 @@ export default {
     },
 
     setWidgetProps(key, value, doNotRender) {
+      console.log('-------- update model -------')
       this.logger.log(2, "setWidgetProps", "entry > " + key + " - " + value);
       if (this._selectedWidget) {
         if (this._selectedWidget.props) {
@@ -2495,7 +2496,7 @@ export default {
         ...this._selectedWidget,
         props: cloneDeep(newFormData)
       }
-      
+      // update model
       this.setWidgetProps(key, value, true)
     });
   }
