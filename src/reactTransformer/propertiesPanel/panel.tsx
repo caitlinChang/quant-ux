@@ -37,8 +37,6 @@ const Panel = (props: { widget: any, selectChild: any }) => {
   useEffect(() => {
     if (selectChild) {
       renderWidgetProps(selectChild);
-    }else{
-      // props.widget && renderWidgetProps(props.widget);
     }
   }, [selectChild]);
 

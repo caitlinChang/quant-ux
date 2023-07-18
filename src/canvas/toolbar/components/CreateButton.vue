@@ -87,8 +87,7 @@ import CheckBox from "common/CheckBox";
 import ModelUtil from "core/ModelUtil";
 import ReactComponent from "../../../reactTransformer/reactComponent.vue";
 import eventBus from '../../../reactTransformer/eventBus';
-import { setParam } from '../../../reactTransformer/util/setPropsValue';
-import { getRecentPath, transferPath } from "../../../reactTransformer/util/propsValueUtils";
+import { transferPath } from "../../../reactTransformer/util/propsValueUtils";
 import { revertName } from '../../../reactTransformer/util/constant'
 
 export default {

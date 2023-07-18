@@ -345,6 +345,7 @@ import HelpButton from "help/HelpButton";
 import Panel from "../../reactTransformer/propertiesPanel/panel.tsx";
 import eventBus from '../../reactTransformer/eventBus';
 import { set, cloneDeep, get } from "lodash";
+import { transferPath } from '../../reactTransformer/util/propsValueUtils';
 
 export default {
   name: "Toolbar",
@@ -2477,27 +2478,26 @@ export default {
      
     });
 
-    eventBus.on("canvasUpdate", (key, value) => {
+    eventBus.on("canvasUpdate", (path, _value) => {
       if (!this._selectedWidget) {
         console.log(
           "canvasUpdate：this._selectedWidget 不存在"
         );
         return;
       }
-      console.log('canvasUpdate = ', key, value);
-      const newProps = set(this._selectedWidget.props, key, value);
+      const { key, value, newFormData } = transferPath(path, _value, this._selectedWidget.props)
+      // console.log('transferPath = ', key, value, get(newFormData, path));
       this.curSelectedWidget = {
-        ...this._selectedWidget,
-        props: cloneDeep(newProps)
+        ...this.curSelectedWidget,
+        props: cloneDeep(newFormData)
       }
+      this._selectedWidget = {
+        ...this._selectedWidget,
+        props: cloneDeep(newFormData)
+      }
+      
       this.setWidgetProps(key, value, true)
     });
-   
-    eventBus.on('updateModel', (key, value) => {
-      this.setWidgetProps(key, value, true)
-    });
-  },
-  unmounted() {
   }
 };
 </script>

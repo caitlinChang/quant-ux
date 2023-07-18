@@ -1,7 +1,7 @@
 <template>
     <div :class="['child-widget-warpper',{'child-widget-warpper_active': isActive === path }]" @dblclick="handleDblClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
       <component :is="componentInfo.component" v-bind="componentProps">
-        <template v-if="childrenList.length >= 1" v-slot:default>
+        <template v-if="(childrenList || []).length >= 1" v-slot:default>
           <template v-for="(c,index) in childrenList">
             <slot-wrapper 
               v-if="c.type === 'text'" 

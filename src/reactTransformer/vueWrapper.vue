@@ -28,10 +28,11 @@ import { requestComponentProps} from './util/request'
 import { setSlotWrapper, SlotWrapper } from "./slots/SlotWrapper";
 import { getFieldNames } from './util/getFieldNames';
 import { getMockedProps } from './util/mock';
-import { clone, get } from 'lodash';
+import { clone, cloneDeep, get } from 'lodash';
 import { formatPath } from './util/common';
 import ChildrenWrapper from './slots/ChildrenWrapper.vue';
 import { handleChildren } from './util/childrenUtils';
+import { transferPath } from './util/propsValueUtils';
 export default {
   name: "VueWrapper",
   components: {
@@ -199,10 +200,19 @@ export default {
     if (this.componentInfo.id) {
       this.resolveComponentProps(this.componentInfo.component, this.componentInfo.id);
       // 监听属性面板的更新
-      eventBus.on(`${this.componentInfo.id}:propsUpdate`, (props) => {
-        const newProps = clone({ ...this.rawProps, ...props });
-        const _props = this.handleProps(newProps);
-        this.componentProps = _props;
+      eventBus.on(`${this.componentInfo.id}:propsUpdate`, (props, path) => {
+        if (path) {
+          // 子组件的 inlineEdit 
+          const { newFormData } = transferPath(path, props, this.rawProps)
+          const newProps = cloneDeep(newFormData);
+          const _props = this.handleProps(newProps);
+          this.componentProps = _props;
+        } else {
+          const newProps = cloneDeep({ ...this.rawProps, ...props });
+          const _props = this.handleProps(newProps);
+          this.componentProps = _props;
+        }
+       
       });
       eventBus.on('reverseElectionChild', (child, path) => {
         this.handleSelectChildren({
