@@ -34,10 +34,10 @@ export const SlotWrapper = (props: SlotWrapperProps) => {
     );
     
     if (_props.rootPath && _props.rootWidgetId) {
-      console.log('_props.rootWidgetId = ',_props.rootWidgetId , _props.rootPath)
+      // console.log('_props.rootWidgetId = ',_props.rootWidgetId , _props.rootPath)
       eventBus.emit(
         `canvasUpdate`,
-        `${_props.rootPath}.1`,
+        `${_props.rootPath}[1]`,
         newFormData
       );
       return;

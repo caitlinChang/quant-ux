@@ -344,7 +344,7 @@ import ModelUtil from "../../core/ModelUtil";
 import HelpButton from "help/HelpButton";
 import Panel from "../../reactTransformer/propertiesPanel/panel.tsx";
 import eventBus from '../../reactTransformer/eventBus';
-import { set, cloneDeep } from "lodash";
+import { set, cloneDeep, get } from "lodash";
 
 export default {
   name: "Toolbar",
@@ -2460,14 +2460,12 @@ export default {
   },
   mounted() {
     eventBus.on("selectWidgetChild", async (widget) => {
-      console.log('选中子组件-------1', this._selectedWidget)
       if (!this._selectedWidget) {
           console.log(
             "selectWidgetChild：this._selectedWidget 不存在"
           );
           return;
       }
-      console.log('选中子组件-------2 = ', widget, this.curSelectedChild)
       if (
         widget.component === this.curSelectedChild?.component &&
         widget.path === this.curSelectedChild?.path
@@ -2475,23 +2473,18 @@ export default {
         // 防止重复点击
         return;
       }
-      console.log('选中子组件-------')
       this.curSelectedChild = cloneDeep(widget);
      
     });
 
     eventBus.on("canvasUpdate", (key, value) => {
-        if (!this._selectedWidget) {
-          console.log(
-            "canvasUpdate：this._selectedWidget 不存在"
-          );
-          return;
-        }
+      if (!this._selectedWidget) {
+        console.log(
+          "canvasUpdate：this._selectedWidget 不存在"
+        );
+        return;
+      }
       const newProps = set(this._selectedWidget.props, key, value);
-      // this._selectedWidget = {
-      //   ...this._selectedWidget,
-      //   props: cloneDeep(newProps)
-      // }
       this.curSelectedWidget = {
         ...this._selectedWidget,
         props: cloneDeep(newProps)

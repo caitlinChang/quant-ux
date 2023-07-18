@@ -16,12 +16,12 @@
               :isMouseenter="isMouseenter" 
               :isActive="isActive" 
               :rootWidgetId="rootWidgetId" 
-              :path="`${path}.1.children.${index}`"  
+              :path="`${path}[1].children[${index}]`"  
               :key="index" 
               :componentInfo="c.componentInfo" 
               @handleMouseEnter="(path) => $emit('handleMouseEnter', path)" 
               @handleMouseLeave="(path) => $emit('handleMouseLeave', path)" 
-              @selectWidgetChildren="(c, path) => $emit('selectWidgetChildren',c, path ? `children.${index}.1.${path}` : `children.${index}`)" />
+              @selectWidgetChildren="(c, path) => $emit('selectWidgetChildren',c, path ? `children[${index}][1].${path}` : `children[${index}]`)" />
           </template>
         </template>
       </component>
@@ -119,11 +119,7 @@
           // TODO: 因为 组件是先添加再被选中的，所以这个里的事件触发
           // 会比 panel 中的事件注册更早，所以这里要用setTimeout 
           setTimeout(() => {
-            Object.keys(this.rawProps).forEach(i => {
-              //mock 的数据也需要更新到 model 中
-              const key = `${this.path}.1.${i}`
-              eventBus.emit(`canvasUpdate`, key, this.rawProps[i])
-            })
+            eventBus.emit(`canvasUpdate`, `${this.path}[1]`, this.rawProps)
           })
         }
         // 对原始的props 做层slotWrapper 方便画布操作

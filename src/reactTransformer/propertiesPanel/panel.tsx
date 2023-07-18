@@ -33,14 +33,43 @@ const Panel = (props: { widget: any, selectChild: any }) => {
   const [formData, setFormData] = React.useState({}); // 维护的是当前选中组件的 props，可能是 widget，也可能是 widgetChild
   const [selectWidget, setSelectWidget] = React.useState(null); // 当前选中的 widget
 
+  // 选择子组件
   useEffect(() => {
     if (selectChild) {
       renderWidgetProps(selectChild);
-    } else {
-      setWidgetProps(cloneDeep(formData));
+    }else{
+      // props.widget && renderWidgetProps(props.widget);
     }
-  }, [selectChild, formData]);
+  }, [selectChild]);
 
+  // 选择组件
+  useEffect(() => {
+    const { widget } = props;
+    if (widget?.id) {
+      renderWidgetProps(widget);
+      setWidgetProps(cloneDeep(widget.props))
+      setSelectWidget(widget);
+    } else {
+      clear();
+    }
+  }, [props.widget]);
+
+  useEffect(() => {
+    getTreedata(propsConfig, formData);
+  }, [formData, propsConfig]);
+
+  const clear = () => {
+    setPropsConfig(null);
+    setFormData({});
+    setSelectWidget(null);
+  };
+
+  const renderWidgetProps = async (widget) => {
+    const { component, props = {} } = widget;
+    const propsConfig = await resolveComponentProps(component);
+    setFormData(cloneDeep(props));
+    getTreedata(propsConfig, { ...props });
+  };
 
   const resolveComponentProps = async (name: string) => {
     const res = await requestComponentProps(name);
@@ -58,11 +87,11 @@ const Panel = (props: { widget: any, selectChild: any }) => {
       return;
     }
     const { key, value, newFormData } = transferPath(path, _value, formData);
-    setFormData(newFormData);
+    setFormData(cloneDeep(newFormData));
     if (selectChild) {
       // 当前编辑的是 Child
       const res = transferPath(
-        `${selectChild.path}.1`,
+        `${selectChild.path}[1]`,
         newFormData,
         widgetProps || {}
       );
@@ -71,16 +100,17 @@ const Panel = (props: { widget: any, selectChild: any }) => {
       eventBus.emit("updateModel", res.key, res.value);
     } else {
       // 当前编辑的是 Widget
+      setWidgetProps(cloneDeep(newFormData))
       eventBus.emit(`${selectWidget.id}:propsUpdate`, newFormData);
       eventBus.emit("updateModel", key, value);
     }
   };
 
   const handleSelectComponent = (path: string, index: number) => {
-    let _path = `${path}.${index}`;
+    let _path = `${path}[${index}]`;
     let data = cloneDeep(formData);
     if (selectChild) {
-      _path = `${selectChild.path}.1.${_path}`;
+      _path = `${selectChild.path}[1].${_path}`;
       data = cloneDeep(widgetProps);
     }
 
@@ -90,10 +120,6 @@ const Panel = (props: { widget: any, selectChild: any }) => {
       formData: data,
     });
   };
-
-  useEffect(() => {
-    getTreedata(propsConfig, formData);
-  }, [formData, propsConfig]);
 
   const renderProp = (node: {
     title: ReactNode;
@@ -314,30 +340,6 @@ const Panel = (props: { widget: any, selectChild: any }) => {
     }
   };
 
-  const clear = () => {
-    setPropsConfig(null);
-    setFormData({});
-    setSelectWidget(null);
-    // setSelectChild(null);
-  };
-
-  const renderWidgetProps = async (widget) => {
-    const { component, props = {} } = widget;
-    const propsConfig = await resolveComponentProps(component);
-    setFormData(cloneDeep(props));
-    getTreedata(propsConfig, { ...props });
-  };
-
-  useEffect(() => {
-    const { widget } = props;
-    if (widget?.id) {
-      renderWidgetProps(widget);
-      setSelectWidget(widget);
-    } else {
-      clear();
-    }
-  }, [props.widget]);
-
   /**
    * 切换现在正在选中的组件
    * @param item 
@@ -364,14 +366,13 @@ const Panel = (props: { widget: any, selectChild: any }) => {
       return selectWidget?.description;
     } else {
       const path = selectChild.path;
-      const reg = /children.\d+(.1)?/g;
+      const reg = /children\[\d+\](\[1\])?/g;
       const arr = path.match(reg) || [];
+
       const nameList = arr.map((item, index) => {
         let _item = item;
-        if (/.\d+.1/.test(item)) {
-          const list = item.split(".");
-          list.pop();
-          _item = list.join(".");
+        if (/\[\d+\]\[1\]/.test(item)) {
+          _item = item.replace(/\[1\]/, '');
         }
         const _arr = [...arr];
         const r = _arr.slice(0, index);
@@ -384,7 +385,7 @@ const Panel = (props: { widget: any, selectChild: any }) => {
           path: key,
         };
       });
-
+      
       return (
         <Breadcrumb separator=">">
           <Breadcrumb.Item

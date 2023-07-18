@@ -25,6 +25,7 @@ export function handleChildren(
   if (!isArray(children)) {
     return;
   }
+  // @ts-ignore
   return children.map((item, index) => {
     if (typeof item === "string") {
       return {

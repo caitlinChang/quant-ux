@@ -9,11 +9,11 @@
             :isMouseenter="isMouseenter" 
             :isActive="isActive" 
             :rootWidgetId="componentInfo.id" 
-            :path="`children.${index}`"  
+            :path="`children[${index}]`"  
             :componentInfo="c.componentInfo" 
             @handleMouseEnter="handleMouseEnter" 
             @handleMouseLeave="handleMouseLeave" 
-            @selectWidgetChildren="(c, path) => handleSelectChildren(c, path ? `children.${index}.1.${path}` : `children.${index}`)" />
+            @selectWidgetChildren="(c, path) => handleSelectChildren(c, path ? `children[${index}][1].${path}` : `children[${index}]`)" />
         </template>
       </template>
     </component>
@@ -64,7 +64,7 @@ export default {
       // this.isMouseenter = '';  
     },
     handleSelectChildren(componentInfo, path) {
-      console.log('handleSelectChildren = ', componentInfo, path);
+      // console.log('handleSelectChildren = ', componentInfo, path);
       // 选中一个 Children 时，设置该 children 的
       // TODO: 如何取消选中
       this.isActive = path;
