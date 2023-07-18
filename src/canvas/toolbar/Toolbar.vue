@@ -2484,6 +2484,7 @@ export default {
         );
         return;
       }
+      console.log('canvasUpdate = ', key, value);
       const newProps = set(this._selectedWidget.props, key, value);
       this.curSelectedWidget = {
         ...this._selectedWidget,
