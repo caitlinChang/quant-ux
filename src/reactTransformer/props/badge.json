@@ -29,6 +29,7 @@
         "description": "文本",
         "name": "text",
         "required": false,
+        "needMock": true,
         "type": {
           "name": "ReactNode"
         }

@@ -6,9 +6,19 @@
     "displayName": "Checkbox",
     "methods": [],
     "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "容器",
+        "name": "children",
+        "required": false,
+        "needMock": true,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
       "defaultChecked": {
         "defaultValue": null,
-        "description": "",
+        "description": "是否默认选中",
         "name": "defaultChecked",
         "required": false,
         "type": {
@@ -45,7 +55,7 @@
       },
       "disabled": {
         "defaultValue": null,
-        "description": "",
+        "description": "是否禁用",
         "name": "disabled",
         "parent": {
           "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",

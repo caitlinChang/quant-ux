@@ -1,7 +1,7 @@
 <template>
   <div class="custom-widget-warpper">
     <component :is="componentInfo.component" v-bind="componentProps">
-      <template v-if="childrenList.length >= 1" v-slot:default>
+      <template v-if="(childrenList || []).length >= 1" v-slot:default>
         <template v-for="(c,index) in childrenList">
           <slot-wrapper v-if="c.type === 'text'" path="children" :props="c.widgetProps" :key="index"/>
           <children-wrapper 

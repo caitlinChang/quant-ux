@@ -41,6 +41,7 @@ const Panel = (props: {
   useEffect(() => {
     if (selectChild) {
       renderWidgetProps(selectChild);
+      console.log("render child panel");
     }
   }, [selectChild]);
 
@@ -48,6 +49,7 @@ const Panel = (props: {
   useEffect(() => {
     const { widget } = props;
     if (widget?.id) {
+      console.log("render root panel");
       renderWidgetProps(widget);
       setWidgetProps(cloneDeep(widget.props));
       setSelectWidget(widget);

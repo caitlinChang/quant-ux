@@ -59,6 +59,7 @@ const blackList = [
   "antd-typography-paragraph",
   "antd-upload",
   "antd-button-group",
+  "antd-radio-button", // 没有这个组件，无需展示
 ];
 
 const _componentConfigList = Object.keys(componentMap)
