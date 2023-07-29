@@ -1,14 +1,14 @@
 <template>
-  <div class="wrapper">
-    <div class="search">
-      <input  />
-    </div>
+  <div class="wrapper"  @click="clickSearchBoxAway">
     <ul class="sidebar">
       <li v-for="item in categoryList" :key="item.key" @click="type = item.key" :class="{'sidebar-active': type === item.key}">{{item.label}}</li>
     </ul>
+    <div id="" class="search" @click="handleClickDiv">
+      <input placeholder="search components" data-dojo-attach-point="searchWidgetBox" @keydown="handleSearch" />
+    </div>
     <div v-show="type === 'antd4'" class="widgets-list">
       <div class="custome-widget-wrapper">
-        <div v-for="item in componentList" :key="item.name">
+        <div v-for="item in filterComponetList" :key="item.name">
           <div
             class="antd4-warpper"
             @click="(e) => $emit('onclick', { ...item }, e)"
@@ -41,12 +41,14 @@
 </template>
 
 <script>
+import DojoWidget from "dojo/DojoWidget";
 import componentList from "./componentList.js";
 import componentMap from "./util/constant";
 import iconMap, { iconList } from "./util/icon";
 
 export default {
   name: "ReactComponent",
+  mixins: [DojoWidget],
   components: {
     ...componentMap,
     ...iconMap,
@@ -60,6 +62,7 @@ export default {
   data() {
     return {
       componentList,
+      filterComponetList: componentList,
       iconList,
       type: "antd4",
       categoryList: [
@@ -92,31 +95,57 @@ export default {
       }
     };
   },
-  methods: {},
-  mounted() {},
+  methods: {
+    handleClickDiv() {
+      setTimeout(() => {
+        this.searchWidgetBox.focus()
+      },100)
+    },
+    clickSearchBoxAway(e) {
+      if(e.target.className !== 'search') {
+        this.searchWidgetBox.blur()
+      }
+    },
+    handleSearch(e) {
+      if (e.keyCode === 13) {
+        const value = e.target.value;
+        const result = componentList.filter(item => item.displayName.toLowerCase().match(value.toLowerCase()) || item.description.match(value));
+        this.filterComponetList = result;
+      }
+      
+    }
+  },
+  mounted() {
+  },
+  unmounted() {
+    this.searchWidgetBox.blur()
+    this.searchWidgetBox.value = "";
+  },
 };
 </script>
 
 <style scoped>
 .search{
-  float: right;
-}
-.wrapper {
-  display: flex;
+  position: absolute;
+  margin-top: -10px;
+  margin-left: -14px;
+  z-index: 9999999;
 }
 .sidebar {
   position: absolute;
+  margin-top: 20px;
 }
 .sidebar-active {
   color:#3787f2;
 }
 .widgets-list {
   flex: 1;
+  margin-left: 100px;
 }
 .custome-widget-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 10px;
   /* background-color: #f5f5f5; */
 }
