@@ -2486,18 +2486,13 @@ export default {
         );
         return;
       }
+      if (!this.curSelectedWidget) {
+        this.curSelectedWidget = this._selectedWidget;
+      }
       const { key, value, newFormData } = transferPath(path, _value, this._selectedWidget.props)
-      // console.log('transferPath = ', key, value, get(newFormData, path));
       this.curSelectedWidget.props = cloneDeep(newFormData);
       this._selectedWidget.props = cloneDeep(newFormData);
-      // this.curSelectedWidget = {
-      //   ...this.curSelectedWidget,
-      //   props: cloneDeep(newFormData)
-      // }
-      // this._selectedWidget = {
-      //   ...this._selectedWidget,
-      //   props: cloneDeep(newFormData)
-      // }
+     
       // update model
       this.setWidgetProps(key, value, true)
     });

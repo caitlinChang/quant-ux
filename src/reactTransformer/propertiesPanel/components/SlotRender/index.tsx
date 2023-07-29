@@ -37,7 +37,6 @@ export default (props: {
 }) => {
   const [componentList, setComponentList] = useState<ChildrenType>([]);
   const { node, value } = props;
-  console.log("slot render === ", value);
   useEffect(() => {
     if (isArray(value)) {
       setComponentList(value);

@@ -23,7 +23,21 @@ export function handleChildren(
 ) {
   const _widgetProps = cloneDeep(rootWidgetProps || {});
   if (!isArray(children)) {
-    return;
+    if (typeof children === "string") {
+      return [
+        {
+          type: ChildrenItemType.Text,
+          widgetProps: {
+            ..._widgetProps,
+            children: children,
+            // path: `${formatPath(path)}children.${index}`,
+          },
+        },
+      ];
+    } else {
+      console.error("处理组件的children, 无法处理该 children 类型: ", children);
+      return;
+    }
   }
   // @ts-ignore
   return children.map((item, index) => {
