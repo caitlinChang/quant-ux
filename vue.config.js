@@ -33,10 +33,7 @@ module.exports = {
   pluginOptions: {
     "style-resources-loader": {
       preProcessor: "less",
-      patterns: [
-        path.resolve(__dirname, "./node_modules/ant-design-vue/dist/antd.less"),
-        path.resolve(__dirname, "./src/theme.less"),
-      ],
+      patterns: [path.resolve(__dirname, "./src/theme.less")],
     },
   },
   chainWebpack: (config) => {

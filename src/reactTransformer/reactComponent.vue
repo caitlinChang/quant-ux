@@ -1,10 +1,12 @@
 <template>
   <div class="wrapper">
+    <div class="search">
+      <input  />
+    </div>
     <ul class="sidebar">
       <li v-for="item in categoryList" :key="item.key" @click="type = item.key" :class="{'sidebar-active': type === item.key}">{{item.label}}</li>
     </ul>
     <div v-show="type === 'antd4'" class="widgets-list">
-      <h1>常用</h1>
       <div class="custome-widget-wrapper">
         <div v-for="item in componentList" :key="item.name">
           <div
@@ -21,7 +23,6 @@
       </div>
     </div>
     <div v-show="type === 'Icon'" class="widgets-list">
-      <h1>Icon</h1>
       <div class="custome-widget-wrapper">
         <div v-for="item in iconList" :key="item.name">
           <div
@@ -97,6 +98,9 @@ export default {
 </script>
 
 <style scoped>
+.search{
+  float: right;
+}
 .wrapper {
   display: flex;
 }
@@ -108,7 +112,6 @@ export default {
 }
 .widgets-list {
   flex: 1;
-  margin-left: 120px;
 }
 .custome-widget-wrapper {
   display: flex;
@@ -122,8 +125,8 @@ export default {
   margin: 10px;
   background-color: #f5f5f5;
   cursor: pointer;
-  width: 160px;
-  height: 70px;
+  width: 110px;
+  height: 56px;
   display: flex;
   flex-direction: column;
   align-items: center;

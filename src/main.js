@@ -4,9 +4,6 @@ import router from "./router";
 import VueI18n from "vue-i18n";
 import { VuePlugin } from "vuera";
 import "antd/dist/antd.css";
-import AntdVue from "ant-design-vue";
-// import "ant-design-vue/dist/antd.css";
-import "ant-design-vue/dist/antd.less";
 import "./theme.less";
 import Services from "services/Services";
 
@@ -20,10 +17,10 @@ async function start() {
   Vue.use(VuePlugin);
   Vue.use(VueI18n);
   Vue.config.productionTip = false;
-  Vue.use(AntdVue, {
-    size: "small",
-    prefixCls: "antv",
-  });
+  // Vue.use(AntdVue, {
+  //   size: "small",
+  //   prefixCls: "antv",
+  // });
 
   new Vue({
     router,

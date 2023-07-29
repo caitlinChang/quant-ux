@@ -1,9 +1,7 @@
 <template>
   <div id="app" class="MatcMainCntr">
-    <ConfigProvider prefixCls="antv">
       <router-view />
       <div class="vommondMessage" ref="message"></div>
-    </ConfigProvider>
   </div>
 </template>
 
@@ -12,11 +10,9 @@
 import css from "dojo/css";
 import win from "dojo/win";
 import Services from "services/Services";
-import { ConfigProvider } from "ant-design-vue";
 
 export default {
   components: {
-    ConfigProvider,
   },
   methods: {
     showSuccess(msg) {
