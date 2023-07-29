@@ -1,11 +1,3 @@
-function revertName(name) {
-  const words = name.split("-");
-  words.shift();
-  const capitalizedWords = words.map(
-    (word) => word.charAt(0).toUpperCase() + word.slice(1)
-  );
-  return capitalizedWords.join("");
-}
 /**
  * 调接口获取解析后的属性
  * @param {*} componentName

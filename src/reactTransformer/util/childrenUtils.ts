@@ -1,5 +1,5 @@
 import { cloneDeep, isArray } from "lodash";
-import { getVueTypeName } from "./constant";
+import { getVueTypeName } from "./getWidgets/util";
 import { formatPath } from "./common";
 
 export enum ChildrenItemType {

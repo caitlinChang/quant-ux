@@ -26,7 +26,7 @@
               class="MatcCreateBtnElementList MatcCreateBtnRight"
               data-dojo-attach-point="customWedgets"
             >
-              <ReactComponent @onclick="onCreateCustomWeget" />
+              <DisplayWidgets @onclick="onCreateCustomWeget" />
             </div>
             <div v-if="false" class="col-md-2 MatcCreateBtnLeft">
               <div class="form-group has-feedback">
@@ -85,16 +85,16 @@ import _DropDown from "./_DropDown";
 import Services from "services/Services";
 import CheckBox from "common/CheckBox";
 import ModelUtil from "core/ModelUtil";
-import ReactComponent from "../../../reactTransformer/reactComponent.vue";
+import DisplayWidgets from "../../../reactTransformer/DisplayWidgets.vue";
 import eventBus from '../../../reactTransformer/eventBus';
 import { transferPath } from "../../../reactTransformer/util/propsValueUtils";
-import { revertName } from '../../../reactTransformer/util/constant'
+import { revertName } from '../../../reactTransformer/util/getWidgets/util'
 
 export default {
   name: "CreateButton2",
   mixins: [Util, DojoWidget, _DropDown],
   components: {
-    ReactComponent,
+    DisplayWidgets,
   },
   data: function () {
     return {

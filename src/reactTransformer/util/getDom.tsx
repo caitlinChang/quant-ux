@@ -2,7 +2,7 @@ import Vue from "vue";
 import React from "react";
 import ReactDom from "react-dom";
 // @ts-ignore
-import VueWrapper from "../vueWrapper";
+import VueWrapper from "../slots/vueWrapper";
 import ContextMenu from "../contextMenu";
 import { SlotWrapperProps } from "../slots/SlotWrapper";
 /**

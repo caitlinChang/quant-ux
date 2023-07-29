@@ -2,13 +2,14 @@ import React, { ReactNode } from "react";
 import eventBus from "../eventBus";
 import { StandardArrayItemType } from "../util/getFieldNames";
 import { ContenxtMenuType } from "../contextMenu/index";
-import componentList, { getVueTypeName } from "../util/constant";
-import iconList from "../util/icon";
+import antdList from "../util/getWidgets/antd";
+import { getVueTypeName } from "../util/getWidgets/util";
+import iconList from "../util/getWidgets/icon";
 import { IconSlot } from "../slots/IconSlot";
 import { transferPath } from "../util/propsValueUtils";
 import { isArray } from "lodash";
 
-const componentMap = { ...componentList, ...iconList, IconSlot };
+const componentMap = { ...antdList, ...iconList, IconSlot };
 
 export type SlotWrapperProps = {
   path: string;

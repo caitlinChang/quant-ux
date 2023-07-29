@@ -42,9 +42,8 @@
 
 <script>
 import DojoWidget from "dojo/DojoWidget";
-import componentList from "./componentList.js";
-import componentMap from "./util/constant";
-import iconMap, { iconList } from "./util/icon";
+import componentMap, { antdList } from "./util/getWidgets/antd";
+import iconMap, { iconList } from "./util/getWidgets/icon";
 
 export default {
   name: "ReactComponent",
@@ -61,8 +60,8 @@ export default {
   },
   data() {
     return {
-      componentList,
-      filterComponetList: componentList,
+      antdList,
+      filterComponetList: antdList,
       iconList,
       type: "antd4",
       categoryList: [
@@ -109,7 +108,7 @@ export default {
     handleSearch(e) {
       if (e.keyCode === 13) {
         const value = e.target.value;
-        const result = componentList.filter(item => item.displayName.toLowerCase().match(value.toLowerCase()) || item.description.match(value));
+        const result = antdList.filter(item => item.displayName.toLowerCase().match(value.toLowerCase()) || item.description.match(value));
         this.filterComponetList = result;
       }
       

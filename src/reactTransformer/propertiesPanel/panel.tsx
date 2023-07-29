@@ -21,7 +21,7 @@ import eventBus from "../eventBus";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import SlotRender from "./components/SlotRender";
 import { formatPath } from "../util/common";
-import { getVueTypeName } from "../util/constant";
+import { getVueTypeName } from "../util/getWidgets/util";
 
 const AntdPanel = Collapse.Panel;
 

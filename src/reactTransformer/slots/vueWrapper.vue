@@ -21,22 +21,23 @@
 </template>
 
 <script>
-import eventBus from "./eventBus";
-import componentList from "./util/constant";
-import iconMap from './util/icon';
-import { requestComponentProps} from './util/request'
-import { setSlotWrapper, SlotWrapper } from "./slots/SlotWrapper";
-import { getFieldNames } from './util/getFieldNames';
-import { getMockedProps } from './util/mock';
+import eventBus from "../eventBus";
+import {antdList} from "../util/getWidgets/antd";
+import iconMap from '../util/getWidgets/icon';
+import { requestComponentProps} from '../util/request'
+import { setSlotWrapper, SlotWrapper } from "./SlotWrapper";
+import { getFieldNames } from '../util/getFieldNames';
+import { getMockedProps } from '../util/mock';
 import { clone, cloneDeep, get } from 'lodash';
-import { formatPath } from './util/common';
-import ChildrenWrapper from './slots/ChildrenWrapper.vue';
-import { handleChildren } from './util/childrenUtils';
-import { transferPath } from './util/propsValueUtils';
+import { formatPath } from '../util/common';
+import ChildrenWrapper from './ChildrenWrapper.vue';
+import { handleChildren } from '../util/childrenUtils';
+import { transferPath } from '../util/propsValueUtils';
+
 export default {
   name: "VueWrapper",
   components: {
-    ...componentList,
+    ...antdList,
     ...iconMap,
     slotWrapper: SlotWrapper,
     ChildrenWrapper,

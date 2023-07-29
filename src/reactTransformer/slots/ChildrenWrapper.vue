@@ -30,8 +30,8 @@
   
   <script>
   import eventBus from "../eventBus";
-  import componentList from "../util/constant";
-  import iconMap from '../util/icon';
+  import componentList from "../util/getWidgets/antd";
+  import iconMap from '../util/getWidgets/icon';
   import { requestComponentProps} from '../util/request'
   import { setSlotWrapper, SlotWrapper } from "./SlotWrapper";
   import { getFieldNames } from '../util/getFieldNames';
