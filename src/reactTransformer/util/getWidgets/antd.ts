@@ -1,7 +1,8 @@
 import * as antdComponents from "antd";
 import { getMockedProps } from "../mock";
-import { requestComponentProps } from "../request";
+import { requestPropsConfig } from "../request";
 import { getVueTypeName } from "./util";
+import { cloneDeep } from "lodash";
 
 const componentMap = {};
 // 有子组件的组件，需要遍历一下
@@ -72,18 +73,19 @@ const blackList = [
 ];
 export const antdList = Object.keys(componentMap)
   .filter((i) => !blackList.includes(i))
-  .map(async (key) => {
-    const res = await requestComponentProps(key);
+  .map((key) => {
+    const res = requestPropsConfig(key);
+    const props = getMockedProps(res.props);
     return {
       _type: "antd4",
       w: 200,
       h: 60,
       name: key,
-      description: res.props.description,
-      displayName: res.props.displayName || key,
+      description: res.description,
+      displayName: res.displayName || key,
       cagegory: "Ant Design",
       component: key,
-      props: getMockedProps(res.props),
+      props: cloneDeep(props),
     };
   });
 

@@ -22,7 +22,7 @@
 
 <script>
 import eventBus from "../eventBus";
-import {antdList} from "../util/getWidgets/antd";
+import antdMap from "../util/getWidgets/antd";
 import iconMap from '../util/getWidgets/icon';
 import { requestComponentProps} from '../util/request'
 import { setSlotWrapper, SlotWrapper } from "./SlotWrapper";
@@ -37,7 +37,7 @@ import { transferPath } from '../util/propsValueUtils';
 export default {
   name: "VueWrapper",
   components: {
-    ...antdList,
+    ...antdMap,
     ...iconMap,
     slotWrapper: SlotWrapper,
     ChildrenWrapper,
@@ -84,7 +84,7 @@ export default {
       // 更新props
       
     },
-    async resolveComponentProps(name, id) {
+    async resolveComponentProps(name) {
       const res = await requestComponentProps(name);
       this.propsConfig = res.props;
       let newProps = {};
@@ -199,7 +199,7 @@ export default {
   },
   mounted() {
     if (this.componentInfo.id) {
-      this.resolveComponentProps(this.componentInfo.component, this.componentInfo.id);
+      this.resolveComponentProps(this.componentInfo.component);
       // 监听属性面板的更新
       eventBus.on(`${this.componentInfo.id}:propsUpdate`, (props, path) => {
         if (path) {
@@ -225,8 +225,9 @@ export default {
         this.isActive = false;
         this.isMouseenter = false;
       })
+    } else {
+      this.resolveComponentProps(this.componentInfo.component);
     }
-    
   },
   unmounted() {
     const { id } = this.componentInfo;

@@ -19,3 +19,20 @@ export const requestComponentProps = async (componentName) => {
     };
   }
 };
+
+export const requestPropsConfig = (componentName) => {
+  if (!componentName) return { props: {} };
+  const arr = componentName.split("-");
+  arr.shift();
+  const str = arr.join("-");
+  // console.log(`获取${str}的组件属性`)
+  try {
+    const res = require("../props/" + str + ".json"); //await axios.get("../props/" + str + ".json");
+    return res[0];
+  } catch (err) {
+    console.log("获取组件属性失败", err);
+    return {
+      props: {},
+    };
+  }
+};

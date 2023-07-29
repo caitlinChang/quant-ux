@@ -386,7 +386,9 @@ export default {
 			this.logger.log(2,"_addWidget", "exit");
 		},
 		_addComponent(params, widget){
-			const div = createReactRootDom(widget);
+			const child = createReactRootDom(widget);
+			const div = document.createElement('div');
+			div.appendChild(child);
 			css.add(div, "ComponentAddBox");
 			css.add(div, "ComponentWidget");
 			// 开启拖动的一系列事件，只涉及到缩放、鼠标位置的计算，其他与widgets无关，onComponentAdd 才是在

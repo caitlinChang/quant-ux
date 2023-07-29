@@ -30,7 +30,7 @@
   
   <script>
   import eventBus from "../eventBus";
-  import componentList from "../util/getWidgets/antd";
+  import antdMap from "../util/getWidgets/antd";
   import iconMap from '../util/getWidgets/icon';
   import { requestComponentProps} from '../util/request'
   import { setSlotWrapper, SlotWrapper } from "./SlotWrapper";
@@ -43,7 +43,7 @@
   export default {
     name: "ChildrenWrapper",
     components: {
-      ...componentList,
+      ...antdMap,
       ...iconMap,
       slotWrapper: SlotWrapper,
     },
