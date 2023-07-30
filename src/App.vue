@@ -2,6 +2,7 @@
   <div id="app" class="MatcMainCntr">
       <router-view />
       <div class="vommondMessage" ref="message"></div>
+      <display-widgets />
   </div>
 </template>
 
@@ -10,9 +11,11 @@
 import css from "dojo/css";
 import win from "dojo/win";
 import Services from "services/Services";
+import DisplayWidgets from "./reactTransformer/computeStyle/index.vue";
 
 export default {
   components: {
+    DisplayWidgets
   },
   methods: {
     showSuccess(msg) {
@@ -84,6 +87,7 @@ export default {
     },
   },
   async mounted() {
+    console.log("App mounted");
     Services.setErrorHandler((url, res) => {
       this.handler4xx(url, res);
     });

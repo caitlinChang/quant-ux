@@ -78,8 +78,8 @@ export const antdList = Object.keys(componentMap)
     const props = getMockedProps(res.props);
     return {
       _type: "antd4",
-      w: 200,
-      h: 60,
+      // w: 200,
+      // h: 60,
       name: key,
       description: res.description,
       displayName: res.displayName || key,
