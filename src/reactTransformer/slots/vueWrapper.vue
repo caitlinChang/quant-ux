@@ -24,16 +24,11 @@
 import eventBus from "../eventBus";
 import antdMap from "../util/getWidgets/antd";
 import iconMap from '../util/getWidgets/icon';
-import { requestComponentProps} from '../util/request'
-import { setSlotWrapper, SlotWrapper } from "./SlotWrapper";
-import { getFieldNames } from '../util/getFieldNames';
-import { getMockedProps } from '../util/mock';
-import { clone, cloneDeep, get } from 'lodash';
-import { formatPath } from '../util/common';
+import { SlotWrapper } from "./SlotWrapper";
+import { cloneDeep } from 'lodash';
 import ChildrenWrapper from './ChildrenWrapper.vue';
-import { handleChildren } from '../util/childrenUtils';
 import { transferPath } from '../util/propsValueUtils';
-
+import { getRenderedProps } from './util';
 export default {
   name: "VueWrapper",
   components: {
@@ -65,9 +60,12 @@ export default {
     handleMouseLeave(path) {
       // this.isMouseenter = '';  
     },
+    /**
+     * 选中子组件
+     * @param {*} componentInfo 
+     * @param {*} path 
+     */
     handleSelectChildren(componentInfo, path) {
-      // console.log('handleSelectChildren = ', componentInfo, path);
-      // 选中一个 Children 时，设置该 children 的
       // TODO: 如何取消选中
       this.isActive = path;
       eventBus.emit(`selectWidgetChild`, {
@@ -75,158 +73,51 @@ export default {
         path
       });
     },
-    onChange(value) { 
-      let _value = value;
-      if (this.controlledNames.valuePath) {
-        _value = value[this.controlledNames.valuePath]
-      }
-      this.value = _value;
-      // 更新props
-      
+    async resolveComponentProps(name, props) {
+      this.rawProps = cloneDeep(props);
+      const res = getRenderedProps(name, props, this.componentInfo.id, '');
+      const { children, restProps } = res;
+      this.childrenList = children;
+      this.componentProps = restProps;
     },
-    async resolveComponentProps(name) {
-      const res = await requestComponentProps(name);
-      this.propsConfig = res.props;
-      let newProps = {};
-      this.rawProps = clone(this.componentInfo.props);
-      if (this.rawProps && Object.keys(this.rawProps).length) {
-        newProps = clone(this.rawProps);
-      } else {
-        this.rawProps = getMockedProps(res.props);
-        newProps = clone(this.rawProps);
-        //TODO: 因为 组件是先添加再被选中的，所以这个里的事件触发
-        // 会比 panel 中的事件注册更早，所以这里要用setTimeout 
-        setTimeout(() => {
-          Object.keys(this.rawProps).forEach(i => {
-            //mock 的数据也需要更新到 model 中
-            eventBus.emit(`canvasUpdate`,i, this.rawProps[i])
-          })
-        })
-      }
-      // 对原始的props 做层slotWrapper 方便画布操作
-      const _props = this.handleProps(newProps);
-      this.componentProps = _props;
-    },
-    /**
-     * 递归获取组件每一个层级的props
-     * @param {*} config 
-     * @param {*} path 
-     * @param {*} rawProps 
-     * @param {*} fieldNames 
-     */
-    getWrapperProps(config, path, rawProps, fieldNames) {
-      const curValue = get(rawProps, path);
-      if (!config) {
-        console.log(`${path} 的 config 值为 undefined`)
-        return;
-      }
-      const { name, property, item } = config.type || {};
-      if (name === 'ReactNode') {
-        // children 需要特殊处理，用 slot 传递
-        if (path === 'children') {
-          return {
-            widgetId: this.componentInfo.id,
-            widgetProps: { ...rawProps },
-            path: path,
-            children: curValue,
-            fieldNames,
-            meta: [4]
-          }
-        }
-        return setSlotWrapper({
-          widgetId: this.componentInfo.id,
-          widgetProps: { ...rawProps },
-          path: path,
-          children: curValue,
-          fieldNames,
-          meta: [4]
-        });
-      } else if (name === 'object') { 
-        if (curValue) {
-          const obj = {};
-          Object.keys(curValue).forEach(key => {
-            const keyConfig = property[key];
-            obj[key] = this.getWrapperProps(keyConfig, `${formatPath(path)}.${key}`, rawProps);
-          });
-          return obj;
-        }
-        return curValue;
-      } else if (name === 'array') { 
-        if (curValue) {
-          const fieldNames = getFieldNames(config);
-          return curValue.map((_item, index) => {
-            const obj = {};
-            Object.keys(_item).forEach(key => {
-              const keyConfig = item[key];
-              if (key === 'children' && keyConfig.type.name === 'children') {
-                obj[key] = this.getWrapperProps({...config,name:'children'}, `${formatPath(path)}[${index}].${key}`, rawProps);
-              }else {
-                obj[key] = this.getWrapperProps(keyConfig, `${formatPath(path)}[${index}].${key}`, rawProps, fieldNames);
-              }
-              
-            });
-            return obj;
-          })
-        }
-        return curValue;
-      } else{
-        return curValue;
-      }
-    },
-
-    //处理组件的 props，如果某个props类型是 ReactNode, 要包裹上一层元素，用于处理数据同步
-    handleProps(props) {
-      const cloneProps = clone(props);
-      const obj = {}
-      Object.keys(props).map((propsName) => {
-        const config = this.propsConfig[propsName]; 
-        obj[propsName] = this.getWrapperProps(config, propsName, cloneProps);
-      });
-      const { children, ...restProps } = obj;
-      if (!children) {
-        this.childrenProps = null;
-      } else {
-        this.setChildrenList(children)
-      }
-     
-      return restProps;
-    },    
-
-    setChildrenList(childrenProps) {
-      const { children, ...rest } = childrenProps;
-      this.childrenList = handleChildren(children, rest);
-    }
   },
   mounted() {
-    if (this.componentInfo.id) {
-      this.resolveComponentProps(this.componentInfo.component);
+    const { component, props, id } = this.componentInfo;
+    this.resolveComponentProps(component, props);
+    if (id) {
       // 监听属性面板的更新
       eventBus.on(`${this.componentInfo.id}:propsUpdate`, (props, path) => {
+        // TODO: 待优化，不需要区分是否有 path
         if (path) {
           // 子组件的 inlineEdit 
           const { newFormData } = transferPath(path, props, this.rawProps)
           const newProps = cloneDeep(newFormData);
-          const _props = this.handleProps(newProps);
-          this.componentProps = _props;
+          const res = getRenderedProps(component, newProps, id, '');
+          const { children, restProps } = res;
+          this.childrenList = children;
+          this.componentProps = restProps;
+      
         } else {
           const newProps = cloneDeep({ ...this.rawProps, ...props });
-          const _props = this.handleProps(newProps);
-          this.componentProps = _props;
+          const res = getRenderedProps(component, newProps, id, '');
+          const { children, restProps } = res;
+          this.childrenList = children;
+          this.componentProps = restProps;
         }
        
       });
+      // 属性面板按照路径选择组件
       eventBus.on('reverseElectionChild', (child, path) => {
         this.handleSelectChildren({
           ...child
         }, path)
       })
       // TODO: 需要优化，不需要这么多的事件
+      // 取消选中时
       eventBus.on(`${this.componentInfo.id}:deSelected`, () => {
         this.isActive = false;
         this.isMouseenter = false;
       })
-    } else {
-      this.resolveComponentProps(this.componentInfo.component);
     }
   },
   unmounted() {

@@ -29,16 +29,11 @@
   </template>
   
   <script>
-  import eventBus from "../eventBus";
   import antdMap from "../util/getWidgets/antd";
   import iconMap from '../util/getWidgets/icon';
-  import { requestComponentProps} from '../util/request'
-  import { setSlotWrapper, SlotWrapper } from "./SlotWrapper";
-  import { getFieldNames } from '../util/getFieldNames';
-  import { getMockedProps } from '../util/mock';
-  import { clone, cloneDeep, get } from 'lodash';
-  import { formatPath } from '../util/common';
-  import { handleChildren } from '../util/childrenUtils';
+  import { SlotWrapper } from "./SlotWrapper";
+  import { cloneDeep } from 'lodash';
+  import { getRenderedProps } from './util';
 
   export default {
     name: "ChildrenWrapper",
@@ -54,7 +49,6 @@
         controlledNames: null,// 受控组件，暂时弃用
         componentProps: {}, // 经过 handleProps处理过后的，真正的传给组件的参数
         rawProps:{}, // 原始的 props， 在model中存储的props数据模型
-        propsConfig: {}, // props的类型配置信息
         childrenList: [],
       };
     },
@@ -65,7 +59,8 @@
           if (!this.componentInfo.component) {
             return;
           }
-          this.resolveComponentProps(this.componentInfo.component, this.componentInfo.id);
+          const { component, props } = this.componentInfo;
+          this.resolveComponentProps(component, props, this.rootWidgetId, this.path);
         }
       }    
     },
@@ -97,126 +92,13 @@
           props: cloneDeep(this.rawProps)
         }, '')
       },
-      onChange(value) { 
-        let _value = value;
-        if (this.controlledNames.valuePath) {
-          _value = value[this.controlledNames.valuePath]
-        }
-        this.value = _value;
-        //TODO: 更新props
+      async resolveComponentProps(name, props) {
+        this.rawProps = cloneDeep(props);
+        const res = getRenderedProps(name, props);
+        const { children, restProps } = res;
+        this.childrenList = children;
+        this.componentProps = restProps;
       },
-      async resolveComponentProps(name, id) {
-        const res = await requestComponentProps(name);
-        this.propsConfig = res.props;
-        let newProps = {};
-        this.rawProps = clone(this.componentInfo.props);
-        if (this.rawProps && Object.keys(this.rawProps).length) {
-          newProps = clone(this.rawProps);
-        } else {
-          // children-wrapper 中
-          this.rawProps = getMockedProps(res.props);
-          newProps = clone(this.rawProps);
-          // TODO: 因为 组件是先添加再被选中的，所以这个里的事件触发
-          // 会比 panel 中的事件注册更早，所以这里要用setTimeout 
-          setTimeout(() => {
-            eventBus.emit(`canvasUpdate`, `${this.path}[1]`, this.rawProps)
-          })
-        }
-        // 对原始的props 做层slotWrapper 方便画布操作
-        const _props = this.handleProps(newProps);
-        this.componentProps = _props;
-      },
-  
-      getWrapperProps(config, path, rawProps, fieldNames) {
-        const curValue = get(rawProps, path);
-        const { name, property, item } = config.type || {};
-        if (name === 'ReactNode') {
-          // children 需要特殊处理，用 slot 传递
-          if (path === 'children') {
-            return {
-              widgetId: this.componentInfo.id,
-              widgetProps: { ...rawProps },
-              path: path,
-              children: curValue,
-              fieldNames,
-              meta: [4]
-            }
-          }
-          return setSlotWrapper({
-            widgetId: this.componentInfo.id,
-            widgetProps: { ...rawProps },
-            path: path,
-            children: curValue,
-            fieldNames,
-            meta: [4],
-            rootWidgetId: this.rootWidgetId,
-            rootPath: this.path, // 嵌套的子组件的路径
-          });
-        } else if (name === 'object') { 
-          if (curValue) {
-            const obj = {};
-            Object.keys(curValue).forEach(key => {
-              const keyConfig = property[key];
-              if (!keyConfig) {
-                console.log(`${key}找不到对应的propsConfig`)
-              } else {
-                obj[key] = this.getWrapperProps(keyConfig, `${formatPath(path)}.${key}`, rawProps);
-              }
-            });
-            return obj;
-          }
-          return curValue;
-        } else if (name === 'array') { 
-          if (curValue) {
-            const fieldNames = getFieldNames(config);
-            return curValue.map((_item, index) => {
-              const obj = {};
-              Object.keys(_item).forEach(key => {
-                const keyConfig = item[key];
-                if (!keyConfig) {
-                  console.log(`【path=${path}】${key}找不到对应的props，请检查`);
-                  return;
-                }
-                if (key === 'children' && keyConfig.type.name === 'children') {
-                  obj[key] = this.getWrapperProps({ ...config, name:'children' }, `${formatPath(path)}[${index}].${key}`, rawProps);
-                  } else {
-                  obj[key] = this.getWrapperProps(keyConfig, `${formatPath(path)}[${index}].${key}`, rawProps, fieldNames);
-                }
-              });
-              return obj;
-            })
-          }
-          return curValue;
-        } else{
-          return curValue;
-        }
-      },
-  
-      //处理组件的 props，如果某个props类型是 ReactNode, 要包裹上一层元素，用于处理数据同步
-      handleProps(props) {
-        const cloneProps = clone(props);
-        const obj = {}
-        Object.keys(props).map((propsName) => {
-            const config = this.propsConfig[propsName]; 
-            if (config) {
-                obj[propsName] = this.getWrapperProps(config, propsName, cloneProps);
-            } else {
-                obj[propsName] = cloneProps[propsName];
-            }
-        });
-        const { children, ...restProps } = obj;
-        if (!children) {
-          this.childrenProps = null;
-        } else {
-          this.setChildrenList(children)
-        }
-        
-        return restProps;
-      },
-      setChildrenList(childrenProps) {
-        const { children, ...rest } = childrenProps;
-        this.childrenList = handleChildren(children, rest);
-      }
     },
   };
   </script>

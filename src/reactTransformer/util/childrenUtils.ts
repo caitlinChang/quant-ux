@@ -19,7 +19,7 @@ export type ChildrenType = string | (string | [string, any])[];
 export function handleChildren(
   children: ChildrenType,
   rootWidgetProps: any,
-  path
+  path?: string
 ) {
   const _widgetProps = cloneDeep(rootWidgetProps || {});
   if (!isArray(children)) {
@@ -36,7 +36,7 @@ export function handleChildren(
       ];
     } else {
       console.error("处理组件的children, 无法处理该 children 类型: ", children);
-      return;
+      return [];
     }
   }
   // @ts-ignore
