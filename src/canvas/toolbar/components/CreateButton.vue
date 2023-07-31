@@ -1113,7 +1113,7 @@ export default {
     onCreateCustomWeget(widget, e) {
       if (this.forSlot) {
         const { path, id, formData } = this.forSlot;
-        const _value = [revertName(widget.component), null];
+        const _value = [revertName(widget.component), widget.props || null];
         const { key, value, newFormData } = transferPath(path, _value, formData);
         eventBus.emit(`canvasUpdate`, key, value);
         eventBus.emit(`${id}:propsUpdate`, newFormData);

@@ -40,13 +40,10 @@ export default {
   props: ["componentInfo"],
   data() {
     return {
-      value: undefined,
-      controlledNames: null,
-      selectedId: "",
-      componentProps: {}, // 经过 handleProps处理过后的，真正的传给组件的参数
+      value: undefined, // 受控组件，暂时弃用
+      controlledNames: null,// 受控组件，暂时弃用
+      componentProps: {}, // 经过 getRenderedProps 处理过后的，真正的传给组件的参数
       rawProps:{}, // 原始的 props， 在model中存储的props数据模型
-      propsConfig: {}, // props的类型配置信息
-      showAction: true,
       childrenList: [],
       isActive: '',
       isMouseenter:'',
