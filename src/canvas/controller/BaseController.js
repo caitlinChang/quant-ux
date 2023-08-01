@@ -196,9 +196,13 @@ export default class BaseController extends Core {
 			this.logger.error("onWidgetSelected", "exit > No widget with id: "+ id);
 			return
 		}
-		if(this.toolbar){
-			this.toolbar.onWidgetSelected(widget);
-		}
+		if (this.toolbar) {
+      		if (widget.component) {
+        		this.toolbar.onComponentSelected(widget);
+      		} else {
+        		this.toolbar.onWidgetSelected(widget);
+      		}
+   		 }
 	}
 
 	onInheritedWidgetSelected (widget) {
