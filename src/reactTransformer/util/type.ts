@@ -10,7 +10,23 @@ export enum TypeName {
   ReactNode = "ReactNode",
   Choice = "choice", // enum 多选或者单选，值为 string | string[]
   ICON = "ICON", // TODO：ICON 可以与 ReactNode 合成一个吗？？？
+  ColorPicker = "ColorPicker", // 专用的颜色选择器
+  ReactChild = "ReactChild", // ReactChild 是 ReactNode 的子集，只能是一个 ReactElement
 }
+
+export const typeNameList = [
+  TypeName.String,
+  TypeName.Number,
+  TypeName.Boolean,
+  TypeName.Array,
+  TypeName.Object,
+  TypeName.Children,
+  TypeName.ReactNode,
+  TypeName.Choice,
+  TypeName.ICON,
+  TypeName.ColorPicker,
+  TypeName.ReactChild,
+];
 
 // 定义前后端协议 propsConfig是每个配置项的信息，包括类型和默认值等等
 export type ObjectItemType = {

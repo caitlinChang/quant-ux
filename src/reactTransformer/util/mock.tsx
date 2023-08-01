@@ -54,6 +54,9 @@ export const getMockedProps = (propsConfig: {
     if (item.needMock) {
       data[key] = getMockData(propsConfig[key]);
     }
+    if (item.defaultValue) {
+      data[key] = item.defaultValue;
+    }
   });
   return data;
 };

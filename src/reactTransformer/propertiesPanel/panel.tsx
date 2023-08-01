@@ -13,15 +13,15 @@ import {
   Breadcrumb,
 } from "antd";
 import { requestComponentProps } from "../util/request";
-import { getTSType } from "../util/resolvePropsConfig";
 import { isArray, set, get, clone, cloneDeep } from "lodash";
-import { PropItemConfigType, TypeName } from "../util/type";
+import { PropItemConfigType, TypeName, typeNameList } from "../util/type";
 import { transferPath } from "../util/propsValueUtils";
 import eventBus from "../eventBus";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import SlotRender from "./components/SlotRender";
 import { formatPath } from "../util/common";
 import { getVueTypeName } from "../util/getWidgets/util";
+import ColorRender from "./components/ColorRender";
 
 const AntdPanel = Collapse.Panel;
 
@@ -77,9 +77,9 @@ const Panel = (props: {
   const resolveComponentProps = async (name: string) => {
     const res = await requestComponentProps(name);
     const list = Object.values(res.props);
-    const propsConfig = list
-      .map((item) => getTSType(item))
-      .filter((item) => item?.renderConfig);
+    const propsConfig = list.filter((item: any) => {
+      return typeNameList.includes(item.type.name);
+    });
     setPropsConfig(propsConfig);
 
     return propsConfig;
@@ -187,6 +187,13 @@ const Panel = (props: {
           onSelectComponent={(index: number) =>
             handleSelectComponent(node.key, index)
           }
+        />
+      );
+    } else if (name === TypeName.ColorPicker) {
+      return (
+        <ColorRender
+          value={value}
+          onChange={(value) => handleChangeProp(node.key, value)}
         />
       );
     }

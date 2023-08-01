@@ -126,7 +126,7 @@ function getWrapperProps(
   } else if (name === "array") {
     if (curValue) {
       const fieldNames = getFieldNames(config);
-      return curValue.map((_item, index) => {
+      return curValue.map?.((_item, index) => {
         const obj = {};
         Object.keys(_item).forEach((key) => {
           const keyConfig = item[key];
