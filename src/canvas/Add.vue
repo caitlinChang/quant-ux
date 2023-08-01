@@ -411,7 +411,8 @@ export default {
 
 			this.setState(0);
 		},
-		onWidgetAdded (pos, model){
+		// 添加组件统一用上面的onComponentAdd, 这个是项目原有的，不会再使用
+		onWidgetAdded(pos, model) {
 			this.logger.log(0,"onWidgetAdded", "enter");
 			var newWidget = this.controller.addWidget(model, pos);
 			if(newWidget){

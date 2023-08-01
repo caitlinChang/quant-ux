@@ -24,3 +24,22 @@ zoomContainer 又分为 widgetContainer 和 screenContainer;真实的 screen 元
 dndContainer 和 container 一样大；画布上的元素，无论是 screen 还是 widgets，都会有一个对应的 dnd box, 用于处理 dnd 事件；这个 dnd box 相当于是 真正的元素的遮罩层；
 
 在 dndContainer 中有一个 svg 元素，不清楚这个 svg 元素的作用, 可能是为了给画布上添加一写对 svg 元素的编辑能力吧；
+
+
+### 画布上的元素
+Screen
+
+Widget
+
+Line
+
+
+### 核心流程的解释
+
+##### 画布上元素的拖拽
+触发 DndContainer 的 mousedown 事件(wiring中), 判断 e.target._WidgetID 存在，就调用 dispatchMousedownWidget 事件。
+dispatchMousedownWidget 有两个走向，或者是开始拖拽，或者是双击进入编辑态；
+如果是拖拽行为
+```
+this.onDragStart(div, widget.id, "onWidgetDndStart", "onWidgetDndMove", "onWidgetDndEnd", "onWidgetDndClick", e);
+```
