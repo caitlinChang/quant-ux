@@ -11,10 +11,17 @@ export default (props?:{value?: string, onChange?: (v: string) => void}) => {
     props.onChange?.(color);
     setVisible(false);
   }
-  return <div>
-    <span onClick={() => setVisible(true)}></span>
-    <Modal visible={visible} title="Color" onCancel={() => setVisible(false)} onOk={handleOk}>
-      {/* <TwitterPicker color={value} onChange={handleColorChange} /> */}
-    </Modal>
-  </div>
+  return (
+    <div>
+      <span onClick={() => setVisible(true)}></span>
+      <Modal
+        visible={visible}
+        title="Color"
+        onCancel={() => setVisible(false)}
+        onOk={handleOk}
+      >
+        <TwitterPicker color={props.value} onChange={handleColorChange} />
+      </Modal>
+    </div>
+  );
 }

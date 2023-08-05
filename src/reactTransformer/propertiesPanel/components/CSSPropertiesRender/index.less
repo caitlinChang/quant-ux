@@ -1,8 +1,18 @@
-.icon_button-wrapper {
-  display: flex;
-  border-radius: 2px;
+.design_module {
+  // border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 10px 0;
 }
-.icon_button {
+.icon_button-wrapper {
+  position: relative;
+  border-radius: 2px;
+  width: 100px;
+  height: 100px;
+  flex-wrap: wrap;
+  margin-right: 10px;
+}
+.border_icon{
+  position: absolute;
   padding:4px;
   background-color: #f0f0f0;
   border: 1px solid #f0f0f0;
@@ -12,6 +22,19 @@
     height: 20px;
   }
 }
+.border_style_icon-wrapper{
+  display: flex;
+}
+.border_style_icon {
+  padding:3px;
+  background-color: #f0f0f0;
+  border: 1px solid #f0f0f0;
+  cursor: pointer;
+  img {
+    width:16px;
+    height: 16px;
+  }
+}
 .icon_button-selected {
-  background-color: #fff;
+  background-color: #fff !important;
 }

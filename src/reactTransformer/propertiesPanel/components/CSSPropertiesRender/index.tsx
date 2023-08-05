@@ -1,5 +1,5 @@
 import React from "react";
-import {} from "antd";
+import { Form } from "antd";
 import BorderDesign from "./BorderDesign";
 
 enum CSSProps {
@@ -14,7 +14,17 @@ enum CSSProps {
   HEIGHT = "height",
 }
 export default () => {
-  return <div>
-    <BorderDesign />
-  </div>;
+  const [form] = Form.useForm();
+  const handleChange = (v) => {
+    console.log("onValuesChange = ", v);
+  };
+  return (
+    <div>
+      <Form form={form} onValuesChange={handleChange}>
+        <Form.Item noStyle>
+          <BorderDesign />
+        </Form.Item>
+      </Form>
+    </div>
+  );
 };
