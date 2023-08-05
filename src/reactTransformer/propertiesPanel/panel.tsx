@@ -1,13 +1,13 @@
 import React, { useEffect, ReactNode } from "react";
 import {
   Tree,
+  Tabs,
   Typography,
   Collapse,
   Radio,
   Input,
   InputNumber,
   Switch,
-  Form,
   Tooltip,
   Space,
   Breadcrumb,
@@ -22,9 +22,12 @@ import SlotRender from "./components/SlotRender";
 import { formatPath } from "../util/common";
 import { getVueTypeName } from "../util/getWidgets/util";
 import ColorRender from "./components/ColorRender";
+import StyleRender from "./components/StyleRender";
+import CSSPropertiesRender from "./components/CSSPropertiesRender";
 
 const AntdPanel = Collapse.Panel;
-
+const {TabPane} = Tabs;
+ 
 const Panel = (props: {
   widget: any;
   selectChild: any;
@@ -423,7 +426,15 @@ const Panel = (props: {
       {!!selectWidget?.id && (
         <>
           <Typography.Title level={5}>{renderTitle()}</Typography.Title>
-          <Form>{renderChildren(treeData)}</Form>
+          <Tabs size="small">
+            <TabPane tab="Settings" key="settings">
+              {renderChildren(treeData)}
+            </TabPane>
+            <TabPane tab="Design" key="design">
+              <CSSPropertiesRender />
+            </TabPane>
+          </Tabs>
+          
         </>
       )}
     </div>

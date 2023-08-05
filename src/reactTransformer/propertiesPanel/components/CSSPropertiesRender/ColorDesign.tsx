@@ -1,5 +1,5 @@
 import React from 'react';
-// import { SketchPicker, TwitterPicker } from "react-color";
+import { SketchPicker, TwitterPicker } from "react-color";
 import { Button, Modal } from "antd";
 export default (props?:{value?: string, onChange?: (v: string) => void}) => {
   const [visible, setVisible] = React.useState(false);
