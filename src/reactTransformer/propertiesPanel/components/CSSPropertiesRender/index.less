@@ -1,7 +1,7 @@
 .design_module {
   // border-top: 1px solid #f0f0f0;
-  border-bottom: 1px solid #f0f0f0;
-  padding: 10px 0;
+  // border-bottom: 1px solid #f0f0f0;
+  // padding: 10px 0;
 }
 .icon_button-wrapper {
   position: relative;
@@ -37,4 +37,31 @@
 }
 .icon_button-selected {
   background-color: #fff !important;
+}
+
+// Spacing
+.spacing_icon-wrapper {
+  display: flex;
+  margin-bottom: 5px;
+}
+.spacing_icon {
+  display: flex;
+  padding:3px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  margin-right: 2px;
+  background-color: #f0f0f0;
+  border: 1px solid #f0f0f0;
+  cursor: pointer;
+  img {
+    width:16px;
+    height: 16px;
+  }
+}
+.spacing_icon-selected {
+  // border: 1px solid #f0f0f0;
+  .spacing_icon {
+    background-color: #fff;
+  }
 }

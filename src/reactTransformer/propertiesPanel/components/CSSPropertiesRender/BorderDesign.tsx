@@ -1,11 +1,10 @@
-import { PageHeader,Select, Form, Radio, Tooltip, Typography } from 'antd';
-import React, { useState } from 'react';
-import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
-import ColorDesign from './ColorDesign';
+import { Select, Form } from "antd";
+import React, { useState, useEffect } from "react";
+import ColorDesign from "./ColorDesign";
 import { BorderAttrlist, BorderStyleList } from "./config";
 import "./index.less";
+import ModuleTitle from "./ModuleTitle";
 
-// border: 1px solid #000;
 const widthList = () => {
   const list = [];
   for (let i = 0; i < 10; i++) {
@@ -47,9 +46,9 @@ const BorderSelect = (props?: {
 const BorderStyleSelect = (props?: {
   value?: string;
   onChange?: (v: string) => void;
+  defaultValue?: string;
 }) => {
   const handleChange = (v) => {
-    console.log("v = ", v);
     props?.onChange?.(v);
   };
   return (
@@ -73,81 +72,161 @@ const BorderStyleSelect = (props?: {
   );
 };
 
-const defaultBorderValue = "1px solid #000";
+const resolveBorderValue = (value: ValueType) => {
+  if (!value)
+    return {
+      // 边框的默认值
+      border: { width: "0px", style: "none", color: "#000" },
+    };
+  const { border, ...rest } = value;
+  if (border) {
+    const [width, style, color] = border.split(" ");
+    return {
+      border: {
+        width,
+        style,
+        color,
+      },
+    };
+  } else {
+    const obj = {};
+    Object.keys(rest).forEach((i) => {
+      const [width, style, color] = rest[i].split(" ");
+      obj[i] = {
+        width,
+        style,
+        color,
+      };
+    });
+    return obj;
+  }
+};
 
-export default (props?: { value?: any; onChange?: (v: any) => void }) => {
+type BorderItemType = {
+  width: string;
+  style: "none" | "solid" | "dashed" | "groove";
+  color: string;
+};
+
+type BorderValueType = {
+  border?: BorderItemType;
+  borderTop?: BorderItemType;
+  borderRight?: BorderItemType;
+  borderBottom?: BorderItemType;
+  borderLeft?: BorderItemType;
+};
+
+type ValueType = {
+  border?: string;
+  borderTop?: string;
+  borderRight?: string;
+  borderBottom?: string;
+  borderLeft?: string;
+};
+
+export default (props?: {
+  value?: ValueType;
+  onChange?: (v: ValueType) => void;
+}) => {
   const [collapse, setCollapse] = useState();
-  const [borderStyle, setBorderStyle] = useState();
-  const form = Form.useForm();
-  const handleToogleCollapse = () => {
-    if (collapse) {
-      setCollapse(false);
+  const [curBorderType, setCurBorderType] = useState("border");
+  const [borderValues, setBorderValues] = useState<BorderValueType>();
+  const [form] = Form.useForm();
+  useEffect(() => {
+    const value = resolveBorderValue(props.value);
+    setBorderValues(value);
+    setCurBorderType(Object.keys(value)[0]);
+    form.setFieldsValue(value[Object.keys(value)[0]]);
+  }, [props.value]);
+
+  const onClear = () => {
+    props?.onChange?.(undefined);
+  };
+
+  const handleToogleCollapse = (v) => {
+    setCollapse(v);
+    if (v) {
+      onClear();
+    }
+  };
+  const handleChangeBorderType = (v) => {
+    setCurBorderType(v);
+    form.setFieldsValue(
+      borderValues[v] || { width: "0px", style: "none", color: "#000" }
+    );
+  };
+
+  const onChange = (borderValues) => {
+    const value = Object.keys(borderValues).reduce((acc, cur) => {
+      const { width, style, color } = borderValues[cur];
+      acc[cur] = `${width} ${style} ${color}`;
+      return acc;
+    }, {});
+    props?.onChange?.(value);
+  };
+
+  const handleChangeBorderValue = (_, v) => {
+    if (curBorderType === "border") {
+      const newValue = {
+        border: v,
+      };
+      setBorderValues(newValue);
+      onChange(newValue);
     } else {
-      setCollapse(true);
+      const newValue = {
+        ...borderValues,
+        [curBorderType]: v,
+      };
+      setBorderValues(newValue);
+      onChange(newValue);
     }
   };
   return (
-    <div style={{ margin: "0 10px" }} id="BorderDesign">
+    <ModuleTitle
+      title="边框"
+      collapse={collapse}
+      onToggle={handleToogleCollapse}
+    >
       <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          // margin: "10px 0",
-        }}
+        style={{ display: "flex" }}
+        id="BorderDesign"
+        className="design_module"
       >
-        <Typography.Text>边框</Typography.Text>
-        <span>
-          {collapse ? (
-            <PlusOutlined onClick={handleToogleCollapse} />
-          ) : (
-            <MinusOutlined onClick={handleToogleCollapse} />
-          )}
-        </span>
-      </div>
-      {collapse && (
-        <div className="design_module">
-          <Form
-            size="small"
-            colon={false}
-            labelAlign="right"
-            labelCol={{ span: 8 }}
+        <BorderSelect value={curBorderType} onChange={handleChangeBorderType} />
+        <Form
+          form={form}
+          size="small"
+          colon={false}
+          labelAlign="right"
+          labelCol={{ span: 8 }}
+          onValuesChange={handleChangeBorderValue}
+        >
+          <Form.Item
+            style={{ margin: "8px", padding: 0 }}
+            label="Width"
+            name="width"
           >
-            <div style={{ display: "flex" }}>
-              <Form.Item label="" name="border">
-                <BorderSelect />
-              </Form.Item>
-              <div>
-                <Form.Item
-                  style={{ margin: "8px", padding: 0 }}
-                  label="Width"
-                  name="width"
-                >
-                  <Select
-                    getPopupContainer={() =>
-                      document.getElementById("BorderDesign")
-                    }
-                    options={widthList()}
-                  ></Select>
-                </Form.Item>
-                <Form.Item
-                  style={{ margin: "8px", padding: 0 }}
-                  label="Style"
-                  name="style"
-                >
-                  <BorderStyleSelect />
-                </Form.Item>
-                <Form.Item
-                  style={{ margin: "8px", padding: 0 }}
-                  label="Color"
-                  name="color"
-                >
-                  <ColorDesign />
-                </Form.Item>
-              </div>
-            </div>
-          </Form>
-        </div>
-      )}
-    </div>
+            <Select
+              getPopupContainer={() => document.getElementById("BorderDesign")}
+              options={widthList()}
+            ></Select>
+          </Form.Item>
+          <Form.Item
+            style={{ margin: "8px", padding: 0 }}
+            label="Style"
+            name="style"
+          >
+            <BorderStyleSelect />
+          </Form.Item>
+          <Form.Item
+            style={{ margin: "8px", padding: 0 }}
+            label="Color"
+            name="color"
+          >
+            <ColorDesign />
+          </Form.Item>
+        </Form>
+      </div>
+    </ModuleTitle>
   );
 };

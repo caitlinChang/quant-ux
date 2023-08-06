@@ -20,7 +20,7 @@ export const BorderAttrlist = [
   },
   {
     label: BorderLeft,
-    value: "border-left",
+    value: "borderLeft",
     style: {
       top: "36px",
       left: "0",
@@ -28,7 +28,7 @@ export const BorderAttrlist = [
   },
   {
     label: BorderTop,
-    value: "border-top",
+    value: "borderTop",
     style: {
       top: "0",
       left: "36px",
@@ -36,7 +36,7 @@ export const BorderAttrlist = [
   },
   {
     label: BorderRight,
-    value: "border-right",
+    value: "borderRight",
     style: {
       top: "36px",
       right: "0",
@@ -44,7 +44,7 @@ export const BorderAttrlist = [
   },
   {
     label: BorderBottom,
-    value: "border-bottom",
+    value: "borderBottom",
     style: {
       bottom: "-4px",
       left: "36px",
