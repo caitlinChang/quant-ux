@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form } from "antd";
 import BorderDesign from "./BorderDesign";
 import BackgroundDesign from "./BackgroundDesign";
@@ -10,6 +10,19 @@ import PositionDesign from "./PositionDesign";
 export default (props?: { value?: any; onChange?: (v: any) => void }) => {
   console.log("props.value = ", props.value);
   const [form] = Form.useForm();
+
+  useEffect(() => {
+    if (props.value) {
+      form.setFieldsValue({
+        text: props.value,
+        size: props.value,
+        spacing: props.value,
+        border: props.value,
+        background: props.value,
+      });
+    }
+  }, [props.value]);
+
   const handleChange = (v, allValues) => {
     const values = Object.values(allValues)
       .filter((i) => i)
