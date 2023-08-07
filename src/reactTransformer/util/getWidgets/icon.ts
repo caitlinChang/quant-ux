@@ -19,7 +19,7 @@ export const iconList = Object.keys(iconMap).map((key) => {
     h: 30,
     name: key,
     displayName: revertName(key),
-    cagegory: "ICON",
+    category: "ICON",
     component: key,
     props: {},
   };
