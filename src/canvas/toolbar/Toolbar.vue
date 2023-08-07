@@ -1131,7 +1131,7 @@ export default {
       delete obj._extends;
       delete obj._type;
       delete obj._group;
-      delete obj.category;
+      // delete obj.category; // ICON 要获取特殊的propsConfig
       delete obj.subcategory;
       delete obj._previewSize;
       /**

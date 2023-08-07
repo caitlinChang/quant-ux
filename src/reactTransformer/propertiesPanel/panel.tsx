@@ -1,13 +1,13 @@
 import React, { useEffect, ReactNode } from "react";
 import {
   Tree,
+  Tabs,
   Typography,
   Collapse,
   Radio,
   Input,
   InputNumber,
   Switch,
-  Form,
   Tooltip,
   Space,
   Breadcrumb,
@@ -24,9 +24,13 @@ import { formatPath } from "../util/common";
 import { getVueTypeName } from "../util/getWidgets/util";
 import ColorRender from "./components/ColorRender";
 import { formatWidgetExportCodeDemo } from "./components/ExportTemplate";
+import StyleRender from "./components/StyleRender";
+import CSSPropertiesRender from "./components/CSSPropertiesRender";
+import "./panel.less";
 
 const AntdPanel = Collapse.Panel;
-
+const {TabPane} = Tabs;
+ 
 const Panel = (props: {
   widget: any;
   selectChild: any;
@@ -71,7 +75,9 @@ const Panel = (props: {
 
   const renderWidgetProps = async (widget) => {
     const { component, props = {} } = widget;
-    const propsConfig = await resolveComponentProps(component);
+    const propsConfig = await resolveComponentProps(
+      widget.category === "ICON" ? "icon" : component
+    );
     setFormData(cloneDeep(props));
     getTreedata(propsConfig, { ...props });
   };
@@ -431,13 +437,31 @@ const Panel = (props: {
     }
 
   };
+  const handleChangeStyle = (value) => {
+    eventBus.emit(`${selectWidget.id}:propsUpdate`, {
+      style: value,
+    });
+  };
+
   return (
     <div>
       {!!selectWidget?.id && (
         <>
           <Typography.Title level={5}>{renderTitle()}</Typography.Title>
-          <Form>{renderChildren(treeData)}</Form>
-          <Button onClick={onWidgetExport}>Export</Button>
+          <Tabs size="small" className="panel_tabs">
+            <TabPane className="panel_tab" tab="Settings" key="settings">
+              {renderChildren(treeData)}
+            </TabPane>
+            <TabPane className="panel_tab" tab="Design" key="design">
+              <CSSPropertiesRender
+                value={formData.style}
+                onChange={handleChangeStyle}
+              />
+            </TabPane>
+            <TabPane className="panel_tab" tab="Export" key="export">
+              <Button onClick={onWidgetExport}>Export</Button>
+            </TabPane>
+          </Tabs>
         </>
       )}
     </div>

@@ -95,7 +95,7 @@ export const antdList = Object.keys(componentMap)
       name: key,
       description: res.description,
       displayName: res.displayName || key,
-      category: "Ant Design 2",
+      category: "Ant Design",
       component: key,
       props: cloneDeep(props),
       componentPath,

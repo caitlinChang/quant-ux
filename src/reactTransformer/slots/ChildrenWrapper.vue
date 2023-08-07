@@ -59,8 +59,8 @@
           if (!this.componentInfo.component) {
             return;
           }
-          const { component, props } = this.componentInfo;
-          this.resolveComponentProps(component, props, this.rootWidgetId, this.path);
+          const { component, props, category } = this.componentInfo;
+          this.resolveComponentProps(category === 'ICON' ? 'icon' : component, props, this.rootWidgetId, this.path);
         }
       }    
     },

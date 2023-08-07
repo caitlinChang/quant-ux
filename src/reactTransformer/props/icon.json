@@ -5,6 +5,24 @@
     "description": "",
     "displayName": "icon",
     "methods": [],
-    "props": {}
+    "props": {
+      "style": {
+        "type": {
+          "name": "CSSProperties"
+        },
+        "required": false,
+        "description": "设置图标的样式，例如 fontSize 和 color"
+      },
+      "rotate": {
+        "name": "rotate",
+        "defaultValue": "",
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "旋转角度",
+        "tips": ""
+      }
+    }
   }
 ]
