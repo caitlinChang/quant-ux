@@ -10,7 +10,6 @@ export default () => {
           <Input />
         </Form.Item>
       </Form>
-      ;
     </ModuleTitle>
   );
 };

@@ -65,3 +65,26 @@
     background-color: #fff;
   }
 }
+// Size
+.size_collapse{
+  .ant-collapse-item {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .ant-collapse-content-box {
+    padding: 0 !important;
+  }
+  .ant-collapse-header {
+    // border-bottom: 1px solid #f0f0f0;
+    padding: 0;
+    .ant-collapse-expand-icon {
+      margin-left: 140px;
+      rotate: 90deg;
+    }
+  }
+  .ant-collapse-item-active {
+    .ant-collapse-expand-icon {
+      rotate: 180deg;
+    }
+  }
+}

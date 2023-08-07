@@ -29,9 +29,9 @@ export default () => {
       <Form.Item noStyle>
         <BackgroundDesign />
       </Form.Item>
-      <Form.Item noStyle>
+      {/* <Form.Item noStyle>
         <PositionDesign />
-      </Form.Item>
+      </Form.Item> */}
     </Form>
   );
 };

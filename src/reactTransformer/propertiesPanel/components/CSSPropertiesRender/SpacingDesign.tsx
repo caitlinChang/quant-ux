@@ -172,7 +172,7 @@ type ValueType =
   | undefined;
 
 function resolveSpacingStr(str) {
-  const arr = str.split(" ").map((i) => parseInt(i));
+  const arr = (str || "").split(" ").map((i) => parseInt(i));
   if (arr.length === 1) {
     return [arr[0], arr[0], arr[0], arr[0]];
   } else if (arr.length === 2) {
