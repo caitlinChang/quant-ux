@@ -24,6 +24,7 @@ import { getVueTypeName } from "../util/getWidgets/util";
 import ColorRender from "./components/ColorRender";
 import StyleRender from "./components/StyleRender";
 import CSSPropertiesRender from "./components/CSSPropertiesRender";
+import "./panel.less";
 
 const AntdPanel = Collapse.Panel;
 const {TabPane} = Tabs;
@@ -427,14 +428,13 @@ const Panel = (props: {
         <>
           <Typography.Title level={5}>{renderTitle()}</Typography.Title>
           <Tabs size="small">
-            <TabPane tab="Settings" key="settings">
+            <TabPane className="panel_tab" tab="Settings" key="settings">
               {renderChildren(treeData)}
             </TabPane>
-            <TabPane tab="Design" key="design">
+            <TabPane className="panel_tab" tab="Design" key="design">
               <CSSPropertiesRender />
             </TabPane>
           </Tabs>
-          
         </>
       )}
     </div>

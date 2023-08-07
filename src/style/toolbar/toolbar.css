@@ -381,6 +381,7 @@
   position: fixed;
   height: 100%;
   width: 321px;
+  overflow: hidden !important;
   top: 0px;
   right: 0px;
   padding-top: 39px;

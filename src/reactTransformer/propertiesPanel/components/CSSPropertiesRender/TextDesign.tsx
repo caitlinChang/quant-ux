@@ -31,12 +31,12 @@ const weightList = () => {
 
 export default () => {
   return (
-    <ModuleTitle title="文本样式">
+    <ModuleTitle title="文本" collapse={true}>
       <Form
         id="TextDesign"
         size="small"
-        labelAlign="right"
-        labelCol={{ span: 8 }}
+        labelAlign="left"
+        labelCol={{ span: 9 }}
       >
         {/* <Form.Item label="内容" name="children">
         <Input />

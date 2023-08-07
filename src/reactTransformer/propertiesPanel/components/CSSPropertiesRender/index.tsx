@@ -5,6 +5,7 @@ import BackgroundDesign from "./BackgroundDesign";
 import TextDesign from "./TextDesign";
 import SizeDesign from "./SizeDesign";
 import SpacingDesign from "./SpacingDesign";
+import PositionDesign from "./PositionDesign";
 
 export default () => {
   const [form] = Form.useForm();
@@ -27,6 +28,9 @@ export default () => {
       </Form.Item>
       <Form.Item noStyle>
         <BackgroundDesign />
+      </Form.Item>
+      <Form.Item noStyle>
+        <PositionDesign />
       </Form.Item>
     </Form>
   );

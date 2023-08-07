@@ -43,7 +43,7 @@ export default (props?: { value?: any; onChange?: (v: any) => void }) => {
     }
   };
   return (
-    <ModuleTitle title="Size" collapse={true}>
+    <ModuleTitle title="宽高" collapse={true}>
       <Form
         form={form}
         labelCol={{ span: 9 }}
