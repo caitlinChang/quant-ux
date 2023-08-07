@@ -427,7 +427,7 @@ const Panel = (props: {
       {!!selectWidget?.id && (
         <>
           <Typography.Title level={5}>{renderTitle()}</Typography.Title>
-          <Tabs size="small">
+          <Tabs size="small" className="panel_tabs">
             <TabPane className="panel_tab" tab="Settings" key="settings">
               {renderChildren(treeData)}
             </TabPane>

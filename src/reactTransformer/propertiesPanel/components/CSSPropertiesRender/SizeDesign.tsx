@@ -91,7 +91,7 @@ export default (props?: { value?: any; onChange?: (v: any) => void }) => {
             <Form.Item
               style={{ margin: "5px 0" }}
               label="Overflow"
-              name="overflow-x"
+              name="overflowX"
             >
               <Radio.Group defaultValue="auto" options={overflowConfig} />
             </Form.Item>
@@ -116,7 +116,7 @@ export default (props?: { value?: any; onChange?: (v: any) => void }) => {
             <Form.Item
               style={{ margin: "5px 0" }}
               label="Overflow"
-              name="overflow-y"
+              name="overflowY"
             >
               <Radio.Group defaultValue="auto" options={overflowConfig} />
             </Form.Item>

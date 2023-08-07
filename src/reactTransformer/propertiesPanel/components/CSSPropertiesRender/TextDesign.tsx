@@ -41,19 +41,19 @@ export default () => {
         {/* <Form.Item label="内容" name="children">
         <Input />
       </Form.Item> */}
-        <Form.Item label="Color" name="color">
+        <Form.Item style={{ margin: "5px 0" }} label="Color" name="color">
           <ColorDesign />
         </Form.Item>
-        <Form.Item label="Size" name="fontSize">
+        <Form.Item style={{ margin: "5px 0" }} label="Size" name="fontSize">
           <Select
             getPopupContainer={() => document.getElementById("TextDesign")}
             options={widthList()}
           />
         </Form.Item>
-        <Form.Item label="Weight" name="fontWeight">
+        <Form.Item style={{ margin: "5px 0" }} label="Weight" name="fontWeight">
           <Select
             getPopupContainer={() => document.getElementById("TextDesign")}
-            options={widthList()}
+            options={weightList()}
             defaultValue="normal"
           />
         </Form.Item>
