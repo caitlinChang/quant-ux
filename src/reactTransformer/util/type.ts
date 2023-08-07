@@ -8,6 +8,7 @@ export enum TypeName {
   Object = "object",
   Children = "children", // 类型为children 代表和父类型一致
   ReactNode = "ReactNode",
+  CSSProperties = "CSSProperties", // 组件的style 属性， 在 Design 面板编辑
   Choice = "choice", // enum 多选或者单选，值为 string | string[]
   ICON = "ICON", // TODO：ICON 可以与 ReactNode 合成一个吗？？？
   ColorPicker = "ColorPicker", // 专用的颜色选择器
@@ -26,6 +27,7 @@ export const typeNameList = [
   TypeName.ICON,
   TypeName.ColorPicker,
   TypeName.ReactChild,
+  TypeName.CSSProperties,
 ];
 
 // 定义前后端协议 propsConfig是每个配置项的信息，包括类型和默认值等等

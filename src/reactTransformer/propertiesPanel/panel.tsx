@@ -438,11 +438,8 @@ const Panel = (props: {
 
   };
   const handleChangeStyle = (value) => {
-    eventBus.emit(`${selectWidget.id}:propsUpdate`, {
-      style: value,
-    });
+    handleChangeProp("style", value);
   };
-
   return (
     <div>
       {!!selectWidget?.id && (
