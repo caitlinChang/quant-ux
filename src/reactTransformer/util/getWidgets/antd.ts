@@ -8,6 +8,8 @@ const componentMap = {};
 // 有子组件的组件，需要遍历一下
 const nextComponent = ["Button", "Typography", "Radio", "Checkbox", "Form"];
 
+const subComponent = []
+
 Object.keys(antdComponents).forEach((key) => {
   if (!antdComponents[key]) return;
   const module = antdComponents[key];
@@ -25,11 +27,19 @@ Object.keys(antdComponents).forEach((key) => {
         } else if (typeof module[item] === "function") {
           componentMap[getVueTypeName(`${key}${item}`, "antd")] = module[item];
         }
+        subComponent.push({
+          key: getVueTypeName(`${key}${item}`, "antd"),
+          path: [key, item],
+        })
       }
     });
   }
   // 双驼峰转中划线
   componentMap[getVueTypeName(key, "antd")] = module;
+  subComponent.push({
+    key: getVueTypeName(key, "antd"),
+    path: [key],
+  })
 });
 // 在黑名单中的不会展示
 const blackList = [
@@ -74,8 +84,10 @@ const blackList = [
 export const antdList = Object.keys(componentMap)
   .filter((i) => !blackList.includes(i))
   .map((key) => {
+    
     const res = requestPropsConfig(key);
     const props = getMockedProps(res.props);
+    const componentPath = subComponent.find(item => item.key === key)?.path
     return {
       _type: "antd4",
       // w: 200,
@@ -86,6 +98,7 @@ export const antdList = Object.keys(componentMap)
       category: "Ant Design",
       component: key,
       props: cloneDeep(props),
+      componentPath,
     };
   });
 

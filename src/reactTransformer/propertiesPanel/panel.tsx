@@ -11,9 +11,10 @@ import {
   Tooltip,
   Space,
   Breadcrumb,
+  Button,
 } from "antd";
 import { requestComponentProps } from "../util/request";
-import { isArray, set, get, clone, cloneDeep } from "lodash";
+import { isArray, set, get, clone, cloneDeep, rest } from "lodash";
 import { PropItemConfigType, TypeName, typeNameList } from "../util/type";
 import { transferPath } from "../util/propsValueUtils";
 import eventBus from "../eventBus";
@@ -22,6 +23,7 @@ import SlotRender from "./components/SlotRender";
 import { formatPath } from "../util/common";
 import { getVueTypeName } from "../util/getWidgets/util";
 import ColorRender from "./components/ColorRender";
+import { formatWidgetExportCodeDemo } from "./components/ExportTemplate";
 import StyleRender from "./components/StyleRender";
 import CSSPropertiesRender from "./components/CSSPropertiesRender";
 import "./panel.less";
@@ -147,7 +149,7 @@ const Panel = (props: {
           : _value;
     }
     const {
-      type: { name, item },
+      type: { name },
     } = node.config;
 
     if (name === TypeName.Choice) {
@@ -237,7 +239,7 @@ const Panel = (props: {
   }) => {
     const { index = -1, config } = props;
     const {
-      type: { item, name },
+      type: { name },
     } = config;
     const _title = config.description || config.name;
     const title = index >= 0 ? `${_title} - ${index + 1}` : _title;
@@ -424,6 +426,17 @@ const Panel = (props: {
     }
   };
 
+  const onWidgetExport = async () => {
+    try {
+      const code = await formatWidgetExportCodeDemo(formData, props.widget);
+      console.log('onWidgetExport: ', code);
+      // 先写入剪切板
+      await navigator.clipboard.writeText(code)
+    } catch (e) {
+      console.log(e);
+    }
+
+  };
   const handleChangeStyle = (value) => {
     eventBus.emit(`${selectWidget.id}:propsUpdate`, {
       style: value,
@@ -444,6 +457,9 @@ const Panel = (props: {
                 value={formData.style}
                 onChange={handleChangeStyle}
               />
+            </TabPane>
+            <TabPane className="panel_tab" tab="Export" key="export">
+              <Button onClick={onWidgetExport}>Export</Button>
             </TabPane>
           </Tabs>
         </>
