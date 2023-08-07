@@ -73,7 +73,9 @@ const Panel = (props: {
 
   const renderWidgetProps = async (widget) => {
     const { component, props = {} } = widget;
-    const propsConfig = await resolveComponentProps(component);
+    const propsConfig = await resolveComponentProps(
+      widget.category === "ICON" ? "icon" : component
+    );
     setFormData(cloneDeep(props));
     getTreedata(propsConfig, { ...props });
   };
@@ -422,6 +424,12 @@ const Panel = (props: {
     }
   };
 
+  const handleChangeStyle = (value) => {
+    eventBus.emit(`${selectWidget.id}:propsUpdate`, {
+      style: value,
+    });
+  };
+
   return (
     <div>
       {!!selectWidget?.id && (
@@ -432,7 +440,10 @@ const Panel = (props: {
               {renderChildren(treeData)}
             </TabPane>
             <TabPane className="panel_tab" tab="Design" key="design">
-              <CSSPropertiesRender />
+              <CSSPropertiesRender
+                value={formData.style}
+                onChange={handleChangeStyle}
+              />
             </TabPane>
           </Tabs>
         </>

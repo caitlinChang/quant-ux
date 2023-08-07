@@ -7,26 +7,43 @@ import SizeDesign from "./SizeDesign";
 import SpacingDesign from "./SpacingDesign";
 import PositionDesign from "./PositionDesign";
 
-export default () => {
+export default (props?: { value?: any; onChange?: (v: any) => void }) => {
+  console.log("props.value = ", props.value);
   const [form] = Form.useForm();
-  const handleChange = (v) => {
-    console.log("onValuesChange = ", v);
+  const handleChange = (v, allValues) => {
+    const values = Object.values(allValues)
+      .filter((i) => i)
+      .map((i: any) => {
+        const obj = {};
+        for (let key in i) {
+          if (i[key]) {
+            obj[key] = i[key];
+          }
+        }
+        return obj;
+      })
+      .reduce((prev, cur) => {
+        return { ...prev, ...cur };
+      }, {});
+
+    console.log("onValuesChange = ", values);
+    props?.onChange?.(values);
   };
   return (
     <Form form={form} onValuesChange={handleChange}>
-      <Form.Item noStyle>
+      <Form.Item noStyle name="text">
         <TextDesign />
       </Form.Item>
-      <Form.Item noStyle>
+      <Form.Item noStyle name="size">
         <SizeDesign />
       </Form.Item>
-      <Form.Item noStyle>
+      <Form.Item noStyle name="spacing">
         <SpacingDesign />
       </Form.Item>
-      <Form.Item noStyle>
+      <Form.Item noStyle name="border">
         <BorderDesign />
       </Form.Item>
-      <Form.Item noStyle>
+      <Form.Item noStyle name="background">
         <BackgroundDesign />
       </Form.Item>
       {/* <Form.Item noStyle>

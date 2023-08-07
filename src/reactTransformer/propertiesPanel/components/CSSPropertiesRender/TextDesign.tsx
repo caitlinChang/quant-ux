@@ -5,7 +5,7 @@ import ColorDesign from "./ColorDesign";
 
 const widthList = () => {
   const list = [];
-  for (let i = 12; i < 10; i = i + 2) {
+  for (let i = 12; i < 48; i = i + 2) {
     list.push({ label: `${i}px`, value: `${i}px` });
   }
   return list;
@@ -29,7 +29,7 @@ const weightList = () => {
   ];
 };
 
-export default () => {
+export default (props?: { value?: any; onChange?: (v: any) => void }) => {
   return (
     <ModuleTitle title="文本" collapse={true}>
       <Form
@@ -37,6 +37,9 @@ export default () => {
         size="small"
         labelAlign="left"
         labelCol={{ span: 9 }}
+        onValuesChange={(v, allValues) => {
+          props?.onChange?.(allValues);
+        }}
       >
         {/* <Form.Item label="内容" name="children">
         <Input />

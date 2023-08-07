@@ -79,8 +79,8 @@ export default {
     },
   },
   mounted() {
-    const { component, props, id } = this.componentInfo;
-    this.resolveComponentProps(component, props);
+    const { component, props, id, category } = this.componentInfo;
+    this.resolveComponentProps(category === 'ICON' ? 'icon' : component, props);
     if (id) {
       // 监听属性面板的更新
       eventBus.on(`${this.componentInfo.id}:propsUpdate`, (props, path) => {
@@ -89,14 +89,14 @@ export default {
           // 子组件的 inlineEdit 
           const { newFormData } = transferPath(path, props, this.rawProps)
           const newProps = cloneDeep(newFormData);
-          const res = getRenderedProps(component, newProps, id, '');
+          const res = getRenderedProps(category === 'ICON' ? 'icon' : component, newProps, id, '');
           const { children, restProps } = res;
           this.childrenList = children;
           this.componentProps = restProps;
       
         } else {
           const newProps = cloneDeep({ ...this.rawProps, ...props });
-          const res = getRenderedProps(component, newProps, id, '');
+          const res = getRenderedProps(category === 'ICON' ? 'icon' : component, newProps, id, '');
           const { children, restProps } = res;
           this.childrenList = children;
           this.componentProps = restProps;

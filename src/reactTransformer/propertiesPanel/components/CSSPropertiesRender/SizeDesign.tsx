@@ -36,9 +36,10 @@ export default (props?: { value?: any; onChange?: (v: any) => void }) => {
   const [collapse, setCollapse] = useState(false);
   const handleChange = (v, allValues) => {
     const value = {};
+    console.log("allValues = ", allValues);
     Object.keys(allValues).forEach((key) => {
-      if (allValues[key] !== "auto") {
-        value[key] = allValues[key];
+      if (allValues[key] && allValues[key] !== "auto") {
+        value[key] = `${allValues[key]}px`;
       }
     });
     if (Object.keys(value).length === 0) {
