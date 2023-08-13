@@ -24,6 +24,7 @@
 import eventBus from "../eventBus";
 import antdMap from "../util/getWidgets/antd";
 import iconMap from '../util/getWidgets/icon';
+import layoutMap from '../util/getWidgets/layout';
 import { SlotWrapper } from "./SlotWrapper";
 import { cloneDeep } from 'lodash';
 import ChildrenWrapper from './ChildrenWrapper.vue';
@@ -34,6 +35,7 @@ export default {
   components: {
     ...antdMap,
     ...iconMap,
+    ...layoutMap,
     slotWrapper: SlotWrapper,
     ChildrenWrapper,
   },
@@ -97,6 +99,7 @@ export default {
         } else {
           const newProps = cloneDeep({ ...this.rawProps, ...props });
           const res = getRenderedProps(category === 'ICON' ? 'icon' : component, newProps, id, '');
+          console.log('res = ', res);
           const { children, restProps } = res;
           this.childrenList = children;
           this.componentProps = restProps;

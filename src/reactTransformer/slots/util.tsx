@@ -15,7 +15,7 @@ export function getRenderedProps(
   const res = requestPropsConfig(componentName);
   const propsConfig = res.props;
   if (!propsConfig || !props) {
-    return;
+    return {};
   }
   const cloneProps = cloneDeep(props);
   return resolveWidgetProps(propsConfig, cloneProps, {

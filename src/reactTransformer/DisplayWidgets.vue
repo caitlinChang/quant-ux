@@ -37,6 +37,22 @@
         </div>
       </div>
     </div>
+    <div v-show="type === 'Layout'" class="widgets-list">
+      <div class="custome-widget-wrapper">
+        <div v-for="item in layoutList" :key="item.name">
+          <div
+            class="antd4-warpper"
+            @click="(e) => $emit('onclick', { ...item }, e)"
+          >
+            <!-- <div>
+              <component :is="item.component" v-bind="{ ...iconProps }" />
+            </div> -->
+            <span class="display-desc">{{ item.description }}</span>
+            <span class="display-name">{{ item.displayName }}</span>
+          </div>
+        </div>
+      </div>
+      </div>
   </div>
 </template>
 
@@ -44,6 +60,7 @@
 import DojoWidget from "dojo/DojoWidget";
 import componentMap, { antdList } from "./util/getWidgets/antd";
 import iconMap, { iconList } from "./util/getWidgets/icon";
+import layoutMap, { layoutList } from "./util/getWidgets/layout";
 
 export default {
   name: "ReactComponent",
@@ -51,6 +68,7 @@ export default {
   components: {
     ...componentMap,
     ...iconMap,
+    ...layoutMap
   },
   props: {
     onClick: {
@@ -61,8 +79,9 @@ export default {
   data() {
     return {
       antdList,
-      filterComponetList: antdList,
+      layoutList,
       iconList,
+      filterComponetList: antdList,
       type: "antd4",
       categoryList: [
         {
