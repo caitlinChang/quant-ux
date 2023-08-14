@@ -5,6 +5,15 @@
       "description": "页头",
       "displayName": "PageHeader",
       "methods": [],
-      "props": {}
+      "props": {
+        "children":{
+          "name": "children",
+          "type": {
+            "name": "ReactNode"
+          },
+          "required": false,
+          "description": "容器"
+        }
+      }
     }
 ]

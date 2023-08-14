@@ -5,13 +5,17 @@ import domGeom from "dojo/domGeom";
 import css from "dojo/css";
 import CoreUtil from 'core/CoreUtil'
 import * as SelectionUtil from 'core/SelectionUtil'
+import eventBus from '../reactTransformer/eventBus'
+import { isInWidget } from '../reactTransformer/util/dragAndDrop';
+import { revertName } from '../reactTransformer/util/getWidgets/util';
 
 export default {
   name: "DnD",
   mixins: [],
   data:function() {
     return {
-      dndUpdateCopiedWidgetsOnMove: false
+      dndUpdateCopiedWidgetsOnMove: false,
+      overlaps:{},
     };
   },
   components: {},
@@ -791,7 +795,34 @@ export default {
               this.logger.sendError(new Error("No widget with id >" + id));
             }
           }
- 
+
+          // 计算放置位置是否在其他容器内部，且该容器可以被放置
+          const inWidgetId = isInWidget(this.overlaps, this.model);
+          const curWideget = this.model.widgets[id];
+          if (inWidgetId && curWideget?.id) {
+            // 先添加
+            const oldProps = this.model[inWidgetId]?.props || {};
+            const value = [revertName(curWideget.name), curWideget.props || null];
+            const { children } = oldProps;
+            const _children = children ? [...children, value] : [value]
+            const newProps = {
+              children:_children,
+            }
+            // TODO: 修复渲染问题后，不使用 eventBus, 而是直接调用 controller来更新
+            eventBus.emit(`${inWidgetId}:propsUpdate`, newProps);
+             // 再删除画布上的元素
+            this.controller.removeWidget(curWideget.id)
+            // 更新 model
+            this.controller.updateWidgetProperties(
+              inWidgetId,
+              newProps,
+              "props",
+              false,
+              true,
+              false
+            );
+          }
+
           if (!this.isInSelection(id)) {
             this._setSelectionById(id)
           } else {
@@ -1039,6 +1070,10 @@ export default {
       this.cleanUpAlignment();
     }
   },
-  mounted() {}
+  mounted() {
+    eventBus.on('updateOverlaps', (overlaps) => {
+      this.overlaps = overlaps
+    });
+  }
 };
 </script>

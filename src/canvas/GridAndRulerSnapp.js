@@ -5,6 +5,7 @@ import Logger from 'common/Logger'
 import Core from 'core/Core'
 import * as SnappUtil from 'core/SnappUtil'
 import ModelUtil from '../core/ModelUtil'
+import eventBus from '../reactTransformer/eventBus';
 
 export default class GridAndRulerSnapp extends Core {
 
@@ -469,7 +470,6 @@ export default class GridAndRulerSnapp extends Core {
 
 
 	renderBoxDistance(widget, screen) {
-
 		/**
 		 * Since 4.0.60 we take the source widget
 		 */
@@ -502,7 +502,6 @@ export default class GridAndRulerSnapp extends Core {
 
 
 	showWidgetDistance(from, to) {
-	
 		this.cleanupDistanceLines();
 		this.distanceLines = {};
 
@@ -1103,8 +1102,10 @@ export default class GridAndRulerSnapp extends Core {
 		}
 
 		if (this._lastScreen) {
-
+			// _getNNDistance 是计算出当前正在移动的元素与其他离他最近的元素的距离，四个方向
 			const overlaps = this._getNNDistance(absPos, top, left);
+			// 为了实现拖拽进入容器的功能；
+			eventBus.emit('updateOverlaps', overlaps);
 			let useSourceLabel = false
 			/**
 			 *
@@ -2293,7 +2294,6 @@ export default class GridAndRulerSnapp extends Core {
 	}
 
 	showLine(line, direction, forceHighlight = false) {
-
 		if ("y" === direction && (this.activePoint === "West" || this.activePoint === "East")) {
 			return;
 		}
