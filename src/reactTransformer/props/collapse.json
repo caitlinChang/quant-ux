@@ -5,6 +5,14 @@
     "displayName": "Collapse",
     "methods": [],
     "props": {
+      "children":{
+        "type": {
+          "name": "boolean"
+        },
+        "name": "accordion",
+        "required": false,
+        "description": "手风琴模式"
+      },
       "accordion": {
         "type": {
           "name": "boolean"

@@ -33,14 +33,19 @@ const getMockDataByType = (keyName, config: PropItemConfigType): any => {
     ];
   }
   switch (name) {
-    case "string":
+    case TypeName.String:
       return uuidv4().substr(0, 5);
-    case "number":
+    case TypeName.Number:
       return getRandomInteger();
     // case "boolean":
     //   return getRandomBoolean(); //??? boolean 类型应该需要取默认值，而不是随机mock
-    case "ReactNode":
+    case TypeName.ReactNode:
       return "Edit Me";
+    case TypeName.ReactChild:
+      return "Edit Me";
+    case TypeName.Object:
+      // const obj = {};
+      return undefined;
     default:
       return undefined;
   }

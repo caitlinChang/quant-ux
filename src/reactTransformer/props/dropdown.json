@@ -6,6 +6,15 @@
     "displayName": "Dropdown",
     "methods": [],
     "props": {
+      "children": {
+        "description": "内容",
+        "type": {
+          "name": "ReactChild"
+        },
+        "needMock": true,
+        "required": false,
+        "name": "children"
+      },
       "arrow": {
         "type": {
           "name": "boolean"
@@ -57,7 +66,7 @@
         "required": false,
         "description": "菜单弹出位置",
         "name": "placement",
-        "defaultValue": "'bottomLeft'"
+        "defaultValue": "bottomLeft"
       },
       "trigger": {
         "type": {
@@ -67,7 +76,7 @@
         "required": false,
         "description": "触发下拉的行为",
         "name": "trigger",
-        "defaultValue": "'hover'"
+        "defaultValue": "hover"
       },
       "open": {
         "type": {
@@ -134,7 +143,9 @@
                   },
                   "children": {
                     "name": "children",
-                    "description": "children",
+                    "description": "内容",
+                    "needMock": true,
+                    "required": false,
                     "type": {
                       "name": "children"
                     }
@@ -197,7 +208,9 @@
           }
         },
         "required": false,
-        "name": "menu"
+        "name": "menu",
+        "needMock": true,
+        "description":"下拉菜单"
       }
     }
   }

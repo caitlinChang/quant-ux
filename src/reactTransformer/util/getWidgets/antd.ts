@@ -87,6 +87,9 @@ export const antdList = Object.keys(componentMap)
     
     const res = requestPropsConfig(key);
     const props = getMockedProps(res.props);
+    if(key === 'antd-dropdown') {
+      console.log('mocked props = ', props);
+    }
     const componentPath = subComponent.find(item => item.key === key)?.path
     return {
       _type: "antd4",
