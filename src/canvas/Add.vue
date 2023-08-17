@@ -4,7 +4,8 @@ import lang from 'dojo/_base/lang'
 import css from 'dojo/css'
 import win from 'dojo/_base/win'
 import ModelUtil from 'core/ModelUtil';
-import { createReactRootDom }  from '../reactTransformer/util/getDom'
+import { createReactRootDom } from '../reactTransformer/util/getDom';
+import GridAndRulerSnapp from './GridAndRulerSnapp';
 
 
 export default {
@@ -398,7 +399,20 @@ export default {
 			this.logger.log(2,"_addWidget", "exit");
 		},
 		onComponentAdded(pos,model){
-			this.logger.log(0,"onWidgetAdded", "enter");
+			this.logger.log(0, "onWidgetAdded", "enter");
+			// TODO: 如果位置落在容器内，那就是在容器内添加组件
+			console.log('pos = ', pos);
+			const alignmentTool = new GridAndRulerSnapp();
+			console.log('alignmentTool = ', alignmentTool._getNNDistance);
+			// const overlaps = alignmentTool._getNNDistance({
+			// 	...pos,
+			// 	snapp: {
+			// 		left: false,
+			// 		top: false,
+			// 		type:'All'
+			// 	}
+			// });
+			// console.log('overlaps = ', overlaps);
 			// this.controller.addComponent 做了什么事情呢，它会根据 model信息创建一个新组件，然后给它附一个id添加到画布上
 			var newComponent = this.controller.addComponent(model, pos);
 			if(newComponent){
