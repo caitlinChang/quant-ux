@@ -6,6 +6,8 @@ import { setSlotWrapper } from "./SlotWrapper";
 import { handleChildren } from "../util/childrenUtils";
 import { requestPropsConfig } from "../util/request";
 
+import { TypeName } from "../util/type";
+
 export function getRenderedProps(
   componentName: string,
   props: any,
@@ -85,7 +87,7 @@ function getWrapperProps(
 ) {
   const curValue = get(rawProps, path);
   const { name, property, item } = config.type || {};
-  if (name === "ReactNode") {
+  if ([TypeName.ReactNode, TypeName.ReactChild].includes(name)) {
     // children 需要特殊处理，用 slot 传递
     if (path === "children") {
       return {
@@ -105,7 +107,7 @@ function getWrapperProps(
       rootWidgetId: meta.rootWidgetId,
       rootPath: meta.rootPath, // 嵌套的子组件的路径
     });
-  } else if (name === "object") {
+  } else if (name === TypeName.Object) {
     if (curValue) {
       const obj = {};
       Object.keys(curValue).forEach((key) => {
@@ -123,7 +125,7 @@ function getWrapperProps(
       return obj;
     }
     return curValue;
-  } else if (name === "array") {
+  } else if (name === TypeName.Array) {
     if (curValue) {
       const fieldNames = getFieldNames(config);
       return curValue.map?.((_item, index) => {

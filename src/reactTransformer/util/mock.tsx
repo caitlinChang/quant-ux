@@ -4,6 +4,8 @@ import React, { ReactNode } from "react";
 import { PropItemConfigType, TypeName } from "./type";
 import { v4 as uuidv4 } from "uuid";
 import { SpecialKey } from "./specialKey";
+import { requestPropsConfig } from "./request";
+import { getVueTypeName } from "./getWidgets/util";
 // import { ControlOutlined } from "@ant-design/icons";
 
 function getRandomBoolean() {
@@ -16,9 +18,7 @@ function getRandomInteger() {
 
 // 根据数据类型随机生成 mock 数据
 const getMockDataByType = (keyName, config: PropItemConfigType): any => {
-  const {
-    type: { name },
-  } = config;
+  const { type } = config;
   if (keyName === SpecialKey.DISABLED) {
     return false;
   }
@@ -32,7 +32,9 @@ const getMockDataByType = (keyName, config: PropItemConfigType): any => {
       },
     ];
   }
-  switch (name) {
+  const obj = {};
+  const typeName = type.name;
+  switch (typeName) {
     case TypeName.String:
       return uuidv4().substr(0, 5);
     case TypeName.Number:
@@ -42,10 +44,14 @@ const getMockDataByType = (keyName, config: PropItemConfigType): any => {
     case TypeName.ReactNode:
       return "Edit Me";
     case TypeName.ReactChild:
-      return "Edit Me";
+      return ['antd-typography-text',{ children: "Edit Me" }];
     case TypeName.Object:
-      // const obj = {};
-      return undefined;
+      Object.entries(type.property).forEach(([key, value]) => {
+        obj[key] = getMockDataByType(key, value);
+      });
+      return obj;
+    case TypeName.Import:
+      return getMockedProps(requestPropsConfig(getVueTypeName(type.importComponentName, 'antd'))?.props);
     default:
       return undefined;
   }

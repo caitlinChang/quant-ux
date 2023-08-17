@@ -13,6 +13,7 @@ export enum TypeName {
   ICON = "ICON", // TODO：ICON 可以与 ReactNode 合成一个吗？？？
   ColorPicker = "ColorPicker", // 专用的颜色选择器
   ReactChild = "ReactChild", // ReactChild 是 ReactNode 的子集，只能是一个 ReactElement
+  Import = 'import', // 该组件的某个属性类型是另一个组件的props
 }
 
 export const typeNameList = [
@@ -27,12 +28,14 @@ export const typeNameList = [
   TypeName.ICON,
   TypeName.ColorPicker,
   TypeName.ReactChild,
+  TypeName.Import,
   TypeName.CSSProperties,
 ];
 
 // 定义前后端协议 propsConfig是每个配置项的信息，包括类型和默认值等等
 export type ObjectItemType = {
   name: TypeName;
+  importComponentName?: string;
   item?: {
     [key: string]: PropItemConfigType;
   };
