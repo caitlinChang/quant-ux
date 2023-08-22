@@ -1,6 +1,4 @@
 import { cloneDeep, isArray } from "lodash";
-import { getVueTypeName } from "./getWidgets/util";
-import { formatPath } from "./common";
 
 export enum ChildrenItemType {
   Text = "text",
@@ -16,11 +14,7 @@ export type ChildrenType = string | (string | [string, any])[];
  * @returns 这个函数把存放在model中的widget数据中的 children 转化成画布能够识别渲染的结构
  * 返回的结构仍然是json，能够被递归组件 ChildrenWrapper 识别并渲染
  */
-export function handleChildren(
-  children: ChildrenType,
-  rootWidgetProps: any,
-  path?: string
-) {
+export function handleChildren(children: ChildrenType, rootWidgetProps: any) {
   const _widgetProps = cloneDeep(rootWidgetProps || {});
   if (!isArray(children)) {
     if (typeof children === "string") {
@@ -30,7 +24,6 @@ export function handleChildren(
           widgetProps: {
             ..._widgetProps,
             children: children,
-            // path: `${formatPath(path)}children.${index}`,
           },
         },
       ];
@@ -47,7 +40,6 @@ export function handleChildren(
         widgetProps: {
           ..._widgetProps,
           children: item,
-          // path: `${formatPath(path)}children.${index}`,
         },
       };
     } else {
@@ -58,9 +50,8 @@ export function handleChildren(
       return {
         type: ChildrenItemType.Component,
         componentInfo: {
-          component: getVueTypeName(name, "antd"),
+          component: name,
           props: { ...(props || {}) },
-          // path: `${formatPath(path)}children.${index}`,
         },
       };
     }

@@ -12,7 +12,7 @@ import SimpleGrid from 'canvas/SimpleGrid'
 import RenderFlow from 'canvas/RenderFlow'
 import Wiring from 'canvas/Wiring'
 import ModelUtil from 'core/ModelUtil'
-import { createReactRootDom } from '../reactTransformer/util/getDom'
+import { generateDom } from '../reactTransformer/util/getDom'
 
 export default {
     name: 'Render',
@@ -735,7 +735,7 @@ export default {
 			// 给元素添加唯一的id
 			css.add(div,`ComponentWidget_${widget.id}`);
 			if (widget.component) {
-				const el = createReactRootDom(widget);
+				const el = generateDom(widget);
 				css.add(el, "ComponentBox");
 				div.appendChild(el);
 				return div;

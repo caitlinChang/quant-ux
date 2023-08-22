@@ -78,3 +78,23 @@ export type ReactNodeProp =
       }
     ];
 
+export type ComponentInfoType = {
+  _type: string;
+  name: string;
+  displayName: string;
+  description: string;
+  category: string;
+  component: string;
+  props: any;
+  componentPath: string;
+  framework: "vue" | "react";
+  library: "antd" | "antdIcon";
+};
+
+export type ComponentWrapperType = {
+  id?: string;
+  path?: string;
+  component: string;
+  library: "antd" | "antdIcon";
+  props: any;
+};

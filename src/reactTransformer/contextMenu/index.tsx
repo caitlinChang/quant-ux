@@ -5,7 +5,7 @@ import eventBus from "../eventBus";
 import _, { get } from "lodash";
 import { v4 as uuidv4 } from "uuid";
 import { getRecentPath } from "../util/propsValueUtils";
-import { SlotWrapperProps } from "../slots/SlotWrapper";
+import { SlotWrapperProps } from "../slots/VueSlots/SlotWrapper";
 import { deleteParam, setParam } from "../util/setPropsValue";
 
 export enum ContenxtMenuType {

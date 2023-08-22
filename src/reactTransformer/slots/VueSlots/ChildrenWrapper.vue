@@ -29,8 +29,8 @@
   </template>
   
   <script>
-  import antdMap from "../util/getWidgets/antd";
-  import iconMap from '../util/getWidgets/icon';
+  import antdMap from "../../util/getWidgets/antd";
+  import iconMap from '../../util/getWidgets/icon';
   import { SlotWrapper } from "./SlotWrapper";
   import { cloneDeep } from 'lodash';
   import { getRenderedProps } from './util';

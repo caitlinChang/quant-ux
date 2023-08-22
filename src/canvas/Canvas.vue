@@ -735,7 +735,8 @@ export default {
 					return;
 				}
 				css.remove(this.contextMenu, 'ContextMenuActive');
-				removeReactDom(this.contextMenu);
+				// TODO: 不要这样使用
+				// removeReactDom(this.contextMenu);
 				this.contextMenu.removeAttribute('style');
 			}
 		})

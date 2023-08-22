@@ -1,12 +1,12 @@
 import { cloneDeep, get } from "lodash";
-import { PropItemConfigType } from "../util/type";
-import { formatPath } from "../util/common";
-import { getFieldNames } from "../util/getFieldNames";
-import { setSlotWrapper } from "./SlotWrapper";
-import { handleChildren } from "../util/childrenUtils";
-import { requestPropsConfig } from "../util/request";
+import { PropItemConfigType } from "../../util/type";
+import { formatPath } from "../../util/common";
+import { getFieldNames } from "../../util/getFieldNames";
+import { setSlotWrapper } from "../VueSlots/SlotWrapper";
+import { handleChildren } from "../../util/childrenUtils";
+import { requestPropsConfig } from "../../util/request";
 
-import { TypeName } from "../util/type";
+import { TypeName } from "../../util/type";
 
 export function getRenderedProps(
   componentName: string,

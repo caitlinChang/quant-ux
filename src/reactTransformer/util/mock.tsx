@@ -1,12 +1,10 @@
 // 根据 Props 生成组件的mock数据， 这里的mock数据不单单是文本类数据，还包括 ReactNode
 
-import React, { ReactNode } from "react";
+import React from "react";
 import { PropItemConfigType, TypeName } from "./type";
 import { v4 as uuidv4 } from "uuid";
 import { SpecialKey } from "./specialKey";
 import { requestPropsConfig } from "./request";
-import { getVueTypeName } from "./getWidgets/util";
-// import { ControlOutlined } from "@ant-design/icons";
 
 function getRandomBoolean() {
   return Math.random() < 0.5;
@@ -42,16 +40,19 @@ const getMockDataByType = (keyName, config: PropItemConfigType): any => {
     // case "boolean":
     //   return getRandomBoolean(); //??? boolean 类型应该需要取默认值，而不是随机mock
     case TypeName.ReactNode:
-      return "Edit Me";
+      return [["Typography-Text", { children: "Edit Me" }]];
     case TypeName.ReactChild:
-      return ['antd-typography-text',{ children: "Edit Me" }];
+      return [["Typography-Text", { children: "Edit Me" }]];
     case TypeName.Object:
       Object.entries(type.property).forEach(([key, value]) => {
         obj[key] = getMockDataByType(key, value);
       });
       return obj;
     case TypeName.Import:
-      return getMockedProps(requestPropsConfig(getVueTypeName(type.importComponentName, 'antd'))?.props);
+      return getMockedProps(
+        requestPropsConfig(type.importComponentName)?.props
+      );
+    // return [['TypographyText',{ children: "Edit Me" }]]
     default:
       return undefined;
   }
@@ -62,6 +63,9 @@ export const getMockedProps = (propsConfig: {
 }): any => {
   const data = {};
   Object.entries(propsConfig).forEach(([key, item]) => {
+    if (key === 'getPopupContainer') { 
+      data[key] = true;
+    }
     if (item.needMock) {
       data[key] = getMockData(propsConfig[key]);
     }

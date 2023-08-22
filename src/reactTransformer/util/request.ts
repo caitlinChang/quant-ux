@@ -6,11 +6,6 @@
 export const requestComponentProps = async (componentName) => {
   if (!componentName) return Promise.resolve({ props: {} });
   let name = componentName;
-  if (name !== "icon") {
-    const arr = componentName.split("-");
-    arr.shift();
-    name = arr.join("-");
-  }
   // console.log(`获取${str}的组件属性`)
   try {
     const res = require("../props/" + name + ".json"); //await axios.get("../props/" + str + ".json");
@@ -26,13 +21,6 @@ export const requestComponentProps = async (componentName) => {
 export const requestPropsConfig = (componentName) => {
   if (!componentName) return { props: {} };
   let name = componentName;
-  if (name !== "icon") {
-    const arr = componentName.split("-");
-    arr.shift();
-    name = arr.join("-");
-  }
-
-  // console.log(`获取${str}的组件属性`)
   try {
     const res = require("../props/" + name + ".json"); //await axios.get("../props/" + str + ".json");
     return res[0];

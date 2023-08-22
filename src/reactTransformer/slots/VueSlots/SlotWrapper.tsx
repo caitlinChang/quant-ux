@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react";
-import eventBus from "../eventBus";
-import { StandardArrayItemType } from "../util/getFieldNames";
-import { ContenxtMenuType } from "../contextMenu/index";
-import antdList from "../util/getWidgets/antd";
-import { getVueTypeName } from "../util/getWidgets/util";
-import iconList from "../util/getWidgets/icon";
-import { IconSlot } from "../slots/IconSlot";
-import { transferPath } from "../util/propsValueUtils";
+import eventBus from "../../eventBus";
+import { StandardArrayItemType } from "../../util/getFieldNames";
+import { ContenxtMenuType } from "../../contextMenu/index";
+import antdList from "../../util/getWidgets/antd";
+import { getVueTypeName } from "../../util/getWidgets/util";
+import iconList from "../../util/getWidgets/icon";
+import { IconSlot } from "../ReactSlots/IconSlot";
+import { transferPath } from "../../util/propsValueUtils";
 import { isArray } from "lodash";
 
 const componentMap = { ...antdList, ...iconList, IconSlot };
@@ -33,7 +33,7 @@ export const SlotWrapper = (props: SlotWrapperProps) => {
       _value,
       _props.widgetProps
     );
-    
+
     if (_props.rootPath && _props.rootWidgetId) {
       // console.log('_props.rootWidgetId = ',_props.rootWidgetId , _props.rootPath,`${_props.rootPath}[1]`,newFormData)
       eventBus.emit(`canvasUpdate`, `${_props.rootPath}[1]`, newFormData);
@@ -105,4 +105,3 @@ export const setSlotWrapper = (props: SlotWrapperProps) => {
     return React.createElement(SlotWrapper, resProps, children);
   }
 };
-

@@ -2,7 +2,7 @@
   <div id="app" class="MatcMainCntr">
       <router-view />
       <div class="vommondMessage" ref="message"></div>
-      <display-widgets />
+      <div id="compute-style-wrapper"></div>
   </div>
 </template>
 
@@ -11,12 +11,9 @@
 import css from "dojo/css";
 import win from "dojo/win";
 import Services from "services/Services";
-import DisplayWidgets from "./reactTransformer/computeStyle/index.vue";
+// import { generatePreviewWidgets } from './reactTransformer/util/getDom';
 
 export default {
-  components: {
-    DisplayWidgets
-  },
   methods: {
     showSuccess(msg) {
       if (this.$refs.message) {
@@ -88,6 +85,9 @@ export default {
   },
   async mounted() {
     console.log("App mounted");
+
+    // const previewDom = generatePreviewWidgets()
+    // document.getElementById('compute-style-wrapper').appendChild(previewDom);
     Services.setErrorHandler((url, res) => {
       this.handler4xx(url, res);
     });

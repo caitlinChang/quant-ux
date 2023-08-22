@@ -21,7 +21,6 @@ import eventBus from "../eventBus";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import SlotRender from "./components/SlotRender";
 import { formatPath } from "../util/common";
-import { getVueTypeName } from "../util/getWidgets/util";
 import ColorRender from "./components/ColorRender";
 import { formatWidgetExportCodeDemo } from "./components/ExportTemplate";
 import StyleRender from "./components/StyleRender";
@@ -29,8 +28,8 @@ import CSSPropertiesRender from "./components/CSSPropertiesRender";
 import "./panel.less";
 
 const AntdPanel = Collapse.Panel;
-const {TabPane} = Tabs;
- 
+const { TabPane } = Tabs;
+
 const Panel = (props: {
   widget: any;
   selectChild: any;
@@ -204,6 +203,10 @@ const Panel = (props: {
           onChange={(value) => handleChangeProp(node.key, value)}
         />
       );
+    } else if (name === TypeName.Import) {
+      // const node =
+      // const treeData = getTreedata(node.config, formData);
+      // return renderChildren(treeData)
     }
   };
 
@@ -397,7 +400,7 @@ const Panel = (props: {
         const key = r.join(".");
         const [name, props] = get(widgetProps, key) || [];
         return {
-          component: getVueTypeName(name, "antd"),
+          component: name,
           props: props,
           path: key,
         };
@@ -429,13 +432,12 @@ const Panel = (props: {
   const onWidgetExport = async () => {
     try {
       const code = await formatWidgetExportCodeDemo(formData, props.widget);
-      console.log('onWidgetExport: ', code);
+      console.log("onWidgetExport: ", code);
       // 先写入剪切板
-      await navigator.clipboard.writeText(code)
+      await navigator.clipboard.writeText(code);
     } catch (e) {
       console.log(e);
     }
-
   };
   const handleChangeStyle = (value) => {
     handleChangeProp("style", value);

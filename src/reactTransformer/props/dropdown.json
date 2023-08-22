@@ -9,7 +9,7 @@
       "children": {
         "description": "内容",
         "type": {
-          "name": "ReactChild"
+          "name": "ReactNode"
         },
         "needMock": true,
         "required": false,
@@ -76,7 +76,7 @@
         "required": false,
         "description": "触发下拉的行为",
         "name": "trigger",
-        "defaultValue": "hover"
+        "defaultValue": "click"
       },
       "open": {
         "type": {
@@ -89,13 +89,21 @@
       },
       "menu": {
         "type": {
-          "name": "import",
+          "name": "ReactNode",
           "importComponentName": "Menu"
         },
         "required": false,
         "name": "menu",
         "needMock": true,
         "description":"下拉菜单"
+      },
+      "getPopupContainer":{
+        "type": {
+          "name": "function"
+        },
+        "required": false,
+        "description": "",
+        "name": "getPopupContainer"
       }
     }
   }

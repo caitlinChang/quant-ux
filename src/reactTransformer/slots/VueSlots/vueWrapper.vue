@@ -1,7 +1,10 @@
 <template>
   <div class="custom-widget-warpper">
     <component :is="componentInfo.component" v-bind="componentProps">
-      <template v-if="(childrenList || []).length >= 1" v-slot:default>
+      <template v-slot:default>
+        <div>ddd hover me </div>
+      </template>
+      <!-- <template v-if="(childrenList || []).length >= 1" v-slot:default>
         <template v-for="(c,index) in childrenList">
           <slot-wrapper v-if="c.type === 'text'" path="children" :props="c.widgetProps" :key="index"/>
           <children-wrapper 
@@ -15,21 +18,21 @@
             @handleMouseLeave="handleMouseLeave" 
             @selectWidgetChildren="(c, path) => handleSelectChildren(c, path ? `children[${index}][1].${path}` : `children[${index}]`)" />
         </template>
-      </template>
+      </template> -->
     </component>
   </div>
 </template>
 
 <script>
-import eventBus from "../eventBus";
-import antdMap from "../util/getWidgets/antd";
-import iconMap from '../util/getWidgets/icon';
-import layoutMap from '../util/getWidgets/layout';
+import eventBus from "../../eventBus";
+import antdMap from "../../util/getWidgets/antd";
+import iconMap from '../../util/getWidgets/icon';
+import layoutMap from '../../util/getWidgets/layout';
 import { SlotWrapper } from "./SlotWrapper";
-import { cloneDeep } from 'lodash';
+import { cloneDeep, rest } from 'lodash';
 import ChildrenWrapper from './ChildrenWrapper.vue';
-import { transferPath } from '../util/propsValueUtils';
-import { getRenderedProps } from './util';
+import { transferPath } from '../../util/propsValueUtils';
+import { getRenderedProps } from './util.tsx';
 export default {
   name: "VueWrapper",
   components: {
@@ -76,8 +79,22 @@ export default {
       this.rawProps = cloneDeep(props);
       const res = getRenderedProps(name, props, this.componentInfo.id, '');
       const { children, restProps } = res;
+      
       this.childrenList = children;
-      this.componentProps = restProps;
+      const { getPopupContainer, ...rest } = restProps;
+      this.componentProps = rest;
+
+      console.log('rest = ', rest);
+      if (getPopupContainer) {
+        setTimeout(() => {
+          console.log('parent root = ', document.getElementsByClassName(`ComponentWidget_${this.componentInfo.id}`)[0])
+          this.componentProps['getPopupContainer'] = {
+            ...this.componentProps,
+            getPopupContainer: () => document.getElementsByClassName(`ComponentWidget_${this.componentInfo.id}`)[0]
+          }
+        })
+      }
+
     },
   },
   mounted() {
@@ -99,7 +116,6 @@ export default {
         } else {
           const newProps = cloneDeep({ ...this.rawProps, ...props });
           const res = getRenderedProps(category === 'ICON' ? 'icon' : component, newProps, id, '');
-          console.log('res = ', res);
           const { children, restProps } = res;
           this.childrenList = children;
           this.componentProps = restProps;

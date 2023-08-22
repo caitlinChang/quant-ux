@@ -1,18 +1,16 @@
 <template>
     <div id="compute-style">
         <div class="compute-style-item" :id="['computed-style',item.name].join('-')" v-for="item in antdList" :key="item.name">
-            <vue-wrapper :componentInfo="item" />
+            <!-- <vue-wrapper :componentInfo="item" /> -->
         </div>
         
     </div>
 </template>
 <script>
 import antdMap, { antdList } from "../util/getWidgets/antd";
-import vueWrapper from "../slots/vueWrapper";
 
 export default {
     components: {
-        vueWrapper,
     },
     data() {
         return {

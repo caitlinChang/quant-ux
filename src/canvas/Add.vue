@@ -4,7 +4,7 @@ import lang from 'dojo/_base/lang'
 import css from 'dojo/css'
 import win from 'dojo/_base/win'
 import ModelUtil from 'core/ModelUtil';
-import { createReactRootDom } from '../reactTransformer/util/getDom';
+import { generateDom } from '../reactTransformer/util/getDom';
 import GridAndRulerSnapp from './GridAndRulerSnapp';
 
 
@@ -387,7 +387,8 @@ export default {
 			this.logger.log(2,"_addWidget", "exit");
 		},
 		_addComponent(params, widget){
-			const child = createReactRootDom(widget);
+			// const child = createReactRootDom(widget);
+			const child = generateDom(widget);
 			const div = document.createElement('div');
 			div.appendChild(child);
 			css.add(div, "ComponentAddBox");
