@@ -23,9 +23,11 @@ const getComponent = (name, library: ComponentInfoType["library"]) => {
 
 export default (props: ComponentWrapperType) => {
   const { id, path } = props;
+  console.log("reactWrapper path = ", path);
   const instance = new RenderedProps(props);
   const RenderComponent = getComponent(props.component, props.library);
   const [componentProps, setComponentProps] = useState<any>({});
+  const { className, ...restProps } = componentProps;
 
   const getRenderedProps = async () => {
     const componentProps = await instance.get();
@@ -37,11 +39,14 @@ export default (props: ComponentWrapperType) => {
   }, []);
 
   return (
-    <div className="custom-widget-warpper">
+    <>
       {typeof RenderComponent === "string" && RenderComponent}
       {typeof RenderComponent !== "string" && (
-        <RenderComponent {...componentProps} />
+        <RenderComponent
+          className={`${className} custom-widget-warpper`}
+          {...restProps}
+        />
       )}
-    </div>
+    </>
   );
 };

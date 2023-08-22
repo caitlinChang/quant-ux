@@ -94,6 +94,7 @@ export type ComponentInfoType = {
 export type ComponentWrapperType = {
   id?: string;
   path?: string;
+  rootPath?: string;
   component: string;
   library: "antd" | "antdIcon";
   props: any;

@@ -8,6 +8,8 @@ export const formatPath = (path) => {
   }
 };
 
+
+
 function getEnum(str: string) {
   const regex = /"(.*?)"/g;
   const matches = str.match(regex);

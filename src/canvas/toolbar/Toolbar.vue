@@ -2479,7 +2479,7 @@ export default {
      
     });
 
-    eventBus.on("canvasUpdate", (path, _value) => {
+    eventBus.on("canvasUpdate", (rootPath, value) => {
       if (!this._selectedWidget) {
         console.log(
           "canvasUpdate：this._selectedWidget 不存在"
@@ -2489,8 +2489,7 @@ export default {
       if (!this.curSelectedWidget) {
         this.curSelectedWidget = this._selectedWidget;
       }
-      const { key, value, newFormData } = transferPath(path, _value, this._selectedWidget.props)
-      // this.curSelectedWidget.props = cloneDeep(newFormData);
+      const { key, value, newFormData } = transferPath(rootPath, _value, this._selectedWidget.props)
       this.curSelectedWidget = {
         ...this.curSelectedWidget,
         props: cloneDeep(newFormData)

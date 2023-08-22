@@ -40,9 +40,9 @@ const getMockDataByType = (keyName, config: PropItemConfigType): any => {
     // case "boolean":
     //   return getRandomBoolean(); //??? boolean 类型应该需要取默认值，而不是随机mock
     case TypeName.ReactNode:
-      return [["Typography-Text", { children: "Edit Me" }]];
+      return [["Typography-Text", { children: [["Edit Me"]] }]];
     case TypeName.ReactChild:
-      return [["Typography-Text", { children: "Edit Me" }]];
+      return [["Typography-Text", { children: [["Edit Me"]] }]];
     case TypeName.Object:
       Object.entries(type.property).forEach(([key, value]) => {
         obj[key] = getMockDataByType(key, value);

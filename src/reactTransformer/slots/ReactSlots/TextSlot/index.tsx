@@ -6,18 +6,13 @@ import "./index.less";
 export default (props: {
   id: string;
   path: string;
+  rootPath?: string;
   rawProps: any;
   value: string;
 }) => {
   const handleBlur = (e: any) => {
     const _value = e.target.innerHTML;
-    const { key, value, newFormData } = transferPath(
-      props.path,
-      _value,
-      props.rawProps
-    );
-
-    // eventBus.emit(`canvasUpdate`, key, value);
+    eventBus.emit(`canvasUpdate`, props.rootPath, _value);
     // eventBus.emit(`${props.id}:propsUpdate`, newFormData, `${props.path}[1]`);
   };
 

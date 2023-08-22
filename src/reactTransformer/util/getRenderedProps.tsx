@@ -2,16 +2,27 @@
 import React from "react";
 import { cloneDeep, get } from "lodash";
 import { ComponentWrapperType, PropItemConfigType, TypeName } from "./type";
-import { formatPath } from "./common";
 import { getFieldNames } from "./getFieldNames";
 import ReactWrapper from "../slots/ReactSlots/ReactWrapper";
 import TextSlot from "../slots/ReactSlots/TextSlot";
 import { requestPropsConfig } from "./request";
 import { handleChildren } from "./childrenUtils";
 
+/**
+ * 用于处理 ReactNode 的嵌套结构获取属性的path
+ * @param path
+ */
+export const getNodePath = (rootPath: string, relativePath: string) => {
+  if (rootPath) {
+    return `${rootPath}[1].${relativePath}`;
+  } else {
+    return relativePath;
+  }
+};
+
 // 获取可渲染的 props, 在数据库中存的props 都是json，这里要把json中的值转成 reactNode，以及文本内容要包加上 slot 用于编辑
 /**
- * @rootWidgetId: 根组件的id
+ * @widgetId: 根组件的id
  * @rootPath: 相对于根组件的路径
  */
 class RenderedProps {
@@ -19,7 +30,7 @@ class RenderedProps {
   componentName: string;
   rawProps: any;
   widgetId: string | undefined;
-  path: string | undefined;
+  rootPath: string | undefined;
   propsConfig: PropItemConfigType;
   constructor(params: ComponentWrapperType) {
     const { component, props, path, id } = params;
@@ -27,8 +38,7 @@ class RenderedProps {
     this.componentName = component;
     this.rawProps = cloneDeep(props);
     this.widgetId = id;
-    this.path = path || "";
-
+    this.rootPath = path || "";
     this.propsConfig = cloneDeep(this._getPropsConfig());
   }
 
@@ -51,7 +61,7 @@ class RenderedProps {
     Object.keys(props).map((propsName: string) => {
       const config = propsConfig[propsName];
       if (config) {
-        obj[propsName] = this._getWrapperProps(config, propsName);
+        obj[propsName] = this._getWrapperProps(config, `${propsName}`);
       } else {
         //  应该不存在这种情况
         console.error(
@@ -82,13 +92,15 @@ class RenderedProps {
       const children = handleChildren(curValue, this.rawComponentInfo);
       return (
         <>
-          {children.map((item) => {
+          {children.map((item, index) => {
             const { type, widgetProps, componentInfo } = item;
+            const relativePath = `${path}[${index}]`;
             if (type === "text") {
               return (
                 <TextSlot
                   id={this.widgetId}
-                  path={`${formatPath(this.path)}.${path}`}
+                  path={relativePath}
+                  rootPath={getNodePath(this.rootPath, relativePath)}
                   rawProps={this.rawProps}
                   value={widgetProps.children}
                 />
@@ -100,7 +112,8 @@ class RenderedProps {
                   library={this.rawComponentInfo.library}
                   props={componentInfo.props}
                   id={this.widgetId}
-                  path={`${formatPath(this.path)}.${path}`}
+                  path={relativePath}
+                  rootPath={getNodePath(this.rootPath, relativePath)}
                 />
               );
             }
@@ -116,10 +129,7 @@ class RenderedProps {
           if (!keyConfig) {
             console.log(`${key}找不到对应的propsConfig`);
           } else {
-            obj[key] = this._getWrapperProps(
-              keyConfig,
-              `${formatPath(this.path)}.${formatPath(path)}.${key}`
-            );
+            obj[key] = this._getWrapperProps(keyConfig, `${path}.${key}`);
           }
         });
         return obj;
@@ -140,12 +150,12 @@ class RenderedProps {
             if (key === "children" && keyConfig.type.name === "children") {
               obj[key] = this._getWrapperProps(
                 { ...config, name: "children" },
-                `${formatPath(path)}[${index}].${key}`
+                `${path}[${index}].${key}`
               );
             } else {
               obj[key] = this._getWrapperProps(
                 keyConfig,
-                `${formatPath(path)}[${index}].${key}`
+                `${path}[${index}].${key}`
               );
             }
           });

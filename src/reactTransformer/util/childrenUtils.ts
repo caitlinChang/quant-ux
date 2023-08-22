@@ -34,7 +34,8 @@ export function handleChildren(children: ChildrenType, rootWidgetProps: any) {
   }
   // @ts-ignore
   return children.map((item, index) => {
-    if (typeof item === "string") {
+    // @ts-ignore
+    if (typeof item === "string" || item?.length === 1) {
       return {
         type: ChildrenItemType.Text,
         widgetProps: {
