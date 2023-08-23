@@ -9,7 +9,14 @@ const getUniqueName = (name: string, prefix: string) => {
 
 const componentMap = {};
 // 有子组件的组件，需要遍历一下
-const nextComponent = ["Button", "Typography", "Radio", "Checkbox", "Form"];
+const nextComponent = [
+  "Button",
+  "Typography",
+  "Radio",
+  "Checkbox",
+  "Form",
+  "Collapse",
+];
 
 const subComponent = []
 

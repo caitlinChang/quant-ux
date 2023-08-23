@@ -66,6 +66,10 @@ export const getMockedProps = (propsConfig: {
     if (key === 'getPopupContainer') { 
       data[key] = true;
     }
+
+    if (item.mockData) {
+      data[key] = item.mockData;
+    }
     if (item.needMock) {
       data[key] = getMockData(propsConfig[key]);
     }

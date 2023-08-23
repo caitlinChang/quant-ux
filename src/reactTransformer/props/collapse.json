@@ -7,11 +7,20 @@
     "props": {
       "children":{
         "type": {
-          "name": "boolean"
+          "name": "ReactNode"
         },
-        "name": "accordion",
+        "mockData": [
+          [
+            "Collapse-Panel",
+            {
+              "header": [["Typography-Text", { "children": [["标题一"]] }]],
+              "key": 1
+            }
+          ]
+        ],
+        "name": "children",
         "required": false,
-        "description": "手风琴模式"
+        "description": "容器"
       },
       "accordion": {
         "type": {

@@ -5,27 +5,36 @@
     "displayName": "Panel",
     "methods": [],
     "props": {
-      "header":{
-        "type":{
-          "name":"ReactNode"
+      "children": {
+        "type": {
+          "name": "ReactNode",
+          "mockData": [["这里是Panel内容"]]
         },
-        "name":"header",
-        "required":false,
-        "description":"标题"
+        "name": "accordion",
+        "required": false,
+        "description": "容器"
       },
-      "key":{
-        "name":"key",
-        "type":{
-          "name":"string"
+      "header": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "name": "header",
+        "required": false,
+        "description": "标题"
+      },
+      "key": {
+        "name": "key",
+        "type": {
+          "name": "string"
         }
       },
-      "showArrow":{
-        "type":{
-          "name":"boolean"
+      "showArrow": {
+        "type": {
+          "name": "boolean"
         },
-        "name":"showArrow",
-        "required":false,
-        "description":"是否显示当前面板的箭头"
+        "name": "showArrow",
+        "required": false,
+        "description": "是否显示当前面板的箭头"
       }
     }
   }

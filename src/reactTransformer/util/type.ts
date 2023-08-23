@@ -50,6 +50,7 @@ export type PropItemConfigType = {
   description?: string;
   defaultValue?: any;
   needMock?: boolean; // 是否需要mock数据去填充
+  mockData?: any; // mock数据, 配置文件里配置的 mock 数据
   required?: boolean;
   controlledState?: boolean;
   controlledEvent?: boolean; //TODO：弃用

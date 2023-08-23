@@ -1,12 +1,10 @@
 import React from "react";
-import { SlotWrapperProps } from "../ReactSlotWrapper";
 import eventBus from "../../../eventBus";
 import { BorderInnerOutlined } from "@ant-design/icons";
 // import "./slotWrapper.less";
 
 // 进行替换操作时塞进去的占位符
-export const IconSlot = (props: SlotWrapperProps) => {
-  
+export const IconSlot = (props: any) => {
   const handleClick = (e: any) => {
     e.stopPropagation();
     e.preventDefault();
@@ -28,7 +26,7 @@ export const IconSlot = (props: SlotWrapperProps) => {
  * @param id
  * @returns
  */
-export const setIconSlot = (props: SlotWrapperProps) => {
+export const setIconSlot = (props: any) => {
   const { children, ...resProps } = props;
   return React.createElement(IconSlot, resProps, props.children);
 };

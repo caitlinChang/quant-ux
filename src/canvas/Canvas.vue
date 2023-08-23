@@ -87,9 +87,7 @@ import Prototyping from 'canvas/Prototyping'
 import FastDomUtil from 'core/FastDomUtil'
 import SVGEditor from '../svg/SVGEditor'
 
-import eventBus from '../reactTransformer/eventBus/index';
 import { createContextMenu, removeReactDom } from '../reactTransformer/util/getDom';
-import ReactDom from "react-dom";
 
 export default {
   name: 'Canvas',
@@ -112,9 +110,6 @@ export default {
 		SVGEditor
 	},
 	methods: {
-		onClickContextMenuAway() {
-			eventBus.emit('ContextMenu', 'close');
-		},
 		
 		postCreate (){
 
@@ -719,29 +714,29 @@ export default {
 		}
 	},
 	mounted () {
-		eventBus.on('ContextMenu', (type, event, props) => {
-			if (type === 'show' && this.contextMenu) {
-				if (this.contextMenu.classList.contains("ContextMenuActive")) {
-					css.remove(this.contextMenu, 'ContextMenuActive');
-					return;
-				}
-				createContextMenu(props, this.contextMenu);
-				this.contextMenu.style.left = `${event.clientX}px`;
-				this.contextMenu.style.top = `${event.clientY}px`;
-				css.add(this.contextMenu, 'ContextMenuActive');
+		// eventBus.on('ContextMenu', (type, event, props) => {
+		// 	if (type === 'show' && this.contextMenu) {
+		// 		if (this.contextMenu.classList.contains("ContextMenuActive")) {
+		// 			css.remove(this.contextMenu, 'ContextMenuActive');
+		// 			return;
+		// 		}
+		// 		createContextMenu(props, this.contextMenu);
+		// 		this.contextMenu.style.left = `${event.clientX}px`;
+		// 		this.contextMenu.style.top = `${event.clientY}px`;
+		// 		css.add(this.contextMenu, 'ContextMenuActive');
 				
-			} else if (type === 'close') {
-				if (!this.contextMenu.classList.contains("ContextMenuActive")) {
-					return;
-				}
-				css.remove(this.contextMenu, 'ContextMenuActive');
-				// TODO: 不要这样使用
-				// removeReactDom(this.contextMenu);
-				this.contextMenu.removeAttribute('style');
-			}
-		})
+		// 	} else if (type === 'close') {
+		// 		if (!this.contextMenu.classList.contains("ContextMenuActive")) {
+		// 			return;
+		// 		}
+		// 		css.remove(this.contextMenu, 'ContextMenuActive');
+		// 		// TODO: 不要这样使用
+		// 		// removeReactDom(this.contextMenu);
+		// 		this.contextMenu.removeAttribute('style');
+		// 	}
+		// })
 
-		this.clickContextMenuAway = on(win.body(),"click", lang.hitch(this,"onClickContextMenuAway"));
+		// this.clickContextMenuAway = on(win.body(),"click", lang.hitch(this,"onClickContextMenuAway"));
 	},
 	beforeDestroy () {
 		this.logger.log(3, "beforeDestroy", "enter > ");

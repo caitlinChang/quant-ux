@@ -343,9 +343,9 @@ import CreateVectorButton from "canvas/toolbar/components/CreateVectorButton";
 import ModelUtil from "../../core/ModelUtil";
 import HelpButton from "help/HelpButton";
 import Panel from "../../reactTransformer/propertiesPanel/panel.tsx";
-import eventBus from '../../reactTransformer/eventBus';
 import { set, cloneDeep, get } from "lodash";
 import { transferPath } from '../../reactTransformer/util/propsValueUtils';
+import observer from '../../reactTransformer/eventBus/Observer';
 
 export default {
   name: "Toolbar",
@@ -720,7 +720,6 @@ export default {
           this._selectionID = component.id;
           this.showWidgetProperties(component);
           // this.$refs.propertiesPanel.onSetWidgetProperties(component);
-          // eventBus.emit('selectWidget', component);
           this.showCopyPaste();
           this.showDevTools();
           this.showTools();
@@ -918,7 +917,7 @@ export default {
     cleanUp() {
       //TODO: 需要优化
       if (this._selectionID) {
-        eventBus.emit(`${this._selectionID}:deSelected`)
+        observer.notify('De_Select_Widget')
       }
       
       this.storePropertiesState();
@@ -2459,9 +2458,39 @@ export default {
         e.stopPropagation();
       }
     },
-  },
-  mounted() {
-    eventBus.on("selectWidgetChild", async (widget) => {
+    /**********************************************************************
+     * Observer Subscribe & Notify
+     **********************************************************************/
+
+    async updateCurSelectWidgetProps(valuePath, _value) {
+      if (!this._selectedWidget) {
+        console.log(
+          "canvasUpdate：this._selectedWidget 不存在"
+        );
+        return;
+      }
+      if (!this.curSelectedWidget) {
+        this.curSelectedWidget = this._selectedWidget;
+      }
+      const { key, value, newFormData } = transferPath(valuePath, _value, this.curSelectedChild.props)
+      this.curSelectedWidget = {
+        ...this.curSelectedWidget,
+        props: cloneDeep(newFormData)
+      }
+      console.log('不会是触发了这里吧----')
+      if (!this.curSelectedChild.path) {
+        this._selectedWidget.props = cloneDeep(newFormData);
+        // update model
+        this.setWidgetProps(key, value, true)
+      } else {
+        const res = transferPath(this.curSelectedWidget.path, newFormData, this._selectedWidget.props)
+        this._selectedWidget.props = cloneDeep(res.newFormData);
+        // update model
+        this.setWidgetProps(res.key, res.value, true)
+      }
+    },
+
+    async observerSelectWidget(widget) {
       if (!this._selectedWidget) {
           console.log(
             "selectWidgetChild：this._selectedWidget 不存在"
@@ -2475,29 +2504,17 @@ export default {
         // 防止重复点击
         return;
       }
-      this.curSelectedChild = cloneDeep(widget);
-     
-    });
 
-    eventBus.on("canvasUpdate", (rootPath, _value) => {
-      if (!this._selectedWidget) {
-        console.log(
-          "canvasUpdate：this._selectedWidget 不存在"
-        );
-        return;
-      }
-      if (!this.curSelectedWidget) {
-        this.curSelectedWidget = this._selectedWidget;
-      }
-      const { key, value, newFormData } = transferPath(rootPath, _value, this._selectedWidget.props)
-      this.curSelectedWidget = {
-        ...this.curSelectedWidget,
-        props: cloneDeep(newFormData)
-      }
-      this._selectedWidget.props = cloneDeep(newFormData);
-      // update model
-      this.setWidgetProps(key, value, true)
-    });
+      observer.clearPropsUpdate()
+      this.curSelectedChild = cloneDeep(widget);
+      // 注册新的事件
+      observer.subscribePropsUpdate(this._selectedWidget.id, widget.path, this.updateCurSelectWidgetProps)
+    }
+
+  },
+  mounted() {
+    // TODO: 选中子组件可以不通过事件，而是融入到项目状态的流程中，通过 controller 来控制？
+    observer.subscribe('Select_Widget', this.observerSelectWidget)
   }
 };
 </script>

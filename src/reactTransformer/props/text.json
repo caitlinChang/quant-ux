@@ -1,0 +1,18 @@
+[
+  {
+    "tags": {},
+    "description": "文本",
+    "displayName": "Text",
+    "methods": [],
+    "props": {
+      "text": {
+        "type": {
+          "name": "string"
+        },
+        "name": "text",
+        "required": false,
+        "description": "Text"
+      }
+    }
+  }
+]

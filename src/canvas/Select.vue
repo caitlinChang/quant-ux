@@ -4,7 +4,7 @@ import css from 'dojo/css'
 
 import topic from 'dojo/topic'
 import CanvasSelection from './CanvasSelection'
-import eventBus from '../reactTransformer/eventBus'
+import observer from '../reactTransformer/eventBus/Observer'
 
  export default {
     name: 'Select',
@@ -782,21 +782,22 @@ import eventBus from '../reactTransformer/eventBus'
 
 		allignToKeyBoard (pos){
 			console.error('allignToKeyBoard() > DECRECTAED', pos)
+		},
+
+		onSelectWidget(widget) {
+			if (widget?.id && !widget.path) {
+				this._selectWidget = null;
+				this.onComponentSelected(widget.id);
+			} else {
+				console.log('Select_Widget 不能存在，请检查---------')
+			}
 		}
 
 
     },
 	mounted() {
 		// 用于 Panel/图层 中选中某个widget时，这里可以模拟点击事件重新出发选中的流程
-		eventBus.on('reverseElectionWidget', (widget) => {
-			if (widget?.id) {
-				this._selectWidget = null;
-				this.onComponentSelected(widget.id);
-			} else {
-				console.log('reverseElectionWidget：widget 不能存在，请检查---------')
-			}
-			
-		})
+		observer.subscribe('Select_Widget', this.onSelectWidget)
     }
 }
 </script>

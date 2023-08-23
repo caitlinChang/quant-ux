@@ -33,7 +33,10 @@ class RenderedProps {
   rootPath: string | undefined;
   propsConfig: PropItemConfigType;
   constructor(params: ComponentWrapperType) {
-    const { component, props, path, id } = params;
+    const { component, props, path, rootPath, id } = params;
+    // console.log(
+    //   `renderedProps ${component} 的 path = ${path}, rootPath = ${rootPath}`
+    // );
     this.rawComponentInfo = cloneDeep(params);
     this.componentName = component;
     this.rawProps = cloneDeep(props);
@@ -109,7 +112,10 @@ class RenderedProps {
                 <TextSlot
                   id={this.widgetId}
                   path={relativePath}
-                  rootPath={getNodePath(this.rootPath, relativePath)}
+                  rootPath={getNodePath(
+                    this.rawComponentInfo.rootPath,
+                    relativePath
+                  )}
                   rawProps={this.rawProps}
                   value={widgetProps.children}
                 />
