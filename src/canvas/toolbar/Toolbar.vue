@@ -2479,7 +2479,7 @@ export default {
      
     });
 
-    eventBus.on("canvasUpdate", (rootPath, value) => {
+    eventBus.on("canvasUpdate", (rootPath, _value) => {
       if (!this._selectedWidget) {
         console.log(
           "canvasUpdate：this._selectedWidget 不存在"

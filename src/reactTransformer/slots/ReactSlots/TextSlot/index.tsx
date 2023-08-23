@@ -13,7 +13,6 @@ export default (props: {
   const handleBlur = (e: any) => {
     const _value = e.target.innerHTML;
     eventBus.emit(`canvasUpdate`, props.rootPath, _value);
-    // eventBus.emit(`${props.id}:propsUpdate`, newFormData, `${props.path}[1]`);
   };
 
   return (

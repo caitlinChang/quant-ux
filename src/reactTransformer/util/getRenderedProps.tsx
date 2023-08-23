@@ -50,6 +50,15 @@ class RenderedProps {
     return this._recursionProps(this.propsConfig, this.rawProps);
   }
 
+  async update(props) {
+    this.rawProps = cloneDeep(props);
+    if (!this.propsConfig || !this.rawProps) {
+      return {};
+    }
+
+    return this._recursionProps(this.propsConfig, this.rawProps);
+  }
+
   _getPropsConfig() {
     const res = requestPropsConfig(this.componentName);
     return res.props;

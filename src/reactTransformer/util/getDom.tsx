@@ -6,6 +6,7 @@ import VueWrapper from "../slots/VueSlots/vueWrapper.vue";
 import ContextMenu from "../contextMenu";
 import { SlotWrapperProps } from "../slots/VueSlots/SlotWrapper";
 import ReactWrapper from "../slots/ReactSlots/ReactWrapper";
+import StoreWrapper from "../slots/ReactSlots/StoreWrapper";
 import ComputedStyleForReact from "../computeStyle/forReact";
 /**
  * 根据 react component 配置信息, 创建一个真实的DOM节点
@@ -30,7 +31,11 @@ const generateVueDom = (componentInfo) => {
 
 /** 生成 react 组件的dom */
 const generateReactDom = (widget) => {
-  const element = React.createElement(ReactWrapper, widget);
+  const element = React.createElement(
+    StoreWrapper,
+    null,
+    React.createElement(ReactWrapper, widget)
+  );
   const container = document.createElement("div");
   ReactDom.render(element, container);
   return container;
