@@ -32,13 +32,17 @@ export default (props: ComponentWrapperType) => {
   const { className, onClick, onDblClick, ...restProps } = componentProps;
   const store = React.useContext(WidgetStore);
 
-  const handleClick = (e: any) => {};
+  const handleClick = (e: any) => {
+    // e.stopPropagation();
+    // if (props.path !== store.activePath) {
+    //   store.resetActivePath();
+    // }
+  };
   const handleDblClick = (e: any) => {
     if (e.target.classList.contains("can-edit")) {
       return;
     }
     e.stopPropagation();
-    console.log("双击组件 = ", props);
     store.handleSetActivePath(props);
   };
 

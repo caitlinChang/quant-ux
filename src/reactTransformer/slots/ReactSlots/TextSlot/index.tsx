@@ -5,15 +5,14 @@ import "./index.less";
 
 export default (props: {
   id: string;
-  path: string;
-  rootPath?: string;
+  path?: string;
   rawProps: any;
   value: string;
 }) => {
   const store = React.useContext(WidgetStore);
   const handleBlur = (e: any) => {
     const value = e.target.innerHTML;
-    observer.notifyPropsUpdate(props.id, props.rootPath, props.path, value);
+    observer.notifyPropsUpdate(props.id, props.path, "", value);
   };
 
   const handleDblClick = (e: any) => {

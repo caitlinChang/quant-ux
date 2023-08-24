@@ -14,6 +14,11 @@ export default (props?: { children?: any }) => {
     observer.notify(EventType.SELECT_WIDGET, widget);
   };
 
+  const resetActivePath = () => {
+    setActivePath("");
+    // observer.notify(EventType.SELECT_WIDGET, widget);
+  };
+
   const onSelectWidget = (widget) => {
     setActivePath(widget.path);
   };

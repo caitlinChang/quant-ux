@@ -716,7 +716,7 @@ export default {
           this._selection = "widget";
           this._selectedWidget = component;
           this.curSelectedWidget = component;
-          this.curSelectedChild = null;
+          this.curSelectedChild = component;
           this._selectionID = component.id;
           this.showWidgetProperties(component);
           // this.$refs.propertiesPanel.onSetWidgetProperties(component);
@@ -2477,7 +2477,6 @@ export default {
         ...this.curSelectedWidget,
         props: cloneDeep(newFormData)
       }
-      console.log('不会是触发了这里吧----')
       if (!this.curSelectedChild.path) {
         this._selectedWidget.props = cloneDeep(newFormData);
         // update model

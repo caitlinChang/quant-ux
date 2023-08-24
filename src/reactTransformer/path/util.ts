@@ -1,8 +1,8 @@
 import { get } from "lodash";
 import { ComponentWrapperType } from "../util/type";
 
-export const getNodeList = (rootPath: string, widget: ComponentWrapperType) => {
-  if (!rootPath) {
+export const getNodeList = (path: string, widget: ComponentWrapperType) => {
+  if (!path) {
     return [widget];
   }
   const rootWidgetInfo = {
@@ -11,7 +11,7 @@ export const getNodeList = (rootPath: string, widget: ComponentWrapperType) => {
   };
   const widgetProps = widget.props;
   const reg = /\w+\[\d+\](\[1\])?/g;
-  const arr = rootPath.match(reg) || [];
+  const arr = path.match(reg) || [];
   const nodeList = arr
     .map((item, index) => {
       let _item = item;
@@ -30,7 +30,7 @@ export const getNodeList = (rootPath: string, widget: ComponentWrapperType) => {
           props: {
             text: value,
           },
-          rootPath: key,
+          path: key,
         };
       } else {
         const [name, props] = value;
@@ -38,7 +38,7 @@ export const getNodeList = (rootPath: string, widget: ComponentWrapperType) => {
           ...rootWidgetInfo,
           component: name,
           props: props,
-          rootPath: key,
+          path: key,
         };
       }
     })

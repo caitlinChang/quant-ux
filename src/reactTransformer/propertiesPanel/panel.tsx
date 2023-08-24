@@ -43,7 +43,6 @@ const Panel = (props: {
   const [formData, setFormData] = React.useState({}); // 维护的是当前选中组件的 props，可能是 widget，也可能是 widgetChild
   const [selectWidget, setSelectWidget] = React.useState(null); // 当前选中的 widget
   const [activeTab, setActiveTab] = React.useState("settings"); // 当前选中的 widget
-
   // 选择子组件
   useEffect(() => {
     if (selectChild) {
@@ -51,11 +50,11 @@ const Panel = (props: {
     }
   }, [selectChild]);
 
-  // 选择组件
+  // 存储根组件
   useEffect(() => {
     const { widget } = props;
     if (widget?.id) {
-      renderWidgetProps(widget);
+      // renderWidgetProps(widget);
       setWidgetProps(cloneDeep(widget.props));
       setSelectWidget(widget);
     } else {
@@ -353,13 +352,11 @@ const Panel = (props: {
    * @returns
    */
   const handleChangeSelected = (item: any) => {
-    console.log("item ==== ", item);
     observer.notify(EventType.SELECT_WIDGET, item);
   };
 
   const renderTitle = () => {
-    const nameList = getNodeList(selectChild?.rootPath, selectWidget);
-    console.log("nameList = ", nameList);
+    const nameList = getNodeList(selectChild?.path, selectWidget);
     return (
       <Breadcrumb separator=">">
         {nameList.map((item) => {
