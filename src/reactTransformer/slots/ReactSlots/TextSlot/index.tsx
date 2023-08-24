@@ -12,7 +12,7 @@ export default (props: {
   const store = React.useContext(WidgetStore);
   const handleBlur = (e: any) => {
     const value = e.target.innerHTML;
-    observer.notifyPropsUpdate(props.id, props.path, "", value);
+    observer.notifyPropsUpdate(props.id, props.path, value);
   };
 
   const handleDblClick = (e: any) => {

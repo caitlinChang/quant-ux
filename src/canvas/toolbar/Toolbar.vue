@@ -316,7 +316,7 @@
       class="MatcToobarPropertiesSection MatcToolbarSectionHidden"
       data-dojo-attach-point="propertiesCntr"
     >
-      <property-panel :widget="curSelectedWidget" :selectChild="curSelectedChild" @updateModel="setWidgetProps" />
+      <property-panel :widget="curSelectedWidget" :selectChild="curSelectedChild" />
       <!-- <properties-panel ref="propertiesPanel" @setComponentProps="setWidgetProps" /> -->
     </div>
   </div>
@@ -343,7 +343,7 @@ import CreateVectorButton from "canvas/toolbar/components/CreateVectorButton";
 import ModelUtil from "../../core/ModelUtil";
 import HelpButton from "help/HelpButton";
 import Panel from "../../reactTransformer/propertiesPanel/panel.tsx";
-import { set, cloneDeep, get } from "lodash";
+import { cloneDeep } from "lodash";
 import { transferPath } from '../../reactTransformer/util/propsValueUtils';
 import observer from '../../reactTransformer/eventBus/Observer';
 
@@ -2462,7 +2462,7 @@ export default {
      * Observer Subscribe & Notify
      **********************************************************************/
 
-    async updateCurSelectWidgetProps(valuePath, _value) {
+    async updateCurSelectWidgetProps(newProps, info) {
       if (!this._selectedWidget) {
         console.log(
           "canvasUpdate：this._selectedWidget 不存在"
@@ -2472,20 +2472,21 @@ export default {
       if (!this.curSelectedWidget) {
         this.curSelectedWidget = this._selectedWidget;
       }
-      const { key, value, newFormData } = transferPath(valuePath, _value, this.curSelectedChild.props)
+      console.log('newProps = ', newProps)
       this.curSelectedWidget = {
         ...this.curSelectedWidget,
-        props: cloneDeep(newFormData)
+        props: cloneDeep(newProps)
       }
-      if (!this.curSelectedChild.path) {
+
+      if (this.curSelectedChild.path) {
+        const { key, value, newFormData } = transferPath(this.curSelectedWidget.path, newProps, this._selectedWidget.props);
         this._selectedWidget.props = cloneDeep(newFormData);
         // update model
-        this.setWidgetProps(key, value, true)
+        this.setWidgetProps(key, value, true);
       } else {
-        const res = transferPath(this.curSelectedWidget.path, newFormData, this._selectedWidget.props)
-        this._selectedWidget.props = cloneDeep(res.newFormData);
-        // update model
-        this.setWidgetProps(res.key, res.value, true)
+        this._selectedWidget.props = newProps;
+        const { key, value } = transferPath(info.path, info.value, this._selectedWidget.props);
+        this.setWidgetProps(key, value, true);
       }
     },
 

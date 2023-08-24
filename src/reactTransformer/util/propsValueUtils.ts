@@ -14,6 +14,9 @@ const getFirstKey = (path) => {
 };
 
 export const transferPath = (path: string, value: any, formData: any) => {
+  if (!path) {
+    return {};
+  }
   const key = getFirstKey(path);
   const newFormData = set(cloneDeep(formData || {}), path, value);
   return {

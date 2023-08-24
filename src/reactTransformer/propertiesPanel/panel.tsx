@@ -16,7 +16,6 @@ import {
 import { requestComponentProps } from "../util/request";
 import { isArray, set, get, clone, cloneDeep, rest } from "lodash";
 import { PropItemConfigType, TypeName, typeNameList } from "../util/type";
-import { transferPath } from "../util/propsValueUtils";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import SlotRender from "./components/SlotRender";
 import { formatPath } from "../util/common";
@@ -27,15 +26,11 @@ import CSSPropertiesRender from "./components/CSSPropertiesRender";
 import "./panel.less";
 import observer, { EventType } from "../eventBus/Observer";
 import { getNodeList } from "../path/util";
+import { getNodePath } from "../util/getRenderedProps";
 
 const AntdPanel = Collapse.Panel;
-const { TabPane } = Tabs;
 
-const Panel = (props: {
-  widget: any;
-  selectChild: any;
-  updateModel?: (key: string, value: any, doNotRender?: boolean) => void;
-}) => {
+const Panel = (props: { widget: any; selectChild: any }) => {
   const { selectChild } = props;
   const [treeData, setTreeData] = React.useState([]);
   const [propsConfig, setPropsConfig] = React.useState(null);
@@ -54,7 +49,6 @@ const Panel = (props: {
   useEffect(() => {
     const { widget } = props;
     if (widget?.id) {
-      // renderWidgetProps(widget);
       setWidgetProps(cloneDeep(widget.props));
       setSelectWidget(widget);
     } else {
@@ -91,29 +85,29 @@ const Panel = (props: {
 
     return propsConfig;
   };
-  const handleChangeProp = (path, _value) => {
+  const handleChangeProp = (path, value) => {
     if (!selectWidget?.id) {
       console.log("当前没有选中widget", selectWidget);
       return;
     }
-    const { key, value, newFormData } = transferPath(path, _value, formData);
-    setFormData(cloneDeep(newFormData));
-    observer.notifyPropsUpdate(selectWidget.id, selectChild.path, key, value);
+    const newProps = set(cloneDeep(formData), path, value);
+    setFormData(newProps);
+    observer.notifyPropsUpdate(selectWidget.id, selectChild.path, newProps, {
+      path,
+      value,
+    });
   };
 
   const handleSelectComponent = (path: string, index: number) => {
-    let _path = `${path}[${index}]`;
-    let data = cloneDeep(formData);
-    if (selectChild) {
-      _path = `${selectChild.path}[1].${_path}`;
-      data = cloneDeep(widgetProps);
-    }
-
-    // eventBus.emit("fillSlot", {
-    //   path: _path,
-    //   id: selectWidget.id,
-    //   formData: data,
-    // });
+    let _path = getNodePath(selectChild.path, `${path}[${index}]`) ;
+    observer.notify(EventType.FILL_WIDGET, {
+      id: selectWidget.id,
+      path: selectChild.path,
+      formData: cloneDeep(formData),
+      info: {
+        path: _path,
+      },
+    });
   };
 
   const renderProp = (node: {

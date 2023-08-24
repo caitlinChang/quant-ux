@@ -1,8 +1,7 @@
 export enum EventType {
   SELECT_WIDGET = "Select_Widget",
   DE_SELECT_WIDGET = "De_Select_Widget",
-  //   Canvas_Update = "Canvas_Update",
-  PROPS_UPDATE = "Props_Update",
+  FILL_WIDGET = "Fill_Widget",
 }
 
 class Observer {
@@ -11,11 +10,9 @@ class Observer {
   constructor() {
     this.subscribers = {
       [EventType.SELECT_WIDGET]: [],
-      //   [EventType.Canvas_Update]: [],
-      //   [EventType.PROPS_UPDATE]: [],
       [EventType.DE_SELECT_WIDGET]: [],
+      [EventType.FILL_WIDGET]: [],
     };
-
     this.propsUpdateSubscribers = {};
   }
 
@@ -27,8 +24,6 @@ class Observer {
   clear() {
     this.subscribers = {
       [EventType.SELECT_WIDGET]: [],
-      //   [EventType.Canvas_Update]: [],
-      [EventType.PROPS_UPDATE]: [],
       [EventType.DE_SELECT_WIDGET]: [],
     };
   }
@@ -38,6 +33,7 @@ class Observer {
       fn(data);
     });
   }
+
   subscribePropsUpdate(id: string, path: string, fn: Function) {
     if (
       this.propsUpdateSubscribers[`${id}:${path || ""}:propsUpdate`]?.length
@@ -47,15 +43,20 @@ class Observer {
       this.propsUpdateSubscribers[`${id}:${path || ""}:propsUpdate`] = [fn];
     }
   }
-  notifyPropsUpdate(id: string, widgetPath: string, valuePath, value) {
+  notifyPropsUpdate(
+    id: string,
+    widgetPath: string,
+    newProps: any,
+    info?: { path: string; value: any }
+  ) {
     this.propsUpdateSubscribers[
       `${id}:${widgetPath || ""}:propsUpdate`
     ]?.forEach((fn: Function) => {
-      fn(valuePath, value);
+      fn(newProps, info);
     });
   }
 
-  clearPropsUpdate(id, path) {
+  clearPropsUpdate() {
     this.propsUpdateSubscribers = {};
   }
 }

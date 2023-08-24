@@ -86,9 +86,8 @@ import Services from "services/Services";
 import CheckBox from "common/CheckBox";
 import ModelUtil from "core/ModelUtil";
 import DisplayWidgets from "../../../reactTransformer/DisplayWidgets.vue";
-import eventBus from '../../../reactTransformer/eventBus';
-import { transferPath } from "../../../reactTransformer/util/propsValueUtils";
-import { revertName } from '../../../reactTransformer/util/getWidgets/util'
+import observer from '../../../reactTransformer/eventBus/Observer';
+import { set } from 'lodash';
 
 export default {
   name: "CreateButton2",
@@ -1112,11 +1111,13 @@ export default {
 
     onCreateCustomWeget(widget, e) {
       if (this.forSlot) {
-        const { path, id, formData } = this.forSlot;
-        const _value = [revertName(widget.component), widget.props || null];
-        const { key, value, newFormData } = transferPath(path, _value, formData);
-        eventBus.emit(`canvasUpdate`, key, value);
-        eventBus.emit(`${id}:propsUpdate`, newFormData);
+        const { path, id, formData, info } = this.forSlot;
+        const _value = [widget.component, widget.props || null];
+        const newFormData = set(formData, info.path, _value)
+        observer.notifyPropsUpdate(id, path, newFormData, {
+          ...info,
+          value: _value
+        });
       } else {
         this.emit("change", widget, e);
       }
@@ -1163,10 +1164,11 @@ export default {
     },
   },
   mounted() {
-    eventBus.on('fillSlot', (props) => {
+    observer.subscribe('Fill_Widget', (props) => {
       this.showDropDown();
       this.forSlot = props;
     })
+    
   },
 };
 </script>
