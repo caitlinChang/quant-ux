@@ -72,14 +72,9 @@ export default (props: {
     }
     const newList = [...componentList];
     const value = e.target.value;
-    newList[index] = value;
+    newList[index] = [value];
     setComponentList(newList);
-    if (typeof props.value === 'string') {
-      props.onChange?.(value);
-    } else {
-      props.onChange?.(newList);
-    }
-    
+    props.onChange?.(newList);
   };
   return (
     <div>

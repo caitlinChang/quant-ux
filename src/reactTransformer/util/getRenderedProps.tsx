@@ -99,11 +99,13 @@ class RenderedProps {
     if ([TypeName.ReactNode, TypeName.ReactChild].includes(name)) {
       /** 1. ReactNode, ReactChild 的情况 */
       const children = handleChildren(curValue, this.rawComponentInfo);
+      console.log("getRenderedProps children = ", children);
       return (
         <>
           {children.map((item, index) => {
             const { type, widgetProps, componentInfo } = item;
             const relativePath = `${path}[${index}]`;
+            console.log("relativePath = ", relativePath, widgetProps);
             if (type === "text") {
               const textRelativePath = `${relativePath}[0]`;
               return (

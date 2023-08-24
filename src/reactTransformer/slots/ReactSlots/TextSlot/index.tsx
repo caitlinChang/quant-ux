@@ -11,6 +11,7 @@ export default (props: {
   value: string;
   id: string;
 }) => {
+  console.log("TextSlot props = ", props.value);
   const store = React.useContext(WidgetStore);
   const { path, id } = props;
   const handleBlur = (e: any) => {

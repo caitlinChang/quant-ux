@@ -91,6 +91,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     return propsConfig;
   };
   const handleChangeProp = (path, value) => {
+    console.log("path = ", path, value);
     if (!selectWidget?.id) {
       console.log("当前没有选中widget", selectWidget);
       return;

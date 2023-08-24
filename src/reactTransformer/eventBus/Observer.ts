@@ -38,9 +38,9 @@ class Observer {
       this.propsUpdateSubscribers[`${id}:${path || ""}:propsUpdate`]?.length
     ) {
       // 去重处理
-      const duplicateFn = this.propsUpdateSubscribers.find(
-        (item: Function) => item.name === fn.name
-      );
+      const duplicateFn = this.propsUpdateSubscribers[
+        `${id}:${path || ""}:propsUpdate`
+      ].find((item: Function) => item.name === fn.name);
       if (!duplicateFn) {
         this.propsUpdateSubscribers[`${id}:${path || ""}:propsUpdate`].push(fn);
       }
