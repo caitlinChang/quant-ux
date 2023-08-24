@@ -21,6 +21,7 @@ export default (props?: { children?: any }) => {
 
   const onSelectWidget = (widget) => {
     setActivePath(widget.path);
+    //ddd
   };
 
   const onDeSelectWidget = () => {

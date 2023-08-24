@@ -52,7 +52,6 @@ const getMockDataByType = (keyName, config: PropItemConfigType): any => {
       return getMockedProps(
         requestPropsConfig(type.importComponentName)?.props
       );
-    // return [['TypographyText',{ children: "Edit Me" }]]
     default:
       return undefined;
   }

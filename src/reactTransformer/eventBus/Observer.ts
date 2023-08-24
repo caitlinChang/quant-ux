@@ -18,7 +18,6 @@ class Observer {
 
   subscribe(eventType: EventType, fn: Function) {
     this.subscribers[eventType].push(fn);
-    // this.subscribers.push(fn);
   }
 
   clear() {
@@ -38,7 +37,13 @@ class Observer {
     if (
       this.propsUpdateSubscribers[`${id}:${path || ""}:propsUpdate`]?.length
     ) {
-      this.propsUpdateSubscribers[`${id}:${path || ""}:propsUpdate`].push(fn);
+      // 去重处理
+      const duplicateFn = this.propsUpdateSubscribers.find(
+        (item: Function) => item.name === fn.name
+      );
+      if (!duplicateFn) {
+        this.propsUpdateSubscribers[`${id}:${path || ""}:propsUpdate`].push(fn);
+      }
     } else {
       this.propsUpdateSubscribers[`${id}:${path || ""}:propsUpdate`] = [fn];
     }

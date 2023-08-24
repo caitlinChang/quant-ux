@@ -1,4 +1,4 @@
-import React, { useEffect, ReactNode } from "react";
+import React, { useEffect, ReactNode, useMemo } from "react";
 import {
   Tree,
   Tabs,
@@ -27,6 +27,7 @@ import "./panel.less";
 import observer, { EventType } from "../eventBus/Observer";
 import { getNodeList } from "../path/util";
 import { getNodePath } from "../util/getRenderedProps";
+import TextContentRender from "./components/TextContentRender";
 
 const AntdPanel = Collapse.Panel;
 
@@ -41,7 +42,11 @@ const Panel = (props: { widget: any; selectChild: any }) => {
   // 选择子组件
   useEffect(() => {
     if (selectChild) {
-      renderWidgetProps(selectChild);
+      if (selectChild.component === "text") {
+        return;
+      } else {
+        renderWidgetProps(selectChild);
+      }
     }
   }, [selectChild]);
 
@@ -99,7 +104,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
   };
 
   const handleSelectComponent = (path: string, index: number) => {
-    let _path = getNodePath(selectChild.path, `${path}[${index}]`) ;
+    let _path = getNodePath(selectChild.path, `${path}[${index}]`);
     observer.notify(EventType.FILL_WIDGET, {
       id: selectWidget.id,
       path: selectChild.path,
@@ -380,6 +385,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
   const handleChangeStyle = (value) => {
     handleChangeProp("style", value);
   };
+
   return (
     <div>
       {!!selectWidget?.id && (
@@ -394,11 +400,17 @@ const Panel = (props: { widget: any; selectChild: any }) => {
               {
                 key: "settings",
                 label: "Settings",
-                children: renderChildren(treeData),
+                children:
+                  selectChild?.component === "text" ? (
+                    <TextContentRender {...selectChild} />
+                  ) : (
+                    renderChildren(treeData)
+                  ),
               },
               {
                 key: "design",
                 label: "Design",
+                disabled: selectChild?.component === "text",
                 children: (
                   <CSSPropertiesRender
                     value={formData.style}
@@ -409,6 +421,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
               {
                 key: "export",
                 label: "Export",
+                disabled: selectChild?.component === "text",
                 children: <Button onClick={onWidgetExport}>Export</Button>,
               },
             ]}

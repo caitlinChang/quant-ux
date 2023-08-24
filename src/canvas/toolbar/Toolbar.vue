@@ -2114,7 +2114,6 @@ export default {
     },
 
     setWidgetProps(key, value, doNotRender) {
-      console.log('-------- update model ------- = ', key, value);
       this.logger.log(2, "setWidgetProps", "entry > " + key + " - " + value);
       if (this._selectedWidget) {
         if (this._selectedWidget.props) {
@@ -2462,6 +2461,47 @@ export default {
      * Observer Subscribe & Notify
      **********************************************************************/
 
+    updateTextContent(text) {
+      this.curSelectedChild = {
+        ...this.curSelectedChild,
+        value: text
+      }
+        
+      const { key, value, newFormData } = transferPath(this.curSelectedChild.path, text, this._selectedWidget.props);
+      this._selectedWidget.props = cloneDeep(newFormData);
+      this.setWidgetProps(key, value, true);
+    },
+
+    updateChildProps(newProps) {
+      this.curSelectedChild = {
+          ...this.curSelectedChild,
+          props: cloneDeep(newProps)
+      }
+      const { key, value, newFormData } = transferPath(`${this.curSelectedChild.path}[1]`, newProps, this._selectedWidget.props);
+      this.curSelectedWidget = {
+        ...this.curSelectedWidget,
+        props: cloneDeep(newFormData)
+      }
+      this._selectedWidget.props = cloneDeep(newFormData);
+      this.setWidgetProps(key, value, true);
+    },
+
+    updateWidgetProps(newProps, info) {
+      // this.curSelectedChild = {
+      //     ...this.curSelectedChild,
+      //     props: cloneDeep(newProps)
+      // }
+      const { key, value, newFormData } = transferPath(info.path, info.value, this._selectedWidget.props);
+
+      this.curSelectedWidget = {
+        ...this.curSelectedWidget,
+        props: cloneDeep(newFormData)
+      }
+      this._selectedWidget.props = newProps;
+
+      this.setWidgetProps(key, value, true);
+    },
+
     async updateCurSelectWidgetProps(newProps, info) {
       if (!this._selectedWidget) {
         console.log(
@@ -2472,22 +2512,15 @@ export default {
       if (!this.curSelectedWidget) {
         this.curSelectedWidget = this._selectedWidget;
       }
-      console.log('newProps = ', newProps)
-      this.curSelectedWidget = {
-        ...this.curSelectedWidget,
-        props: cloneDeep(newProps)
-      }
 
-      if (this.curSelectedChild.path) {
-        const { key, value, newFormData } = transferPath(this.curSelectedWidget.path, newProps, this._selectedWidget.props);
-        this._selectedWidget.props = cloneDeep(newFormData);
-        // update model
-        this.setWidgetProps(key, value, true);
+      if (this.curSelectedChild.component === 'text') {
+        this.updateTextContent(newProps)
+      } else if (this.curSelectedChild.path){
+        this.updateChildProps(newProps, info)
       } else {
-        this._selectedWidget.props = newProps;
-        const { key, value } = transferPath(info.path, info.value, this._selectedWidget.props);
-        this.setWidgetProps(key, value, true);
+        this.updateWidgetProps(newProps, info)
       }
+  
     },
 
     async observerSelectWidget(widget) {
@@ -2505,10 +2538,9 @@ export default {
         return;
       }
 
-      observer.clearPropsUpdate()
       this.curSelectedChild = cloneDeep(widget);
       // 注册新的事件
-      observer.subscribePropsUpdate(this._selectedWidget.id, widget.path, this.updateCurSelectWidgetProps)
+      observer.subscribePropsUpdate(this._selectedWidget.id, widget.path, this.updateCurSelectWidgetProps);
     }
 
   },

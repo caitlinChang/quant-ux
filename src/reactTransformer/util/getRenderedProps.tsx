@@ -105,12 +105,12 @@ class RenderedProps {
             const { type, widgetProps, componentInfo } = item;
             const relativePath = `${path}[${index}]`;
             if (type === "text") {
+              const textRelativePath = `${relativePath}[0]`;
               return (
                 <TextSlot
                   id={this.widgetId}
-                  path={getNodePath(this.rootPath, relativePath)}
-                  rawProps={this.rawProps}
-                  value={widgetProps.children}
+                  value={get(widgetProps.props, relativePath)}
+                  path={getNodePath(this.rootPath, textRelativePath)}
                 />
               );
             } else {
