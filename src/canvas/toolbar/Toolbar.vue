@@ -343,7 +343,7 @@ import CreateVectorButton from "canvas/toolbar/components/CreateVectorButton";
 import ModelUtil from "../../core/ModelUtil";
 import HelpButton from "help/HelpButton";
 import Panel from "../../reactTransformer/propertiesPanel/panel.tsx";
-import { cloneDeep } from "lodash";
+import { set, cloneDeep } from "lodash";
 import { transferPath } from '../../reactTransformer/util/propsValueUtils';
 import observer from '../../reactTransformer/eventBus/Observer';
 
@@ -2136,6 +2136,24 @@ export default {
       return false;
     },
 
+    setComponentProps(newProps, doNotRender = true){
+      this.logger.log(2, "setWidgetProps", "entry > " + newProps);
+      if (this._selectedWidget) {
+        if (this._selectedWidget.props) {
+          console.log('------- update model --------', newProps);
+          this.controller.updateWidgetProperties(
+            this._selectedWidget.id,
+            newProps,
+            "props",
+            '',
+            '',
+            doNotRender
+          );
+        }
+      }
+      return false;
+    },
+
     setGroupProperties(key, value) {
       this.logger.log(
         2,
@@ -2470,10 +2488,10 @@ export default {
         ...this.curSelectedChild,
         value: text
       }
-        
-      const { key, value, newFormData } = transferPath(this.curSelectedChild.path, text, this._selectedWidget.props);
-      this._selectedWidget.props = cloneDeep(newFormData);
-      this.setWidgetProps(key, value, true);
+      const newProps = set(this._selectedWidget.props, this.curSelectedChild.path, text);
+      console.log('text content newProps = ', newProps);
+      this._selectedWidget.props = cloneDeep(newProps);
+      this.setComponentProps(newProps);
     },
 
     updateChildProps(newProps) {
@@ -2481,30 +2499,22 @@ export default {
           ...this.curSelectedChild,
           props: cloneDeep(newProps)
       }
-      const { key, value, newFormData } = transferPath(`${this.curSelectedChild.path}[1]`, newProps, this._selectedWidget.props);
+      const newWidgetProps = set(this._selectedWidget.props, `${this.curSelectedChild.path}[1]`, newProps);
       this.curSelectedWidget = {
         ...this.curSelectedWidget,
-        props: cloneDeep(newFormData)
+        props: cloneDeep(newWidgetProps)
       }
-      this._selectedWidget.props = cloneDeep(newFormData);
-      this.setWidgetProps(key, value, true);
+      this._selectedWidget.props = cloneDeep(newWidgetProps);
+      this.setComponentProps(newProps);
     },
 
     updateWidgetProps(newProps, info) {
-      console.log('toolbar 侧接收更新 --- ', newProps, info)
-      // this.curSelectedChild = {
-      //     ...this.curSelectedChild,
-      //     props: cloneDeep(newProps)
-      // }
-      const { key, value, newFormData } = transferPath(info.path, info.value, this._selectedWidget.props);
-
       this.curSelectedWidget = {
         ...this.curSelectedWidget,
-        props: cloneDeep(newFormData)
+        props: cloneDeep(newProps)
       }
       this._selectedWidget.props = newProps;
-
-      this.setWidgetProps(key, value, true);
+      this.setComponentProps(newProps);
     },
 
     async updateCurSelectWidgetProps(newProps, info) {
