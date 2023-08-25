@@ -26,19 +26,19 @@ export const getNodePath = (rootPath: string, relativePath: string) => {
  * @rootPath: 相对于根组件的路径
  */
 class RenderedProps {
-  rawComponentInfo: ComponentWrapperType;
   componentName: string;
   rawProps: any;
   widgetId: string | undefined;
   rootPath: string | undefined;
+  library: "antd" | "antdIcon";
   propsConfig: PropItemConfigType;
   constructor(params: ComponentWrapperType) {
-    const { component, props, path, id } = params;
-    this.rawComponentInfo = cloneDeep(params);
+    const { component, props, path, id, library } = params;
     this.componentName = component;
     this.rawProps = cloneDeep(props);
     this.widgetId = id;
     this.rootPath = path || "";
+    this.library = library;
     this.propsConfig = cloneDeep(this._getPropsConfig());
   }
 
@@ -98,20 +98,18 @@ class RenderedProps {
 
     if ([TypeName.ReactNode, TypeName.ReactChild].includes(name)) {
       /** 1. ReactNode, ReactChild 的情况 */
-      const children = handleChildren(curValue, this.rawComponentInfo);
-      console.log("getRenderedProps children = ", children);
+      const children = handleChildren(curValue);
       return (
         <>
           {children.map((item, index) => {
-            const { type, widgetProps, componentInfo } = item;
+            const { type, componentInfo } = item;
             const relativePath = `${path}[${index}]`;
-            console.log("relativePath = ", relativePath, widgetProps);
             if (type === "text") {
               const textRelativePath = `${relativePath}[0]`;
               return (
                 <TextSlot
                   id={this.widgetId}
-                  value={get(widgetProps.props, relativePath)}
+                  value={get(this.rawProps, relativePath)}
                   path={getNodePath(this.rootPath, textRelativePath)}
                 />
               );
@@ -119,7 +117,7 @@ class RenderedProps {
               return (
                 <ReactWrapper
                   component={componentInfo.component}
-                  library={this.rawComponentInfo.library}
+                  library={this.library}
                   props={componentInfo.props}
                   id={this.widgetId}
                   path={getNodePath(this.rootPath, relativePath)}

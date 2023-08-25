@@ -30,9 +30,6 @@ export default (props: {
         // e.target.innerHTML = value;
       }
     });
-    return () => {
-      observer.clearPropsUpdate();
-    };
   }, []);
 
   return (

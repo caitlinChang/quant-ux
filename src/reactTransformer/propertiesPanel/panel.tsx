@@ -35,7 +35,6 @@ const Panel = (props: { widget: any; selectChild: any }) => {
   const { selectChild } = props;
   const [treeData, setTreeData] = React.useState([]);
   const [propsConfig, setPropsConfig] = React.useState(null);
-  const [widgetProps, setWidgetProps] = React.useState({}); // 维护当前选中 Widget 的Props
   const [formData, setFormData] = React.useState({}); // 维护的是当前选中组件的 props，可能是 widget，也可能是 widgetChild
   const [selectWidget, setSelectWidget] = React.useState(null); // 当前选中的 widget
   const [activeTab, setActiveTab] = React.useState("settings"); // 当前选中的 widget
@@ -54,16 +53,16 @@ const Panel = (props: { widget: any; selectChild: any }) => {
   useEffect(() => {
     const { widget } = props;
     if (widget?.id) {
-      setWidgetProps(cloneDeep(widget.props));
       setSelectWidget(widget);
     } else {
       clear();
     }
   }, [props.widget]);
 
-  useEffect(() => {
-    getTreedata(propsConfig, formData);
-  }, [formData, propsConfig]);
+  // useEffect(() => {
+  //   console.log('formData = ', formData)
+  //   getTreedata(propsConfig, formData);
+  // }, [formData, propsConfig]);
 
   const clear = () => {
     setPropsConfig(null);
@@ -76,6 +75,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     const propsConfig = await resolveComponentProps(
       widget.category === "ICON" ? "icon" : component
     );
+    console.log('获取最新的 props', props)
     setFormData(cloneDeep(props));
     getTreedata(propsConfig, { ...props });
   };

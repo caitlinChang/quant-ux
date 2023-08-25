@@ -716,6 +716,9 @@ export default {
           this._selection = "widget";
           this._selectedWidget = component;
           this.curSelectedWidget = component;
+          this.observerSelectWidget(component);
+          // observer.subscribe('Select_Widget', this.observerSelectWidget)
+          // observer.subscribePropsUpdate(component.id, component.path, this.updateCurSelectWidgetProps)
           this.curSelectedChild = component;
           this._selectionID = component.id;
           this.showWidgetProperties(component);
@@ -2119,6 +2122,7 @@ export default {
         if (this._selectedWidget.props) {
           var newProps = {};
           newProps[key] = value;
+          console.log('------- update model --------', key, value);
           this.controller.updateWidgetProperties(
             this._selectedWidget.id,
             newProps,
@@ -2487,6 +2491,7 @@ export default {
     },
 
     updateWidgetProps(newProps, info) {
+      console.log('toolbar 侧接收更新 --- ', newProps, info)
       // this.curSelectedChild = {
       //     ...this.curSelectedChild,
       //     props: cloneDeep(newProps)
@@ -2503,12 +2508,14 @@ export default {
     },
 
     async updateCurSelectWidgetProps(newProps, info) {
+      console.log('toolbar 侧接收更新 --- ', newProps, info)
       if (!this._selectedWidget) {
         console.log(
           "canvasUpdate：this._selectedWidget 不存在"
         );
         return;
       }
+     
       if (!this.curSelectedWidget) {
         this.curSelectedWidget = this._selectedWidget;
       }
@@ -2530,8 +2537,8 @@ export default {
           );
           return;
       }
-      if (
-        widget.component === this.curSelectedChild?.component &&
+       if (
+        widget.id === this.curSelectedChild?.id &&
         widget.path === this.curSelectedChild?.path
       ) {
         // 防止重复点击
@@ -2543,10 +2550,6 @@ export default {
       observer.subscribePropsUpdate(this._selectedWidget.id, widget.path, this.updateCurSelectWidgetProps);
     }
 
-  },
-  mounted() {
-    // TODO: 选中子组件可以不通过事件，而是融入到项目状态的流程中，通过 controller 来控制？
-    observer.subscribe('Select_Widget', this.observerSelectWidget)
   }
 };
 </script>
