@@ -48,16 +48,11 @@ class Observer {
       this.propsUpdateSubscribers[`${id}:${path || ""}:propsUpdate`] = [fn];
     }
   }
-  notifyPropsUpdate(
-    id: string,
-    widgetPath: string,
-    newProps: any,
-    info?: { path: string; value: any }
-  ) {
+  notifyPropsUpdate(id: string, widgetPath: string, newProps: any) {
     this.propsUpdateSubscribers[
       `${id}:${widgetPath || ""}:propsUpdate`
     ]?.forEach((fn: Function) => {
-      fn(newProps, info);
+      fn(newProps);
     });
   }
 

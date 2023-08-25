@@ -6,6 +6,11 @@ import { v4 as uuidv4 } from "uuid";
 import { SpecialKey } from "./specialKey";
 import { requestPropsConfig } from "./request";
 
+enum MockType {
+  Edit = "Edit", // 用于在 Panel 面板中添加时候的mock, 会只生成一个 key
+  View = "View", // 用于初始化展示时候的mock, 会对 require: true 的属性进行mock
+}
+
 function getRandomBoolean() {
   return Math.random() < 0.5;
 }
@@ -15,8 +20,23 @@ function getRandomInteger() {
 }
 
 // 根据数据类型随机生成 mock 数据
-const getMockDataByType = (keyName, config: PropItemConfigType): any => {
+const getMockDataByType = (
+  keyName,
+  config: PropItemConfigType,
+  mockType?: MockType
+): any => {
   const { type } = config;
+  const typeName = type.name;
+  if (mockType === MockType.Edit) {
+    // 用于在 Panel 面板中添加时候的mock, 会只生成一个 key
+    switch (typeName) {
+      case TypeName.Key:
+        return uuidv4().substr(0, 5);
+      default:
+        return undefined;
+    }
+  }
+
   if (keyName === SpecialKey.DISABLED) {
     return false;
   }
@@ -31,9 +51,11 @@ const getMockDataByType = (keyName, config: PropItemConfigType): any => {
     ];
   }
   const obj = {};
-  const typeName = type.name;
+
   switch (typeName) {
     case TypeName.String:
+      return "Text";
+    case TypeName.Key:
       return uuidv4().substr(0, 5);
     case TypeName.Number:
       return getRandomInteger();
@@ -62,7 +84,7 @@ export const getMockedProps = (propsConfig: {
 }): any => {
   const data = {};
   Object.entries(propsConfig).forEach(([key, item]) => {
-    if (key === 'getPopupContainer') { 
+    if (key === "getPopupContainer") {
       data[key] = true;
     }
 
@@ -79,8 +101,15 @@ export const getMockedProps = (propsConfig: {
   return data;
 };
 
+export const getArrayItemMockDataByPath = (
+  propsConfig: PropItemConfigType
+): any => {
+  const data = getMockData(propsConfig, MockType.Edit);
+  return data[0];
+};
+
 // 根据 props 的类型生成 mock 数据
-const getMockData = (config: PropItemConfigType): any => {
+const getMockData = (config: PropItemConfigType, mockType?: MockType): any => {
   const {
     type: { name, item },
   } = config;
@@ -93,7 +122,7 @@ const getMockData = (config: PropItemConfigType): any => {
         if (key === "children") {
           //   itemValue[key] = [];
         } else {
-          itemValue[key] = getMockDataByType(key, value);
+          itemValue[key] = getMockDataByType(key, value, mockType);
         }
       });
 

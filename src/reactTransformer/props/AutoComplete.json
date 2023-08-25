@@ -6,13 +6,75 @@
     "displayName": "AutoComplete",
     "methods": [],
     "props": {
-      "autoFocus": {
+      "options": {
+        "defaultValue": null,
+        "description": "下拉选项",
+        "needMock": true,
+        "name": "options",
+        "required": false,
+        "type": {
+          "name": "array",
+          "item": {
+            "label": {
+              "description": "文本",
+              "name": "label",
+              "type": {
+                "name": "string"
+              }
+            },
+            "value": {
+              "description": "",
+              "name": "value",
+              "type": {
+                "name": "Key"
+              }
+            }
+          }
+        }
+      },
+      "value": {
+        "defaultValue": "",
+        "description": "选中项",
+        "name": "value",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "defaultValue": {
+        "defaultValue": "",
+        "description": "默认选中项",
+        "name": "defaultValue",
+        "required": false,
+        "type": {
+          "name": "string"
+        }
+      },
+      "disabled": {
         "defaultValue": false,
-        "description": "是否默认聚焦",
-        "name": "autoFocus",
+        "description": "禁用",
+        "name": "disabled",
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "open": {
+        "defaultValue": false,
+        "description": "展开下拉菜单",
+        "name": "open",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "placeholder": {
+        "defaultValue": "",
+        "description": "输入框提示文字",
+        "name": "placeholder",
+        "required": false,
+        "type": {
+          "name": "string"
         }
       },
       "allowClear": {
@@ -24,10 +86,39 @@
           "name": "boolean"
         }
       },
+      "autoFocus": {
+        "defaultValue": false,
+        "description": "是否默认聚焦",
+        "name": "autoFocus",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
       "backfill": {
         "defaultValue": false,
         "description": "使用键盘选择选项的时候把选中项回填到输入框中",
         "name": "backfill",
+        "required": false,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "status": {
+        "defaultValue": "",
+        "description": "输入框状态",
+        "name": "status",
+        "required": false,
+        "type": {
+          "name": "choice",
+          "enum": ["success", "error", "warning", "validating"]
+        }
+      },
+      "dropdownMatchSelectWidth": {
+        "defaultValue": true,
+        "description": "下拉菜单和选择器同宽",
+        "tips": "默认将设置 min-width，当值小于选择框宽度时会被忽略。false 时会关闭虚拟滚动",
+        "name": "dropdownMatchSelectWidth",
         "required": false,
         "type": {
           "name": "boolean"
@@ -49,97 +140,6 @@
         "required": false,
         "type": {
           "name": "boolean"
-        }
-      },
-      "defaultValue": {
-        "defaultValue": "",
-        "description": "指定默认选中的条目",
-        "name": "defaultValue",
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
-      "disabled": {
-        "defaultValue": false,
-        "description": "是否禁用",
-        "name": "disabled",
-        "required": false,
-        "type": {
-          "name": "boolean"
-        }
-      },
-      "dropdownMatchSelectWidth": {
-        "defaultValue": true,
-        "description": "下拉菜单和选择器同宽",
-        "tips": "默认将设置 min-width，当值小于选择框宽度时会被忽略。false 时会关闭虚拟滚动",
-        "name": "dropdownMatchSelectWidth",
-        "required": false,
-        "type": {
-          "name": "boolean"
-        }
-      },
-      "open": {
-        "defaultValue": false,
-        "description": "是否展开下拉菜单",
-        "name": "open",
-        "required": false,
-        "type": {
-          "name": "boolean"
-        }
-      },
-      "options": {
-        "defaultValue": [],
-        "description": "下拉列表数据",
-        "needMock": true,
-        "name": "options",
-        "required": false,
-        "type": {
-          "name": "array",
-          "item": {
-            "label": {
-              "description": "文本",
-              "name": "label",
-              "type": {
-                "name": "string"
-              }
-            },
-            "value": {
-              "description": "",
-              "name": "value",
-              "type": {
-                "name": "string"
-              }
-            }
-          }
-        }
-      },
-      "value": {
-        "defaultValue": "",
-        "description": "指定当前选中的条目",
-        "name": "value",
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
-      "placeholder": {
-        "defaultValue": "",
-        "description": "输入框提示文字",
-        "name": "placeholder",
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
-      "status": {
-        "defaultValue": "",
-        "description": "输入框状态",
-        "name": "status",
-        "required": false,
-        "type": {
-          "name": "choice",
-          "enum": ["success", "error", "warning", "validating"]
         }
       }
     }

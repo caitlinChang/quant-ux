@@ -28,16 +28,16 @@ import observer, { EventType } from "../eventBus/Observer";
 import { getNodeList } from "../path/util";
 import { getNodePath } from "../util/getRenderedProps";
 import TextContentRender from "./components/TextContentRender";
+import { getArrayItemMockDataByPath } from "../util/mock";
 
 const AntdPanel = Collapse.Panel;
 
 const Panel = (props: { widget: any; selectChild: any }) => {
-  const { selectChild } = props;
+  const { widget, selectChild } = props;
   const [treeData, setTreeData] = React.useState([]);
-  const [propsConfig, setPropsConfig] = React.useState(null);
-  const [formData, setFormData] = React.useState({}); // 维护的是当前选中组件的 props，可能是 widget，也可能是 widgetChild
-  const [selectWidget, setSelectWidget] = React.useState(null); // 当前选中的 widget
-  const [activeTab, setActiveTab] = React.useState("settings"); // 当前选中的 widget
+  const [formData, setFormData] = React.useState({}); // 维护的是当前选中组件的 props
+  const [propsConfig, setPropsConfig] = React.useState([]); // 维护的是当前选中组件的 props
+  const [activeTab, setActiveTab] = React.useState("settings"); //
   // 选择子组件
   useEffect(() => {
     if (selectChild) {
@@ -52,61 +52,50 @@ const Panel = (props: { widget: any; selectChild: any }) => {
   // 存储根组件
   useEffect(() => {
     const { widget } = props;
-    if (widget?.id) {
-      setSelectWidget(widget);
-    } else {
+    if (!widget?.id) {
       clear();
     }
   }, [props.widget]);
 
-  // useEffect(() => {
-  //   console.log('formData = ', formData)
-  //   getTreedata(propsConfig, formData);
-  // }, [formData, propsConfig]);
-
   const clear = () => {
-    setPropsConfig(null);
+    setPropsConfig([]);
     setFormData({});
-    setSelectWidget(null);
   };
+
+  useEffect(() => {
+    if (propsConfig.length) {
+      // FIXME: 在操作 array 对象时，tree 没有重新渲染，所以这里强制的随着 props 改变重新渲染
+      getTreedata(propsConfig, { ...formData });
+    }
+  }, [formData, propsConfig]);
 
   const renderWidgetProps = async (widget) => {
     const { component, props = {} } = widget;
-    const propsConfig = await resolveComponentProps(
-      widget.category === "ICON" ? "icon" : component
-    );
-    setFormData(cloneDeep(props));
-    getTreedata(propsConfig, { ...props });
-  };
-
-  const resolveComponentProps = async (name: string) => {
-    const res = await requestComponentProps(name);
+    const res = await requestComponentProps(component);
     const list = Object.values(res.props);
     const propsConfig = list.filter((item: any) => {
       return typeNameList.includes(item.type.name);
     });
     setPropsConfig(propsConfig);
-
-    return propsConfig;
+    setFormData(cloneDeep(props));
+    getTreedata(propsConfig, { ...props });
   };
+
   const handleChangeProp = (path, value) => {
-    console.log("path = ", path, value);
-    if (!selectWidget?.id) {
-      console.log("当前没有选中widget", selectWidget);
+    if (!widget?.id) {
+      console.log("当前没有选中widget", widget);
       return;
     }
     const newProps = set(cloneDeep(formData), path, value);
-    setFormData(newProps);
-    observer.notifyPropsUpdate(selectWidget.id, selectChild.path, newProps, {
-      path,
-      value,
-    });
+
+    setFormData({ ...newProps });
+    observer.notifyPropsUpdate(widget.id, selectChild.path, newProps);
   };
 
   const handleSelectComponent = (path: string, index: number) => {
     let _path = getNodePath(selectChild.path, `${path}[${index}]`);
     observer.notify(EventType.FILL_WIDGET, {
-      id: selectWidget.id,
+      id: widget.id,
       path: selectChild.path,
       formData: cloneDeep(formData),
       info: {
@@ -166,7 +155,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     } else if (name === TypeName.Boolean) {
       return (
         <Switch
-          value={_value}
+          checked={_value}
           onChange={(value) => handleChangeProp(node.key, value)}
         />
       );
@@ -192,6 +181,8 @@ const Panel = (props: { widget: any; selectChild: any }) => {
       // const node =
       // const treeData = getTreedata(node.config, formData);
       // return renderChildren(treeData)
+    } else if (name === TypeName.Key) {
+      return;
     }
   };
 
@@ -238,10 +229,12 @@ const Panel = (props: { widget: any; selectChild: any }) => {
       newValue.splice(index, 1);
       props.handleChangeProp(props.path, newValue);
     };
+
     const handleAdd = () => {
       // TODO: 对添加项的 mock
       const newValue = get(props.propsValue, props.path) || [];
-      newValue.push({});
+      const mockItem = getArrayItemMockDataByPath(config);
+      newValue.push({ ...mockItem });
       props.handleChangeProp(props.path, newValue);
     };
     return (
@@ -285,6 +278,10 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     const curPath = `${formatPath(path)}${config.name}`;
     let children = [];
 
+    if (name === TypeName.Key) {
+      return;
+    }
+
     if (name === TypeName.Object) {
       children = Object.entries(property).map(([_, info]) => {
         return getTreeNode(info, curPath, propsValue);
@@ -304,14 +301,16 @@ const Panel = (props: { widget: any; selectChild: any }) => {
             />
           ),
           key: `${curPath}[${index}]`,
-          children: Object.entries(item).map(([_, info]) => {
-            // 如果是 Children 类型，就是依然将父级的propsConfig 当作自己的 Config 传进去
-            const _config =
-              info.type.name === TypeName.Children
-                ? { ...config, description: "Children", name: "children" }
-                : info;
-            return getTreeNode(_config, `${curPath}[${index}]`, propsValue);
-          }),
+          children: Object.entries(item)
+            .map(([_, info]) => {
+              // 如果是 Children 类型，就是依然将父级的propsConfig 当作自己的 Config 传进去
+              const _config =
+                info.type.name === TypeName.Children
+                  ? { ...config, description: "Children", name: "children" }
+                  : info;
+              return getTreeNode(_config, `${curPath}[${index}]`, propsValue);
+            })
+            .filter((i) => i),
         };
       });
     }
@@ -325,7 +324,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
         />
       ),
       key: curPath,
-      children,
+      children: children.filter((i) => i),
       config: config,
     };
   };
@@ -345,24 +344,15 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     }
   };
 
-  /**
-   * 切换现在正在选中的组件
-   * @param item
-   * @returns
-   */
-  const handleChangeSelected = (item: any) => {
-    observer.notify(EventType.SELECT_WIDGET, item);
-  };
-
   const renderTitle = () => {
-    const nameList = getNodeList(selectChild?.path, selectWidget);
+    const nameList = getNodeList(selectChild?.path, widget);
     return (
       <Breadcrumb separator=">">
         {nameList.map((item) => {
           return (
             <Breadcrumb.Item
               style={{ cursor: "pointer" }}
-              onClick={() => handleChangeSelected(item)}
+              onClick={() => observer.notify(EventType.SELECT_WIDGET, item)}
             >
               <Tooltip title={"点击切换到该子组件"}>{item.component}</Tooltip>
             </Breadcrumb.Item>
@@ -374,7 +364,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
 
   const onWidgetExport = async () => {
     try {
-      const code = await formatWidgetExportCodeDemo(formData, props.widget);
+      const code = await formatWidgetExportCodeDemo(formData, widget);
       console.log("onWidgetExport: ", code);
       // 先写入剪切板
       await navigator.clipboard.writeText(code);
@@ -388,13 +378,13 @@ const Panel = (props: { widget: any; selectChild: any }) => {
 
   return (
     <div>
-      {!!selectWidget?.id && (
+      {!!widget?.id && (
         <>
           <Typography.Title level={5}>{renderTitle()}</Typography.Title>
           <Tabs
             size="small"
             className="panel_tabs"
-            activeTabKey={activeTab}
+            activeKey={activeTab}
             onChange={(key) => setActiveTab(key)}
             items={[
               {

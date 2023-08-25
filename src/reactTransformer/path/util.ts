@@ -1,4 +1,4 @@
-import { get } from "lodash";
+import { get, isArray } from "lodash";
 import { ComponentWrapperType } from "../util/type";
 
 export const getNodeList = (path: string, widget: ComponentWrapperType) => {
@@ -23,23 +23,28 @@ export const getNodeList = (path: string, widget: ComponentWrapperType) => {
       r.push(_item);
       const key = r.join(".");
       const value = get(widgetProps, key) || [];
-      if (value.length === 1) {
-        // 文本内容没有属性展示到侧边栏上
-        return {
-          component: "文本",
-          props: {
-            text: value,
-          },
-          path: key,
-        };
+      // TODO: 这里的判断并不完全正确，还是应该判断这个这里的key 是不是一个 ReactNode/ReactChild 类型的属性才行
+      if (isArray(value)) {
+        if (value.length === 1) {
+          // 文本内容没有属性展示到侧边栏上
+          return {
+            component: "文本",
+            props: {
+              text: value,
+            },
+            path: key,
+          };
+        } else {
+          const [name, props] = value;
+          return {
+            ...rootWidgetInfo,
+            component: name,
+            props: props,
+            path: key,
+          };
+        }
       } else {
-        const [name, props] = value;
-        return {
-          ...rootWidgetInfo,
-          component: name,
-          props: props,
-          path: key,
-        };
+        return undefined;
       }
     })
     .filter((i) => i);

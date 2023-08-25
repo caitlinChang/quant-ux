@@ -1114,10 +1114,7 @@ export default {
         const { path, id, formData, info } = this.forSlot;
         const _value = [widget.component, widget.props || null];
         const newFormData = set(formData, info.path, _value)
-        observer.notifyPropsUpdate(id, path, newFormData, {
-          ...info,
-          value: _value
-        });
+        observer.notifyPropsUpdate(id, path, newFormData);
       } else {
         this.emit("change", widget, e);
       }

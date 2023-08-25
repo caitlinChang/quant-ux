@@ -6,14 +6,15 @@ export enum TypeName {
   Boolean = "boolean",
   Array = "array",
   Object = "object",
+  Choice = "choice", // enum 多选或者单选，值为 string | string[]
   Children = "children", // 类型为children 代表和父类型一致
   ReactNode = "ReactNode",
-  CSSProperties = "CSSProperties", // 组件的style 属性， 在 Design 面板编辑
-  Choice = "choice", // enum 多选或者单选，值为 string | string[]
-  ICON = "ICON", // TODO：ICON 可以与 ReactNode 合成一个吗？？？
-  ColorPicker = "ColorPicker", // 专用的颜色选择器
   ReactChild = "ReactChild", // ReactChild 是 ReactNode 的子集，只能是一个 ReactElement
-  Import = 'import', // 该组件的某个属性类型是另一个组件的props
+  ColorPicker = "ColorPicker", // 专用的颜色选择器
+  CSSProperties = "CSSProperties", // 组件的style 属性， 在 Design 面板编辑
+  Key = "Key", // 数据源的 value/key，需要mock 但不会在侧边栏上展示出来
+  Import = "import", // 该组件的某个属性类型是另一个组件的props
+  ICON = "ICON", // TODO：ICON 可以与 ReactNode 合成一个吗？？？
 }
 
 export const typeNameList = [
@@ -26,6 +27,7 @@ export const typeNameList = [
   TypeName.ReactNode,
   TypeName.Choice,
   TypeName.ICON,
+  TypeName.Key,
   TypeName.ColorPicker,
   TypeName.ReactChild,
   TypeName.Import,

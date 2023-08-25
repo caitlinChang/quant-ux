@@ -344,7 +344,6 @@ import ModelUtil from "../../core/ModelUtil";
 import HelpButton from "help/HelpButton";
 import Panel from "../../reactTransformer/propertiesPanel/panel.tsx";
 import { set, cloneDeep } from "lodash";
-import { transferPath } from '../../reactTransformer/util/propsValueUtils';
 import observer from '../../reactTransformer/eventBus/Observer';
 
 export default {
