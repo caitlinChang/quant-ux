@@ -20,7 +20,6 @@ export default (props?: { children?: any }) => {
   };
 
   const onSelectWidget = (widget) => {
-    // console.log('Select Widget = ', widget.path);
     setActivePath(widget.path);
   };
 

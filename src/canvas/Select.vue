@@ -797,7 +797,7 @@ import observer from '../reactTransformer/eventBus/Observer'
     },
 	mounted() {
 		// 用于 Panel/图层 中选中某个widget时，这里可以模拟点击事件重新出发选中的流程
-		observer.subscribe('Select_Widget', this.onSelectWidget)
+		// observer.subscribe('Select_Widget', this.onSelectWidget)
     }
 }
 </script>

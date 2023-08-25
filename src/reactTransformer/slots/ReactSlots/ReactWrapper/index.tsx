@@ -76,7 +76,6 @@ export default (props: ComponentWrapperType) => {
   useEffect(() => {
     if (id) {
       // 监听属性面板的更新
-      console.log("设置属性面板监听器 = ", id, path);
       observer.subscribePropsUpdate(id, path, updateRenderedProps);
     }
   }, []);

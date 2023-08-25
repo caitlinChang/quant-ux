@@ -717,8 +717,6 @@ export default {
           this._selectedWidget = component;
           this.curSelectedWidget = component;
           this.observerSelectWidget(component);
-          // observer.subscribe('Select_Widget', this.observerSelectWidget)
-          // observer.subscribePropsUpdate(component.id, component.path, this.updateCurSelectWidgetProps)
           this.curSelectedChild = component;
           this._selectionID = component.id;
           this.showWidgetProperties(component);
@@ -2489,7 +2487,6 @@ export default {
         value: text
       }
       const newProps = set(this._selectedWidget.props, this.curSelectedChild.path, text);
-      console.log('text content newProps = ', newProps);
       this._selectedWidget.props = cloneDeep(newProps);
       this.setComponentProps(newProps);
     },
@@ -2518,7 +2515,6 @@ export default {
     },
 
     async updateCurSelectWidgetProps(newProps, info) {
-      console.log('toolbar 侧接收更新 --- ', newProps, info)
       if (!this._selectedWidget) {
         console.log(
           "canvasUpdate：this._selectedWidget 不存在"
@@ -2559,7 +2555,9 @@ export default {
       // 注册新的事件
       observer.subscribePropsUpdate(this._selectedWidget.id, widget.path, this.updateCurSelectWidgetProps);
     }
-
+  },
+  mounted() {
+    observer.subscribe('Select_Widget', this.observerSelectWidget);
   }
 };
 </script>

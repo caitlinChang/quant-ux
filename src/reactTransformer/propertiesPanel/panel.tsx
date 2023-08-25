@@ -75,7 +75,6 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     const propsConfig = await resolveComponentProps(
       widget.category === "ICON" ? "icon" : component
     );
-    console.log('获取最新的 props', props)
     setFormData(cloneDeep(props));
     getTreedata(propsConfig, { ...props });
   };
