@@ -6,17 +6,28 @@
     "displayName": "AutoComplete",
     "methods": [],
     "props": {
+      "style": {
+        "defaultValue": "",
+        "description": "自定义样式",
+        "name": "style",
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
       "options": {
         "defaultValue": null,
         "description": "下拉选项",
         "needMock": true,
         "name": "options",
         "required": false,
+        "expandPanel": true,
         "type": {
           "name": "array",
           "item": {
             "label": {
               "description": "文本",
+              "expandPanel": true,
               "name": "label",
               "type": {
                 "name": "string"
@@ -35,6 +46,7 @@
       "value": {
         "defaultValue": "",
         "description": "选中项",
+        "expandPanel": true,
         "name": "value",
         "required": false,
         "type": {
@@ -44,6 +56,7 @@
       "defaultValue": {
         "defaultValue": "",
         "description": "默认选中项",
+        "expandPanel": true,
         "name": "defaultValue",
         "required": false,
         "type": {
@@ -53,6 +66,7 @@
       "disabled": {
         "defaultValue": false,
         "description": "禁用",
+        "expandPanel": true,
         "name": "disabled",
         "required": false,
         "type": {
@@ -62,6 +76,7 @@
       "open": {
         "defaultValue": false,
         "description": "展开下拉菜单",
+        "expandPanel": true,
         "name": "open",
         "required": false,
         "type": {
@@ -71,6 +86,7 @@
       "placeholder": {
         "defaultValue": "",
         "description": "输入框提示文字",
+        "expandPanel": true,
         "name": "placeholder",
         "required": false,
         "type": {
@@ -80,6 +96,7 @@
       "allowClear": {
         "defaultValue": false,
         "description": "是否添加清除图标",
+        "expandPanel": true,
         "name": "allowClear",
         "required": false,
         "type": {
@@ -97,7 +114,8 @@
       },
       "backfill": {
         "defaultValue": false,
-        "description": "使用键盘选择选项的时候把选中项回填到输入框中",
+        "description": "开启键盘选择",
+        "tips": "使用键盘选择选项的时候把选中项回填到输入框中",
         "name": "backfill",
         "required": false,
         "type": {

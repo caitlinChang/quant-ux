@@ -38,6 +38,14 @@ const Panel = (props: { widget: any; selectChild: any }) => {
   const [formData, setFormData] = React.useState({}); // 维护的是当前选中组件的 props
   const [propsConfig, setPropsConfig] = React.useState([]); // 维护的是当前选中组件的 props
   const [activeTab, setActiveTab] = React.useState("settings"); //
+
+  const showDesignTab = useMemo(() => {
+    const style = propsConfig.find(
+      (i) => i.name === "style" && i.type.name === TypeName.CSSProperties
+    );
+    return !!style;
+  }, [propsConfig]);
+
   // 选择子组件
   useEffect(() => {
     if (selectChild) {
@@ -125,12 +133,17 @@ const Panel = (props: { widget: any; selectChild: any }) => {
       type: { name },
     } = node.config;
 
+    if ([TypeName.Key, TypeName.CSSProperties].includes(name)) {
+      return;
+    }
+
     if (name === TypeName.Choice) {
       const options = node.config.type.enum?.map?.((i) => {
         return { label: i, value: i };
       });
       return (
         <Radio.Group
+          size="small"
           options={options}
           value={_value}
           onChange={(e) => handleChangeProp(node.key, e.target.value)}
@@ -139,6 +152,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     } else if (name === TypeName.String) {
       return (
         <Input
+          size="small"
           defaultValue={_value}
           allowClear
           onBlur={(e) => handleChangeProp(node.key, e.target.value)}
@@ -147,6 +161,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     } else if (name === TypeName.Number) {
       return (
         <InputNumber
+          size="small"
           value={_value}
           allowClear
           onBlur={(e) => handleChangeProp(node.key, e.target.value)}
@@ -155,6 +170,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     } else if (name === TypeName.Boolean) {
       return (
         <Switch
+          size="small"
           checked={_value}
           onChange={(value) => handleChangeProp(node.key, value)}
         />
@@ -178,26 +194,44 @@ const Panel = (props: { widget: any; selectChild: any }) => {
         />
       );
     } else if (name === TypeName.Import) {
-      // const node =
-      // const treeData = getTreedata(node.config, formData);
-      // return renderChildren(treeData)
-    } else if (name === TypeName.Key) {
-      return;
+      const treeData = getTreedata(node.config, formData);
+      return renderChildren(treeData);
     }
   };
 
   const renderChildren = (children) => {
+    const filteredChildren = children.filter((i) => i);
+    const defaultActiveKey = filteredChildren
+      .filter((i) => i?.expandPanel)
+      .map((i) => i.key);
+
     return (
-      <Collapse bordered={false} ghost>
-        {children.map((node) => {
-          return (
-            <AntdPanel header={node.title} key={node.key} collapsible={"icon"}>
-              {!!node.children?.length && renderChildren(node.children)}
-              {!node.children?.length && renderProp(node)}
-            </AntdPanel>
-          );
-        })}
-      </Collapse>
+      <>
+        {filteredChildren.length > 0 && (
+          <Collapse
+            defaultActiveKey={
+              defaultActiveKey.length ? defaultActiveKey : undefined
+            }
+            size="small"
+            bordered={false}
+            ghost
+          >
+            {filteredChildren.map((node) => {
+              return (
+                <AntdPanel
+                  size="small"
+                  header={node.title}
+                  key={node.key}
+                  collapsible={"icon"}
+                >
+                  {renderChildren(node.children)}
+                  {!node.children?.length && renderProp(node)}
+                </AntdPanel>
+              );
+            })}
+          </Collapse>
+        )}
+      </>
     );
   };
 
@@ -274,11 +308,12 @@ const Panel = (props: { widget: any; selectChild: any }) => {
   ) => {
     const {
       type: { name, item, property },
+      expandPanel,
     } = config;
     const curPath = `${formatPath(path)}${config.name}`;
     let children = [];
-
-    if (name === TypeName.Key) {
+    // 处理无需在 Panel 中展示的属性
+    if ([TypeName.Key, TypeName.CSSProperties].includes(name)) {
       return;
     }
 
@@ -290,6 +325,21 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     } else if (name === TypeName.Array) {
       const value = get(propsValue, curPath) || [];
       children = value.map((_, index) => {
+        const nextLevelChildren = Object.entries(item)
+          .map(([_, info]) => {
+            // 如果是 Children 类型，就是依然将父级的propsConfig 当作自己的 Config 传进去
+            const _config =
+              info.type.name === TypeName.Children
+                ? { ...config, description: "Children", name: "children" }
+                : info;
+            return getTreeNode(_config, `${curPath}[${index}]`, propsValue);
+          })
+          .filter((i) => i);
+
+        // if (nextLevelChildren.length === 1) {
+        //   return nextLevelChildren[0];
+        // }
+
         return {
           title: (
             <TreeNodeTitle
@@ -301,19 +351,16 @@ const Panel = (props: { widget: any; selectChild: any }) => {
             />
           ),
           key: `${curPath}[${index}]`,
-          children: Object.entries(item)
-            .map(([_, info]) => {
-              // 如果是 Children 类型，就是依然将父级的propsConfig 当作自己的 Config 传进去
-              const _config =
-                info.type.name === TypeName.Children
-                  ? { ...config, description: "Children", name: "children" }
-                  : info;
-              return getTreeNode(_config, `${curPath}[${index}]`, propsValue);
-            })
-            .filter((i) => i),
+          expandPanel,
+          children: nextLevelChildren,
         };
       });
     }
+
+    const filteredChildren = children.filter((i) => i);
+    // if (filteredChildren.length === 1) {
+    //   return filteredChildren[0];
+    // }
     return {
       title: (
         <TreeNodeTitle
@@ -323,8 +370,9 @@ const Panel = (props: { widget: any; selectChild: any }) => {
           config={config}
         />
       ),
+      expandPanel,
       key: curPath,
-      children: children.filter((i) => i),
+      children: filteredChildren,
       config: config,
     };
   };
@@ -375,9 +423,8 @@ const Panel = (props: { widget: any; selectChild: any }) => {
   const handleChangeStyle = (value) => {
     handleChangeProp("style", value);
   };
-
   return (
-    <div>
+    <div className="WIDGET_PANEL">
       {!!widget?.id && (
         <>
           <Typography.Title level={5}>{renderTitle()}</Typography.Title>
@@ -390,29 +437,38 @@ const Panel = (props: { widget: any; selectChild: any }) => {
               {
                 key: "settings",
                 label: "Settings",
-                children:
-                  selectChild?.component === "text" ? (
-                    <TextContentRender {...selectChild} />
-                  ) : (
-                    renderChildren(treeData)
-                  ),
+                children: (
+                  <div className="panel_item">
+                    {selectChild?.component === "text" ? (
+                      <TextContentRender {...selectChild} />
+                    ) : (
+                      renderChildren(treeData)
+                    )}
+                  </div>
+                ),
               },
               {
                 key: "design",
                 label: "Design",
-                disabled: selectChild?.component === "text",
+                disabled: selectChild?.component === "text" || !showDesignTab,
                 children: (
-                  <CSSPropertiesRender
-                    value={formData.style}
-                    onChange={handleChangeStyle}
-                  />
+                  <div className="panel_item">
+                    <CSSPropertiesRender
+                      value={formData.style}
+                      onChange={handleChangeStyle}
+                    />
+                  </div>
                 ),
               },
               {
                 key: "export",
                 label: "Export",
                 disabled: selectChild?.component === "text",
-                children: <Button onClick={onWidgetExport}>Export</Button>,
+                children: (
+                  <div className="panel_item">
+                    <Button onClick={onWidgetExport}>Export</Button>
+                  </div>
+                ),
               },
             ]}
           />
