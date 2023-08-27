@@ -402,9 +402,7 @@ export default {
 		onComponentAdded(pos,model){
 			this.logger.log(0, "onWidgetAdded", "enter");
 			// TODO: 如果位置落在容器内，那就是在容器内添加组件
-			console.log('pos = ', pos);
 			const alignmentTool = new GridAndRulerSnapp();
-			console.log('alignmentTool = ', alignmentTool._getNNDistance);
 			// const overlaps = alignmentTool._getNNDistance({
 			// 	...pos,
 			// 	snapp: {

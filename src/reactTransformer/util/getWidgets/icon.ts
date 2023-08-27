@@ -27,6 +27,7 @@ export const iconList = Object.keys(iconMap).map((key) => {
     component: key,
     props: cloneDeep(props),
     framework: "react",
+    library: "antdIcon",
   };
 });
 export default iconMap;

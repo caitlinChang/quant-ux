@@ -14,7 +14,7 @@ export enum TypeName {
   CSSProperties = "CSSProperties", // 组件的style 属性， 在 Design 面板编辑
   Key = "Key", // 数据源的 value/key，需要mock 但不会在侧边栏上展示出来
   Import = "import", // 该组件的某个属性类型是另一个组件的props
-  ICON = "ICON", // TODO：ICON 可以与 ReactNode 合成一个吗？？？
+  // ICON = "ICON", // TODO：ICON 可以与 ReactNode 合成一个吗？？？
 }
 
 export const typeNameList = [
@@ -26,7 +26,7 @@ export const typeNameList = [
   TypeName.Children,
   TypeName.ReactNode,
   TypeName.Choice,
-  TypeName.ICON,
+  // TypeName.ICON,
   TypeName.Key,
   TypeName.ColorPicker,
   TypeName.ReactChild,
@@ -99,6 +99,6 @@ export type ComponentWrapperType = {
   id?: string;
   path?: string;
   component: string;
-  library: "antd" | "antdIcon";
+  library?: "antd" | "antdIcon";
   props: any;
 };

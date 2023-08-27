@@ -21,6 +21,7 @@
         },
         "needMock": true,
         "required": false,
+        "expandPanel": true,
         "name": "children"
       },
       "block": {
@@ -28,6 +29,7 @@
         "type": {
           "name": "boolean"
         },
+        "expandPanel": true,
         "required": false,
         "description": "宽度自适应"
       },
@@ -44,8 +46,9 @@
         "type": {
           "name": "boolean"
         },
+        "expandPanel": true,
         "required": false,
-        "description": "按钮失效状态"
+        "description": "禁用"
       },
       "ghost": {
         "name": "ghost",
@@ -53,7 +56,7 @@
           "name": "boolean"
         },
         "required": false,
-        "description": "幽灵属性，使按钮背景透明"
+        "description": "使按钮背景透明"
       },
       "icon": {
         "name": "icon",
@@ -61,6 +64,7 @@
           "name": "ReactNode"
         },
         "required": false,
+        "expandPanel": true,
         "description": "设置按钮的图标类型"
       },
       "loading": {

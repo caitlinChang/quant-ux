@@ -78,8 +78,9 @@ const Panel = (props: { widget: any; selectChild: any }) => {
   }, [formData, propsConfig]);
 
   const renderWidgetProps = async (widget) => {
-    const { component, props = {} } = widget;
-    const res = await requestComponentProps(component);
+    const { component, props = {}, library } = widget;
+    const name = library === "antdIcon" ? "icon" : component;
+    const res = await requestComponentProps(name);
     const list = Object.values(res.props);
     const propsConfig = list.filter((item: any) => {
       return typeNameList.includes(item.type.name);

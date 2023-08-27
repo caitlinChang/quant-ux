@@ -7,6 +7,7 @@ import ReactWrapper from "../slots/ReactSlots/ReactWrapper";
 import TextSlot from "../slots/ReactSlots/TextSlot";
 import { requestPropsConfig } from "./request";
 import { handleChildren } from "./childrenUtils";
+import { iconList } from "./getWidgets/icon";
 
 /**
  * 用于处理 ReactNode 的嵌套结构获取属性的path
@@ -60,7 +61,10 @@ class RenderedProps {
   }
 
   _getPropsConfig() {
-    const res = requestPropsConfig(this.componentName);
+    const name = iconList.find((i) => i.component === this.componentName)
+      ? "icon"
+      : this.componentName;
+    const res = requestPropsConfig(name);
     return res.props;
   }
 
@@ -114,10 +118,15 @@ class RenderedProps {
                 />
               );
             } else {
+              const library = iconList.find(
+                (i) => i.component === componentInfo.component
+              )
+                ? "antdIcon"
+                : "antd";
               return (
                 <ReactWrapper
                   component={componentInfo.component}
-                  library={this.library}
+                  library={library}
                   props={componentInfo.props}
                   id={this.widgetId}
                   path={getNodePath(this.rootPath, relativePath)}

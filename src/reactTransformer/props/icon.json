@@ -10,8 +10,19 @@
         "type": {
           "name": "CSSProperties"
         },
+        "name": "style",
         "required": false,
         "description": "设置图标的样式，例如 fontSize 和 color"
+      },
+      "spin": {
+        "name": "spin",
+        "defaultValue": false,
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "description": "开启旋转动画",
+        "tips": ""
       },
       "rotate": {
         "name": "rotate",
@@ -22,6 +33,26 @@
         "required": false,
         "description": "旋转角度",
         "tips": ""
+      },
+      "className": {
+        "name": "className",
+        "defaultValue": "",
+        "type": {
+          "name": "className"
+        },
+        "required": false,
+        "description": "",
+        "tips": ""
+      },
+      "twoToneColor": {
+        "name": "twoToneColor",
+        "defaultValue": "",
+        "type": {
+          "name": "ColorPicker"
+        },
+        "required": false,
+        "description": "设置主要颜色",
+        "tips": "仅适用于双色图标"
       }
     }
   }

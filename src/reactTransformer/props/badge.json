@@ -5,20 +5,12 @@
     "displayName": "Badge",
     "methods": [],
     "props": {
-      "color": {
-        "defaultValue": "primary",
-        "description": "颜色",
-        "name": "color",
-        "required": false,
-        "type": {
-          "name": "ColorPicker"
-        }
-      },
       "status": {
         "defaultValue": "default",
         "description": "状态",
         "name": "status",
         "required": false,
+        "expandPanel": true,
         "type": {
           "name": "choice",
           "enum": ["default", "success", "warning", "error"]
@@ -30,6 +22,7 @@
         "name": "text",
         "required": false,
         "needMock": true,
+        "expandPanel": true,
         "type": {
           "name": "ReactNode"
         }
@@ -41,6 +34,15 @@
         "required": false,
         "type": {
           "name": "string"
+        }
+      },
+      "color": {
+        "defaultValue": "primary",
+        "description": "自定义颜色",
+        "name": "color",
+        "required": false,
+        "type": {
+          "name": "ColorPicker"
         }
       },
       "dot": {

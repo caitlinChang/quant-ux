@@ -5,11 +5,10 @@ import { ContenxtMenuType } from "../../contextMenu/index";
 import antdList from "../../util/getWidgets/antd";
 import { getVueTypeName } from "../../util/getWidgets/util";
 import iconList from "../../util/getWidgets/icon";
-import { IconSlot } from "../ReactSlots/IconSlot";
 import { transferPath } from "../../util/propsValueUtils";
 import { isArray } from "lodash";
 
-const componentMap = { ...antdList, ...iconList, IconSlot };
+const componentMap = { ...antdList, ...iconList };
 
 export type SlotWrapperProps = {
   path: string;

@@ -14,7 +14,11 @@ const getComponent = (name, library: ComponentInfoType["library"]) => {
     component = AntdMap[name];
   } else if (library === "antdIcon") {
     component = AntdIconMap[name];
+  } else if (!library) {
+    // 不传library的情况
+    component = AntdMap[name] || AntdIconMap[name];
   }
+
   if (component) {
     return component;
   } else {
@@ -72,7 +76,6 @@ export default (props: ComponentWrapperType) => {
   useEffect(() => {
     getRenderedProps();
   }, []);
-
   useEffect(() => {
     if (id) {
       // 监听属性面板的更新
