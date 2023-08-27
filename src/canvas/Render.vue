@@ -13,7 +13,7 @@ import RenderFlow from 'canvas/RenderFlow'
 import Wiring from 'canvas/Wiring'
 import ModelUtil from 'core/ModelUtil'
 import { generateDom } from '../reactTransformer/util/getDom'
-
+import observer from '../reactTransformer/eventBus/Observer'
 export default {
     name: 'Render',
     mixins:[_Color, RenderFlow, Wiring],
@@ -769,6 +769,15 @@ export default {
 				widget.y = zoomedPos.y;
 				widget.w = zoomedPos.w;
 				widget.h = zoomedPos.h;
+				// 更新组件的style props
+				observer.notifyPropsUpdate(widget.id, widget.path, {
+					...widget.props,
+					style: {
+						...(widget.props.style || {}),
+						width: `${zoomedPos.w}px`,
+						height: `${zoomedPos.h}px`,
+					}
+				})
 				const dndDiv = this.widgetDivs[id];
 				if (dndDiv){
 					this.updateBox(widget, dndDiv);

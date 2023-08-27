@@ -56,7 +56,7 @@ export default (props?: { form: FormInstance }) => {
       onToggle={handleToogleCollapse}
     >
       <Form.Item style={{ margin: "5px 0" }} label="Width" name="width">
-        <SpacingInput defaultValue="auto" />
+        <SpacingInput />
       </Form.Item>
       <Collapse className="size_collapse" ghost>
         <Collapse.Panel key={[1]}>

@@ -8,37 +8,18 @@ export const formatPath = (path) => {
   }
 };
 
-
-
-function getEnum(str: string) {
-  const regex = /"(.*?)"/g;
-  const matches = str.match(regex);
-
-  if (matches) {
-    const textContents = matches.map((match) => match.replace(/"/g, ""));
-    return textContents;
-  } else {
-    console.warn("No matches found.");
+// size 有可能是 undefined | xx px, 不处理百分比的情况
+export const formatSize = (size) => {
+  if (!size) {
+    return undefined;
+  } else if (size.includes("%")) {
+    return size.replace("%", "");
+  } else if (size.includes("px")) {
+    return size.replace("px", "");
   }
 }
-// 弃用 —— 因为 react-typescript-docgen 把所有类型都解析成一个字符串了，所以需要判断一下
-export const getExactType = (name: PropItemConfigType["type"]["name"]) => {
-  const contents = getEnum(name);
-  if (contents) {
-    // 存在类型字符串，那就是个 union 类型
-    if (contents.includes("ReactNode")) {
-      return ["ReactNode", null];
-    } else {
-      // 不存在，那就认为是 enum
-      return ["enum", contents];
-    }
-  }
-  const isArray = name.includes("[]");
-  if (isArray) {
-    return ["array", []];
-  }
-  return [name, null];
-};
+
+
 
 // 从 propsConfig 中找到 受控组件的事件和状态字段
 export const findControlledProps = (propsConfig: {

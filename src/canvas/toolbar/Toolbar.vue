@@ -343,8 +343,9 @@ import CreateVectorButton from "canvas/toolbar/components/CreateVectorButton";
 import ModelUtil from "../../core/ModelUtil";
 import HelpButton from "help/HelpButton";
 import Panel from "../../reactTransformer/propertiesPanel/panel.tsx";
-import { set, cloneDeep } from "lodash";
+import { set, cloneDeep, parseInt } from "lodash";
 import observer from '../../reactTransformer/eventBus/Observer';
+import { formatSize } from '../../reactTransformer/util/common'
 
 export default {
   name: "Toolbar",
@@ -2503,17 +2504,24 @@ export default {
       this._selectedWidget.props = cloneDeep(newWidgetProps);
       this.setComponentProps(newProps);
     },
-
-    updateWidgetProps(newProps, info) {
+    updateWidgetProps(newProps) {
       this.curSelectedWidget = {
         ...this.curSelectedWidget,
         props: cloneDeep(newProps)
       }
       this._selectedWidget.props = newProps;
-      this.setComponentProps(newProps);
+      const doNotRender = false;
+
+      this.controller.updateWidgetPosition(this._selectedWidget.id, {
+        x: this._selectedWidget.x,
+        y: this._selectedWidget.y,
+        w: formatSize(newProps.style?.width)  || this._selectedWidget.w,
+        h: formatSize(newProps.style?.height) || this._selectedWidget.h
+      }, false, false);
+      this.setComponentProps(newProps, doNotRender);
     },
 
-    async updateCurSelectWidgetProps(newProps, info) {
+    async updateCurSelectWidgetProps(newProps) {
       if (!this._selectedWidget) {
         console.log(
           "canvasUpdate：this._selectedWidget 不存在"
@@ -2528,9 +2536,9 @@ export default {
       if (this.curSelectedChild.component === 'text') {
         this.updateTextContent(newProps)
       } else if (this.curSelectedChild.path){
-        this.updateChildProps(newProps, info)
+        this.updateChildProps(newProps)
       } else {
-        this.updateWidgetProps(newProps, info)
+        this.updateWidgetProps(newProps)
       }
   
     },
