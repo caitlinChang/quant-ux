@@ -38,7 +38,7 @@ export default (props?: { form: FormInstance }) => {
 
   const handleToogleCollapse = (v) => {
     setCollapse(v);
-    if (v) {
+    if (!v) {
       props.form.resetFields([
         "width",
         "height",
@@ -63,6 +63,8 @@ export default (props?: { form: FormInstance }) => {
           {widthConfig.map((item) => {
             return (
               <Form.Item
+                // @ts-ignore
+                key={item.value}
                 style={{ margin: "5px 0" }}
                 label={item.label}
                 name={item.value}
@@ -88,6 +90,8 @@ export default (props?: { form: FormInstance }) => {
           {heightConfig.map((item) => {
             return (
               <Form.Item
+                // @ts-ignore
+                key={item.value}
                 style={{ margin: "5px 0" }}
                 label={item.label}
                 name={item.value}

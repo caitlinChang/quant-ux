@@ -1,4 +1,5 @@
-import { PropItemConfigType, TypeName, ObjectItemType } from "./type";
+import { PropItemConfigType } from "./type";
+import { isEmpty } from "lodash";
 
 export const formatPath = (path) => {
   if (path) {
@@ -17,9 +18,32 @@ export const formatSize = (size) => {
   } else if (size.includes("px")) {
     return size.replace("px", "");
   }
-}
+};
 
+/**
+ * obj 单层的对象
+ * @param obj
+ */
+export const getValidValue = (obj: any) => {
+  if (!obj) {
+    return undefined;
+  }
+  if (isEmpty(obj)) {
+    return undefined;
+  }
+  const _obj = {};
+  let hasValidValue = false;
+  for (let key in obj) {
+    if (key) {
+      hasValidValue = true;
+      _obj[key] = obj[key];
+    }
+  }
 
+  if (hasValidValue) {
+    return _obj;
+  }
+};
 
 // 从 propsConfig 中找到 受控组件的事件和状态字段
 export const findControlledProps = (propsConfig: {
@@ -44,9 +68,3 @@ export const findControlledProps = (propsConfig: {
   }
   return null;
 };
-
-
-
-
-
-

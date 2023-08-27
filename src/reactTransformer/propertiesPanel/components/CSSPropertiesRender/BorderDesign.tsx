@@ -147,7 +147,7 @@ export default (props?: {
 
   const handleToogleCollapse = (v) => {
     setCollapse(v);
-    if (v) {
+    if (!v) {
       onClear();
     }
   };

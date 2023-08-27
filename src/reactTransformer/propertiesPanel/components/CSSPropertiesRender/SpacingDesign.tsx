@@ -222,7 +222,7 @@ export default (props: { form: FormInstance }) => {
   const [collapse, setCollapse] = useState();
   const handleToogleCollapse = (v) => {
     setCollapse(v);
-    if (v) {
+    if (!v) {
       props.form.setFieldsValue({
         padding: undefined,
         margin: undefined,
@@ -238,7 +238,8 @@ export default (props: { form: FormInstance }) => {
     >
       {spacingList.map((item) => {
         return (
-          <Form.Item label={item.display} name={item.name}>
+          // @ts-ignore
+          <Form.Item key={item.name} label={item.display} name={item.name}>
             <SpacingItem />
           </Form.Item>
         );

@@ -2502,7 +2502,7 @@ export default {
         props: cloneDeep(newWidgetProps)
       }
       this._selectedWidget.props = cloneDeep(newWidgetProps);
-      this.setComponentProps(newProps);
+      this.setComponentProps(newWidgetProps);
     },
     updateWidgetProps(newProps) {
       this.curSelectedWidget = {
@@ -2511,7 +2511,7 @@ export default {
       }
       this._selectedWidget.props = newProps;
       const doNotRender = false;
-
+      
       this.controller.updateWidgetPosition(this._selectedWidget.id, {
         x: this._selectedWidget.x,
         y: this._selectedWidget.y,

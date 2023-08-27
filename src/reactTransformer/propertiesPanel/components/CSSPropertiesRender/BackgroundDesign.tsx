@@ -2,8 +2,10 @@ import React, { useState, ReactNode, useEffect } from "react";
 import { Form } from "antd";
 import ColorDesign from "./ColorDesign";
 import ModuleTitle from "./ModuleTitle";
+import { getValidValue } from "../../../util/common";
+import { get } from "lodash";
 
-export default (props?: { value?: string; onChange?: (v: string) => void }) => {
+export default (props?: { value?: any; onChange?: (v: any) => void }) => {
   const [collapse, setCollapse] = useState();
 
   const onClear = () => {
@@ -12,12 +14,16 @@ export default (props?: { value?: string; onChange?: (v: string) => void }) => {
 
   const handleToogleCollapse = (v) => {
     setCollapse(v);
-    if (v) {
+    if (!v && getValidValue(props.value)) {
       onClear();
     }
   };
 
   const handleValuesChange = (v, allValues) => {
+    console.log(getValidValue(props?.value), getValidValue(allValues));
+    if (!getValidValue(props?.value) && !getValidValue(allValues)) {
+      return;
+    }
     props?.onChange?.(allValues);
   };
 

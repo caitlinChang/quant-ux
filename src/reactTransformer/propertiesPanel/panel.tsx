@@ -1,4 +1,4 @@
-import React, { useEffect, ReactNode, useMemo } from "react";
+import React, { useEffect, ReactNode, useMemo, useState } from "react";
 import {
   Tree,
   Tabs,
@@ -34,10 +34,11 @@ const AntdPanel = Collapse.Panel;
 
 const Panel = (props: { widget: any; selectChild: any }) => {
   const { widget, selectChild } = props;
-  const [treeData, setTreeData] = React.useState([]);
-  const [formData, setFormData] = React.useState({}); // 维护的是当前选中组件的 props
-  const [propsConfig, setPropsConfig] = React.useState([]); // 维护的是当前选中组件的 props
-  const [activeTab, setActiveTab] = React.useState("settings"); //
+  const [treeData, setTreeData] = useState([]);
+  const [formData, setFormData] = useState({}); // 维护的是当前选中组件的 props
+  const [formStyle, setFormStyle] = useState({}); // 维护的是当前选中组件的 props
+  const [propsConfig, setPropsConfig] = useState([]); // 维护的是当前选中组件的 props
+  const [activeTab, setActiveTab] = useState("settings"); //
 
   const showDesignTab = useMemo(() => {
     const style = propsConfig.find(
@@ -62,6 +63,8 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     const { widget } = props;
     if (!widget?.id) {
       clear();
+    } else {
+      setFormStyle(cloneDeep(widget.props?.style));
     }
   }, [props.widget]);
 
@@ -422,8 +425,10 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     }
   };
   const handleChangeStyle = (value) => {
+    setFormStyle(value);
     handleChangeProp("style", value);
   };
+
   return (
     <div className="WIDGET_PANEL">
       {!!widget?.id && (
@@ -438,41 +443,36 @@ const Panel = (props: { widget: any; selectChild: any }) => {
               {
                 key: "settings",
                 label: "Settings",
-                children: (
-                  <div className="panel_item">
-                    {selectChild?.component === "text" ? (
-                      <TextContentRender {...selectChild} />
-                    ) : (
-                      renderChildren(treeData)
-                    )}
-                  </div>
-                ),
               },
               {
                 key: "design",
                 label: "Design",
                 disabled: selectChild?.component === "text" || !showDesignTab,
-                children: (
-                  <div className="panel_item">
-                    <CSSPropertiesRender
-                      value={formData.style}
-                      onChange={handleChangeStyle}
-                    />
-                  </div>
-                ),
               },
               {
                 key: "export",
                 label: "Export",
                 disabled: selectChild?.component === "text",
-                children: (
-                  <div className="panel_item">
-                    <Button onClick={onWidgetExport}>Export</Button>
-                  </div>
-                ),
               },
             ]}
           />
+          <div className="panel_item">
+            {activeTab === "settings" &&
+              (selectChild?.component === "text" ? (
+                <TextContentRender {...selectChild} />
+              ) : (
+                renderChildren(treeData)
+              ))}
+            {activeTab === "design" && (
+              <CSSPropertiesRender
+                value={formStyle}
+                onChange={handleChangeStyle}
+              />
+            )}
+            {activeTab === "export" && (
+              <Button onClick={onWidgetExport}>Export</Button>
+            )}
+          </div>
         </>
       )}
     </div>

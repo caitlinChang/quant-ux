@@ -9,30 +9,45 @@ import PositionDesign from "./PositionDesign";
 
 export default (props?: { value?: any; onChange?: (v: any) => void }) => {
   const [form] = Form.useForm();
-  const {
-    border,
-    borderTop,
-    borderLeft,
-    borderRight,
-    borderBottom,
-    backgroundColor,
-    ...rest
-  } = props?.value || {};
-
-  const initialValues = {
-    border: {
+ 
+  useEffect(() => {
+    const {
+      border,
       borderTop,
       borderLeft,
       borderRight,
       borderBottom,
-    },
-    background: {
       backgroundColor,
-    },
-    ...rest,
-  };
+      ...rest
+    } = props?.value || {};
+    form.setFieldsValue({
+      border: {
+        border,
+        borderTop,
+        borderLeft,
+        borderRight,
+        borderBottom,
+      },
+      background: {
+        backgroundColor,
+      },
+      ...rest,
+    });
+  }, [props.value]);
 
   const handleChange = (_, allValues) => {
+    // 判断是否值真的发生变化
+    let hasChange = false;
+    for (let key in _) {
+      if (props.value[key] !== _[key]) {
+        hasChange = true;
+        break;
+      }
+    }
+    if (!hasChange) {
+      return;
+    }
+
     const { border, background, ...rest } = allValues;
     const _value = {
       ...(border || {}),
@@ -45,7 +60,10 @@ export default (props?: { value?: any; onChange?: (v: any) => void }) => {
       }
     });
     if (Object.keys(_value).length === 0) {
-      props?.onChange?.(undefined);
+      if (props.value) {
+        console.log("Design Panel onChange = ", props.value);
+        props?.onChange?.(undefined);
+      }
       return;
     }
     props?.onChange?.(_value);
@@ -53,7 +71,6 @@ export default (props?: { value?: any; onChange?: (v: any) => void }) => {
   return (
     <Form
       id="Widget_Design_Panel"
-      initialValues={initialValues}
       form={form}
       size="small"
       labelAlign="left"
