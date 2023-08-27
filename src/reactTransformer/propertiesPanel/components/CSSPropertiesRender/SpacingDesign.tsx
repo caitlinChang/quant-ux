@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, InputNumber } from "antd";
+import { Form, InputNumber, FormInstance } from "antd";
 import ModuleTitle from "./ModuleTitle";
 import PaddingPng from "./imgs/padding.png";
 import PaddingItemPng from "./imgs/padding-item.png";
@@ -164,13 +164,6 @@ const list = [
   },
 ];
 
-type ValueType =
-  | {
-      padding?: string;
-      margin?: string;
-    }
-  | undefined;
-
 function resolveSpacingStr(str) {
   const arr = (str || "").split(" ").map((i) => parseInt(i));
   if (arr.length === 1) {
@@ -185,58 +178,55 @@ function resolveSpacingStr(str) {
   return [0, 0, 0, 0];
 }
 
-export default (props?: {
-  value?: ValueType;
-  onChange?: (v: ValueType) => void;
+const SpacingItem = (props?: {
+  value?: string;
+  onChange?: (v?: string) => void;
 }) => {
-  const { padding, margin } = props?.value || {};
-  const [collapse, setCollapse] = useState();
-  const [paddingValues, setPaddingValues] = useState(
-    resolveSpacingStr(padding)
+  const { value, onChange } = props;
+  const _value = resolveSpacingStr(value);
+  const [type, setType] = useState(SpacingListType.All);
+  const onPXChange = (v) => {
+    let newValue = [..._value];
+    typeList[type].forEach((i) => {
+      newValue[i] = v;
+    });
+    onChange?.(newValue.join("px ") + "px");
+  };
+  return (
+    <div>
+      <div className="spacing_icon-wrapper">
+        {list.map((space) => {
+          return (
+            <span
+              className={space.value === type ? "spacing_icon-selected" : ""}
+              onClick={() => setType(space.value)}
+            >
+              {space.render()}
+            </span>
+          );
+        })}
+      </div>
+      <InputNumber
+        style={{ width: "180px" }}
+        size="small"
+        defaultValue={0}
+        step={1}
+        value={_value[typeList[type][0]]}
+        onInput={onPXChange}
+      />
+    </div>
   );
-  const [marginValues, setMarginValues] = useState(resolveSpacingStr(margin));
-  const [curPaddingType, setCurePaddingType] = useState(SpacingListType.All);
-  const [curMarginType, setCureMarginType] = useState(SpacingListType.All);
+};
 
-  const onPXChange = (type, v) => {
-    if (type === SpacingType.Margin) {
-      let newValue = [...marginValues];
-      typeList[curMarginType].forEach((i) => {
-        newValue[i] = v;
-      });
-      setMarginValues(newValue);
-      props?.onChange?.({
-        padding,
-        margin: newValue.join("px ") + "px",
-      });
-    } else {
-      let newValue = [...paddingValues];
-      typeList[curPaddingType].forEach((i) => {
-        newValue[i] = v;
-      });
-      setPaddingValues(newValue);
-      props?.onChange?.({
-        margin,
-        padding: newValue.join("px ") + "px",
-      });
-    }
-  };
-  const handleSelect = (type, v) => {
-    if (type === SpacingType.Padding) {
-      setCurePaddingType(v);
-    } else {
-      setCureMarginType(v);
-    }
-  };
-  const onClear = () => {
-    props?.onChange?.(undefined);
-    setPaddingValues([0, 0, 0, 0]);
-    setMarginValues([0, 0, 0, 0]);
-  };
+export default (props: { form: FormInstance }) => {
+  const [collapse, setCollapse] = useState();
   const handleToogleCollapse = (v) => {
     setCollapse(v);
     if (v) {
-      onClear();
+      props.form.setFieldsValue({
+        padding: undefined,
+        margin: undefined,
+      });
     }
   };
 
@@ -246,45 +236,13 @@ export default (props?: {
       collapse={collapse}
       onToggle={handleToogleCollapse}
     >
-      <Form labelCol={{ span: 9 }} colon={false} labelAlign="left">
-        {spacingList.map((item) => {
-          return (
-            <Form.Item label={item.display}>
-              <div className="spacing_icon-wrapper">
-                {list.map((space) => {
-                  return (
-                    <span
-                      className={
-                        space.value ===
-                        (item.name === SpacingType.Margin
-                          ? curMarginType
-                          : curPaddingType)
-                          ? "spacing_icon-selected"
-                          : ""
-                      }
-                      onClick={() => handleSelect(item.name, space.value)}
-                    >
-                      {space.render()}
-                    </span>
-                  );
-                })}
-              </div>
-              <InputNumber
-                style={{ width: "180px" }}
-                size="small"
-                defaultValue={0}
-                step={1}
-                value={
-                  item.name === SpacingType.Margin
-                    ? marginValues[typeList[curMarginType][0]]
-                    : paddingValues[typeList[curPaddingType][0]]
-                }
-                onInput={(v) => onPXChange(item.name, v)}
-              />
-            </Form.Item>
-          );
-        })}
-      </Form>
+      {spacingList.map((item) => {
+        return (
+          <Form.Item label={item.display} name={item.name}>
+            <SpacingItem />
+          </Form.Item>
+        );
+      })}
     </ModuleTitle>
   );
 };

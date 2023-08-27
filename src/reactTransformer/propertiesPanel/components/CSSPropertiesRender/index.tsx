@@ -8,51 +8,61 @@ import SpacingDesign from "./SpacingDesign";
 import PositionDesign from "./PositionDesign";
 
 export default (props?: { value?: any; onChange?: (v: any) => void }) => {
-  console.log("props.value = ", props.value);
   const [form] = Form.useForm();
+  const {
+    border,
+    borderTop,
+    borderLeft,
+    borderRight,
+    borderBottom,
+    backgroundColor,
+    ...rest
+  } = props?.value || {};
 
-  useEffect(() => {
-    if (props.value) {
-      form.setFieldsValue({
-        text: props.value,
-        size: props.value,
-        spacing: props.value,
-        border: props.value,
-        background: props.value,
-      });
+  const initialValues = {
+    border: {
+      borderTop,
+      borderLeft,
+      borderRight,
+      borderBottom,
+    },
+    background: {
+      backgroundColor,
+    },
+    ...rest,
+  };
+
+  const handleChange = (_, allValues) => {
+    const { border, background, ...rest } = allValues;
+    const _value = {
+      ...(border || {}),
+      ...(background || {}),
+      ...rest,
+    };
+    Object.keys(_value).forEach((i) => {
+      if (!_value[i]) {
+        delete _value[i];
+      }
+    });
+    if (Object.keys(_value).length === 0) {
+      props?.onChange?.(undefined);
+      return;
     }
-  }, [props.value]);
-
-  const handleChange = (v, allValues) => {
-    const values = Object.values(allValues)
-      .filter((i) => i)
-      .map((i: any) => {
-        const obj = {};
-        for (let key in i) {
-          if (i[key]) {
-            obj[key] = i[key];
-          }
-        }
-        return obj;
-      })
-      .reduce((prev, cur) => {
-        return { ...prev, ...cur };
-      }, {});
-
-    console.log("onValuesChange = ", values);
-    props?.onChange?.(values);
+    props?.onChange?.(_value);
   };
   return (
-    <Form form={form} onValuesChange={handleChange}>
-      <Form.Item noStyle name="text">
-        <TextDesign />
-      </Form.Item>
-      <Form.Item noStyle name="size">
-        <SizeDesign />
-      </Form.Item>
-      <Form.Item noStyle name="spacing">
-        <SpacingDesign />
-      </Form.Item>
+    <Form
+      id="Widget_Design_Panel"
+      initialValues={initialValues}
+      form={form}
+      size="small"
+      labelAlign="left"
+      labelCol={{ span: 9 }}
+      onValuesChange={handleChange}
+    >
+      <TextDesign />
+      <SizeDesign form={form} />
+      <SpacingDesign form={form} />
       <Form.Item noStyle name="border">
         <BorderDesign />
       </Form.Item>

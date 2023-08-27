@@ -18,7 +18,6 @@ const BorderSelect = (props?: {
   onChange?: (v: string) => void;
 }) => {
   const handleChange = (v) => {
-    console.log("v = ", v);
     props.onChange && props.onChange(v);
   };
   return (
@@ -91,6 +90,9 @@ const resolveBorderValue = (value: ValueType) => {
   } else {
     const obj = {};
     Object.keys(rest).forEach((i) => {
+      if (!rest[i]) {
+        return;
+      }
       const [width, style, color] = rest[i].split(" ");
       obj[i] = {
         width,
@@ -133,11 +135,11 @@ export default (props?: {
   const [borderValues, setBorderValues] = useState<BorderValueType>();
   const [form] = Form.useForm();
   useEffect(() => {
-    const value = resolveBorderValue(props.value);
+    const value = resolveBorderValue(props?.value);
     setBorderValues(value);
     setCurBorderType(Object.keys(value)[0]);
     form.setFieldsValue(value[Object.keys(value)[0]]);
-  }, [props.value]);
+  }, [props?.value]);
 
   const onClear = () => {
     props?.onChange?.(undefined);

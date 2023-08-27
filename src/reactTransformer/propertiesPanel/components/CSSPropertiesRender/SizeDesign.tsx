@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Collapse, Form, Input, Radio } from "antd";
+import React, { useState, useEffect } from "react";
+import { Collapse, Form, FormInstance, Input, Radio, InputProps } from "antd";
 import ModuleTitle from "./ModuleTitle";
 import "./index.less";
+import SpacingInput from "./SpacingInput";
 
 const widthConfig = [
   {
@@ -31,32 +32,21 @@ const overflowConfig = [
   { label: "hidden", value: "hidden" },
   { label: "scorll", value: "scorll" },
 ];
-export default (props?: { value?: any; onChange?: (v: any) => void }) => {
-  const [form] = Form.useForm();
-  const [collapse, setCollapse] = useState(false);
-  const handleChange = (v, allValues) => {
-    const value = {};
-    console.log("allValues = ", allValues);
-    Object.keys(allValues).forEach((key) => {
-      if (allValues[key] && allValues[key] !== "auto") {
-        value[key] = `${allValues[key]}px`;
-      }
-    });
-    if (Object.keys(value).length === 0) {
-      props.onChange?.(undefined);
-    } else {
-      props.onChange?.(value);
-    }
-  };
 
-  const onClear = () => {
-    props.onChange?.(undefined);
-    form.resetFields();
-  };
+export default (props?: { form: FormInstance }) => {
+  const [collapse, setCollapse] = useState(false);
+
   const handleToogleCollapse = (v) => {
     setCollapse(v);
     if (v) {
-      onClear();
+      props.form.resetFields([
+        "width",
+        "height",
+        "maxWidth",
+        "minWidth",
+        "maxHeight",
+        "minHeight",
+      ]);
     }
   };
   return (
@@ -65,65 +55,56 @@ export default (props?: { value?: any; onChange?: (v: any) => void }) => {
       collapse={collapse}
       onToggle={handleToogleCollapse}
     >
-      <Form
-        form={form}
-        labelCol={{ span: 9 }}
-        colon={false}
-        labelAlign="left"
-        onValuesChange={handleChange}
-        size="small"
-      >
-        <Form.Item style={{ margin: "5px 0" }} label="Width" name="width">
-          <Input defaultValue="auto" suffix="px" />
-        </Form.Item>
-        <Collapse className="size_collapse" ghost>
-          <Collapse.Panel key={[1]}>
-            {widthConfig.map((item) => {
-              return (
-                <Form.Item
-                  style={{ margin: "5px 0" }}
-                  label={item.label}
-                  name={item.value}
-                >
-                  <Input defaultValue="auto" suffix="px" />
-                </Form.Item>
-              );
-            })}
-            <Form.Item
-              style={{ margin: "5px 0" }}
-              label="Overflow"
-              name="overflowX"
-            >
-              <Radio.Group defaultValue="auto" options={overflowConfig} />
-            </Form.Item>
-          </Collapse.Panel>
-        </Collapse>
-        <Form.Item style={{ margin: "5px 0" }} label="Height" name="height">
-          <Input defaultValue="auto" suffix="px" />
-        </Form.Item>
-        <Collapse className="size_collapse" ghost>
-          <Collapse.Panel key={[1]}>
-            {heightConfig.map((item) => {
-              return (
-                <Form.Item
-                  style={{ margin: "5px 0" }}
-                  label={item.label}
-                  name={item.value}
-                >
-                  <Input defaultValue="auto" suffix="px" />
-                </Form.Item>
-              );
-            })}
-            <Form.Item
-              style={{ margin: "5px 0" }}
-              label="Overflow"
-              name="overflowY"
-            >
-              <Radio.Group defaultValue="auto" options={overflowConfig} />
-            </Form.Item>
-          </Collapse.Panel>
-        </Collapse>
-      </Form>
+      <Form.Item style={{ margin: "5px 0" }} label="Width" name="width">
+        <SpacingInput defaultValue="auto" />
+      </Form.Item>
+      <Collapse className="size_collapse" ghost>
+        <Collapse.Panel key={[1]}>
+          {widthConfig.map((item) => {
+            return (
+              <Form.Item
+                style={{ margin: "5px 0" }}
+                label={item.label}
+                name={item.value}
+              >
+                <SpacingInput defaultValue="auto" />
+              </Form.Item>
+            );
+          })}
+          <Form.Item
+            style={{ margin: "5px 0" }}
+            label="Overflow"
+            name="overflowX"
+          >
+            <Radio.Group defaultValue="auto" options={overflowConfig} />
+          </Form.Item>
+        </Collapse.Panel>
+      </Collapse>
+      <Form.Item style={{ margin: "5px 0" }} label="Height" name="height">
+        <SpacingInput defaultValue="auto" />
+      </Form.Item>
+      <Collapse className="size_collapse" ghost>
+        <Collapse.Panel key={[1]}>
+          {heightConfig.map((item) => {
+            return (
+              <Form.Item
+                style={{ margin: "5px 0" }}
+                label={item.label}
+                name={item.value}
+              >
+                <SpacingInput defaultValue="auto" />
+              </Form.Item>
+            );
+          })}
+          <Form.Item
+            style={{ margin: "5px 0" }}
+            label="Overflow"
+            name="overflowY"
+          >
+            <Radio.Group defaultValue="auto" options={overflowConfig} />
+          </Form.Item>
+        </Collapse.Panel>
+      </Collapse>
     </ModuleTitle>
   );
 };

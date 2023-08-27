@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Form, Input, Select } from "antd";
 import ModuleTitle from "./ModuleTitle";
 import ColorDesign from "./ColorDesign";
-import { use } from "vue/types/umd";
 
 const widthList = () => {
   const list = [];
@@ -30,51 +29,32 @@ const weightList = () => {
   ];
 };
 
-export default (props?: { value?: any; onChange?: (v: any) => void }) => {
-  console.log("TextDesign props = ", props.value);
-  const [form] = Form.useForm();
-  useEffect(() => {
-    if (props?.value) {
-      form.setFieldsValue({
-        color: props.value.color,
-        fontSize: props.value.fontSize,
-        fontWeight: props.value.fontWeight,
-      });
-    }
-  }, [props?.value]);
+export default () => {
   return (
     <ModuleTitle title="文本" collapse={true}>
-      <Form
-        id="TextDesign"
-        size="small"
-        labelAlign="left"
-        form={form}
-        labelCol={{ span: 9 }}
-        onValuesChange={(v, allValues) => {
-          props?.onChange?.(allValues);
-        }}
-        initialValues={props.value}
-      >
-        {/* <Form.Item label="内容" name="children">
+      {/* <Form.Item label="内容" name="children">
         <Input />
       </Form.Item> */}
-        <Form.Item style={{ margin: "5px 0" }} label="Color" name="color">
-          <ColorDesign />
-        </Form.Item>
-        <Form.Item style={{ margin: "5px 0" }} label="Size" name="fontSize">
-          <Select
-            getPopupContainer={() => document.getElementById("TextDesign")}
-            options={widthList()}
-          />
-        </Form.Item>
-        <Form.Item style={{ margin: "5px 0" }} label="Weight" name="fontWeight">
-          <Select
-            getPopupContainer={() => document.getElementById("TextDesign")}
-            options={weightList()}
-            defaultValue="normal"
-          />
-        </Form.Item>
-      </Form>
+      <Form.Item style={{ margin: "5px 0" }} label="Color" name="color">
+        <ColorDesign />
+      </Form.Item>
+      <Form.Item style={{ margin: "5px 0" }} label="Size" name="fontSize">
+        <Select
+          getPopupContainer={() =>
+            document.getElementById("Widget_Design_Panel")
+          }
+          options={widthList()}
+        />
+      </Form.Item>
+      <Form.Item style={{ margin: "5px 0" }} label="Weight" name="fontWeight">
+        <Select
+          getPopupContainer={() =>
+            document.getElementById("Widget_Design_Panel")
+          }
+          options={weightList()}
+          defaultValue="normal"
+        />
+      </Form.Item>
     </ModuleTitle>
   );
 };
