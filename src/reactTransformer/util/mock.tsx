@@ -23,7 +23,8 @@ function getRandomInteger() {
 const getMockDataByType = (
   keyName,
   config: PropItemConfigType,
-  mockType?: MockType
+  mockType?: MockType,
+  index?: number
 ): any => {
   const { type } = config;
   const typeName = type.name;
@@ -31,7 +32,7 @@ const getMockDataByType = (
     // 用于在 Panel 面板中添加时候的mock, 会只生成一个 key
     switch (typeName) {
       case TypeName.Key:
-        return uuidv4().substr(0, 5);
+        return +index;
       default:
         return undefined;
     }
@@ -68,8 +69,8 @@ const getMockDataByType = (
     case TypeName.ReactChild:
       return [["Typography-Text", { children: [["Edit Me"]] }]];
     case TypeName.Object:
-      Object.entries(type.property).forEach(([key, value]) => {
-        obj[key] = getMockDataByType(key, value);
+      Object.entries(type.property).forEach(([key, value], index) => {
+        obj[key] = getMockDataByType(key, value, MockType.View, index);
       });
       return obj;
     case TypeName.Import:

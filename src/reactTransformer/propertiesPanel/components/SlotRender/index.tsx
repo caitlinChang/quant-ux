@@ -9,20 +9,12 @@ const { Search } = Input;
 
 export type ValueType = string | [string, any][];
 
-const IconStyle = {
-  color: "#e1e1e1",
-  cursor: "pointer",
-};
-
 function getTypeofChildren(valueItem: string | string[]) {
-  if (typeof valueItem === "string") {
+  if (valueItem.length === 1) {
     return ChildrenItemType.Text;
-  } else if (isArray(valueItem)) {
+  } else {
     return ChildrenItemType.Component;
   }
-  console.log(
-    "-------------------- 这个children没有type,请检查 -----------------------"
-  );
 }
 
 export default (props: {
@@ -50,7 +42,7 @@ export default (props: {
 
   const handleChangeType = (value: ChildrenItemType, index: number) => {
     const newList = [...componentList];
-    newList[index] = value === ChildrenItemType.Text ? "" : [];
+    newList[index] = value === ChildrenItemType.Text ? [""] : [];
     setComponentList(newList);
   };
 
@@ -63,7 +55,7 @@ export default (props: {
 
   const handleAddComponent = () => {
     const newList = [...componentList];
-    newList.push("");
+    newList.push([""]);
     setComponentList(newList);
   };
 

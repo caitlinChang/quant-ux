@@ -10,6 +10,7 @@
         "type": {
           "name": "boolean"
         },
+        "name": "bordered",
         "required": false,
         "description": "是否展示外边框和列边框",
         "defaultValue": false
@@ -37,7 +38,7 @@
               "name": "dataIndex",
               "description": "列数据字段名",
               "type": {
-                "name": "string"
+                "name": "Key"
               }
             },
             "width": {
@@ -74,15 +75,15 @@
         },
         "required": false,
         "description": "表格列配置",
-        "defaultValue": {
-          "value": "[]",
-          "computed": false
-        }
+        "name": "columns",
+        "defaultValue": null
       },
       "dataSource": {
         "type": {
           "name": "array"
-        }
+        },
+        "name": "dataSource",
+        "description": "数据源"
       },
       "expandable": {
         "type": {
@@ -130,14 +131,6 @@
               }
             }
           }
-        }
-      },
-      "pagination": {
-        "name": "pagination",
-        "defaultValue": null,
-        "type": {
-          "name": "import",
-          "value": "pagination"
         }
       }
     }
