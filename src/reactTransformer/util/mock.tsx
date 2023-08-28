@@ -42,12 +42,14 @@ const getMockDataByType = (
   }
   if (keyName === SpecialKey.ICON) {
     return [
-      "ControlOutlined",
-      {
-        style: {
-          padding: "5px",
+      [
+        "ControlOutlined",
+        {
+          style: {
+            padding: "5px",
+          },
         },
-      },
+      ],
     ];
   }
   const obj = {};

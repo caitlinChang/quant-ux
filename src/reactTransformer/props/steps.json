@@ -11,7 +11,8 @@
           "name": "number"
         },
         "required": false,
-        "defaultValue": 0,
+        "defaultValue": 2,
+        "expandPanel": true,
         "name": "current",
         "description": "当前步骤"
       },
@@ -23,6 +24,7 @@
               "type": {
                 "name": "ReactNode"
               },
+              "expandPanel": true,
               "required": false,
               "name": "title",
               "description": "标题"
@@ -72,17 +74,57 @@
           }
         },
         "required": false,
-        "defaultValue": [],
+        "defaultValue": null,
+        "expandPanel": true,
+        "mockData": [
+          {
+            "title": [["Login"]],
+            "status": "finish"
+          },
+          {
+            "title": [["Verfication"]],
+            "status": "finish"
+          },
+          {
+            "title": [["Pay"]],
+            "status": "process"
+          },
+          {
+            "title": [["Done"]],
+            "status": "wait"
+          }
+        ],
         "name": "items",
-        "description": "指定步骤条的主题",
-        "docblock": "指定步骤条的主题。目前支持三种主题：default（默认）、simple（简洁）和 navigation（导航）",
-        "properties": []
+        "description": "步骤内容"
+      },
+      "progressDot": {
+        "type": {
+          "name": "boolean"
+        },
+        "required": false,
+        "defaultValue": false,
+        "expandPanel": true,
+        "name": "progressDot",
+        "description": "点状步骤条",
+        "docblock": "点状步骤条"
+      },
+      "percent": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "defaultValue": 0,
+        "expandPanel": true,
+        "name": "percent",
+        "description": "当前 process 步骤显示的进度条进度",
+        "tips": "只对基本类型的 Steps 生效"
       },
       "direction": {
         "type": {
           "name": "choice",
           "enum": ["horizontal", "vertical"]
         },
+        "expandPanel": true,
         "required": false,
         "defaultValue": "horizontal",
         "name": "direction",
@@ -94,6 +136,7 @@
           "name": "choice",
           "enum": ["horizontal", "vertical"]
         },
+        "expandPanel": true,
         "required": false,
         "defaultValue": "horizontal",
         "name": "labelPlacement",
@@ -105,6 +148,7 @@
           "name": "choice",
           "enum": ["default", "simple", "navigation"]
         },
+        "expandPanel": true,
         "required": false,
         "defaultValue": "default",
         "name": "type",
@@ -116,6 +160,7 @@
           "name": "choice",
           "enum": ["wait", "process", "finish", "error"]
         },
+        "expandPanel": true,
         "required": false,
         "defaultValue": "wait",
         "name": "status",

@@ -7,20 +7,51 @@
     "methods": [],
     "childrenComponent": ["timeline-item"],
     "props": {
+      "children": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "expandPanel": true,
+        "mockData": [
+          [
+            "Timeline-Item",
+            {
+              "children": [["Create a services site 2015-09-01"]]
+            }
+          ],
+          [
+            "Timeline-Item",
+            {
+              "children": [["Solve initial network problems 2015-09-01"]]
+            }
+          ],
+          [
+            "Timeline-Item",
+            {
+              "children": [["Technical testing 2015-09-01"]]
+            }
+          ]
+        ],
+        "name": "children",
+        "required": false,
+        "description": "时间轴节点"
+      },
       "mode": {
         "type": {
           "name": "choice",
           "enum": ["left", "alternate", "right"]
         },
         "name": "mode",
+        "expandPanel": true,
         "required": false,
         "description": "时间轴和内容的相对位置"
       },
       "pending": {
         "type": {
-          "name": "ReactNode"
+          "name": "boolean"
         },
         "name": "pending",
+        "expandPanel": true,
         "required": false,
         "defaultValue": null,
         "description": "指定是否最后一个节点为幽灵节点"
@@ -31,7 +62,8 @@
         },
         "name": "pendingDot",
         "required": false,
-        "defaultValue": ["LoadingOutlined"],
+        "expandPanel": true,
+        "defaultValue": [["LoadingOutlined"]],
         "description": "当最后一个节点为幽灵节点时，指定其图标"
       },
       "reverse": {
@@ -39,6 +71,7 @@
           "name": "boolean"
         },
         "name": "reverse",
+        "expandPanel": true,
         "required": false,
         "defaultValue": false,
         "description": "节点排序"

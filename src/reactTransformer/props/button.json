@@ -12,7 +12,7 @@
           "name": "CSSProperties"
         },
         "required": false,
-        "description": ""
+        "description": "样式"
       },
       "children": {
         "description": "内容",

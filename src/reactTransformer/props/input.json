@@ -13,7 +13,7 @@
     "props": {
       "style": {
         "defaultValue": null,
-        "description": "",
+        "description": "样式",
         "name": "style",
         "required": false,
         "type": {

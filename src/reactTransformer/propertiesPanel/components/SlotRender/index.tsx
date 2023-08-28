@@ -2,7 +2,7 @@ import React, { ReactNode, useState, useEffect } from "react";
 import { Radio, Input, Button, Tooltip } from "antd";
 import { isArray } from "lodash";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
-import { PropItemConfigType } from "../../../util/type";
+import { PropItemConfigType, TypeName } from "../../../util/type";
 import { ChildrenItemType, ChildrenType } from "../../../util/childrenUtils";
 
 const { Search } = Input;
@@ -34,13 +34,14 @@ export default (props: {
   value?: ValueType;
   onChange?: (value: ValueType) => void;
   onSelectComponent?: (index: number) => void;
+  type?: TypeName;
 }) => {
   const [componentList, setComponentList] = useState<ChildrenType>([]);
   const { node, value } = props;
   useEffect(() => {
     if (isArray(value)) {
       setComponentList(value);
-    } else if(value){
+    } else if (value) {
       setComponentList([value]);
     } else {
       setComponentList([]);
@@ -78,9 +79,11 @@ export default (props: {
   };
   return (
     <div>
-      <Button size="small" type="dashed" block onClick={handleAddComponent}>
-        <PlusOutlined /> 添加
-      </Button>
+      {!(props.type === TypeName.ReactChild && componentList.length >= 1) && (
+        <Button size="small" type="dashed" block onClick={handleAddComponent}>
+          <PlusOutlined /> 添加
+        </Button>
+      )}
       {componentList.map((c, index) => {
         return (
           <div

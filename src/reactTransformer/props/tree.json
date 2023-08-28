@@ -39,7 +39,7 @@
             },
             "key": {
               "type": {
-                "name": "ID"
+                "name": "Key"
               },
               "required": false,
               "defaultValue": null,
@@ -90,12 +90,20 @@
               "defaultValue": null,
               "name": "icon",
               "description": "自定义图标"
+            },
+            "children": {
+              "name": "children",
+              "description": "children",
+              "type": {
+                "name": "children"
+              }
             }
           }
         },
         "needMock": true,
         "required": false,
-        "defaultValue": [],
+        "defaultValue": null,
+        "expandPanel": true,
         "name": "treeData",
         "description": "tree 数据",
         "tips": "如果设置了 treeData，则不需要手动构造 TreeNode 节点（可以设置 TreeNode 的其他属性）"

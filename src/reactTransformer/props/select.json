@@ -6,6 +6,33 @@
     "displayName": "Select",
     "methods": [],
     "props": {
+      "options": {
+        "defaultValue": null,
+        "description": "选项",
+        "name": "options",
+        "needMock": true,
+        "expandPanel": true,
+        "required": false,
+        "type": {
+          "name": "array",
+          "item": {
+            "label": {
+              "description": "文本",
+              "name": "label",
+              "type": {
+                "name": "string"
+              }
+            },
+            "value": {
+              "description": "",
+              "name": "value",
+              "type": {
+                "name": "ID"
+              }
+            }
+          }
+        }
+      },
       "placement": {
         "defaultValue": "bottomLeft",
         "description": "选择框弹出的位置",
@@ -74,7 +101,7 @@
       },
       "style": {
         "defaultValue": null,
-        "description": "",
+        "description": "样式",
         "name": "style",
         "required": false,
         "type": {
@@ -268,32 +295,6 @@
         "required": false,
         "type": {
           "name": "SelectHandler<ArrayElementType<ValueType>, OptionType>"
-        }
-      },
-      "options": {
-        "defaultValue": null,
-        "description": "选项",
-        "name": "options",
-        "needMock": true,
-        "required": false,
-        "type": {
-          "name": "array",
-          "item": {
-            "label": {
-              "description": "文本",
-              "name": "label",
-              "type": {
-                "name": "string"
-              }
-            },
-            "value": {
-              "description": "",
-              "name": "value",
-              "type": {
-                "name": "ID"
-              }
-            }
-          }
         }
       },
       "defaultActiveFirstOption": {

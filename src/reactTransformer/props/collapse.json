@@ -5,7 +5,16 @@
     "displayName": "Collapse",
     "methods": [],
     "props": {
-      "children":{
+      "style": {
+        "defaultValue": null,
+        "description": "样式",
+        "name": "style",
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
+      "children": {
         "type": {
           "name": "ReactNode"
         },
@@ -14,37 +23,31 @@
             "Collapse-Panel",
             {
               "header": [["Typography-Text", { "children": [["标题一"]] }]],
+              "children": [["这里是 Panel 1"]],
               "key": 1
+            }
+          ],
+          [
+            "Collapse-Panel",
+            {
+              "header": [["Typography-Text", { "children": [["标题二"]] }]],
+              "children": [["这里是 Panel 2"]],
+              "key": 2
+            }
+          ],
+          [
+            "Collapse-Panel",
+            {
+              "header": [["Typography-Text", { "children": [["标题三"]] }]],
+              "children": [["这里是 Panel 3"]],
+              "key": 3
             }
           ]
         ],
         "name": "children",
+        "expandPanel": true,
         "required": false,
         "description": "容器"
-      },
-      "accordion": {
-        "type": {
-          "name": "boolean"
-        },
-        "name": "accordion",
-        "required": false,
-        "description": "手风琴模式"
-      },
-      "activeKey": {
-        "type": {
-          "name": "string"
-        },
-        "name": "activeKey",
-        "required": false,
-        "description": "当前激活 tab 面板的 key"
-      },
-      "bordered": {
-        "type": {
-          "name": "boolean"
-        },
-        "name": "bordered",
-        "required": false,
-        "description": "是否显示边框"
       },
       "collapsible": {
         "type": {
@@ -64,13 +67,37 @@
         "required": false,
         "description": "设置图标位置"
       },
+      "accordion": {
+        "type": {
+          "name": "boolean"
+        },
+        "name": "accordion",
+        "required": false,
+        "description": "手风琴模式"
+      },
+      "activeKey": {
+        "type": {
+          "name": "string"
+        },
+        "name": "activeKey",
+        "required": false,
+        "description": "当前激活 tab 面板"
+      },
+      "bordered": {
+        "type": {
+          "name": "boolean"
+        },
+        "name": "bordered",
+        "required": false,
+        "description": "是否显示边框"
+      },
       "expandIcon": {
         "type": {
-          "name": "func"
+          "name": "ReactNode"
         },
         "name": "expandIcon",
         "required": false,
-        "description": ""
+        "description": "自定义展开Icon"
       },
       "ghost": {
         "type": {

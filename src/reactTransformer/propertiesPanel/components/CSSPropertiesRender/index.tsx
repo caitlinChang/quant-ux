@@ -36,10 +36,11 @@ export default (props?: { value?: any; onChange?: (v: any) => void }) => {
   }, [props.value]);
 
   const handleChange = (_, allValues) => {
+    console.log("_ = ", _, allValues);
     // 判断是否值真的发生变化
     let hasChange = false;
     for (let key in _) {
-      if (props.value[key] !== _[key]) {
+      if (props?.value?.[key] !== _[key]) {
         hasChange = true;
         break;
       }
@@ -61,7 +62,6 @@ export default (props?: { value?: any; onChange?: (v: any) => void }) => {
     });
     if (Object.keys(_value).length === 0) {
       if (props.value) {
-        console.log("Design Panel onChange = ", props.value);
         props?.onChange?.(undefined);
       }
       return;

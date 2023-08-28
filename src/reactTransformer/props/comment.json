@@ -6,23 +6,41 @@
     "displayName": "Comment",
     "methods": [],
     "props": {
-      "actions": {
+      "content": {
         "defaultValue": null,
-        "description": "List of action items rendered below the comment content",
-        "name": "actions",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-          "name": "CommentProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-            "name": "CommentProps"
-          }
+        "description": "评论的主要内容",
+        "expandPanel": true,
+        "name": "content",
+        "required": true,
+        "mockData": [
+          [
+            "We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently"
+          ]
         ],
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "嵌套注释",
+        "expandPanel": true,
+        "name": "children",
+        "mockData": [["注释"]],
         "required": false,
         "type": {
-          "name": "ReactNode[]"
+          "name": "ReactNode"
+        }
+      },
+      "actions": {
+        "defaultValue": null,
+        "description": "评论操作项集合，每项必须是一个Dropdown.Item",
+        "name": "actions",
+        "required": false,
+        "mockData": [["Button", { "type": "link", "children": [["点赞"]] }]],
+        "expandPanel": true,
+        "type": {
+          "name": "ReactNode"
         }
       },
       "author": {
@@ -30,6 +48,8 @@
         "description": "要显示为注释作者的元素",
         "name": "author",
         "required": false,
+        "mockData": [["Han Solo"]],
+        "expandPanel": true,
         "type": {
           "name": "ReactNode"
         }
@@ -38,62 +58,17 @@
         "defaultValue": null,
         "description": "评论头像",
         "name": "avatar",
+        "mockData": [["作者头像"]],
         "required": false,
+        "expandPanel": true,
         "type": {
           "name": "ReactNode"
         }
       },
       "className": {
         "defaultValue": null,
-        "description": "ClassName of comment",
+        "description": "",
         "name": "className",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-          "name": "CommentProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-            "name": "CommentProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
-      "content": {
-        "defaultValue": null,
-        "description": "评论的主要内容",
-        "name": "content",
-        "required": true,
-        "type": {
-          "name": "ReactNode"
-        }
-      },
-      "children": {
-        "defaultValue": null,
-        "description": "嵌套注释",
-        "name": "children",
-        "required": false,
-        "type": {
-          "name": "ReactNode"
-        }
-      },
-      "prefixCls": {
-        "defaultValue": null,
-        "description": "Comment prefix defaults to '.ant-comment'",
-        "name": "prefixCls",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-          "name": "CommentProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-            "name": "CommentProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "string"
@@ -101,18 +76,8 @@
       },
       "style": {
         "defaultValue": null,
-        "description": "Additional style for the comment",
+        "description": "样式",
         "name": "style",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-          "name": "CommentProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/comment/index.tsx",
-            "name": "CommentProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "CSSProperties"
@@ -123,6 +88,7 @@
         "description": "展示时间",
         "name": "datetime",
         "required": false,
+        "mockData": [["8 hours ago"]],
         "type": {
           "name": "ReactNode"
         }

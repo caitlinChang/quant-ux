@@ -8,11 +8,20 @@
     "props": {
       "style": {
         "defaultValue": null,
-        "description": "",
+        "description": "样式",
         "name": "style",
         "required": false,
         "type": {
           "name": "CSSProperties"
+        }
+      },
+      "groupSeparator": {
+        "defaultValue": ",",
+        "description": "分组分隔符",
+        "name": "groupSeparator",
+        "required": false,
+        "type": {
+          "name": "string"
         }
       },
       "value": {
@@ -20,8 +29,21 @@
         "description": "数值内容",
         "name": "value",
         "required": false,
+        "mockData": 112345,
+        "expandPanel": true,
         "type": {
-          "name": "string"
+          "name": "number"
+        }
+      },
+      "title": {
+        "defaultValue": null,
+        "description": "数值的标题",
+        "name": "title",
+        "expandPanel": true,
+        "required": false,
+        "mockData": [["DAU 日活"]],
+        "type": {
+          "name": "ReactNode"
         }
       },
       "valueStyle": {
@@ -31,24 +53,6 @@
         "required": false,
         "type": {
           "name": "CSSProperties"
-        }
-      },
-      "valueRender": {
-        "defaultValue": null,
-        "description": "",
-        "name": "valueRender",
-        "required": false,
-        "type": {
-          "name": "(node: ReactNode) => ReactNode"
-        }
-      },
-      "title": {
-        "defaultValue": null,
-        "description": "数值的标题",
-        "name": "title",
-        "required": false,
-        "type": {
-          "name": "ReactNode"
         }
       },
       "prefix": {
@@ -67,6 +71,15 @@
         "required": false,
         "type": {
           "name": "ReactNode"
+        }
+      },
+      "loading": {
+        "defaultValue": null,
+        "description": "加载中",
+        "name": "loading",
+        "required": false,
+        "type": {
+          "name": "boolean"
         }
       }
     }

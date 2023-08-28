@@ -38,6 +38,7 @@
       "items": {
         "defaultValue": null,
         "description": "菜单项",
+        "expandPanel": true,
         "name": "items",
         "needMock": true,
         "required": false,
@@ -68,7 +69,7 @@
             "key": {
               "name": "key",
               "type": {
-                "name": "string"
+                "name": "Key"
               }
             },
             "label": {

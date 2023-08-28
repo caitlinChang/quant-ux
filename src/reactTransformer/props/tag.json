@@ -6,7 +6,19 @@
     "displayName": "Tag",
     "methods": [],
     "props": {
+      "children": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "description": "标签文本",
+        "defaultValue": null,
+        "expandPanel": true,
+        "mockData": [["tag"]],
+        "name": "children"
+      },
       "color": {
+        "expandPanel": true,
         "type": {
           "name": "choice",
           "enum": [
@@ -36,6 +48,7 @@
         "type": {
           "name": "ReactNode"
         },
+        "expandPanel": true,
         "required": false,
         "description": "选项卡关闭图标",
         "name": "icon"
@@ -44,6 +57,7 @@
         "type": {
           "name": "boolean"
         },
+        "expandPanel": true,
         "required": false,
         "description": "标签是否可以关闭",
         "name": "closable"
@@ -52,6 +66,7 @@
         "type": {
           "name": "ReactNode"
         },
+        "expandPanel": true,
         "required": false,
         "description": "自定义关闭图标",
         "name": "closeIcon"

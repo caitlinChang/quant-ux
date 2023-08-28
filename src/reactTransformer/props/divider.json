@@ -6,11 +6,23 @@
     "displayName": "Divider",
     "methods": [],
     "props": {
+      "children": {
+        "defaultValue": null,
+        "description": "内容",
+        "name": "children",
+        "mockData": [["分割线标题"]],
+        "expandPanel": true,
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
       "type": {
         "defaultValue": null,
         "description": "布局",
         "name": "type",
         "required": false,
+        "expandPanel": true,
         "type": {
           "name": "choice",
           "enum": ["horizontal", "vertical"]
@@ -19,6 +31,7 @@
       "orientation": {
         "defaultValue": null,
         "description": "分割线标题的位置",
+        "expandPanel": true,
         "name": "orientation",
         "required": false,
         "type": {
@@ -29,6 +42,7 @@
       "orientationMargin": {
         "defaultValue": null,
         "description": "标题和最近 left/right 边框之间的距离",
+        "expandPanel": true,
         "name": "orientationMargin",
         "required": false,
         "type": {
@@ -38,6 +52,7 @@
       "dashed": {
         "defaultValue": false,
         "description": "是否虚线",
+        "expandPanel": true,
         "name": "dashed",
         "required": false,
         "type": {
@@ -56,6 +71,7 @@
       "plain": {
         "defaultValue": false,
         "description": "文字是否显示为普通正文样式",
+        "expandPanel": true,
         "name": "plain",
         "required": false,
         "type": {

@@ -6,15 +6,6 @@
     "displayName": "Descriptions",
     "methods": [],
     "props": {
-      "prefixCls": {
-        "defaultValue": null,
-        "description": "",
-        "name": "prefixCls",
-        "required": false,
-        "type": {
-          "name": "string"
-        }
-      },
       "className": {
         "defaultValue": null,
         "description": "",
@@ -33,29 +24,23 @@
           "name": "CSSProperties"
         }
       },
-      "bordered": {
-        "defaultValue": null,
-        "description": "",
-        "name": "bordered",
-        "required": false,
-        "type": {
-          "name": "boolean"
-        }
-      },
-      "size": {
-        "defaultValue": "middle",
-        "description": "大小",
-        "name": "size",
-        "required": false,
-        "type": {
-          "name": "choice",
-          "enum": ["small", "middle", "large"]
-        }
-      },
       "title": {
         "defaultValue": null,
         "description": "标题",
         "name": "title",
+        "mockData": [["User Info"]],
+        "expandPanel": true,
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "内容",
+        "name": "children",
+        "mockData": [["Button", { "children": [["action"]] }]],
+        "expandPanel": true,
         "required": false,
         "type": {
           "name": "ReactNode"
@@ -66,21 +51,45 @@
         "description": "操作区",
         "name": "extra",
         "required": false,
+        "mockData": [["Button", { "children": [["action"]] }]],
+        "expandPanel": true,
         "type": {
           "name": "ReactNode"
         }
       },
       "column": {
         "defaultValue": 3,
-        "description": "",
+        "description": "列数",
         "name": "column",
         "required": false,
+        "expandPanel": true,
         "type": {
           "name": "number"
         }
       },
-      "layout": {
+      "bordered": {
         "defaultValue": null,
+        "description": "是否展示边框",
+        "name": "bordered",
+        "required": false,
+        "expandPanel": true,
+        "type": {
+          "name": "boolean"
+        }
+      },
+      "size": {
+        "defaultValue": "middle",
+        "description": "大小",
+        "name": "size",
+        "required": false,
+        "expandPanel": true,
+        "type": {
+          "name": "choice",
+          "enum": ["small", "middle", "large"]
+        }
+      },
+      "layout": {
+        "defaultValue": "horizontal",
         "description": "布局",
         "name": "layout",
         "required": false,
@@ -91,7 +100,7 @@
       },
       "colon": {
         "defaultValue": true,
-        "description": "",
+        "description": "是否展示冒号",
         "name": "colon",
         "required": false,
         "type": {
@@ -102,16 +111,6 @@
         "defaultValue": null,
         "description": "",
         "name": "labelStyle",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "CSSProperties"
@@ -121,16 +120,6 @@
         "defaultValue": null,
         "description": "",
         "name": "contentStyle",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-          "name": "DescriptionsProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/descriptions/index.tsx",
-            "name": "DescriptionsProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "CSSProperties"

@@ -6,12 +6,22 @@
     "displayName": "CheckboxGroup",
     "methods": [],
     "props": {
+      "style": {
+        "defaultValue": null,
+        "description": "样式",
+        "name": "style",
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
       "options": {
         "defaultValue": null,
         "description": "选项",
         "name": "options",
         "required": false,
         "needMock": true,
+        "expandPanel": true,
         "type": {
           "name": "array",
           "item": {
@@ -26,7 +36,7 @@
             "value": {
               "name": "value",
               "type": {
-                "name": "string"
+                "name": "Key"
               },
               "required": false
             },
@@ -44,6 +54,7 @@
       "disabled": {
         "defaultValue": false,
         "description": "是否禁用",
+        "expandPanel": true,
         "name": "disabled",
         "required": false,
         "type": {

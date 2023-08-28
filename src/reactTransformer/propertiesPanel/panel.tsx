@@ -86,7 +86,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     const res = await requestComponentProps(name);
     const list = Object.values(res.props);
     const propsConfig = list.filter((item: any) => {
-      return typeNameList.includes(item.type.name);
+      return typeNameList.includes(item.type.name) && item.description;
     });
     setPropsConfig(propsConfig);
     setFormData(cloneDeep(props));
@@ -179,12 +179,13 @@ const Panel = (props: { widget: any; selectChild: any }) => {
           onChange={(value) => handleChangeProp(node.key, value)}
         />
       );
-    } else if (name === TypeName.ReactNode) {
+    } else if ([TypeName.ReactNode, TypeName.ReactChild].includes(name)) {
       return (
         <SlotRender
           node={node}
           value={_value}
           onChange={(value) => handleChangeProp(node.key, value)}
+          type={name}
           onSelectComponent={(index: number) =>
             handleSelectComponent(node.key, index)
           }

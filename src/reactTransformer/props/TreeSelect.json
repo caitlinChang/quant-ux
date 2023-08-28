@@ -235,7 +235,7 @@
         },
         "needMock": true,
         "required": false,
-        "defaultValue": [],
+        "defaultValue": null,
         "name": "treeData",
         "description": "tree 数据",
         "tips": "如果设置了 treeData，则不需要手动构造 TreeNode 节点（可以设置 TreeNode 的其他属性）"

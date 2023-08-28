@@ -6,6 +6,18 @@
     "displayName": "Space",
     "methods": [],
     "props": {
+      "children": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "mockData": [
+          ["Button", { "children": [["Save"]], "type": "primary" }],
+          ["Button", { "children": [["Cancel"]] }]
+        ],
+        "name": "children",
+        "required": false,
+        "description": "子元素"
+      },
       "align": {
         "type": {
           "name": "choice",

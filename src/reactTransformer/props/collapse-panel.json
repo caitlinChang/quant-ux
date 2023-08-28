@@ -7,10 +7,11 @@
     "props": {
       "children": {
         "type": {
-          "name": "ReactNode",
-          "mockData": [["这里是Panel内容"]]
+          "name": "ReactNode"
         },
-        "name": "accordion",
+        "needMock": true,
+        "expandPanel": true,
+        "name": "children",
         "required": false,
         "description": "容器"
       },

@@ -7,7 +7,7 @@
     "methods": [],
     "props": {
       "backIcon": {
-        "defaultValue": ["ArrowLeft"],
+        "defaultValue": null,
         "description": "自定义返回 icon ",
         "name": "backIcon",
         "required": false,
@@ -20,6 +20,8 @@
         "description": "自定义标题文字",
         "name": "title",
         "required": false,
+        "expandPanel": true,
+        "mockData": [["Title"]],
         "type": {
           "name": "ReactNode"
         }
@@ -27,7 +29,9 @@
       "subTitle": {
         "defaultValue": null,
         "description": "自定义的二级标题文字",
+        "mockData": [["This is a subTitle"]],
         "name": "subTitle",
+        "expandPanel": true,
         "required": false,
         "type": {
           "name": "ReactNode"
@@ -35,7 +39,7 @@
       },
       "style": {
         "defaultValue": null,
-        "description": "",
+        "description": "样式",
         "name": "style",
         "required": false,
         "type": {
@@ -103,6 +107,15 @@
         "required": false,
         "type": {
           "name": "boolean"
+        }
+      },
+      "children": {
+        "defaultValue": null,
+        "description": "自定义渲染 PageHeader 的内容，而不是 title、breadcrumb、tagList、extra、footer 默认的渲染内容",
+        "name": "children",
+        "required": false,
+        "type": {
+          "name": "ReactNode"
         }
       }
     }

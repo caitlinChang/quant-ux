@@ -82,6 +82,8 @@ export default (props: ComponentWrapperType) => {
       observer.subscribePropsUpdate(id, path, updateRenderedProps);
     }
   }, []);
+
+  console.log("componentProps = ", componentProps);
   return (
     <>
       {typeof RenderComponent === "string" && RenderComponent}

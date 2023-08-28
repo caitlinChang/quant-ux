@@ -83,6 +83,17 @@ class RenderedProps {
         obj[propsName] = props[propsName];
       }
     });
+
+    const { getPopupContainer } = obj;
+    if (getPopupContainer) {
+      obj.getPopupContainer = () => {
+        const node = document.getElementsByClassName(
+          `ComponentWidget_${this.widgetId}`
+        )[0];
+        return node || document.body;
+      };
+    }
+
     return obj;
   }
   /**
@@ -103,6 +114,7 @@ class RenderedProps {
     if ([TypeName.ReactNode, TypeName.ReactChild].includes(name)) {
       /** 1. ReactNode, ReactChild 的情况 */
       const children = handleChildren(curValue);
+      console.log("children = ", children, curValue);
       return (
         <>
           {children.map((item, index) => {

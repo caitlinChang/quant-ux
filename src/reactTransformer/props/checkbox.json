@@ -6,12 +6,22 @@
     "displayName": "Checkbox",
     "methods": [],
     "props": {
+      "style": {
+        "defaultValue": null,
+        "description": "样式",
+        "name": "style",
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
       "children": {
         "defaultValue": null,
         "description": "容器",
         "name": "children",
         "required": false,
         "needMock": true,
+        "expandPanel": true,
         "type": {
           "name": "ReactNode"
         }
@@ -19,6 +29,7 @@
       "defaultChecked": {
         "defaultValue": null,
         "description": "是否默认选中",
+        "expandPanel": true,
         "name": "defaultChecked",
         "required": false,
         "type": {
@@ -28,45 +39,18 @@
       "checked": {
         "defaultValue": null,
         "description": "当前是否选中",
+        "expandPanel": true,
         "name": "checked",
         "required": false,
         "type": {
           "name": "boolean"
         }
       },
-      "style": {
-        "defaultValue": null,
-        "description": "",
-        "name": "style",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
-          "name": "AbstractCheckboxProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
-            "name": "AbstractCheckboxProps"
-          }
-        ],
-        "required": false,
-        "type": {
-          "name": "CSSProperties"
-        }
-      },
       "disabled": {
         "defaultValue": null,
         "description": "是否禁用",
         "name": "disabled",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
-          "name": "AbstractCheckboxProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
-            "name": "AbstractCheckboxProps"
-          }
-        ],
+        "expandPanel": true,
         "required": false,
         "type": {
           "name": "boolean"
@@ -76,16 +60,6 @@
         "defaultValue": null,
         "description": "",
         "name": "onChange",
-        "parent": {
-          "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
-          "name": "AbstractCheckboxProps"
-        },
-        "declarations": [
-          {
-            "fileName": "ant-design-4.24.10/components/checkbox/Checkbox.tsx",
-            "name": "AbstractCheckboxProps"
-          }
-        ],
         "required": false,
         "type": {
           "name": "(e: RadioChangeEvent) => void"
@@ -93,11 +67,11 @@
       },
       "value": {
         "defaultValue": null,
-        "description": "",
+        "description": "选中项",
         "name": "value",
         "required": false,
         "type": {
-          "name": "any"
+          "name": "string"
         }
       },
       "autoFocus": {

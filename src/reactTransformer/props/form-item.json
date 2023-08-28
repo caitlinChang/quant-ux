@@ -6,11 +6,29 @@
     "displayName": "FormItem",
     "methods": [],
     "props": {
+      "style": {
+        "defaultValue": null,
+        "description": "样式",
+        "name": "style",
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
       "children": {
         "name": "children",
+        "mockData": [
+          [
+            "Input",
+            {
+              "placeholder": "请输入"
+            }
+          ]
+        ],
         "type": {
           "name": "ReactNode"
         },
+        "expandPanel": true,
         "required": false,
         "description": "表单元素",
         "tips": ""
@@ -23,12 +41,36 @@
           "name": "ReactNode"
         },
         "required": false,
+        "expandPanel": true,
         "description": "label 标签的文本",
+        "tips": ""
+      },
+      "required": {
+        "name": "required",
+        "defaultValue": false,
+        "type": {
+          "name": "boolean"
+        },
+        "expandPanel": true,
+        "required": false,
+        "description": "是否必填",
+        "tips": ""
+      },
+      "tooltip": {
+        "name": "tooltip",
+        "defaultValue": "",
+        "type": {
+          "name": "ReactNode"
+        },
+        "required": false,
+        "expandPanel": true,
+        "description": "提示信息",
         "tips": ""
       },
       "labelAlign": {
         "name": "labelAlign",
         "defaultValue": "right",
+        "expandPanel": true,
         "type": {
           "name": "choice",
           "enum": ["left", "right"],
@@ -44,6 +86,7 @@
         "type": {
           "name": "number"
         },
+        "expandPanel": true,
         "required": false,
         "description": "label 占据比例",
         "tips": "1 - 24 之间的数值"
@@ -51,6 +94,7 @@
       "wrapperCol": {
         "name": "wrapperCol",
         "defaultValue": 14,
+        "expandPanel": true,
         "type": {
           "name": "number"
         },
@@ -58,35 +102,15 @@
         "description": "表单项占据比例",
         "tips": "1 - 24 之间的数值"
       },
-      "required": {
-        "name": "required",
-        "defaultValue": false,
-        "type": {
-          "name": "boolean"
-        },
-        "required": false,
-        "description": "是否必填",
-        "tips": ""
-      },
-      "tooltip": {
-        "name": "tooltip",
-        "defaultValue": "",
-        "type": {
-          "name": "ReactNode"
-        },
-        "required": false,
-        "description": "提示信息",
-        "tips": ""
-      },
       "name": {
         "name": "name",
         "defaultValue": "",
         "needMock": true,
         "type": {
-          "name": "string"
+          "name": "Key"
         },
         "required": false,
-        "description": "字段名",
+        "description": "",
         "tips": ""
       },
       "noStyle": {
@@ -96,7 +120,7 @@
           "name": "boolean"
         },
         "required": false,
-        "description": "不带样式",
+        "description": "关闭样式",
         "tips": ""
       },
       "colon": {
@@ -113,7 +137,7 @@
         "name": "extra",
         "defaultValue": "",
         "type": {
-          "name": "string"
+          "name": "ReactNode"
         },
         "required": false,
         "description": "额外的提示信息",
@@ -123,7 +147,7 @@
         "name": "help",
         "defaultValue": "",
         "type": {
-          "name": "string"
+          "name": "ReactNode"
         },
         "required": false,
         "description": "提示信息，如不设置，则会根据校验规则自动生成",

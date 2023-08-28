@@ -7,9 +7,36 @@
     "methods": [],
     "childrenComponent": ["form-item"],
     "props": {
+      "style": {
+        "defaultValue": null,
+        "description": "样式",
+        "name": "style",
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
       "children": {
         "name": "children",
-        "defaultValue": "",
+        "defaultValue": null,
+        "expandPanel": true,
+        "mockData": [
+          [
+            "Form-Item",
+            {
+              "label": [["UserName"]],
+              "name": [["username"]],
+              "children": [
+                [
+                  "Input",
+                  {
+                    "placeholder": "请输入"
+                  }
+                ]
+              ]
+            }
+          ]
+        ],
         "type": {
           "name": "ReactNode",
           "component": ["Form.Item"]
@@ -94,14 +121,13 @@
       },
       "requiredMark": {
         "name": "requiredMark",
-        "defaultValue": "optional",
+        "defaultValue": null,
         "type": {
-          "name": "choice",
-          "enum": ["optional", "required", "hidden"],
+          "name": "boolean",
           "required": false
         },
         "required": false,
-        "description": "必选样式",
+        "description": "开启必选样式",
         "tips": ""
       },
       "size": {

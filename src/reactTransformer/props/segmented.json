@@ -17,12 +17,28 @@
       "options": {
         "name": "options",
         "description": "选项",
+        "mockData": [
+          {
+            "label": [["Daily"]],
+            "value": 1
+          },
+          {
+            "label": [["Weekly"]],
+            "value": 2
+          },
+          {
+            "label": [["Monthly"]],
+            "value": 3
+          }
+        ],
+        "expandPanel": true,
         "type": {
           "name": "array",
           "item": {
             "label": {
               "name": "label",
               "description": "内容",
+              "expandPanel": true,
               "type": {
                 "name": "ReactNode"
               },
@@ -31,12 +47,13 @@
             "value": {
               "name": "value",
               "type": {
-                "name": "string"
+                "name": "Key"
               },
               "required": false
             },
             "disabled": {
               "name": "disabled",
+              "expandPanel": true,
               "type": {
                 "name": "boolean"
               },
@@ -44,7 +61,7 @@
             }
           }
         },
-        "defaultValue": []
+        "defaultValue": null
       },
       "value": {
         "name": "value",
@@ -52,7 +69,7 @@
         "type": {
           "name": "string"
         },
-        "defaultValue": ""
+        "defaultValue": 1
       },
       "disabled": {
         "name": "disabled",

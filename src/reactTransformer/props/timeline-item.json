@@ -6,10 +6,22 @@
     "displayName": "TimePicker",
     "methods": [],
     "props": {
+      "children": {
+        "type": {
+          "name": "ReactNode"
+        },
+        "mockData": [["Create a services site 2015-09-01"]],
+        "required": false,
+        "name": "children",
+        "expandPanel": true,
+        "defaultValue": null,
+        "description": "时间轴节点"
+      },
       "color": {
         "type": {
           "name": "ColorPicker"
         },
+        "expandPanel": true,
         "name": "color",
         "required": false,
         "defaultValue": "blue",
@@ -22,12 +34,15 @@
         "required": false,
         "name": "dot",
         "defaultValue": null,
+        "expandPanel": true,
         "description": "自定义时间轴点"
       },
       "label": {
         "type": {
           "name": "ReactNode"
         },
+        "expandPanel": true,
+        "needMock": true,
         "name": "label",
         "required": false,
         "defaultValue": null,
@@ -38,6 +53,7 @@
           "name": "choice",
           "enum": ["left", "right"]
         },
+        "needMock": true,
         "name": "position",
         "required": false,
         "defaultValue": null,

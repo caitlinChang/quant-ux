@@ -14,6 +14,17 @@
         "required": false,
         "description": "内容"
       },
+      "children": {
+        "defaultValue": null,
+        "description": "内容",
+        "name": "children",
+        "mockData": [["Cloud Database"]],
+        "expandPanel": true,
+        "required": false,
+        "type": {
+          "name": "ReactNode"
+        }
+      },
       "span": {
         "type": {
           "name": "number"

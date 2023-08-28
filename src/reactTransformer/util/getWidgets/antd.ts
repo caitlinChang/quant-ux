@@ -12,10 +12,12 @@ const componentMap = {};
 const nextComponent = [
   "Button",
   "Typography",
+  "Descriptions",
   "Radio",
   "Checkbox",
   "Form",
   "Collapse",
+  "Timeline",
 ];
 
 const subComponent = []

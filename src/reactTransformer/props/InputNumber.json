@@ -6,6 +6,15 @@
     "displayName": "InputNumber",
     "methods": [],
     "props": {
+      "style": {
+        "defaultValue": null,
+        "description": "样式",
+        "name": "style",
+        "required": false,
+        "type": {
+          "name": "CSSProperties"
+        }
+      },
       "addonBefore": {
         "defaultValue": null,
         "description": "",
