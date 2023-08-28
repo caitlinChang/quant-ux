@@ -1,6 +1,7 @@
 import React, { useState, ReactNode } from "react";
 import { PageHeader, Select, Form, Radio, Tooltip, Typography } from "antd";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
+import "./ModuleTitle.less";
 
 export default (props?: {
   children?: ReactNode;
@@ -12,7 +13,13 @@ export default (props?: {
     props?.onToggle?.(!props.collapse);
   };
   return (
-    <div style={{ padding: "10px", borderBottom: "1px solid #f0f0f0" }}>
+    <div
+      className={
+        props?.collapse
+          ? " WIDGET_Deign_Panel_Title_Active "
+          : `WIDGET_Deign_Panel_Title`
+      }
+    >
       <div
         style={{
           display: "flex",
@@ -30,9 +37,7 @@ export default (props?: {
           )}
         </span>
       </div>
-      {props?.collapse && (
-        <div style={{ paddingTop: "10px" }}>{props.children}</div>
-      )}
+      <div style={{ paddingTop: "10px" }}>{props.children}</div>
     </div>
   );
 };

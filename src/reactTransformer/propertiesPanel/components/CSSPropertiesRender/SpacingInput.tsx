@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Input, InputProps, Select, Tooltip } from "antd";
 import { formatSize } from "../../../util/common";
+import { set } from "lodash";
 const list = [
   {
     label: "%",
@@ -34,7 +35,16 @@ export default (
   const [type, setType] = useState("px");
   const [inputValue, setInputValue] = useState("");
 
+  useEffect(() => {
+    setInputValue(formatSize(value));
+  }, [value]);
+
   const handleInputChange = (e) => {
+    const v = e.target.value;
+    setInputValue(v);
+  };
+
+  const handleInputBlur = (e) => {
     const v = e.target.value;
     if (!v) {
       onChange?.(undefined);
@@ -55,13 +65,15 @@ export default (
       onChange?.("100%");
     }
   };
+
   return (
     <div>
       <Input
-        value={formatSize(value)}
+        value={inputValue}
         addonAfter={"px"}
         allowClear
-        onBlur={handleInputChange}
+        onChange={handleInputChange}
+        onBlur={handleInputBlur}
         {...restProps}
       />
     </div>

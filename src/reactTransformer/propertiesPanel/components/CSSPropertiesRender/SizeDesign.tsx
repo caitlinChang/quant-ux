@@ -59,7 +59,7 @@ export default (props?: { form: FormInstance }) => {
         <SpacingInput />
       </Form.Item>
       <Collapse className="size_collapse" ghost>
-        <Collapse.Panel key={[1]}>
+        <Collapse.Panel forceRender={true} key={[1]}>
           {widthConfig.map((item) => {
             return (
               <Form.Item
@@ -86,7 +86,7 @@ export default (props?: { form: FormInstance }) => {
         <SpacingInput defaultValue="auto" />
       </Form.Item>
       <Collapse className="size_collapse" ghost>
-        <Collapse.Panel key={[1]}>
+        <Collapse.Panel forceRender={true} key={[1]}>
           {heightConfig.map((item) => {
             return (
               <Form.Item

@@ -137,7 +137,7 @@ export default (props?: {
   useEffect(() => {
     const value = resolveBorderValue(props?.value);
     setBorderValues(value);
-    setCurBorderType(Object.keys(value)[0]);
+    setCurBorderType(Object.keys(value)[0] || "border");
     form.setFieldsValue(value[Object.keys(value)[0]]);
   }, [props?.value]);
 
