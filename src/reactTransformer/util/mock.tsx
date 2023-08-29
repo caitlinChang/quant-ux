@@ -105,14 +105,19 @@ export const getMockedProps = (propsConfig: {
 };
 
 export const getArrayItemMockDataByPath = (
-  propsConfig: PropItemConfigType
+  propsConfig: PropItemConfigType,
+  index: number
 ): any => {
-  const data = getMockData(propsConfig, MockType.Edit);
+  const data = getMockData(propsConfig, MockType.Edit, index);
   return data[0];
 };
 
 // 根据 props 的类型生成 mock 数据
-const getMockData = (config: PropItemConfigType, mockType?: MockType): any => {
+const getMockData = (
+  config: PropItemConfigType,
+  mockType?: MockType,
+  index?: number
+): any => {
   const {
     type: { name, item },
   } = config;
@@ -125,7 +130,7 @@ const getMockData = (config: PropItemConfigType, mockType?: MockType): any => {
         if (key === "children") {
           //   itemValue[key] = [];
         } else {
-          itemValue[key] = getMockDataByType(key, value, mockType);
+          itemValue[key] = getMockDataByType(key, value, mockType, index);
         }
       });
 

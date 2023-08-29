@@ -68,7 +68,6 @@ export default (props: ComponentWrapperType) => {
   };
 
   const updateRenderedProps = async (newProps) => {
-    console.log("画布侧接收到更新 = ", newProps);
     const componentProps = await instance.update(newProps);
     setComponentProps(componentProps);
   };
@@ -83,7 +82,6 @@ export default (props: ComponentWrapperType) => {
     }
   }, []);
 
-  console.log("componentProps = ", componentProps);
   return (
     <>
       {typeof RenderComponent === "string" && RenderComponent}

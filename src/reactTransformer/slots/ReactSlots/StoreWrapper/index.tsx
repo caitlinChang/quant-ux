@@ -16,7 +16,6 @@ export default (props?: { children?: any }) => {
 
   const resetActivePath = () => {
     setActivePath("");
-    // observer.notify(EventType.SELECT_WIDGET, widget);
   };
 
   const onSelectWidget = (widget) => {
@@ -24,18 +23,12 @@ export default (props?: { children?: any }) => {
   };
 
   const onDeSelectWidget = () => {
-    // console.log('De Select Widget = ');
     setActivePath("");
-
   };
 
   useEffect(() => {
     observer.subscribe(EventType.SELECT_WIDGET, onSelectWidget);
     observer.subscribe(EventType.DE_SELECT_WIDGET, onDeSelectWidget);
-
-    return () => {
-      observer.clear();
-    };
   }, []);
   const store = {
     activePath,

@@ -1161,11 +1161,10 @@ export default {
     },
   },
   mounted() {
-    observer.subscribe('Fill_Widget', (props) => {
-      this.showDropDown();
-      this.forSlot = props;
-    })
-    
+    // observer.subscribe('Fill_Widget', (props) => {
+    //   this.showDropDown();
+    //   this.forSlot = props;
+    // })
   },
 };
 </script>

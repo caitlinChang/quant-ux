@@ -316,7 +316,7 @@
       class="MatcToobarPropertiesSection MatcToolbarSectionHidden"
       data-dojo-attach-point="propertiesCntr"
     >
-      <property-panel :widget="curSelectedWidget" :selectChild="curSelectedChild" />
+      <property-panel @showWidgetSelect="showWidgetSelector" :widget="curSelectedWidget" :selectChild="curSelectedChild" />
       <!-- <properties-panel ref="propertiesPanel" @setComponentProps="setWidgetProps" /> -->
     </div>
   </div>
@@ -2352,8 +2352,9 @@ export default {
       }
     },
 
-    showWidgetSelector() {
+    showWidgetSelector(props) {
       if (this.createBTN) {
+        this.createBTN.forSlot = props;
         this.createBTN.showDropDown();
       }
     },

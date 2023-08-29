@@ -32,11 +32,14 @@ import { getArrayItemMockDataByPath } from "../util/mock";
 
 const AntdPanel = Collapse.Panel;
 
-const Panel = (props: { widget: any; selectChild: any }) => {
+const Panel = (props: {
+  widget: any;
+  selectChild: any;
+  showWidgetSelect: (props: any) => void;
+}) => {
   const { widget, selectChild } = props;
   const [treeData, setTreeData] = useState([]);
   const [formData, setFormData] = useState({}); // 维护的是当前选中组件的 props
-  const [formStyle, setFormStyle] = useState({}); // 维护的是当前选中组件的 props
   const [propsConfig, setPropsConfig] = useState([]); // 维护的是当前选中组件的 props
   const [activeTab, setActiveTab] = useState("settings"); //
 
@@ -63,8 +66,6 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     const { widget } = props;
     if (!widget?.id) {
       clear();
-    } else {
-      setFormStyle(cloneDeep(widget.props?.style));
     }
   }, [props.widget]);
 
@@ -106,7 +107,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
 
   const handleSelectComponent = (path: string, index: number) => {
     let _path = getNodePath(selectChild.path, `${path}[${index}]`);
-    observer.notify(EventType.FILL_WIDGET, {
+    props.showWidgetSelect({
       id: widget.id,
       path: selectChild.path,
       formData: cloneDeep(formData),
@@ -272,7 +273,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     const handleAdd = () => {
       // TODO: 对添加项的 mock
       const newValue = get(props.propsValue, props.path) || [];
-      const mockItem = getArrayItemMockDataByPath(config);
+      const mockItem = getArrayItemMockDataByPath(config, newValue.length);
       newValue.push({ ...mockItem });
       props.handleChangeProp(props.path, newValue);
     };
@@ -426,7 +427,6 @@ const Panel = (props: { widget: any; selectChild: any }) => {
     }
   };
   const handleChangeStyle = (value) => {
-    setFormStyle(value);
     handleChangeProp("style", value);
   };
 
@@ -466,7 +466,7 @@ const Panel = (props: { widget: any; selectChild: any }) => {
               ))}
             {activeTab === "design" && (
               <CSSPropertiesRender
-                value={formStyle}
+                value={formData.style}
                 onChange={handleChangeStyle}
               />
             )}

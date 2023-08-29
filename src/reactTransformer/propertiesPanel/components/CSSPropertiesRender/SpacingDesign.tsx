@@ -165,7 +165,7 @@ const list = [
 ];
 
 function resolveSpacingStr(str) {
-  const arr = (str || "").split(" ").map((i) => parseInt(i));
+  const arr = (str || "").split(" ").map((i) => parseInt(i) || 0);
   if (arr.length === 1) {
     return [arr[0], arr[0], arr[0], arr[0]];
   } else if (arr.length === 2) {
