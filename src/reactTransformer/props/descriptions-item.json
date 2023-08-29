@@ -12,10 +12,12 @@
         },
         "name": "label",
         "required": false,
+        "mockData": [["Cloud Database"]],
+        "expandPanel": true,
         "description": "内容"
       },
       "children": {
-        "defaultValue": null,
+        "defaultValue": [["dddd"]],
         "description": "内容",
         "name": "children",
         "mockData": [["Cloud Database"]],

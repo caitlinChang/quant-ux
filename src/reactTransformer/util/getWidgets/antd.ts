@@ -56,7 +56,6 @@ Object.keys(antdComponents).forEach((key) => {
   });
 });
 
-// console.log("componentMap = ", componentMap);
 // 在黑名单中的不会展示
 const blackList = [
   "Affix",
@@ -84,18 +83,20 @@ const blackList = [
   "Skeleton",
   "Slider",
   "Spin",
+  // 属于某项操作才能触发的
   "message",
   "notification",
   "version",
   "Form-List",
   "Form-ErrorList",
-  "Form-Provider",
-  "Typography",
-  "Typography-Link",
-  "Typography-Paragraph",
-  "Upload",
+  "Form-Provider", // 无UI 状态管理组件，不展示
+  "Typography", // 可以通过 Typography-Text 来展示
+  "Typography-Link", //可以通过 Typography-Text 来展示
+  "Typography-Paragraph", // 可以通过 Typography-Text 来展示
   "Button-Group",
   "Radio-Button", // 没有这个组件，无需展示
+  "Descriptions-Item", // 这个组件展示有问题，暂不支持
+  "Descriptions", // 这个组件展示有问题，暂不支持
 ];
 export const antdList = Object.keys(componentMap)
   .filter((i) => !blackList.includes(i))
@@ -119,5 +120,5 @@ export const antdList = Object.keys(componentMap)
       library: "antd",
     };
   });
-
+  console.log("componentMap = ", componentMap, antdList);
 export default componentMap;

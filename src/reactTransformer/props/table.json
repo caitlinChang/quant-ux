@@ -80,7 +80,7 @@
       },
       "dataSource": {
         "type": {
-          "name": "array"
+          "name": "DataSource"
         },
         "name": "dataSource",
         "description": "数据源"
