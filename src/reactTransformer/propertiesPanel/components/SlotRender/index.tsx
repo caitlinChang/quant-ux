@@ -79,6 +79,7 @@ export default (props: {
       {componentList.map((c, index) => {
         return (
           <div
+            key={index}
             style={{
               borderTop: "1px solid #f0f0f0",
               borderBottom: "1px solid #f0f0f0",
@@ -120,7 +121,7 @@ export default (props: {
             {getTypeofChildren(c) === ChildrenItemType.Component && (
               <div>
                 <Search
-                  readonly
+                  readOnly
                   value={c[0] || ""}
                   size="small"
                   // allowClear

@@ -35,7 +35,6 @@ export default (props: ComponentWrapperType) => {
   const [componentProps, setComponentProps] = useState<any>({});
   const { className, onClick, onDblClick, ...restProps } = componentProps;
   const store = React.useContext(WidgetStore);
-
   const handleClick = (e: any) => {
     // e.stopPropagation();
     // if (props.path !== store.activePath) {
@@ -87,7 +86,7 @@ export default (props: ComponentWrapperType) => {
       {typeof RenderComponent === "string" && RenderComponent}
       {typeof RenderComponent !== "string" && (
         <RenderComponent
-          className={`${className} ${computedClassName}`}
+          className={`${className || ""} ${computedClassName}`}
           onClick={handleClick}
           onDoubleClick={handleDblClick}
           {...restProps}

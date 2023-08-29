@@ -402,9 +402,10 @@ const Panel = (props: {
     const nameList = getNodeList(selectChild?.path, widget);
     return (
       <Breadcrumb separator=">">
-        {nameList.map((item) => {
+        {nameList.map((item, index) => {
           return (
             <Breadcrumb.Item
+              key={index}
               style={{ cursor: "pointer" }}
               onClick={() => observer.notify(EventType.SELECT_WIDGET, item)}
             >

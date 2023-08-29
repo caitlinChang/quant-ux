@@ -22,25 +22,9 @@
           [
             "Collapse-Panel",
             {
-              "header": [["Typography-Text", { "children": [["标题一"]] }]],
-              "children": [["这里是 Panel 1"]],
-              "key": 1
-            }
-          ],
-          [
-            "Collapse-Panel",
-            {
-              "header": [["Typography-Text", { "children": [["标题二"]] }]],
-              "children": [["这里是 Panel 2"]],
-              "key": 2
-            }
-          ],
-          [
-            "Collapse-Panel",
-            {
-              "header": [["Typography-Text", { "children": [["标题三"]] }]],
-              "children": [["这里是 Panel 3"]],
-              "key": 3
+              "header": [["标题一"]],
+              "children": [["xxx"]],
+              "key": "1"
             }
           ]
         ],
@@ -57,6 +41,15 @@
         "name": "collapsible",
         "required": false,
         "description": "指定可折叠触发区域"
+      },
+      "forceRender": {
+        "type": {
+          "name": "boolean"
+        },
+        "name": "forceRender",
+        "defaultValue": false,
+        "required": false,
+        "description": "强制渲染所有子面板"
       },
       "expandIconPosition": {
         "type": {
@@ -81,6 +74,8 @@
         },
         "name": "activeKey",
         "required": false,
+        "mockData": ["1"],
+        "defaultValue": ["1"],
         "description": "当前激活 tab 面板"
       },
       "bordered": {
