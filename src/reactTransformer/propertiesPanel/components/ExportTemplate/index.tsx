@@ -2,7 +2,8 @@ import Handlebars from "handlebars";
 import * as prettier from "prettier/standalone";
 import * as babel from "prettier/plugins/babel";
 import * as esTree from "prettier/plugins/estree";
-1
+import * as React from 'react'
+
 export const componentTemplate = `
 import { {{component}} }from '{{componentLib}}'
 
@@ -11,8 +12,51 @@ const {{name}} = {{component}}.{{name}}
 {{/if}}
 
 const {{demoName}} = ()=>
-<{{name}} {{{propsText}}}>{{children}}</{{name}}>
+<{{name}} {{{propsText}}}>{{{children}}}</{{name}}>
 `;
+
+function formatPropsToPlainText(props: any){
+
+  const {children, ...restProps} = props;
+  const formatProps = [];
+
+  for (let propsKey in restProps) {
+    const propsValue = restProps[propsKey];
+    if (typeof propsValue == "string") {
+      formatProps.push(`${propsKey}="${propsValue}"`);
+    } else if(typeof !!propsValue == "number"){
+      formatProps.push(`${propsKey}={${propsValue}}`);
+    } else {
+      formatProps.push(`${propsKey}={${JSON.stringify(propsValue)}}`);
+    }
+  }
+  return formatProps.join(" ")
+}
+
+function formatChildrenToPlainText(children: any[]){
+  const formatChildren: React.ReactNode[] = [];
+
+  if (Array.isArray(children)) {
+    for (const childrenItem of children) {
+      if (typeof childrenItem == "string" || typeof children == "number") {
+        formatChildren.push(childrenItem);
+        continue;
+      }
+      const [componentName, props] = childrenItem;
+      const formatProps = formatPropsToPlainText(props);
+      if(!props.children){
+        formatChildren.push(
+          `<${componentName} ${formatProps}/>`
+        );
+      }else{
+        formatChildren.push(
+          `<${componentName} ${formatProps}>${formatChildrenToPlainText(props.children)}</${componentName}>`
+        );
+      }
+    }
+  }
+  return formatChildren;
+}
 
 /**
  * @param {Object} propsValue
@@ -34,17 +78,6 @@ export async function formatWidgetExportCodeDemo(formData, widget) {
     console.warn("暂不支持这么多级嵌套🌝");
   }
 
-  const {children, ...restProps} = formData;
-  const formatProps = [];
-
-  for (let propsKey in restProps) {
-    const propsValue = restProps[propsKey];
-    if (typeof propsValue !== "object" || typeof propsValue !== "string") {
-      formatProps.push(`${propsKey}="${propsValue}"`);
-    } else {
-      formatProps.push(`${propsKey}={${JSON.stringify(propsValue)}}`);
-    }
-  }
 
   const template = Handlebars.compile(componentTemplate);
 
@@ -57,14 +90,16 @@ export async function formatWidgetExportCodeDemo(formData, widget) {
     name = componentPath[1];
   }
 
+  const {children, ...restProps} = formData;
+
   const result = template({
     name,
     component: componentName,
     // TODO: 先写死 antd, 后续需要根据组件库的配置来读取, 如 formula
     componentLib: "antd",
-    hasSubComponent: true,
-    propsText: formatProps.join(" "),
-    children,
+    hasSubComponent,
+    propsText: formatPropsToPlainText(restProps),
+    children: formatChildrenToPlainText(children),
     demoName: `${name}Demo`,
   });
 
