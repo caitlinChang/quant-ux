@@ -33,12 +33,17 @@ function formatPropsToPlainText(props: any){
   return formatProps.join(" ")
 }
 
-function formatChildrenToPlainText(children: any[]){
+function formatChildrenToPlainText(children: any[] | string){
   const formatChildren: React.ReactNode[] = [];
+
+  if (typeof children == "string" || typeof children == "number") {
+    formatChildren.push(children);
+    return formatChildren;
+  }
 
   if (Array.isArray(children)) {
     for (const childrenItem of children) {
-      if (typeof childrenItem == "string" || typeof children == "number") {
+      if (typeof childrenItem == "string" || typeof childrenItem == "number") {
         formatChildren.push(childrenItem);
         continue;
       }
@@ -68,7 +73,7 @@ function formatChildrenToPlainText(children: any[]){
  * @description
  **/
 export async function formatWidgetExportCodeDemo(formData, widget) {
-  const componentPath = widget.componentPath;
+  const componentPath = widget.componentPath || [];
 
   if (Array.isArray(componentPath) && componentPath.length === 0) {
     throw new Error("ComponentPath is empty");
