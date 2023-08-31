@@ -429,7 +429,7 @@ const Panel = (props: {
   const onWidgetExport = async () => {
     try {
       const code = await formatWidgetExportCodeDemo(formData, props.widget);
-      console.log('onWidgetExport: ', code);
+      console.log('onWidgetExport: \n', code);
       // 先写入剪切板
       await navigator.clipboard.writeText(code)
     } catch (e) {

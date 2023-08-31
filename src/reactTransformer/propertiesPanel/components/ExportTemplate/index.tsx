@@ -8,11 +8,11 @@ export const componentTemplate = `
 import { {{component}} }from '{{componentLib}}'
 
 {{#if hasSubComponent}}
-const {{name}} = {{component}}.{{name}}
+const {{displayName}} = {{component}}.{{name}}
 {{/if}}
 
 const {{demoName}} = ()=>
-<{{name}} {{{propsText}}}>{{{children}}}</{{name}}>
+<{{displayName}} {{{propsText}}}>{{{children}}}</{{displayName}}>
 `;
 
 function formatPropsToPlainText(props: any){
@@ -83,11 +83,9 @@ export async function formatWidgetExportCodeDemo(formData, widget) {
     console.warn("暂不支持这么多级嵌套🌝");
   }
 
-
-  const template = Handlebars.compile(componentTemplate);
-
   // 根据 componentPath 判断是否为模块下的子组件, 例如 Input.Group
   const componentName = componentPath[0];
+  const displayName = widget.displayName || componentName;
 
   let name = componentName;
   const hasSubComponent = componentPath.length > 1;
@@ -97,8 +95,10 @@ export async function formatWidgetExportCodeDemo(formData, widget) {
 
   const {children, ...restProps} = formData;
 
+  const template = Handlebars.compile(componentTemplate);
   const result = template({
     name,
+    displayName: widget.displayName,
     component: componentName,
     // TODO: 先写死 antd, 后续需要根据组件库的配置来读取, 如 formula
     componentLib: "antd",
