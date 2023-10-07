@@ -254,6 +254,7 @@ const Panel = (props: {
     config: PropItemConfigType;
     path: string;
     propsValue: any;
+    type: TypeName;
     index?: number;
   }) => {
     const { index = -1, config } = props;
@@ -271,8 +272,18 @@ const Panel = (props: {
     };
 
     const handleAdd = () => {
-      // TODO: 对添加项的 mock
       const newValue = get(props.propsValue, props.path) || [];
+      if (props.type === TypeName.DataSource) {
+        const obj = {};
+        for (let key in formData.columns) {
+          obj[key] = "";
+        }
+        newValue.push({ ...obj });
+        console.log("props.path = ", props.path, newValue);
+        props.handleChangeProp(props.path, newValue);
+        return;
+      }
+
       const mockItem = getArrayItemMockDataByPath(config, newValue.length);
       newValue.push({ ...mockItem });
       props.handleChangeProp(props.path, newValue);
@@ -328,7 +339,7 @@ const Panel = (props: {
         return getTreeNode(info, curPath, propsValue);
       });
       // TODO: 等待后端协议
-    } else if (name === TypeName.Array) {
+    } else if ([TypeName.Array, TypeName.DataSource].includes(name)) {
       const value = get(propsValue, curPath) || [];
       children = value.map((_, index) => {
         const nextLevelChildren = Object.entries(item)
@@ -353,6 +364,7 @@ const Panel = (props: {
               propsValue={propsValue}
               path={curPath}
               config={config}
+              type={name}
               index={index}
             />
           ),
@@ -374,6 +386,7 @@ const Panel = (props: {
           propsValue={propsValue}
           path={curPath}
           config={config}
+          type={name}
         />
       ),
       expandPanel,
